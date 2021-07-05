@@ -10,6 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 2** - [Agustin Gabriel Garcia](https://github.com/agusgar409)
 * **Integrante 3** - [Christian Nahuel Rodriguez](https://github.com/christiangit-uba)
 * **Integrante 4** - [Patricio Tomás Silva](https://github.com/lTomaas)
+* **Integrante 5** - [Alexis Martin Ramos](https://github.com/Alexis094)
 
 Corrector: **{Corrector}**
 
