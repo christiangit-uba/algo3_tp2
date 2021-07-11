@@ -9,10 +9,10 @@ public class CantidadDeEjercitos implements Validador{
         this.cantidadEjecitosAUsar = cantidadEjecitosAUsar;
     }
 
-    public int atacar() throws Exception{
-        if (!this.ejercito.atacar(this.cantidadEjecitosAUsar)) {
+    public boolean validar() throws Exception{
+        if (!this.ejercito.validar(this.cantidadEjecitosAUsar)) {
             throw new Exception();
         }
-        return 0;
+        return true;
     }
 }

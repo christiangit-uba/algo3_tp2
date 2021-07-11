@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,5 +22,13 @@ public class Vertice {
 
     public void agregarLimitrofes(Vertice limitrofe) {
         limitrofes.add(limitrofe);
+    }
+
+    public boolean mismoColor(Vertice paisLimitrofe) {
+        return (this.pais.colorDeEjercito()).equals(paisLimitrofe.pais.colorDeEjercito());
+    }
+
+    public Ejercito ejercito() {
+        return pais.ejercito();
     }
 }

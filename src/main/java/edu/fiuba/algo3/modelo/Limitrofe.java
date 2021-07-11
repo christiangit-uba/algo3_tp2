@@ -1,25 +1,28 @@
 package edu.fiuba.algo3.modelo;
 
 public class Limitrofe implements Validador{
-    Pais paisAtacante;
-    Pais paisDefensor;
-    Diplomacia diplomacia;
+    String paisAtacante;
+    String paisDefensor;
+    Tablero tablero;
+    Validador siguiente;
 
-    Limitrofe(Pais unPais, Pais otroPais){
+    Limitrofe(String unPais, String otroPais, Tablero tablero){
         paisAtacante = unPais;
         paisDefensor = otroPais;
-        diplomacia = new Diplomacia(unPais,otroPais);
+        this.tablero = tablero;
+    }
+
+    public void siguiente(Validador siguiente){
+        this.siguiente = siguiente;
     }
 
     @Override
-    public int atacar() throws Exception{
-        if(!paisAtacante.esLimitrofe(paisDefensor)){
+    public boolean validar() throws Exception{
+        if(!this.tablero.limitrofes(paisAtacante,paisDefensor)){
             throw new Exception();
         }
         else{
-            return diplomacia.atacar();
+            return this.siguiente.validar();
         }
-
-
     }
 }

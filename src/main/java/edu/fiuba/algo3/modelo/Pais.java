@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 public class Pais {
     private String nombre;
     private Ejercito ejercito;
@@ -14,23 +12,12 @@ public class Pais {
         return ejercito.cantidadDeEjercitos();
     }
 
-    public Validador ejercito() {
+    public Ejercito ejercito() {
         return ejercito;
     }
 
     String nombre() {
         return this.nombre;
-    }
-
-    public void atacaA(Pais pais2) throws Exception {
-        Limitrofe limitrofe = new Limitrofe(this, pais2);
-        limitrofe.validar();
-        while ((this.cantidadDeEjercitos() != 0) && (pais2.cantidadDeEjercitos() != 0)) {
-            Dados dados1 = new Dados(this.cantidadDeDados());
-            Dados dados2 = new Dados(pais2.cantidadDeDados());
-
-            ArrayList comparacion = Dados.comparar(dados1,dados2,this,pais2);
-        }
     }
 
     private int cantidadDeDados(){
@@ -39,5 +26,9 @@ public class Pais {
 
     public void perdioEjercito(){
         ejercito = ejercito.sacarEjercito();
+    }
+
+    public String colorDeEjercito() {
+        return ejercito.color();
     }
 }

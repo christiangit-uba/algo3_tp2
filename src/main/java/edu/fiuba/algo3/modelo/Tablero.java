@@ -29,7 +29,16 @@ public class Tablero {
         }
     }
 
-    public boolean Limitrofes(String pais, String limitrofe){
+    public Vertice buscarPais(String pais){
+        for (Vertice paisBuscado : paises){
+            if (paisBuscado.nombre().equals(pais)){
+                return paisBuscado;
+            }
+        }
+        return null;
+    }
+
+    public boolean limitrofes(String pais, String limitrofe){
         Vertice paisOrigen = this.buscarPais(pais);
         Vertice paisLimitrofe = this.buscarPais(limitrofe);
 
@@ -43,12 +52,17 @@ public class Tablero {
         return this.buscarPais(pais) != null;
     }
 
-    public Vertice buscarPais(String pais){
-        for (Vertice paisBuscado : paises){
-            if (paisBuscado.nombre().equals(pais)){
-                return paisBuscado;
-            }
+    public boolean mismoColor(String paisAtacante, String paisDefensor) {
+        Vertice paisOrigen = this.buscarPais(paisAtacante);
+        Vertice paisLimitrofe = this.buscarPais(paisDefensor);
+
+        if (paisOrigen != null && paisLimitrofe != null){
+            return paisOrigen.mismoColor(paisLimitrofe);
         }
-        return null;
+        return false;
+    }
+
+    public Ejercito ejercitoDePais(String paisAtacante) {
+        return this.buscarPais(paisAtacante).ejercito();
     }
 }

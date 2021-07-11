@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public interface Ejercito{
-    boolean atacar(int cantidadEjecitosAUsar);
+    boolean validar(int cantidadEjecitosAUsar);
 
     Ejercito agregarEjercito();
 
@@ -10,4 +10,6 @@ public interface Ejercito{
     Ejercito sacarEjercito();
 
     int cantidadDeDados();
+
+    String color();
 }
