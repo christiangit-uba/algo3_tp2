@@ -12,11 +12,11 @@ public class Tablero {
     }
 
     public void agregregarPais(String pais, ArrayList<String> limitrofes){
-        if (this.existePais(pais)){
-            return;
+        Vertice paisNuevo = this.buscarPais(pais);
+        if (paisNuevo == null){
+            paisNuevo = new Vertice(pais);
+            paises.add(paisNuevo);
         }
-        Vertice paisNuevo = new Vertice(pais);
-        paises.add(paisNuevo);
         for (String limitrofe : limitrofes) {
             paisNuevo.agregarLimitrofes(limitrofe, this);
         }
