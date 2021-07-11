@@ -12,19 +12,26 @@ public class Tablero {
     }
 
     public void agregregarPais(String pais, ArrayList<String> limitrofes){
+        Vertice paisLimitrofe;
         Vertice paisNuevo = this.buscarPais(pais);
+
         if (paisNuevo == null){
             paisNuevo = new Vertice(pais);
             paises.add(paisNuevo);
         }
+
         for (String limitrofe : limitrofes) {
-            paisNuevo.agregarLimitrofes(limitrofe, this);
+            paisLimitrofe = this.buscarPais(limitrofe);
+            if (paisLimitrofe == null){
+                this.agregregarPais(limitrofe, new ArrayList<>());
+            }
+            paisNuevo.agregarLimitrofes(this.buscarPais(limitrofe));
         }
     }
 
     public boolean Limitrofes(String pais, String limitrofe){
         Vertice paisOrigen = this.buscarPais(pais);
-        Vertice paisLimitrofe = this.buscarPais(pais);
+        Vertice paisLimitrofe = this.buscarPais(limitrofe);
 
         if (paisOrigen != null && paisLimitrofe != null){
             return paisOrigen.adyacenteA(paisLimitrofe);

@@ -21,11 +21,7 @@ public class Vertice {
         return limitrofes.contains(limitrofe);
     }
 
-    public void agregarLimitrofes(String limitrofe, Tablero tablero) {
-        Vertice paisLimitrofe = tablero.buscarPais(limitrofe);
-        if (paisLimitrofe == null){
-            tablero.agregregarPais(limitrofe, new ArrayList<>());
-        }
-        limitrofes.add(tablero.buscarPais(limitrofe));
+    public void agregarLimitrofes(Vertice limitrofe) {
+        limitrofes.add(limitrofe);
     }
 }
