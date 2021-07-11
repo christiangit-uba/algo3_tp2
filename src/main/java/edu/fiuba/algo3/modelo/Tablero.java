@@ -23,14 +23,11 @@ public class Tablero {
     }
 
     public boolean Limitrofes(String pais, String limitrofe){
-        if (this.existePais(pais) && this.existePais(limitrofe)){
-            for (Vertice paisBuscado: paises){
-                if (paisBuscado.nombre().equals(pais)){
-                    if (paisBuscado.adyacenteA(this.buscarPais(limitrofe))){
-                        return true;
-                    }
-                }
-            }
+        Vertice paisOrigen = this.buscarPais(pais);
+        Vertice paisLimitrofe = this.buscarPais(pais);
+
+        if (paisOrigen != null && paisLimitrofe != null){
+            return paisOrigen.adyacenteA(paisLimitrofe);
         }
         return false;
     }
