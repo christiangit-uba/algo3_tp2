@@ -3,10 +3,12 @@ package edu.fiuba.algo3.modelo;
 public class Pais {
     private String nombre;
     private Ejercito ejercito;
+    Limitrofes limitrofes;
 
     public Pais(String nombreNuevo) {
-        this.nombre = nombreNuevo;
-        }
+        nombre = nombreNuevo;
+        limitrofes = new Limitrofes();
+    }
 
     public int cantidadDeEjercitos() {
         return ejercito.cantidadDeEjercitos();
@@ -17,7 +19,7 @@ public class Pais {
     }
 
     String nombre() {
-        return this.nombre;
+        return nombre;
     }
 
     private int cantidadDeDados(){
@@ -30,5 +32,13 @@ public class Pais {
 
     public String colorDeEjercito() {
         return ejercito.color();
+    }
+
+    public void agregarLimitrofe(Pais paisLimitrofeNuevo) {
+        limitrofes.agregarLimitrofe(paisLimitrofeNuevo);
+    }
+
+    public boolean mismoNombre(String pais) {
+        return nombre.equals(pais);
     }
 }

@@ -24,10 +24,6 @@ public class Vertice {
         limitrofes.add(limitrofe);
     }
 
-    public boolean mismoColor(Vertice paisLimitrofe) {
-        return (this.pais.colorDeEjercito()).equals(paisLimitrofe.pais.colorDeEjercito());
-    }
-
     public Ejercito ejercito() {
         return pais.ejercito();
     }

@@ -3,13 +3,13 @@ package edu.fiuba.algo3.modelo;
 public class Limitrofe implements Validador{
     String paisAtacante;
     String paisDefensor;
-    Tablero tablero;
+    Grafo grafo;
     Validador siguiente;
 
-    Limitrofe(String unPais, String otroPais, Tablero tablero){
+    Limitrofe(String unPais, String otroPais, Grafo grafo){
         paisAtacante = unPais;
         paisDefensor = otroPais;
-        this.tablero = tablero;
+        this.grafo = grafo;
     }
 
     public void siguiente(Validador siguiente){
@@ -18,7 +18,7 @@ public class Limitrofe implements Validador{
 
     @Override
     public boolean validar() throws Exception{
-        if(!this.tablero.limitrofes(paisAtacante,paisDefensor)){
+        if(!this.grafo.limitrofes(paisAtacante,paisDefensor)){
             throw new Exception();
         }
         else{
