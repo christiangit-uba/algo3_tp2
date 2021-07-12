@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+/*package edu.fiuba.algo3.modelo;
 
 public class Ataque {
     public void atacar(String paisAtacante, String paisDefensor, Grafo grafo, int cantidadDeEjercitosAUsar) throws Exception {
@@ -10,4 +10,4 @@ public class Ataque {
         diplomacia.siguiente(grafo.ejercitoDePais(paisAtacante));
         limitrofe.validar();
     }
-}
+}*/

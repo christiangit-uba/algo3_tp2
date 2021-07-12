@@ -18,11 +18,8 @@ public class Dados {
         dadosNuevos.sort(Collections.reverseOrder());
         dados = dadosNuevos;
    }
-
-    public static ArrayList comparar(Dados dadoAtaque, Dados dadoDefensa, Pais paisAtacante, Pais paisDefensor) throws Exception {
-        ArrayList<Integer> resultado = new ArrayList<>();
-        resultado.set(0, 0);
-        resultado.set(1, 0);
+/*
+    public static void comparar(Dados dadoAtaque, Dados dadoDefensa, Pais paisAtacante, Pais paisDefensor) throws Exception {
         int i = 0;
         while (i < (dadoAtaque.dados().size()) && i < (dadoDefensa.dados().size())){
             if ((dadoAtaque.dados().get(i)) <= (dadoDefensa.dados().get(i))) {
@@ -33,9 +30,8 @@ public class Dados {
             }
             i++;
         }
-        return resultado;
     }
-
+*/
     public ArrayList<Integer> dados() {
         return dados;
     }

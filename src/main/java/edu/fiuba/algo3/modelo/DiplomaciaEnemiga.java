@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+/*package edu.fiuba.algo3.modelo;
 
 public class DiplomaciaEnemiga extends Diplomacia{
     Grafo grafo;
@@ -29,4 +29,4 @@ public class DiplomaciaEnemiga extends Diplomacia{
         }
 
     }
-}
+}*/

@@ -6,7 +6,12 @@ public class Limitrofes {
     ArrayList<Pais> paisesLimitrofes = new ArrayList<>();
 
     public boolean esAdyacente(Pais unPais) {
-        return (paisesLimitrofes.contains(unPais));
+        for (Pais buscado : paisesLimitrofes){
+            if (unPais.nombre().equals(buscado.nombre())){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void agregarLimitrofe(Pais paisLimitrofeNuevo) {

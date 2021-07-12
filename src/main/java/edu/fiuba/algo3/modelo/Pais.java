@@ -41,4 +41,8 @@ public class Pais {
     public boolean mismoNombre(String pais) {
         return nombre.equals(pais);
     }
+
+    public boolean esLimitrofe(Pais destino) {
+        return limitrofes.esAdyacente(destino);
+    }
 }
