@@ -1,36 +1,21 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.colores;
 
 public abstract class Colores{
-    protected short cantJugadores = 0;
     protected static short minimo = 2;
-    protected Colores color;
 
-    public Colores(){
-        this.color = new ColorBlanco();
-    }
-
-    public Object sinColor(){
+    public Colores sinColor(){
         return new ColorBlanco();
     }
 
-    public Object asignarColor(){
-        this.color = (Colores) (this.color).siguienteColor();
-        return (this.color);
-    }
-
-    public short informarCantidadJugadores(){   //usada por Juego.
-        return cantJugadores;
-    }
-
-    public boolean hayJugadoresSuficientes(){   //usada por Juego.
+    public boolean hayJugadoresSuficientes(int cantJugadores){   //usada por Juego.
         return (cantJugadores >= minimo);
     }
 
-    protected String color(){
-        return (this.color).color();
-    }
+    public abstract String color();
 
-    protected Object siguienteColor(){
-        return this.color.siguienteColor();
-    }
+    public abstract Colores siguienteColor();
+
+    public abstract Boolean esElMismoColor(Colores color);
+
+    public abstract int informarCantidadJugadores();   //usada por Juego.
 }

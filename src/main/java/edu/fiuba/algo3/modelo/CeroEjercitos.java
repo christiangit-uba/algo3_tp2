@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class CeroEjercitos implements Ejercito{
     static final int CANTIDADDEEJERCITOS = 0;
+
     @Override
     public boolean atacar(int cantidadEjecitosAUsar){
         return false;

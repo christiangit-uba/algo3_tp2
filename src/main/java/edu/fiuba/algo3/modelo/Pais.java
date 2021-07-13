@@ -1,41 +1,68 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.colores.*;
 import java.util.ArrayList;
 
 public class Pais {
     private String nombre;
-    private ArrayList<String> limitrofes;
+    private ArrayList<Pais> limitrofes;
     private Ejercito ejercito;
-    private String color;
+    private Colores color;
+    private Pais aux;
 
-    public Pais(String nombreNuevo, String colorNuevo, ArrayList<String> limitrofesNuevos) {
+    public Pais(String nombreNuevo){
         this.nombre = nombreNuevo;
-        this.limitrofes = limitrofesNuevos;
-        this.color = colorNuevo;
-        }
+        this.color = new ColorBlanco();
+        this.ejercito = new CeroEjercitos();
+        this.limitrofes = new ArrayList<Pais>();
+    }
 
+    //Limitrofes
+    public void agregarLimitrofe(Pais paisLimitrofe){
+        limitrofes.add(paisLimitrofe);
+    }
+
+    public void agregarLimitrofes(ArrayList <Pais> paisesLimitrofes){
+        int tope = paisesLimitrofes.size();
+        for (int i = 0; i < tope; i++) {
+            this.agregarLimitrofe(paisesLimitrofes.get(i));
+        }
+    }
+
+    public boolean esLimitrofe(Pais otroPais){
+        return (this.limitrofes).contains(otroPais);
+    }
+
+    private String nombre(){
+        return this.nombre;
+    }
+
+    public boolean esElMismoPais(Pais otroPais){
+        return (nombre.equals(otroPais.nombre()));
+    }
+
+
+    //Colores
+    public boolean mismoColor(Pais otroPais) {
+        return (this.color).esElMismoColor(otroPais.color());
+    }
+
+    public Colores color() {
+        return (this.color);
+    }
+
+    public void cambiarColor(Colores otroColor){
+        this.color = otroColor;
+    }
+
+
+    //Ejercitos
     public int cantidadDeEjercitos() {
         return ejercito.cantidadDeEjercitos();
     }
 
-    public boolean mismoColor(Pais otroPais) {
-        return (this.color() == otroPais.color());
-    }
-
-    private String color() {
-        return this.color;
-    }
-
     public Ejercito ejercito() {
         return ejercito;
-    }
-
-    public boolean esLimitrofe(Pais otroPais) {
-        return ((this.limitrofes).contains(otroPais.nombre()));
-    }
-
-    private String nombre() {
-        return this.nombre;
     }
 
     public void atacaA(Pais pais2) throws Exception {

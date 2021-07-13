@@ -1,19 +1,27 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.colores;
 
 public class ColorBlanco extends Colores{
-    private final String colorActual = "ffffff"; //Blanco - sin color
+    private String colorActual = "ffffff";    //Blanco - sin color
+    private int cantJugadores = 0;
 
-    protected String color(){
+    @Override
+    public String color(){
         return colorActual;
     }
 
-    protected Colores siguienteColor(){
-        cantJugadores += 1;     //J1
+    @Override
+    public Colores siguienteColor(){
         return (new ColorAzul());
     }
 
-    public boolean esElMismoColor(Colores otroColor){
-        return (this.color).equals(otroColor.color());
+    @Override
+    public Boolean esElMismoColor(Colores otroColor){
+        return (colorActual).equals(otroColor.color());
+    }
+
+    @Override
+    public int informarCantidadJugadores() {
+        return cantJugadores;
     }
 }
 
