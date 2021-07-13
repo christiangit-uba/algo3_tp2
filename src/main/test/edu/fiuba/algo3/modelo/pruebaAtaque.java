@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class pruebaAtaque {
     @Test
