@@ -1,18 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
 public class CantidadDeEjercitos implements Validador{
-    private final Ejercito ejercito;
-    private int cantidadEjecitosAUsar;
+    private final Pais paisAtacante;
+    private final int cantidadEjecitosAUsar;
+    Validador siguiente;
 
-    public CantidadDeEjercitos(Ejercito ejercito, int cantidadEjecitosAUsar) {
-        this.ejercito = ejercito;
-        this.cantidadEjecitosAUsar = cantidadEjecitosAUsar;
+
+    public CantidadDeEjercitos(Pais paisAtacante, int cantidadEjercitosAUsar, Validador siguiente) {
+        this.paisAtacante = paisAtacante;
+        this.cantidadEjecitosAUsar = cantidadEjercitosAUsar;
+        this.siguiente = siguiente;
     }
 
-    public boolean validar() throws Exception{
-        if (!this.ejercito.validar(this.cantidadEjecitosAUsar)) {
+    public void validar() throws Exception{
+        if (!paisAtacante.puedeAtacar(cantidadEjecitosAUsar)) {
             throw new Exception();
         }
-        return true;
+        if (siguiente != null){
+            siguiente.validar();
+        }
     }
 }

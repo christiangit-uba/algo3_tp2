@@ -1,26 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 public class Jugador {
     private String color;
-    private ArrayList<Pais> paises = new ArrayList<Pais>();
-    private int cantidadDePaises = 0;
-
-    public Jugador(String colorNuevo) {
-        this.color = colorNuevo;
+    public Jugador(String color){
+        this.color = color;
     }
 
-    public void asignarPais(Pais pais) {
-        cantidadDePaises += 1;
-        paises.add(pais);
+    public void asignarPais(Pais unPais){
+        unPais.agregarColor(color);
+        unPais.agregarEjercito();
     }
 
-    public String nombre() {
-        return this.color;
+    public int cantidadEjercitosAColocar(Tablero tablero){
+        return tablero.cantidadEjercitosAColocar(color);
     }
 
-    public int cantidadDePaises() {
-        return cantidadDePaises;
+    public void asignarEjercito(Pais unPais , int cantidadEjercitos){
+
+        for(int i = 0; i < cantidadEjercitos ; i++)
+            unPais.agregarEjercito();
     }
 }
