@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+/*package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
@@ -30,4 +30,4 @@ public class PruebaTablero {
         tablero.asignarPaises(jugadores);
         assertEquals(tablero.cantidadDePaises("rojo"), 25);
     }
-}
+}*/

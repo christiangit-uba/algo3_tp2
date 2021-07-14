@@ -27,7 +27,12 @@ public class MenosDeUnEjercito extends Ejercito{
     }
 
     @Override
-    public boolean mover(int cantidadEjercitosAMover){
+    public boolean puedeMoverse(int cantidadEjercitosAMover){
         return false;
+    }
+
+    @Override
+    public boolean ejercitoVacio() {
+        return cantidadDeEjercitos == 0;
     }
 }

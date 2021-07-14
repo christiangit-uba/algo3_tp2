@@ -11,6 +11,7 @@ public class Pais {
         limitrofes = new Limitrofes();
     }
     public void agregarLimitrofe(Pais paisLimitrofes){
+        paisLimitrofes.mismoNombre(nombre);
         this.limitrofes.agregarLimitrofe(paisLimitrofes);
     }
 
@@ -34,7 +35,7 @@ public class Pais {
         return (ejercito.mismoColor(otroPais));
     }
 
-    public boolean mismoColor(String color){
+    public boolean mismoColor(Color color){
         return (ejercito.mismoColor(color));
     }
 
@@ -50,7 +51,7 @@ public class Pais {
         return nombre.equals(pais);
     }
 
-    public void agregarColor(String color) {
+    public void agregarColor(Color color) {
         ejercito.agregarColor(color);
     }
 
@@ -60,5 +61,23 @@ public class Pais {
 
     public boolean puedeAtacar(int cantidadEjecitosAUsar) {
         return ejercito.puedeAtacar(cantidadEjecitosAUsar);
+    }
+
+    public boolean ocuparPais(Pais unPais, Color color){
+        if(unPais.ocupable()){
+            ejercito.sacarEjercito();
+            unPais.agregarColor(color);
+            unPais.agregarEjercito();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean ocupable(){
+        return (ejercito.ejercitoVacio());
+    }
+
+    public boolean puedeMoverse(int cantidadEjercitos) {
+        return ejercito.puedeMoverse(cantidadEjercitos);
     }
 }

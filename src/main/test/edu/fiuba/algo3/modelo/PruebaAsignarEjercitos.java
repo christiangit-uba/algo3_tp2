@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+/*package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,4 +14,4 @@ public class PruebaAsignarEjercitos {
         unJugador.asignarEjercito(unPais,2);
         assertEquals(unPais.cantidadEjercitos(),2);
     }
-}
+}*/

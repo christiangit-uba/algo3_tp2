@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+
 public class Jugador {
-    private String color;
-    public Jugador(String color){
+    private final Color color;
+    public Jugador(Color color){
         this.color = color;
     }
 
@@ -16,8 +18,20 @@ public class Jugador {
     }
 
     public void asignarEjercito(Pais unPais , int cantidadEjercitos){
-
         for(int i = 0; i < cantidadEjercitos ; i++)
             unPais.agregarEjercito();
+    }
+
+    public void realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar) throws Exception{
+        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, color);
+
+        atacante.atacaA(defensor,cantidadEjercitosAUsar);
+        atacante.ocuparPais(defensor,color);
+    }
+
+    public void realizarMovimiento(Pais origen,Pais destino, int cantidadEjercitos) throws Exception {
+        CadenaDeResponsabilidad.confirmarMovimiento(origen,destino,cantidadEjercitos,color);
+
+        origen.moverEjercitoA(destino,cantidadEjercitos);
     }
 }

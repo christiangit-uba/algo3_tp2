@@ -17,7 +17,7 @@ public class Continente {
         paises.add(unPais);
     }
 
-    public int conquistado(String color){
+    public int conquistado(Color color){
         for(Pais pais: paises){
             if(!pais.mismoColor(color))
                 return 0;

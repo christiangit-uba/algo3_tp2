@@ -7,9 +7,16 @@ import java.util.Scanner;
 
 public class Inicializador {
     ArrayList<Pais> paises;
+    ArrayList<Continente> continentes;
 
-    public void inicializar(ArrayList<Pais> paises) throws FileNotFoundException {
+    Inicializador(ArrayList<Pais> paises, ArrayList<Continente> continentes) throws FileNotFoundException{
         this.paises = paises;
+        this.continentes = continentes;
+        inicializarPaises();
+        inicializarContinentes();
+    }
+
+    public void inicializarPaises() throws FileNotFoundException {
         String[] lineaProcesada;
         String[] limitrofes;
         Pais paisLimitrofeNuevo;
@@ -37,6 +44,37 @@ public class Inicializador {
             }
         }
         input.close();
+    }
+
+    private void inicializarContinentes() throws FileNotFoundException {
+        String rutaAbsoluta = new File("C:\\Users\\Christian\\Desktop\\algo3\\algo3_tp2\\docs\\Continentes.txt").getAbsolutePath();
+        File archivo = new File(rutaAbsoluta);
+        Scanner lector = new Scanner(archivo);
+        String nombreContinente;
+        String[] linea;
+        String[] paises;
+        String leido;
+        String puntajes;
+        Continente continente;
+        Pais paisBuscado;
+
+        while(lector.hasNextLine()){
+            leido = lector.nextLine();
+
+            linea = leido.split(";", 0);
+            nombreContinente = linea[0];
+
+            puntajes = linea[1];
+
+            continente = new Continente(nombreContinente, Integer.parseInt(puntajes));
+
+            paises = linea[3].split(", ",0);
+
+            for (String pais : paises) {
+                paisBuscado = buscarPais(pais);
+                continente.agregarPais(paisBuscado);
+            }
+        }
     }
 
     public Pais crearPais(Pais pais, String nombrePais){

@@ -29,8 +29,13 @@ public class MasDeUnEjercito extends Ejercito{
     }
 
     @Override
-    public boolean mover(int cantidadEjercitosAMover){
+    public boolean puedeMoverse(int cantidadEjercitosAMover){
         return (cantidadDeEjercitos > cantidadEjercitosAMover && cantidadEjercitosAMover > 0);
+    }
+
+    @Override
+    public boolean ejercitoVacio() {
+        return false;
     }
 
 }
