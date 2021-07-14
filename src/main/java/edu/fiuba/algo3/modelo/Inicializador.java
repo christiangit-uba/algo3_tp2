@@ -22,7 +22,7 @@ public class Inicializador {
         Pais paisLimitrofeNuevo;
         Pais paisNuevo;
 
-        Scanner input = new Scanner(new File("C:\\Users\\Christian\\Desktop\\algo3\\algo3_tp2\\docs\\mapamundiTEG.txt"));
+        Scanner input = new Scanner(new File("docs/mapamundiTEG.txt"));
         while (input.hasNextLine()) {
             String linea = input.nextLine();
 
@@ -47,9 +47,7 @@ public class Inicializador {
     }
 
     private void inicializarContinentes() throws FileNotFoundException {
-        String rutaAbsoluta = new File("C:\\Users\\Christian\\Desktop\\algo3\\algo3_tp2\\docs\\Continentes.txt").getAbsolutePath();
-        File archivo = new File(rutaAbsoluta);
-        Scanner lector = new Scanner(archivo);
+        Scanner lector = new Scanner(new File("docs/Continentes.txt"));
         String nombreContinente;
         String[] linea;
         String[] paises;
@@ -68,13 +66,15 @@ public class Inicializador {
 
             continente = new Continente(nombreContinente, Integer.parseInt(puntajes));
 
-            paises = linea[3].split(", ",0);
+            paises = linea[2].split(", ",0);
 
-            for (String pais : paises) {
+            for (String pais : paises){
                 paisBuscado = buscarPais(pais);
                 continente.agregarPais(paisBuscado);
             }
+            this.continentes.add(continente);
         }
+        lector.close();
     }
 
     public Pais crearPais(Pais pais, String nombrePais){
