@@ -32,13 +32,13 @@ public class PruebaTablero {
         assertEquals(tablero.cantidadDePaises("rojo"), 25);*/
 
 
-        Color rojo = mock(Color.class);
-        //Color azul = new Color("077bb");
+        Color rojo = new Color("cc3311");
+        Color azul = new Color("077bb");
         Jugador jugador1 = new Jugador(rojo);
-        //Jugador jugador2 = new Jugador(azul);
+        Jugador jugador2 = new Jugador(azul);
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(jugador1);
-        //jugadores.add(jugador2);
+        jugadores.add(jugador2);
 
         Tablero tablero = new Tablero();
 

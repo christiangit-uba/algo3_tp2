@@ -13,41 +13,41 @@ public class Tablero {
         new Inicializador(paises, continentes);
     }
 
-    public void asignarPaises(ArrayList<Jugador> jugadores){
-            new Distribucion(jugadores,paises);
+    public void asignarPaises(ArrayList<Jugador> jugadores) {
+        if (jugadores.size() >= 2){
+            new Distribucion(jugadores, paises);
+        }//aca tendria que comprobar que el tamaño del array es de 2 o mas
+    }
+
+    public int cantidadEjercitosAColocar(Color color){
+        int cantidadPorPais =  cantidadDePaises(color);
+        int cantidadPorContinente = cantidadEjercitosPorContinente(color);
+        return cantidadPaisesAColocar(cantidadPorPais,cantidadPorContinente);
+    }
+
+    public int cantidadEjercitosPorContinente(Color color){
+        int continentesConquistados = 0;
+        for(Continente continente: continentes){
+            if(continente.conquistado(color) != 0)
+                continentesConquistados = continentesConquistados + continente.conquistado(color);
         }
+        return continentesConquistados;
+    }
 
-        public int cantidadEjercitosAColocar(Color color){
-            int cantidadPorPais =  cantidadDePaises(color);
-            int cantidadPorContinente = cantidadEjercitosPorContinente(color);
-            return cantidadPaisesAColocar(cantidadPorPais,cantidadPorContinente);
+    public int cantidadDePaises(Color color){
+        int cantidadPaises = 0;
 
+        for(Pais pais: paises){
+            if(pais.mismoColor(color))
+                cantidadPaises = cantidadPaises + 1;
         }
+        return cantidadPaises;
+    }
 
-        public int cantidadEjercitosPorContinente(Color color){
-            int continentesConquistados = 0;
-            for(Continente continente: continentes){
-                if(continente.conquistado(color) != 0)
-                    continentesConquistados = continentesConquistados + continente.conquistado(color);
-            }
-            return continentesConquistados;
-
-        }
-
-        public int cantidadDePaises(Color color){
-            int cantidadPaises = 0;
-
-            for(Pais pais: paises){
-                if(pais.mismoColor(color))
-                    cantidadPaises = cantidadPaises + 1;
-            }
-            return cantidadPaises;
-        }
-
-        public int cantidadPaisesAColocar(int cantidadPaisesConquistados, int continenteConquistados){
-            if(cantidadPaisesConquistados < 6)
-                return 3 + continenteConquistados;
-            return (cantidadPaisesConquistados/2) + continenteConquistados;
+    public int cantidadPaisesAColocar(int cantidadPaisesConquistados, int continenteConquistados){
+        if(cantidadPaisesConquistados < 6)
+            return 3 + continenteConquistados;
+        return (cantidadPaisesConquistados/2) + continenteConquistados;
     }
 
     public Pais obtenerPais(String nombre) {
