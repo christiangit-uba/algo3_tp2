@@ -1,7 +1,0 @@
-America Del Sur=Argentina,Uruguay,Chile,Peru,Brazil,Colombia
-America Central=Mexico
-America Del Norte=California,NuevaYork,Oregon,Alaska,Terranova,Yukon,Labrador,Groenlandia,Canada
-Europa=Islandia,Gran Bretaña,España,Francia,Alemania,Italia,Polonia,Suecia
-Asia=Rusia,Turquia,Israel,Arabia,Iran,Aral,Tartaria,Taymir,Siberia,Kamchatka,Japon,Mongolia,China,Gobi,India,Malasia,Sumatra,Borneo,Java
-Africa=Sahara,Egipto,Etiopia,Zaire,Sudafrica,Madagascar
-Oceania=Australia

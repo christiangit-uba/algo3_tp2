@@ -1,13 +1,36 @@
 package edu.fiuba.algo3.modelo;
 
-public interface Ejercito{
-    boolean atacar(int cantidadEjecitosAUsar);
+public abstract class Ejercito{
+    protected int cantidadDeEjercitos;
+    private Color color;
 
-    Ejercito agregarEjercito();
+    public Ejercito(int cantidadEjercitos){
+        cantidadDeEjercitos = cantidadEjercitos;
+    }
 
-    int cantidadDeEjercitos();
+    public void agregarColor(Color unColor){
+        this.color = unColor;
+    }
 
-    Ejercito sacarEjercito();
+    public boolean mismoColor(Pais otroPais) {
+        return (otroPais.mismoColor(color));
+    }
 
-    int cantidadDeDados();
+    public boolean mismoColor(Color color){
+        return (this.color.mismoColor(color));
+    }
+
+    public int getCantidadDeEjercitos(){
+        return cantidadDeEjercitos;
+    }
+
+    abstract boolean puedeAtacar(int cantidadEjecitosAUsar);
+
+    abstract Ejercito agregarEjercito();
+
+    abstract Ejercito sacarEjercito();
+
+    abstract boolean puedeMoverse(int cantidadEjercitosAMover);
+
+    public abstract boolean ejercitoVacio();
 }

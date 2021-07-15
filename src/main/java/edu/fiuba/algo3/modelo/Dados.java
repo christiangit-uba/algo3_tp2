@@ -5,39 +5,36 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Dados {
+    private final int MAXIMO = 6;
     private ArrayList<Integer> dados;
 
     public Dados(int cantidadDeDados) {
         ArrayList<Integer> dadosNuevos = new ArrayList<>();
         Random random = new Random();
 
-        for (int i = 0; i < cantidadDeDados; i++){
-            dadosNuevos.add(random.nextInt(6) + 1);
+        for (int i = 0; i < cantidadDeDados; i++) {
+            dadosNuevos.add(random.nextInt(MAXIMO) + 1 );
         }
 
         dadosNuevos.sort(Collections.reverseOrder());
         dados = dadosNuevos;
-   }
+    }
 
-    public static ArrayList comparar(Dados dadoAtaque, Dados dadoDefensa, Pais paisAtacante, Pais paisDefensor) throws Exception {
-        ArrayList<Integer> resultado = new ArrayList<>();
-        resultado.set(0, 0);
-        resultado.set(1, 0);
+    public void comparar(Dados defensa, Pais paisAtacante, Pais paisDefensor) {
+        defensa.comparar(dados, paisAtacante, paisDefensor);
+    }
+
+    public void comparar(ArrayList<Integer> dadoAtaque, Pais paisAtacante, Pais paisDefensor) {
+
         int i = 0;
-        while (i < (dadoAtaque.dados().size()) && i < (dadoDefensa.dados().size())){
-            if ((dadoAtaque.dados().get(i)) <= (dadoDefensa.dados().get(i))) {
+        while (i < (dadoAtaque.size()) && i < (dados.size())) {
+            if (dadoAtaque.get(i).intValue() <= dados.get(i).intValue()) {
                 paisAtacante.perdioEjercito();
-            }
-            else {
+            } else {
                 paisDefensor.perdioEjercito();
             }
             i++;
         }
-        return resultado;
-    }
-
-    public ArrayList<Integer> dados() {
-        return dados;
     }
 
     public void setDados(ArrayList<Integer> dados) {

@@ -3,24 +3,42 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 public class Jugador {
-    private String color;
-    private ArrayList<Pais> paises = new ArrayList<Pais>();
-    private int cantidadDePaises = 0;
-
-    public Jugador(String colorNuevo) {
-        this.color = colorNuevo;
+    private final Color color;
+    public Jugador(Color color){
+        this.color = color;
     }
 
-    public void asignarPais(Pais pais) {
-        cantidadDePaises += 1;
-        paises.add(pais);
+    public void asignarPais(Pais unPais){
+        unPais.agregarColor(color);
+        unPais.agregarEjercito();
     }
 
-    public String nombre() {
-        return this.color;
+    public int cantidadEjercitosAColocar(Tablero tablero){
+        return tablero.cantidadEjercitosAColocar(color);
     }
 
-    public int cantidadDePaises() {
-        return cantidadDePaises;
+    public void colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais) throws Exception {
+
+        if(ejercitosAColocar > ejercitosTope) {
+            throw new Exception();
+        }else {
+            for (int i = 0; i < ejercitosAColocar; i++) {
+                unPais.agregarEjercito();
+            }
+        }
     }
+
+    public void realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar) throws Exception{
+        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, color);
+
+        atacante.atacaA(defensor,cantidadEjercitosAUsar);
+        atacante.ocuparPais(defensor,color);
+    }
+
+    public void realizarMovimiento(Pais origen,Pais destino, int cantidadEjercitos) throws Exception {
+        CadenaDeResponsabilidad.confirmarMovimiento(origen,destino,cantidadEjercitos,color);
+
+        origen.moverEjercitoA(destino,cantidadEjercitos);
+    }
+
 }

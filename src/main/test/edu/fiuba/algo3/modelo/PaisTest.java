@@ -1,83 +1,188 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
-import java.util.ArrayList;
-import edu.fiuba.algo3.modelo.colores.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PaisTest {
-    private String nombre = "Argentina";
-    private String blanco = "ffffff";
-    private String azul = "077bb";
-    private Colores colorAzul = new ColorAzul();
+    private Pais argentina = new Pais("Argentina");
+    private Pais chile = new Pais("Chile");
+    private Pais uruguay = new Pais("Uruguay");
+    private Pais brasil = new Pais("Brasil");
 
-    private Pais pais = new Pais(nombre);
-    private Pais pais2 = new Pais("Brasil");
-    private Pais pais3 = new Pais("Chile");
-    private Pais pais4 = new Pais("Uruguay");
+    private Pais otroChile = new Pais("Chile");
+    private Color colorBlanco = new Color ("ffffff");
+    private Color colorNegro = new Color ("000000");
+
+    //Inicializacion
+    @Test
+    public void unPaisSeCreaInicilizadoConCeroEjercitos() {
+        assertEquals(0, argentina.cantidadEjercitos());
+    }
 
     @Test
-    public void unPaisPorDefaultTiene0EjercitosYEsDeColorBlanco() {
-        assertEquals((pais.color()).color(), blanco);
-        assertEquals(pais.cantidadDeEjercitos(), 0);
+    public void unPaisInicializado_NO_TienePaisesLimitrofes() {
+        assertFalse(argentina.esLimitrofe(chile));
+    }
+
+    @Test
+    public void unPaisNoEsLimitrofeDeSiMismo(){
+        assertFalse(argentina.esLimitrofe(argentina));
+    }
+
+    @Test
+    public void unPaisConElMismoNombreEsElMismoPais(){
+        assert(chile.mismoNombre(otroChile));
     }
 
     //Limitrofes
     @Test
-    public void unPaisLimitrofeEsLimitrofe() {
-        pais.agregarLimitrofe(pais2);
-        assert(pais.esLimitrofe(pais2));
+    public void agregarUnPaisLimitrofeEnUnPaisLoVuelveLimitrofeDelPais(){
+        assertFalse(argentina.esLimitrofe(chile));
+        argentina.agregarLimitrofe(chile);
+        assert(argentina.esLimitrofe(chile));
     }
 
     @Test
-    public void unPaisNoLimitrofeNoEsLimitrofe() {
-        assertFalse(pais.esLimitrofe(pais2));
+    public void todosLosPaisesLimitrofesAgregadosEnUnPaisSonLimitrofesDelMismo(){
+        argentina.agregarLimitrofe(chile);
+        argentina.agregarLimitrofe(uruguay);
+        argentina.agregarLimitrofe(brasil);
+
+        assert(argentina.esLimitrofe(chile));
+        assert(argentina.esLimitrofe(uruguay));
+        assert(argentina.esLimitrofe(brasil));
+    }
+
+    //****************Pruebas de Integracion********************
+    //Ejercitos
+    @Test
+    public void agregarUnEjercitoEnUnPaisAumentaLaCantidadDeFichasEnUno(){
+        assertEquals(0, argentina.cantidadEjercitos());
+        argentina.agregarEjercito();
+        assertEquals(1, argentina.cantidadEjercitos());
     }
 
     @Test
-    public void unPaisNoEsLimitrofeDeSiMismo() {
-        assertFalse(pais.esLimitrofe(pais));
+    public void sacarUnEjercitoEnUnPaisReduceLaCantidadDeFichasEnUno(){
+        argentina.agregarEjercito();
+        assertEquals(1, argentina.cantidadEjercitos());
+
+        argentina.perdioEjercito();
+        assertEquals(0, argentina.cantidadEjercitos());
     }
 
     @Test
-    public void unPaisLimitrofeEsLimitrofeConVariosLimitrofes() {
-        pais.agregarLimitrofe(pais2);
-        pais.agregarLimitrofe(pais3);
-        pais.agregarLimitrofe(pais4);
+    public void No_sePuedeTenerMenosDeCeroEjercitosEnUnPais(){  //MenosDeUnEjercito, modificado
+        assertEquals(0, argentina.cantidadEjercitos());
 
-        assert(pais.esLimitrofe(pais3));
+        argentina.perdioEjercito();
+        assertEquals(0, argentina.cantidadEjercitos());
     }
 
     @Test
-    public void TodoslosPaisesLimitrofeSonLimitrofes() {
-        ArrayList <Pais> lista = new ArrayList<Pais>();
-        lista.add(pais2);
-        lista.add(pais3);
-        lista.add(pais4);
+    public void sePuedenAgregarVariosEjercitosEnUnPais(){
+        int tope = 25;
+        int i;
 
-        pais.agregarLimitrofes(lista);
-
-        assert(pais.esLimitrofe(pais3));
-        assert(pais.esLimitrofe(pais2));
-        assert(pais.esLimitrofe(pais4));
+        for (i = 0; i < tope; i++) {
+            argentina.agregarEjercito();
+        }
+        assertEquals(tope, argentina.cantidadEjercitos());
     }
 
     @Test
-    public void dosPaisesConElMismoNombreSonIguales(){
-        Pais unPais = new Pais("Argentina");
-        assert (pais.esElMismoPais(unPais));
+    public void sePuedenAgergarVariosEjercitosYSacarlosTodosDeUnPais(){
+        int tope = 25;
+        int i;
+
+        for (i = 0; i < tope; i++) {
+            argentina.agregarEjercito();
+        }
+        assertEquals(tope, argentina.cantidadEjercitos());
+
+        for (int j = 0; j < tope; j++) {
+            argentina.perdioEjercito();
+        }
+        assertEquals(0, argentina.cantidadEjercitos());
+    }
+
+    //MoverPais
+    @Test
+    public void sePuedenMoverSoloUnEjercitoAUnPaisLimitrofeVacio(){
+        argentina.agregarEjercito();
+        argentina.agregarEjercito();
+        assertEquals(2, argentina.cantidadEjercitos());
+        argentina.agregarLimitrofe(chile);
+
+        assertEquals(0, chile.cantidadEjercitos());
+        argentina.moverEjercitoA(chile, 1);
+        assertEquals(1, chile.cantidadEjercitos());
+    }
+
+    @Test
+    public void NO_SePuedenMoverUnEjercitoAUnPais_NO_limitrofe(){
+        argentina.agregarEjercito();
+        argentina.agregarEjercito();
+        assertEquals(2, argentina.cantidadEjercitos());
+
+        assertEquals(0, chile.cantidadEjercitos());
+        argentina.moverEjercitoA(chile, 1);
+        assertEquals(0, chile.cantidadEjercitos());     //Pais moverEjercito modificado.
+    }
+
+    @Test
+    public void NoSePuedenMoverTodosLosEjercitosDeUnPaisAOtroPaisLimitrofe(){
+        argentina.agregarEjercito();
+        argentina.agregarEjercito();
+        assertEquals(2, argentina.cantidadEjercitos());
+        argentina.agregarLimitrofe(chile);
+
+        assertEquals(0, chile.cantidadEjercitos());
+        argentina.moverEjercitoA(chile, 2);
+        assertEquals(0, chile.cantidadEjercitos());     //Pais moverEjercito modificado.
+    }
+
+    @Test
+    public void sePuedenMoverUnMaximoDe_2_EjercitosDeUnPaisCon_3_EjercitosAOtroPaisVacio() {
+        argentina.agregarEjercito();
+        argentina.agregarEjercito();
+        argentina.agregarEjercito();
+        assertEquals(3, argentina.cantidadEjercitos());
+        argentina.agregarLimitrofe(chile);
+
+        assertEquals(0, chile.cantidadEjercitos());
+        argentina.moverEjercitoA(chile, 2);
+        assertEquals(2, chile.cantidadEjercitos());
     }
 
     //Colores
     @Test
-    public void unPaisPuedeCambiarDeColor(){
-        assertEquals((pais.color()).color(), blanco);
-        pais.cambiarColor(colorAzul);
-        assertEquals((pais.color()).color(), azul);
+    public void elColorDeUnPaisInicializadoPuedeCambiarse(){
+        argentina.agregarColor(colorBlanco);
+        assert(argentina.mismoColor(colorBlanco));
     }
 
-    //Ejercitos
+    @Test
+    public void dosPaisesDelMismoColorSonAliados(){
+        argentina.agregarColor(colorBlanco);
+        chile.agregarColor(colorBlanco);
+        assert(argentina.mismoColor(chile));
+    }
+
+    @Test
+    public void NO_sePuedeCambiarElColorDeUnPaisConUnoOMasEjercitos(){
+        argentina.agregarColor(colorBlanco); //inicializacion
+        argentina.agregarEjercito();
+        argentina.agregarColor(colorNegro); //Modificado
+
+        assert(argentina.mismoColor(colorBlanco));
+
+        argentina.agregarEjercito();
+        argentina.agregarColor(colorNegro); //Modificado
+
+        assert(argentina.mismoColor(colorBlanco));
+    }
+
+    //Pruebas de ataque y ocupacion
 
 }

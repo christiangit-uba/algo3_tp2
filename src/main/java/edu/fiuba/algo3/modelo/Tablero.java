@@ -1,74 +1,59 @@
 package edu.fiuba.algo3.modelo;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Tablero {
-    ArrayList<Pais> mapamundi;
-    ArrayList<Pais> copiaMapamundi;
+    ArrayList<Pais> paises;
+    ArrayList<Continente> continentes;
 
-    public Tablero(){
-        mapamundi = new ArrayList<Pais>();
-        copiaMapamundi = new ArrayList<Pais>();
+    Tablero() throws FileNotFoundException {
+        this.paises = new ArrayList<>();            //lista de los paises del mapamundi
+        this.continentes = new ArrayList<>();       //lista de los paises por continente...
+        new Inicializador(paises, continentes);     //crea la lista de todos los paises y los continentes.
+    }
 
-        String separadorPais = "=";
-        String separadorLimitrofes = ",";
+    public void asignarPaises(ArrayList<Jugador> jugadores){
+            new Distribucion(jugadores, paises);
+        }
 
-        try{
-            String rutaAbsoluta = new File("src/main/java/edu/fiuba/algo3/archivos/mapamundiTEG.txt").getAbsolutePath();
-            File archivo = new File(rutaAbsoluta);
-            Scanner lector = new Scanner(archivo);
+        public int cantidadEjercitosAColocar(Color color){
+            int cantidadPorPais =  cantidadDePaises(color);
+            int cantidadPorContinente = cantidadEjercitosPorContinente(color);
+            return cantidadPaisesAColocar(cantidadPorPais,cantidadPorContinente);
+        }
 
-            while(lector.hasNextLine()){
-                String leido = lector.nextLine();
+        public int cantidadDePaises(Color color){
+            int cantidadPaises = 0;
 
-                String[] linea = leido.split(separadorPais);
-                Pais unPais = new Pais(linea[0]);
-
-                String[] limitrofes = linea[1].split(separadorLimitrofes);
-
-                for (String paises : limitrofes) {
-                    Pais aux = new Pais(paises);
-                    unPais.agregarLimitrofe(aux);
-                }
-
-                mapamundi.add(unPais);
-                copiaMapamundi.add(unPais);
+            for(Pais pais: paises){
+                if(pais.mismoColor(color))
+                    cantidadPaises = cantidadPaises + 1;
             }
-        }catch(FileNotFoundException e){
-            System.out.println("El archivo del mapamundi no existe…");
+            return cantidadPaises;
         }
-    }
-
-    public Boolean elPaisEstaCargado(Pais unPais)
-    {
-        for(Pais pais: mapamundi){
-            if (pais.esElMismoPais(unPais))
-                return true;
+        public int cantidadEjercitosPorContinente(Color color){
+            int continentesConquistados = 0;
+            for(Continente continente: continentes){
+                if(continente.conquistado(color) != 0)
+                    continentesConquistados = continentesConquistados + continente.conquistado(color);
+            }
+            return continentesConquistados;
         }
-        return false;
+
+
+
+        public int cantidadPaisesAColocar(int cantidadPaisesConquistados, int continenteConquistados){
+            if(cantidadPaisesConquistados < 6)
+                return 3 + continenteConquistados;
+            return (cantidadPaisesConquistados/2) + continenteConquistados;
     }
 
-    private int elegirIndiceAleatorio(int tope){
-        return (int) (Math.random() * tope);
+    public Pais obtenerPais(String nombre) {
+        for (Pais pais: paises){
+            if (pais.mismoNombre(nombre))
+                return pais;
+        }
+        return null;
     }
-
-    public Pais darUnPais()
-    {
-        int tope = copiaMapamundi.size();
-        int indice = elegirIndiceAleatorio(tope);
-
-        Pais paisAleatorio = copiaMapamundi.get(indice);
-        copiaMapamundi.remove(indice);
-
-        return paisAleatorio;
-    }
-
-    //Solo se usan para pruebas.
-    public int size(){
-        return mapamundi.size();
-    }
-    public int sizeCopia() {return copiaMapamundi.size();}
 }
