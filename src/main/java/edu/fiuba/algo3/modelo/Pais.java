@@ -20,7 +20,7 @@ public class Pais {
     }
 
     public void agregarEjercito(){
-        ejercito.agregarEjercito();
+        ejercito = ejercito.agregarEjercito();
     }
 
     public void atacaA(Pais defensor,int ejercitosAtaque){

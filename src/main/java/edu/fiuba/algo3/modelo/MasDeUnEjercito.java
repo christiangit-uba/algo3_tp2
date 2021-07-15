@@ -6,6 +6,11 @@ public class MasDeUnEjercito extends Ejercito{
         super(cantidadDeEjercitos);
     }
 
+    public MasDeUnEjercito(int cantidadDeEjercitos, Color color){
+        super(cantidadDeEjercitos);
+        this.color = color;
+    }
+
     @Override
     public boolean puedeAtacar(int cantidadEjecitosAUsar){
         return (cantidadDeEjercitos - cantidadEjecitosAUsar > 0 && cantidadEjecitosAUsar > 0 && cantidadEjecitosAUsar <= 3 );
@@ -24,7 +29,7 @@ public class MasDeUnEjercito extends Ejercito{
 
         cantidadDeEjercitos = cantidadDeEjercitos - 1;
         if(cantidadDeEjercitos == 1)
-            return(new MenosDeUnEjercito(cantidadDeEjercitos));
+            return(new MenosDeUnEjercito(cantidadDeEjercitos,this.color));
         return this;
     }
 

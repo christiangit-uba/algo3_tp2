@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class Ejercito{
     protected int cantidadDeEjercitos;
-    private Color color;
+    protected Color color;
 
     public Ejercito(int cantidadEjercitos){
         cantidadDeEjercitos = cantidadEjercitos;
