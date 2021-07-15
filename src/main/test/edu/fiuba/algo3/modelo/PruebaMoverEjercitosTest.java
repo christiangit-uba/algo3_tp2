@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class PruebaMoverEjercitos {
+public class PruebaMoverEjercitosTest {
     @Test
     public void muevoUnEjercitoDeUnPaisAOtroEntoncesPaisReceptorTiene1Ejercito(){
         Ejercito ejercito = new MenosDeUnEjercito(0);

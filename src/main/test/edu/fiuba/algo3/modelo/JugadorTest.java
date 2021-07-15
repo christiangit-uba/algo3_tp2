@@ -119,7 +119,7 @@ public class JugadorTest {
         assertEquals(tablero.cantidadDePaises(colorJugadorUno), 25);
         assertEquals(tablero.cantidadDePaises(colorJugadorDos), 25); //agregado
     }
-/*
+
     @Test
     public void con_6_jugadoresLaCantidadMinimaDeEjercitosQuePuedoColocarEnLaPrimeraRondaEs_4_(){
         jugador1 = new Jugador(colorBlanco);
@@ -136,7 +136,8 @@ public class JugadorTest {
         jugadores.add(jugador5);
         jugadores.add(jugador6);
 
+        tablero.asignarPaises(jugadores);
         assertEquals(4, jugador6.cantidadEjercitosAColocar(tablero));
     }
- */
+
 }
