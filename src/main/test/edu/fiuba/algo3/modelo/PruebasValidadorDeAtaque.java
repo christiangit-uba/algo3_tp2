@@ -6,9 +6,34 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PruebasValidadorDeAtaque {
+
+    @Test
+    public void unPaisAtacaAunPaisLimitrofeEnemigo() throws Exception {
+        Color rojo = new Color("rojo");
+        Color azul = new Color("azul");
+        Jugador jugador1 = new Jugador(rojo);
+        Jugador jugador2 = new Jugador(azul);
+
+        Pais Argentina = new Pais("Argentina");
+        Pais Brazil = new Pais("Brazil");
+
+        Argentina.agregarLimitrofe(Brazil);
+        Brazil.agregarLimitrofe(Argentina);
+
+        jugador1.asignarPais(Argentina);
+        jugador2.asignarPais(Brazil);
+
+        Argentina.agregarEjercito();
+
+        jugador1.realizarAtaque(Argentina,Brazil,1);
+
+        assertEquals(1,Brazil.cantidadEjercitos());
+        assertEquals(1,Argentina.cantidadEjercitos());
+    }
+
     @Test
     public void unJugadorAtacaAUnPaisVecinoAliadoLanzaExeption() {
-        Color rojo = new Color("cc3311");
+        Color rojo = new Color("rojo");
         Jugador jugador1 = new Jugador(rojo);
 
         Pais Argentina = new Pais("Argentina");
@@ -29,8 +54,8 @@ public class PruebasValidadorDeAtaque {
 
     @Test
     public void unJugadorAtacaAUnPaisQueNoEsLimitrofeLanzaExeption() {
-        Color rojo = new Color("cc3311");
-        Color azul = new Color("077bb");
+        Color rojo = new Color("rojo");
+        Color azul = new Color("azul");
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(azul);
 
@@ -49,8 +74,8 @@ public class PruebasValidadorDeAtaque {
 
     @Test
     public void PaisAtacaAOtroPaisConUnPaisNoConquistadoLanzoExepcion() {
-        Color rosa = new Color("ee3377");
-        Color negro = new Color("000000");
+        Color rosa = new Color("rosa");
+        Color negro = new Color("negro");
         Jugador jugador1 = new Jugador(rosa);
         Jugador jugador2 = new Jugador(negro);
 
@@ -70,8 +95,8 @@ public class PruebasValidadorDeAtaque {
 
     @Test
     public void PaisAtacaAOtroPaisConNingunaTropaLanzoExepcion() {
-        Color rosa = new Color("ee3377");
-        Color negro = new Color("000000");
+        Color rosa = new Color("rosa");
+        Color negro = new Color("negro");
         Jugador jugador1 = new Jugador(rosa);
         Jugador jugador2 = new Jugador(negro);
 
@@ -91,8 +116,8 @@ public class PruebasValidadorDeAtaque {
 
     @Test
     public void PaisAtacaAOtroPaisCon3Ejercitos() throws Exception {
-        Color rosa = new Color("ee3377");
-        Color negro = new Color("000000");
+        Color rosa = new Color("rosa");
+        Color negro = new Color("negro");
         Jugador jugador1 = new Jugador(rosa);
         Jugador jugador2 = new Jugador(negro);
 

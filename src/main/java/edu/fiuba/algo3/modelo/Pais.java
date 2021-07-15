@@ -63,14 +63,12 @@ public class Pais {
         return ejercito.puedeAtacar(cantidadEjecitosAUsar);
     }
 
-    public boolean ocuparPais(Pais unPais, Color color){
+    public void ocuparPais(Pais unPais, Color color){
         if(unPais.ocupable()){
             ejercito.sacarEjercito();
             unPais.agregarColor(color);
             unPais.agregarEjercito();
-            return true;
         }
-        return false;
     }
 
     public boolean ocupable(){
