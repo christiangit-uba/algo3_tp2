@@ -28,7 +28,9 @@ public class Pais {
     }
 
     public void teAtaca(Pais atacante,int ejercitosAtaque){
-        Ataque.atacar(atacante,this,ejercitosAtaque,ejercito.getCantidadDeEjercitos());
+        Dados dadoAtacante = new Dados(ejercitosAtaque);
+        Dados dadoDefensor = new Dados(ejercito.getCantidadDeEjercitos());
+        dadoAtacante.comparar(dadoDefensor,atacante,this);
     }
 
     public boolean mismoColor(Pais otroPais) {
@@ -56,7 +58,10 @@ public class Pais {
     }
 
     public void moverEjercitoA(Pais paisDestino, int ejercitosAMover){
-        MoverPais.moverPais(ejercitosAMover,ejercito,paisDestino);
+        for(int i = 0 ; i < ejercitosAMover ; i++){
+            ejercito.sacarEjercito();
+            paisDestino.agregarEjercito();
+        }
     }
 
     public boolean puedeAtacar(int cantidadEjecitosAUsar) {
