@@ -23,7 +23,6 @@ public class MasDeUnEjercito extends Ejercito{
         return this;
     }
 
-
     @Override
     public Ejercito sacarEjercito(){
 
