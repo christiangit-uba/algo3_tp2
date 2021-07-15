@@ -5,8 +5,50 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
+public class PruebaTableroTest {
 
-public class PruebaTablero {
+    private Tablero mapa;
+    { try {
+        mapa = new Tablero();
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    }
+
+    private String nombreArg = "Argentina";
+    private String nombreAus = "Australia";
+    private String nombreMon = "Mongolia";
+    private String nombreMex = "Mexico";
+    private String nombreEsp = "España";
+    private String nombreChi = "China";
+    private String nombreJava = "Java";
+    private String nombreUru = "Uruguay";
+    private String nombreBra = "Brazil";
+    private String nombreChile = "Chile";
+    private String nombrePer = "Peru";
+
+    private Pais argentina = new Pais("Argentina");
+    private Pais australia = new Pais(nombreAus);
+    private Pais mongolia = new Pais(nombreMon);
+    private Pais mexico = new Pais(nombreMex);
+    private Pais espania = new Pais(nombreEsp);
+    private Pais china = new Pais(nombreChi);
+    private Pais java = new Pais(nombreJava);
+
+    private Pais uruguay = new Pais(nombreUru);
+    private Pais brasil = new Pais(nombreBra);
+    private Pais chile = new Pais(nombreChile);
+    private Pais peru = new Pais(nombrePer);
+
+    private Pais aux;
+    private Pais pais1;
+    private Pais pais2;
+    private Pais pais3;
+    private Pais pais4;
+    private Pais pais5;
+
+    private Color colorBlanco = new Color("ffffff");
+
     @Test
     public void SeRepartenLosPaisesEntreDosJugadoresEntoncesJugador1Tiene25Paises() throws FileNotFoundException {
         Tablero tablero = new Tablero();
@@ -117,6 +159,7 @@ public class PruebaTablero {
         assertEquals(tablero.cantidadEjercitosPorContinente(colorACambiar),5);
 
     }
+
     @Test
     public void SiUnJugadorConquista4PaisesSINContinentesEntoncesPuedeColocarSolo3Ejercitos()throws FileNotFoundException{
         Tablero tablero = new Tablero();
@@ -136,5 +179,86 @@ public class PruebaTablero {
     public void SiUnJugadorConquista8PaisesYAsiaEntoncesPuedeColocar11Ejercitos()throws FileNotFoundException{
         Tablero tablero = new Tablero();
         assertEquals(tablero.cantidadPaisesAColocar(8,7),11);
+    }
+
+    //Inicializacion de Tablero
+    @Test
+    public void unPaisEstaCargadoEnElTablero(){
+        aux = mapa.obtenerPais(nombreArg);
+        assert(aux.mismoNombre(nombreArg));
+    }
+
+    @Test
+    public void variosPaisesEstanCargadosEnElTablero(){
+        aux = mapa.obtenerPais(nombreAus);
+        assert(aux.mismoNombre(nombreAus));
+
+        aux = mapa.obtenerPais(nombreMon);
+        assert(aux.mismoNombre(nombreMon));
+
+        aux = mapa.obtenerPais(nombreMex);
+        assert(aux.mismoNombre(nombreMex));
+
+        aux = mapa.obtenerPais(nombreEsp);
+        assert(aux.mismoNombre(nombreEsp));
+
+        aux = mapa.obtenerPais(nombreChi);
+        assert(aux.mismoNombre(nombreChi));
+
+        aux = mapa.obtenerPais(nombreJava);
+        assert(aux.mismoNombre(nombreJava));
+    }
+
+    @Test
+    public void unPaisEntregadoPorElTableroSeComportaComoUnPais(){
+        aux = mapa.obtenerPais(nombreArg);
+        assert(aux.mismoNombre(nombreArg));
+
+        pais1 = mapa.obtenerPais(nombreUru);
+        pais2 = mapa.obtenerPais(nombreBra);
+        pais3 = mapa.obtenerPais(nombreChile);
+        pais4 = mapa.obtenerPais(nombrePer);
+
+        assertEquals(0, aux.cantidadEjercitos());
+
+        assert(aux.esLimitrofe(pais1));
+        assert(aux.esLimitrofe(pais2));
+        assert(aux.esLimitrofe(pais3));
+        assert(aux.esLimitrofe(pais4));
+    }
+
+    @Test
+    public void losPaisesLimitrofesDeUnPaisSonLimitrofesEntreSi(){
+        aux = mapa.obtenerPais(nombreArg);
+        pais1 = mapa.obtenerPais(nombreUru);
+        pais2 = mapa.obtenerPais(nombreBra);
+        pais3 = mapa.obtenerPais(nombreChile);
+        pais4 = mapa.obtenerPais(nombrePer);
+
+        assert(aux.esLimitrofe(pais1));
+        assert(aux.esLimitrofe(pais2));
+        assert(aux.esLimitrofe(pais3));
+        assert(aux.esLimitrofe(pais4));
+
+        assert(pais1.esLimitrofe(aux));
+        assert(pais2.esLimitrofe(aux));
+        assert(pais3.esLimitrofe(aux));
+        assert(pais4.esLimitrofe(aux));
+
+        assert(pais3.esLimitrofe(pais4));
+        assert(pais1.esLimitrofe(pais2));
+    }
+
+    @Test
+    public void unPaisInicializadoDelTableroPuedeCambiarDecolor(){
+        aux = mapa.obtenerPais(nombreAus);
+        assert(aux.mismoNombre(nombreAus));
+
+        aux.agregarColor(colorBlanco);
+        assert(aux.mismoColor(colorBlanco));
+
+        pais1 = mapa.obtenerPais(nombreAus);
+        assert(aux.mismoNombre(nombreAus));
+        assert(pais1.mismoColor(colorBlanco));
     }
 }

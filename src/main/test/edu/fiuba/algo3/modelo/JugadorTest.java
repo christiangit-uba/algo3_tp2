@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PruebaJugador {
+public class JugadorTest {
     private Color colorBlanco = new Color("ffffff");
     private Color colorNegro = new Color("000000");
     private Color colorVerde = new Color("verde");

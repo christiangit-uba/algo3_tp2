@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class PruebaEjercito {
+public class PruebaEjercitoTest {
     @Test
     public void creoEjercitoConCeroTropasYLeAgregoUna(){
         Ejercito ejercito = new UnoOMenosEjercito(0);
