@@ -118,10 +118,4 @@ public class PruebaEjercito {
         Ejercito ejercito = new UnoOMenosEjercito(1);
         assertFalse(ejercito.puedeMoverse(2));
     }
-
-
-
-
-
-
 }

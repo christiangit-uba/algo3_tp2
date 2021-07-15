@@ -15,7 +15,6 @@ public class PruebaContinente {
         continente.agregarPais(paisUno);
 
         assertEquals(continente.conquistado(color),7);
-
     }
 
     @Test
@@ -28,7 +27,6 @@ public class PruebaContinente {
         continente.agregarPais(paisUno);
 
         assertEquals(continente.conquistado(otroColor),0);
-
     }
 
     @Test
@@ -44,7 +42,6 @@ public class PruebaContinente {
         continente.agregarPais(paisDos);
 
         assertEquals(continente.conquistado(otroColor),0);
-
     }
 
     @Test
@@ -59,6 +56,5 @@ public class PruebaContinente {
         continente.agregarPais(paisDos);
 
         assertEquals(continente.conquistado(color),7);
-
     }
 }

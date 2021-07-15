@@ -11,7 +11,6 @@ public class PruebaColores {
         Color unColor = new Color("Azul");
         Color otroColor = new Color("Azul");
 
-
         assertTrue(unColor.mismoColor(otroColor));
     }
 

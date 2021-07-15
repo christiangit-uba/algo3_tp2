@@ -44,7 +44,6 @@ public class PruebaDados {
         PaisAtacante.agregarEjercito();
         PaisDefensor.agregarEjercito();
 
-
         defensor.setDados(dadoDefensor);
 
         defensor.comparar(atacante,PaisAtacante,PaisDefensor);
@@ -137,6 +136,4 @@ public class PruebaDados {
 
         assertEquals(PaisAtacante.cantidadEjercitos(),3);
     }
-
-
 }

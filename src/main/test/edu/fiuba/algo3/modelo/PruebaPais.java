@@ -43,7 +43,6 @@ public class PruebaPais {
         unPais.agregarLimitrofe(otroPais);
 
         assertTrue(unPais.esLimitrofe(otroPais));
-
     }
 
     @Test

@@ -17,7 +17,6 @@ public class PruebaMoverEjercitos {
         MoverPais.moverPais(1,ejercito,paisReceptor);
 
         assertEquals(paisReceptor.cantidadEjercitos(),1);
-
     }
 
     @Test
@@ -31,6 +30,5 @@ public class PruebaMoverEjercitos {
         MoverPais.moverPais(1,ejercito,paisReceptor);
 
         assertEquals(ejercito.getCantidadDeEjercitos(),1);
-
     }
 }

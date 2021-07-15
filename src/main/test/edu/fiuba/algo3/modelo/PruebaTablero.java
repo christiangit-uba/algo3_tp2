@@ -137,7 +137,4 @@ public class PruebaTablero {
         Tablero tablero = new Tablero();
         assertEquals(tablero.cantidadPaisesAColocar(8,7),11);
     }
-
-
-
 }
