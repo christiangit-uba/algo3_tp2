@@ -17,9 +17,16 @@ public class Jugador {
         return tablero.cantidadEjercitosAColocar(color);
     }
 
-    public void asignarEjercito(Pais unPais , int cantidadEjercitos){
-        for(int i = 0; i < cantidadEjercitos ; i++)
-            unPais.agregarEjercito();
+
+    public void colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais) throws Exception {
+
+        if(ejercitosAColocar > ejercitosTope) {
+            throw new Exception();
+        }else {
+            for (int i = 0; i < ejercitosAColocar; i++) {
+                unPais.agregarEjercito();
+            }
+        }
     }
 
     public void realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar) throws Exception{
