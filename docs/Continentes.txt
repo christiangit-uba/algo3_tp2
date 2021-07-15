@@ -1,0 +1,6 @@
+Asia;7;Turquia, Israel, Arabia, Iran, Aral, Tartaria, Taymir, Siberia, Kamchatka, Japon, Mongolia, China, Gobi, India, Malasia
+Occidente;2;Australia, Sumatra, Borneo, Java
+Africa;3;Sahara, Egipto, Etiopia, Zaire, Sudafrica, Madagascar
+Europa;5;Islandia, Gran Bretaña, España, Francia, Alemania, Italia, Polonia, Rusia, Suecia
+AmericaDelNorte;5;Mexico, California, NuevaYork, Oregon, Alaska, Canada, Terranova, Yukon, Labrador, Groenlandia
+AmericaDelSur;3;Argentina, Uruguay, Chile, Brazil, Peru, Colombia
