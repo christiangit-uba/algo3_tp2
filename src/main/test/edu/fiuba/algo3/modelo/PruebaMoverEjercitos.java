@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PruebaMoverEjercitos {
     @Test
     public void muevoUnEjercitoDeUnPaisAOtroEntoncesPaisReceptorTiene1Ejercito(){
-        Ejercito ejercito = new MenosDeUnEjercito(0);
+        Ejercito ejercito = new UnoOMenosEjercito(0);
         Pais paisReceptor = new Pais("Belgica");
 
         ejercito.agregarEjercito();
@@ -22,7 +22,7 @@ public class PruebaMoverEjercitos {
 
     @Test
     public void muevoUnEjercitoDeUnPaisAOtroEntoncesEjercitoTieneUnaTropaMenos(){
-        Ejercito ejercito = new MenosDeUnEjercito(0);
+        Ejercito ejercito = new UnoOMenosEjercito(0);
         Pais paisReceptor = new Pais("Belgica");
 
         ejercito.agregarEjercito();

@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-public class MenosDeUnEjercito extends Ejercito{
+public class UnoOMenosEjercito extends Ejercito{
 
-    public MenosDeUnEjercito(int cantidad){
+    public UnoOMenosEjercito(int cantidad){
         super(cantidad);
     }
 
-    public MenosDeUnEjercito(int cantidad, Color color){
+    public UnoOMenosEjercito(int cantidad, Color color){
         super(cantidad);
         this.color = color;
     }

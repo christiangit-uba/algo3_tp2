@@ -16,6 +16,6 @@ public class Color{
     }
 
     public Boolean mismoColor(String otroColor){
-        return (codigo).equals(otroColor);
+        return (codigo == otroColor);
     }
 }

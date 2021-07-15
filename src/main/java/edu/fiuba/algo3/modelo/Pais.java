@@ -7,7 +7,7 @@ public class Pais {
 
     public Pais(String nombreNuevo) {
         this.nombre = nombreNuevo;
-        ejercito = new MenosDeUnEjercito(0);
+        ejercito = new UnoOMenosEjercito(0);
         limitrofes = new Limitrofes();
     }
     public void agregarLimitrofe(Pais paisLimitrofes){

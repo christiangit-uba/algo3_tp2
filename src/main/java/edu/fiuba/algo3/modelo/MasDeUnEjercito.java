@@ -29,7 +29,7 @@ public class MasDeUnEjercito extends Ejercito{
 
         cantidadDeEjercitos = cantidadDeEjercitos - 1;
         if(cantidadDeEjercitos == 1)
-            return(new MenosDeUnEjercito(cantidadDeEjercitos,this.color));
+            return(new UnoOMenosEjercito(cantidadDeEjercitos,this.color));
         return this;
     }
 

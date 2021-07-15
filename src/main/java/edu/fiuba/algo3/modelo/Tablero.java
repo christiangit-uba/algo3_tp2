@@ -14,9 +14,9 @@ public class Tablero {
     }
 
     public void asignarPaises(ArrayList<Jugador> jugadores) {
-        if (jugadores.size() >= 2){
+
             new Distribucion(jugadores, paises);
-        }//aca tendria que comprobar que el tamaño del array es de 2 o mas
+
     }
 
     public int cantidadEjercitosAColocar(Color color){
