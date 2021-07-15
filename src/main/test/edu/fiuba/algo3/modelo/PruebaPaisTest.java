@@ -223,4 +223,30 @@ public class PruebaPaisTest {
 
         assertFalse(unPais.puedeAtacar(3));
     }
+
+    @Test
+    public void muevoUnEjercitoDeUnPaisAOtroEntoncesPaisReceptorTiene1Ejercito(){
+        Pais paisOrigen = new Pais("Holanda");
+        Pais paisReceptor = new Pais("Belgica");
+
+        paisOrigen.agregarEjercito();
+        paisOrigen.agregarEjercito();
+
+        paisOrigen.moverEjercitoA(paisReceptor,1);
+
+        assertEquals(paisReceptor.cantidadEjercitos(),1);
+    }
+
+    @Test
+    public void muevoUnEjercitoDeUnPaisAOtroEntoncesEjercitoTieneUnaTropaMenos(){
+        Pais paisOrigen = new Pais("Holanda");
+        Pais paisReceptor = new Pais("Belgica");
+
+        paisOrigen.agregarEjercito();
+        paisOrigen.agregarEjercito();
+
+        paisOrigen.moverEjercitoA(paisReceptor, 1);
+
+        assertEquals(paisOrigen.cantidadEjercitos(),1);
+    }
 }

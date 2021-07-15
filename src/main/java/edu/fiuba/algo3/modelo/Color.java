@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 public class Color{
     private final String codigo;
 
-    Color(String codigo){
+    public Color(String codigo){
         this.codigo = codigo;
     }
 
@@ -16,6 +16,6 @@ public class Color{
     }
 
     public Boolean mismoColor(String otroColor){
-        return (codigo == otroColor);
+        return (codigo.equals(otroColor));
     }
 }

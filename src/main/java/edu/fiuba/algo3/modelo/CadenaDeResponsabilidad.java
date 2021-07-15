@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 public class CadenaDeResponsabilidad {
     public static void confirmarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar, Color color) throws Exception{
         CantidadDeEjercitos cantidadDeEjercitos = new CantidadDeEjercitos(atacante,cantidadEjercitosAUsar,null);
