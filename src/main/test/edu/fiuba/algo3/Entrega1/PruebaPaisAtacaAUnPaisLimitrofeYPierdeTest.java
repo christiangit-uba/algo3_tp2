@@ -3,7 +3,7 @@ package edu.fiuba.algo3.Entrega1;
 import edu.fiuba.algo3.modelo.Color;
 import edu.fiuba.algo3.modelo.DadoTrucado;
 import edu.fiuba.algo3.modelo.Pais;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
