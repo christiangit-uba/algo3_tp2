@@ -28,8 +28,8 @@ public class Pais {
     }
 
     public void teAtaca(Pais atacante,int ejercitosAtaque){
-        Dados dadoAtacante = new Dados(ejercitosAtaque);
-        Dados dadoDefensor = new Dados(ejercito.getCantidadDeEjercitos());
+        Dado dadoAtacante = new Dado(ejercitosAtaque);
+        Dado dadoDefensor = new Dado(ejercito.getCantidadDeEjercitos());
         dadoAtacante.comparar(dadoDefensor,atacante,this);
     }
 

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class Dados {
+public class Dado {
     private final int MAXIMO = 6;
-    private ArrayList<Integer> dados;
+    protected ArrayList<Integer> dados;
 
-    public Dados(int cantidadDeDados) {
+    public Dado(int cantidadDeDados) {
         ArrayList<Integer> dadosNuevos = new ArrayList<>();
         Random random = new Random();
 
@@ -20,7 +20,10 @@ public class Dados {
         dados = dadosNuevos;
     }
 
-    public void comparar(Dados defensa, Pais paisAtacante, Pais paisDefensor) {
+    public Dado() {
+    }
+
+    public void comparar(Dado defensa, Pais paisAtacante, Pais paisDefensor) {
         defensa.comparar(dados, paisAtacante, paisDefensor);
     }
 
@@ -35,9 +38,5 @@ public class Dados {
             }
             i++;
         }
-    }
-
-    public void setDados(ArrayList<Integer> dados) {
-        this.dados = dados;
     }
 }
