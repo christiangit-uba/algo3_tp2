@@ -1,14 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class Enemigo implements Validador{
+public class Enemigo extends Validador{
     Pais paisAtacante;
     Pais paisDefensor;
-    Validador siguiente;
 
-    Enemigo(Pais atacante, Pais defensor, Validador siguiente) {
+
+    Enemigo(Pais atacante, Pais defensor) {
         paisAtacante = atacante;
         paisDefensor = defensor;
-        this.siguiente = siguiente;
     }
 
     @Override

@@ -1,14 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class Aliado implements Validador{
+public class Aliado extends Validador{
     Pais paisDestino;
     Pais paisOrigen;
-    Validador siguiente;
 
-    Aliado(Pais origen, Pais destino, Validador siguiente) {
+
+    Aliado(Pais origen, Pais destino) {
         paisOrigen = origen;
         paisDestino = destino;
-        this.siguiente = siguiente;
     }
 
     @Override

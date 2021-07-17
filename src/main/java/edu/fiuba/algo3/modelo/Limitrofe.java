@@ -1,14 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class Limitrofe implements Validador{
+public class Limitrofe extends Validador{
     Pais paisAtacante;
     Pais paisDefensor;
-    Validador siguiente;
 
-    Limitrofe(Pais unPais, Pais otroPais, Validador siguiente){
+
+    Limitrofe(Pais unPais, Pais otroPais){
         paisAtacante = unPais;
         paisDefensor = otroPais;
-        this.siguiente = siguiente;
     }
 
     @Override
