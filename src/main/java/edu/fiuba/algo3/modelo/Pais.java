@@ -57,6 +57,10 @@ public class Pais {
         ejercito.agregarColor(color);
     }
 
+    public boolean mismoPais(Pais unPais){
+        return unPais.mismoNombre(nombre);
+    }
+
     public void moverEjercitoA(Pais paisDestino, int ejercitosAMover){
         for(int i = 0 ; i < ejercitosAMover ; i++){
             ejercito.sacarEjercito();
