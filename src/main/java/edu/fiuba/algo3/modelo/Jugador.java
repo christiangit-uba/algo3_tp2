@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 public class Jugador {
     private final Color color;
     private int canjes;

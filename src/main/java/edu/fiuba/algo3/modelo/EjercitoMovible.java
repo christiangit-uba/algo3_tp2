@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class EjercitoMovible extends Validador{
+public class EjercitoMovible extends Validador {
     int cantidadEjercitos;
     Pais paisOrigen;
+    Validador siguiente;
 
-    EjercitoMovible(Pais origen,int cantidadEjercitos) {
+    EjercitoMovible(Pais origen,int cantidadEjercitos, Validador siguiente) {
         paisOrigen = origen;
+        this.siguiente = siguiente;
         this.cantidadEjercitos = cantidadEjercitos;
     }
 
