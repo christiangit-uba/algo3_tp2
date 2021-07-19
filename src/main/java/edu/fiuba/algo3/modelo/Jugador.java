@@ -10,6 +10,7 @@ public class Jugador {
     public Jugador(Color color){
         tarjetas = new ArrayList<>();
         this.color = color;
+        canjes = 1;
     }
 
     public void asignarPais(Pais unPais){

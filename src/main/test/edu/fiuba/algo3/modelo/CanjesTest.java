@@ -7,27 +7,27 @@ public class CanjesTest {
     @Test
     public void siUnJugadorNoHaRealizadoNingunCanjeYRealizaUnoEntoncesObtiene4ejercitos(){
         Canje canje = new TresCanjesOMenos();
-        assertEquals(canje.cantidadACanjear(0),4);
+        assertEquals(canje.cantidadACanjear(1),4);
     }
     @Test
     public void siUnJugadorHaRealizadoUnCanjeYRealizaUnoEntoncesObtiene7ejercitos(){
         Canje canje = new TresCanjesOMenos();
-        assertEquals(canje.cantidadACanjear(1),7);
+        assertEquals(canje.cantidadACanjear(2),7);
     }
     @Test
     public void siUnJugadorHaRealizadoDosCanjeYRealizaUnoEntoncesObtiene10ejercitos(){
         Canje canje = new TresCanjesOMenos();
-        assertEquals(canje.cantidadACanjear(2),10);
+        assertEquals(canje.cantidadACanjear(3),10);
     }
     @Test
     public void siUnJugadorHaRealizadoTresCanjeYRealizaUnoEntoncesObtiene15ejercitos() {
         Canje canje = new TresCanjesOMenos();
-        assertEquals(canje.cantidadACanjear(3), 15);
+        assertEquals(canje.cantidadACanjear(4), 15);
     }
         @Test
         public void siUnJugadorHaRealizadoCuatroCanjeYRealizaUnoEntoncesObtiene20ejercitos(){
             Canje canje = new TresCanjesOMenos();
-            assertEquals(canje.cantidadACanjear(4),20);
+            assertEquals(canje.cantidadACanjear(5),20);
         }
 
 }

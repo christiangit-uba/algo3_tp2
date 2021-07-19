@@ -5,10 +5,7 @@ public class MasDeTresCanjes implements Canje{
 
     public int cantidadACanjear(int numeroCanjesRealizados){
 
-        for(int i = 1; i < (numeroCanjesRealizados - 2);i++){
-
-            cantidadDisponibleACanjear = cantidadDisponibleACanjear + 5;
-        }
+        cantidadDisponibleACanjear = (numeroCanjesRealizados-1)*5;
 
         return cantidadDisponibleACanjear;
 

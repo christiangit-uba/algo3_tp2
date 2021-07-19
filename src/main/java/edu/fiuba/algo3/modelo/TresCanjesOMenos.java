@@ -6,9 +6,9 @@ public class TresCanjesOMenos implements Canje{
 
     public int cantidadACanjear(int numeroCanjesRealizados){
 
-        if(numeroCanjesRealizados <= 2){
+        if(numeroCanjesRealizados <= 3){
 
-            cantidadDisponibleACanjear = cantidadDisponibleACanjear + 3*numeroCanjesRealizados;
+            cantidadDisponibleACanjear = cantidadDisponibleACanjear + 3*(numeroCanjesRealizados-1);
             return cantidadDisponibleACanjear;
         }
         return ((new MasDeTresCanjes().cantidadACanjear(numeroCanjesRealizados)));
