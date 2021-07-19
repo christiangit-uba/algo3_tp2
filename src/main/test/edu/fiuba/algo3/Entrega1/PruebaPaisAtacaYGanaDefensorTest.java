@@ -27,8 +27,8 @@ public class PruebaPaisAtacaYGanaDefensorTest {
         Argentina.agregarEjercito();
         Brazil.agregarEjercito();
 
-        DadoTrucado dadoAtacante = new DadoTrucado();
-        DadoTrucado dadoDefensor = new DadoTrucado();
+        DadoCargado dadoAtacante = new DadoCargado();
+        DadoCargado dadoDefensor = new DadoCargado();
 
         ArrayList<Integer> valoresDadoAtacante = new ArrayList<>();
         ArrayList<Integer> valoresDadoDefensor = new ArrayList<>();

@@ -32,7 +32,7 @@ public class JugadorTest {
     private Tablero tablero;
     {
         try {
-            tablero = new Tablero();
+            tablero = new Tablero(new Tarjetero());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -106,7 +106,7 @@ public class JugadorTest {
     @Test
     public void sePuedenRepartirLos_50_PaisesDelTablero() throws FileNotFoundException{ //copiado de pruebasTablero
 
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         Color colorJugadorUno = new Color("verde");
         Color colorJugadorDos = new Color("rojo");
         Jugador jugadorUno = new Jugador(colorJugadorUno);

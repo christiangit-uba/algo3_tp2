@@ -24,4 +24,8 @@ public class Continente {
         }
         return premioPorConquista;
     }
+
+    public boolean mismoNombre(String continenteNombre) {
+        return nombre.equals(continenteNombre);
+    }
 }

@@ -9,7 +9,7 @@ public class PruebaTableroTest {
 
     private Tablero mapa;
     { try {
-        mapa = new Tablero();
+        mapa = new Tablero(new Tarjetero());
     } catch (FileNotFoundException e) {
         e.printStackTrace();
     }
@@ -51,7 +51,7 @@ public class PruebaTableroTest {
 
     @Test
     public void SeRepartenLosPaisesEntreDosJugadoresEntoncesJugador1Tiene25Paises() throws FileNotFoundException {
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         Color colorJugadorUno = new Color("verde");
         Color colorJugadorDos = new Color("rojo");
         Jugador jugadorUno = new Jugador(colorJugadorUno);
@@ -65,7 +65,7 @@ public class PruebaTableroTest {
 
     @Test
     public void SeRepartenLosPaisesEntreTresJugadoresEntoncesJugador1Tiene17Paises() throws FileNotFoundException {
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         Color colorJugadorUno = new Color("verde");
         Color colorJugadorDos = new Color("rojo");
         Color colorJugadorTres = new Color("azul");
@@ -83,7 +83,7 @@ public class PruebaTableroTest {
 
     @Test
     public void SeRepartenLosPaisesEntreTresJugadoresEntoncesJugador3Tiene16Paises() throws FileNotFoundException {
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         Color colorJugadorUno = new Color("verde");
         Color colorJugadorDos = new Color("rojo");
         Color colorJugadorTres = new Color("azul");
@@ -101,7 +101,7 @@ public class PruebaTableroTest {
 
     @Test
     public void JugadorUnoNoOcupaNingunContinenteEntoncesDevuelveCero() throws FileNotFoundException{
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         Color colorJugadorUno = new Color("verde");
         Color colorACambiar = new Color("rojo");
         Jugador jugadorUno = new Jugador(colorJugadorUno);
@@ -117,7 +117,7 @@ public class PruebaTableroTest {
 
     @Test
     public void ColorRojoOcupaOccidenteContinenteEntoncesDevuelveDos() throws FileNotFoundException{
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         Color colorJugadorUno = new Color("verde");
         Color colorACambiar = new Color("rojo");
         Jugador jugadorUno = new Jugador(colorJugadorUno);
@@ -135,7 +135,7 @@ public class PruebaTableroTest {
     }
     @Test
     public void ColorRojoOcupaOccidenteYAfricaEntoncesDevuelveCinco() throws FileNotFoundException{
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         Color colorJugadorUno = new Color("verde");
         Color colorACambiar = new Color("rojo");
         Jugador jugadorUno = new Jugador(colorJugadorUno);
@@ -162,22 +162,22 @@ public class PruebaTableroTest {
 
     @Test
     public void SiUnJugadorConquista4PaisesSINContinentesEntoncesPuedeColocarSolo3Ejercitos()throws FileNotFoundException{
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         assertEquals(tablero.cantidadPaisesAColocar(4,0),3);
     }
     @Test
     public void SiUnJugadorConquista6PaisesSINContinentesEntoncesPuedeColocarSolo3Ejercitos()throws FileNotFoundException{
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         assertEquals(tablero.cantidadPaisesAColocar(6,0),3);
     }
     @Test
     public void SiUnJugadorConquista8PaisesSINContinentesEntoncesPuedeColocarSolo4Ejercitos()throws FileNotFoundException{
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         assertEquals(tablero.cantidadPaisesAColocar(8,0),4);
     }
     @Test
     public void SiUnJugadorConquista8PaisesYAsiaEntoncesPuedeColocar11Ejercitos()throws FileNotFoundException{
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         assertEquals(tablero.cantidadPaisesAColocar(8,7),11);
     }
 

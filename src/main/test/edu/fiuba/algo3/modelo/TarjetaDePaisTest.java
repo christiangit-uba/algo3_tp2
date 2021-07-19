@@ -17,7 +17,7 @@ public class TarjetaDePaisTest {
 
         ArrayList<Jugador> jugadors = new ArrayList<>();
         jugadors.add(jugador);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(new Tarjetero());
         Pais paisDeCarta = tablero.obtenerPais("Java");
         Tarjeta tarjeta = new Tarjeta(paisDeCarta,simboloGlobo);
 

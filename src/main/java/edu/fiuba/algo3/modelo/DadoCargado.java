@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
-public class DadoTrucado extends Dado{
-    public DadoTrucado() {
+public class DadoCargado extends Dado{
+    public DadoCargado() {
         super();
     }
 

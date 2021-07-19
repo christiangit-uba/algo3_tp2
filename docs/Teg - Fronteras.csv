@@ -1,0 +1,50 @@
+Francia;Europa,5;Alemania,España,Italia
+Gran Bretaña;Europa,5;Islandia,Alemania,España
+Tartaria;Asia,7;Aral,Taymir,Siberia
+Mongolia;Asia,7;Aral,Siberia,Iran,Gobi,China
+Zaire;Africa,3;Madagascar,Sudafrica,Etiopia,Sahara
+Polonia;Europa,5;Alemania,Rusia,Turquia,Egipto
+Oregon;America del Norte,5;Alaska,Yukon,Canada,Nueva York,California
+Etiopia;Africa,3;Sahara,Egipto,Zaire,Sudafrica
+Chile;America del Sur,3;Argentina,Peru,Australia
+Australia;Oceania,2;Chile,Sumatra,Java,Borneo
+Kamtchatka;Asia,7;Siberia,China,Japon,Alaska
+Egipto;Africa,3;Polonia,Turquia,Israel,Madagascar,Etiopia,Sahara
+Turquia;Asia,7;Egipto,Polonia,Rusia,Iran,Israel,Arabia
+Nueva York;America del Norte,5;Groenlandia,Canada,Oregon,California,Terranova
+Terranova;America del Norte,5;Labrador,Canada,Nueva York
+Iran;Asia,7;Aral,Mongolia,Gobi,China,India,Turquia,Rusia
+Madagascar;Africa,3;Egipto,Zaire
+Argentina;America del Sur,3;Chile,Peru,Brazil,Uruguay
+Israel;Asia,7;Turquia,Arabia,Egipto
+Rusia;Europa,5;Suecia,Aral,Iran,Turquia,Polonia
+Borneo;Oceania,2;Australia,Malasia
+California;America del Norte,5;Oregon,Nueva York,Mexico
+Taymir;Asia,7;Tartaria,Siberia
+Aral;Asia,7;Rusia,Iran,Mongolia,Siberia,Tartaria
+Siberia;Asia,7;Aral,Tartaria,Taymir,Kamtchatka,China,Mongolia
+Canada;America del Norte,5;Yukon,Oregon,Nueva York,Terranova
+Sahara;Africa,3;Brazil,España,Egipto,Etiopia,Zaire
+Yukon;America del Norte,5;Alaska,Canada,Oregon
+Uruguay;America del Sur,3;Argentina,Brazil
+Groenlandia;America del Norte,5;Labrador,Nueva York,Islandia
+Japon;Asia,7;Kamtchatka,China
+Sumatra;Oceania,2;Australia,India
+Alaska;America del Norte,5;Yukon,Oregon,Kamtchatka
+Brazil;America del Sur,3;Colombia,Peru,Argentina,Uruguay,Sahara
+Gobi;Asia,7;Mongolia,China,Iran
+Italia;Europa,5;Alemania,Francia
+España;Europa,5;Sahara,Francia,Gran Bretaña
+Colombia;America del Sur,3;Mexico,Peru,Brazil
+Suecia;Europa,7;Rusia,Islandia
+Sudafrica;Africa,3;Zaire,Etiopia
+Arabia;Asia,7;Turquia,Israel
+India;Asia,7;China,Malasia,Iran,Sumatra
+Java;Oceania,2;Australia
+Mexico;America del Norte,5;Colombia,California
+Peru;America del Sur,3;Colombia,Brazil,Chile,Argentina
+Alemania;Europa,5;Polonia,Italia,Gran Bretaña,Francia
+China;Asia,7;Kamtchatka,Siberia,Mongolia,Gobi,Iran,India,Malasia,Japon
+Labrador;America del Norte,5;Groenlandia,Terranova
+Islandia;Europa,5;Groenlandia,Suecia,Gran Bretaña
+Malasia;Asia,7;China,India,Borneo

@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.Entrega1;
 
 import edu.fiuba.algo3.modelo.Color;
-import edu.fiuba.algo3.modelo.DadoTrucado;
+import edu.fiuba.algo3.modelo.DadoCargado;
 import edu.fiuba.algo3.modelo.Pais;
 import org.junit.jupiter.api.Test;
 
@@ -29,8 +29,8 @@ public class PruebaPaisAtacaAUnPaisLimitrofeYPierdeTest {
         Argentina.agregarEjercito();
         Brazil.agregarEjercito();
 
-        DadoTrucado dadoAtacante = new DadoTrucado();
-        DadoTrucado dadoDefensor = new DadoTrucado();
+        DadoCargado dadoAtacante = new DadoCargado();
+        DadoCargado dadoDefensor = new DadoCargado();
 
         ArrayList<Integer> valoresDadoAtacante = new ArrayList<>();
         ArrayList<Integer> valoresDadoDefensor = new ArrayList<>();

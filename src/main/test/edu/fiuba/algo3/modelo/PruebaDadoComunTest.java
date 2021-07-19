@@ -11,7 +11,7 @@ public class PruebaDadoComunTest {
 
     @Test
     public void PrueboDadosDefensorGanador1Ronda(){
-        DadoTrucado defensor = new DadoTrucado();
+        DadoCargado defensor = new DadoCargado();
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -32,7 +32,7 @@ public class PruebaDadoComunTest {
 
     @Test
     public void PrueboDadosAtacanteGanador1Ronda(){
-        DadoTrucado defensor = new DadoTrucado();
+        DadoCargado defensor = new DadoCargado();
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -53,7 +53,7 @@ public class PruebaDadoComunTest {
 
     @Test
     public void PrueboDadosAtacanteGanadorEn2RondaYDefensorUnaRonda(){
-        DadoTrucado defensor = new DadoTrucado();
+        DadoCargado defensor = new DadoCargado();
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -82,7 +82,7 @@ public class PruebaDadoComunTest {
     }
     @Test
     public void PrueboDadosAtacanteGanadorEn1RondaYDefensorEnDosRondas(){
-        DadoTrucado defensor = new DadoTrucado();
+        DadoCargado defensor = new DadoCargado();
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -110,7 +110,7 @@ public class PruebaDadoComunTest {
     }
     @Test
     public void PrueboDadosAtacanteGanadorEn3RondaYDefensorEn0Rondas(){
-        DadoTrucado defensor = new DadoTrucado();
+        DadoCargado defensor = new DadoCargado();
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();

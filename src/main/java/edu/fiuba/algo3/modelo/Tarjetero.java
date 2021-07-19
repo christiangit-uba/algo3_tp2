@@ -1,13 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Tarjetero {
     private ArrayList<Tarjeta> tarjetas;
 
-    public Tarjetero(){
+
+    public Tarjetero() throws FileNotFoundException {
         tarjetas = new ArrayList<>();
-        tarjetas.add(new Tarjeta(new Pais("Java"),new Simbolo("Globo")));
     }
 
     public void vuelveAlTarjetero(Tarjeta unaTarjeta){
@@ -22,5 +23,9 @@ public class Tarjetero {
 
     public int size(){
         return tarjetas.size();
+    }
+
+    public void agregarTarjeta(Tarjeta tarjeta) {
+        tarjetas.add(tarjeta);
     }
 }
