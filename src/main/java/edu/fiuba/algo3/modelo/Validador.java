@@ -6,7 +6,17 @@ abstract class Validador {
     public void siguiente(Validador siguiente){
         this.siguiente = siguiente;
     }
-    abstract void validar() throws Exception;
+
+    void validar(boolean desicion) throws Exception{
+        if(desicion){
+            throw new Exception();
+        }
+        if (siguiente != null){
+            siguiente.validar();
+        }
+    }
+
+    abstract void validar()throws Exception;
 }
 
 

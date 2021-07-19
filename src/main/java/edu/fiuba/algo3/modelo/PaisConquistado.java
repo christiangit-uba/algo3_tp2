@@ -13,11 +13,6 @@ public class PaisConquistado extends Validador {
 
     @Override
     public void validar() throws Exception {
-        if(!pais.mismoColor(color)){
-            throw new Exception();
-        }
-        if (siguiente != null){
-            siguiente.validar();
-        }
+        validar(!pais.mismoColor(color));
     }
 }

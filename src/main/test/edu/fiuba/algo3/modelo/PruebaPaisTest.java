@@ -156,7 +156,7 @@ public class PruebaPaisTest {
     public void unPaisConCeroEjercitosEsOcupable(){
         Pais unPais = new Pais("Rusia");
 
-        assertTrue(unPais.ocupable());
+        assertTrue(unPais.esOcupable());
     }
 
     @Test

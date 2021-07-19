@@ -12,11 +12,6 @@ public class Limitrofe extends Validador{
 
     @Override
     public void validar() throws Exception{
-        if(!paisAtacante.esLimitrofe(paisDefensor)){
-            throw new Exception();
-        }
-        if (siguiente != null){
-            siguiente.validar();
-        }
+       validar(!paisAtacante.esLimitrofe(paisDefensor));
     }
 }

@@ -73,14 +73,14 @@ public class Pais {
     }
 
     public void ocuparPais(Pais unPais, Color color){
-        if(unPais.ocupable()){
+        if(unPais.esOcupable()){
             ejercito.sacarEjercito();
             unPais.agregarColor(color);
             unPais.agregarEjercito();
         }
     }
 
-    public boolean ocupable(){
+    public boolean esOcupable(){
         return (ejercito.ejercitoVacio());
     }
 

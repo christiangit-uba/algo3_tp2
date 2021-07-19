@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Enemigo extends Validador{
+public class Enemigo extends Validador {
     Pais paisAtacante;
     Pais paisDefensor;
 
@@ -12,11 +12,6 @@ public class Enemigo extends Validador{
 
     @Override
     public void validar() throws Exception {
-        if(paisAtacante.mismoColor(paisDefensor)) {
-            throw new Exception();
-        }
-        if (siguiente != null){
-            siguiente.validar();
-        }
+        validar(paisAtacante.mismoColor(paisDefensor));
     }
 }

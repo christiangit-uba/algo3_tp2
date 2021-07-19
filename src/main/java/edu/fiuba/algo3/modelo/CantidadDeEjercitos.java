@@ -13,11 +13,6 @@ public class CantidadDeEjercitos extends Validador {
     }
 
     public void validar() throws Exception{
-        if (!paisAtacante.puedeAtacar(cantidadEjecitosAUsar)) {
-            throw new Exception();
-        }
-        if (siguiente != null){
-            siguiente.validar();
-        }
+        validar(!paisAtacante.puedeAtacar(cantidadEjecitosAUsar));
     }
 }

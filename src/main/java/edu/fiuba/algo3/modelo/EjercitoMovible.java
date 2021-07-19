@@ -13,9 +13,7 @@ public class EjercitoMovible extends Validador {
 
     @Override
     public void validar() throws Exception {
-        if(!paisOrigen.puedeMoverse(cantidadEjercitos))
-            throw new Exception();
-        if (siguiente != null)
-            siguiente.validar();
+        validar(!paisOrigen.puedeMoverse(cantidadEjercitos));
     }
+
 }
