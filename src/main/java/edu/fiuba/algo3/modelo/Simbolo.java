@@ -15,4 +15,7 @@ public class Simbolo {
         return (this.simbolo.equals(simbolo));
     }
 
+    public String simbolo(){    //Agregado.
+        return simbolo;
+    }
 }

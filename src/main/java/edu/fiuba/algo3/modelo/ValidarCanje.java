@@ -5,73 +5,115 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ValidarCanje {
-    private  Map<Simbolo, Integer> simbolosAuxiliar = new HashMap<>();
 
-    public boolean validar(ArrayList<Tarjeta> tarjetas , Tarjetero mazo ) {
+    //---------------AGREGADO--o--MODIFICADO------------------//
+    private  Map<Simbolo, ArrayList<Tarjeta> > simbolosAuxiliar = new HashMap<>(); //para discriminar por simbolos distintos.
+    private CanjesDeTresTarjetas canjes_3 = new CanjesDeTresTarjetas();
+
+    //deberia existir una instancia del mazo?
+    public int validar(ArrayList<Tarjeta> tarjetas , Tarjetero mazo, int canjesJugador) {
+        int ejercitos = 0;
 
         for (Tarjeta tarjeta : tarjetas)
-            tarjeta.comprobarExistencia(simbolosAuxiliar);
+            agregarTarjeta(simbolosAuxiliar, tarjeta);
 
-       return borradoDeTarjetas(tarjetas,mazo);
+        //tengo todas las tarjetas separadas por simbolos.
+        ejercitos += canjearTarjetasIguales(tarjetas, canjesJugador, mazo);
+        ejercitos += canjearTarjetasDistintas(tarjetas, canjesJugador, mazo);
+
+        return ejercitos;
     }
 
-    private boolean borradoDeTarjetas(ArrayList<Tarjeta> tarjetas, Tarjetero mazo) {
+    private void agregarTarjeta(Map<Simbolo, ArrayList<Tarjeta> > simbolosAuxiliar, Tarjeta tarjeta) {
+        Simbolo simbolo= tarjeta.simbolo();
 
-        if (simbolosAuxiliar.size() == 3) {
-            borrarTresTarjetasDistintas(tarjetas,mazo);
-            return true;
+        if (simbolosAuxiliar.containsKey(simbolo))
+            simbolosAuxiliar.get(simbolo).add(tarjeta); //agrego la tarjeta.
+
+        else{
+            ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+            tarjetas.add(tarjeta);
+            simbolosAuxiliar.put(simbolo, tarjetas);
         }
-        return borrarTresTarjetasIguales(tarjetas,mazo,consultarTresIguales());
     }
 
+    private int canjearTarjetasIguales(ArrayList<Tarjeta> tarjetasDelJugador, int canjesJugador, Tarjetero mazo){
 
-    private boolean borrarTresTarjetasIguales(ArrayList<Tarjeta> tarjetas, Tarjetero mazo,Simbolo simbolo) {
-        int iterador = 0;
-        int cantidadBorrada = 0;
-        Tarjeta tarjeta;
+        //recorro simbolo por simbolo y voy sacando de a tres tarjetas.
+        ArrayList<Tarjeta> tarjetasConMismoSimbolo;
+        ArrayList<Tarjeta> tarjetasACanjear = new ArrayList<>();
+        int ejercitos = 0;
 
+        for(Simbolo clave : simbolosAuxiliar.keySet()){
+            tarjetasConMismoSimbolo = simbolosAuxiliar.get(clave);
 
-        if(simbolo != null){
-              while(cantidadBorrada < 3){
-                  tarjeta = tarjetas.get(iterador);
-                  if(mismoSimbolo(tarjeta,simbolo,mazo,tarjetas))
-                      cantidadBorrada++;
-                  else
-                      iterador++;
-              }
-             return true;
-        }
-          return false;
-    }
+            //voy canjeando las tarjetas de a grupos de 3.
+            while(tarjetasConMismoSimbolo.size() >= 3){
 
-    private boolean mismoSimbolo(Tarjeta tarjeta, Simbolo simbolo, Tarjetero mazo, ArrayList<Tarjeta> tarjetas) {
+                tarjetasACanjear.add(tarjetasConMismoSimbolo.get(0));
+                tarjetasACanjear.add(tarjetasConMismoSimbolo.get(1));
+                tarjetasACanjear.add(tarjetasConMismoSimbolo.get(2));
 
-        if(tarjeta.mismoSimbolo(simbolo)) {
-            mazo.vuelveAlTarjetero(tarjeta);
-            tarjetas.remove(tarjeta);
-           return true;
-        }
-          return false;
-    }
+                //ya tengo la lista de las tarjetas a canjear.
+                ejercitos += canjes_3.cantidadACanjear(canjesJugador); //canjeo los iguales.
 
-    private Simbolo consultarTresIguales() {
-        for(Simbolo simbolo : simbolosAuxiliar.keySet()) {
-            if (simbolosAuxiliar.get(simbolo) == 3)
-                return simbolo;
-        }
-        return null;
-    }
-
-    private void borrarTresTarjetasDistintas(ArrayList<Tarjeta> tarjetas, Tarjetero mazo) {
-
-        for(Simbolo simbolo : simbolosAuxiliar.keySet()){
-            for (Tarjeta tarjeta : tarjetas) {
-                if (mismoSimbolo(tarjeta,simbolo,mazo,tarjetas))
-                    break;
+                //borro las tarjetas elegidas.
+                borrarTresTarjetas(tarjetasDelJugador, mazo, tarjetasConMismoSimbolo);
             }
         }
+        return ejercitos;
     }
 
+    private void borrarTresTarjetas(ArrayList<Tarjeta> tarjetasJugador, Tarjetero mazo, ArrayList<Tarjeta> tarjetasABorrar){
+
+        for (Tarjeta tarjeta : tarjetasABorrar){
+            Tarjeta tarjetaCopia = tarjeta.copiar();
+            mazo.vuelveAlTarjetero(tarjetaCopia);   //se inicializa y se devuelve al mazo.
+
+            tarjetasABorrar.remove(tarjeta);
+            tarjetasJugador.remove(tarjeta);     //se le saca la tarjeta al jugador.
+        }
+    }
+
+    private int canjearTarjetasDistintas(ArrayList<Tarjeta> tarjetasDelJugador, int canjesJugador, Tarjetero mazo) {
+        ArrayList<Tarjeta> tarjetasConDistintoSimbolo;
+        ArrayList<Tarjeta> tarjetasACanjear = new ArrayList<>();
+        int tarjetasRestantes = contarTarjetasRestantes();
+        int ejercitos = 0;
+
+        while(tarjetasRestantes >= 3 && (tarjetasACanjear.size() == 0)){
+
+            for(Simbolo clave : simbolosAuxiliar.keySet()){
+                tarjetasConDistintoSimbolo = simbolosAuxiliar.get(clave);
+
+                if(tarjetasConDistintoSimbolo.size() > 0)
+                    tarjetasACanjear.add(tarjetasConDistintoSimbolo.get(0)); //saco la primera
+
+                if(tarjetasACanjear.size() == 3){
+                    ejercitos += canjes_3.cantidadACanjear(canjesJugador); //canjeo los distintos.
+
+                    //borro las tarjetas elegidas
+                    borrarTresTarjetas(tarjetasDelJugador, mazo,tarjetasConDistintoSimbolo);
+                }
+
+                tarjetasRestantes = contarTarjetasRestantes();
+            }
+        }
+        return ejercitos;
+    }
+
+    private int contarTarjetasRestantes(){
+        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+        int restantes = 0;
+
+        for(Simbolo clave : simbolosAuxiliar.keySet()) {
+            tarjetas = simbolosAuxiliar.get(clave);
+            restantes += tarjetas.size();
+        }
+        return restantes;
+    }
+
+    //--------------------------------------------------------//
 }
 
 

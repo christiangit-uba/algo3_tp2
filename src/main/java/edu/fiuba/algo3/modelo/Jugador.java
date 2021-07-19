@@ -4,26 +4,20 @@ import java.util.ArrayList;
 
 public class Jugador {
     private final Color color;
-    private int canjes;
+    private int canjesHechos;
     private ArrayList<Tarjeta> tarjetas;
+    private ArrayList<Tarjeta> tarjetasActivadas;
 
     public Jugador(Color color){
         tarjetas = new ArrayList<>();
+        tarjetasActivadas = new ArrayList<>();
         this.color = color;
-        canjes = 1;
+        canjesHechos = 1;
     }
 
     public void asignarPais(Pais unPais){
         unPais.agregarColor(color);
         unPais.agregarEjercito();
-    }
-
-    public void activarTarjetaPais(Tarjeta unaTarjeta){
-
-         for(Tarjeta tarjeta : tarjetas){
-             if(tarjeta.mismaTarjeta(unaTarjeta))
-               tarjeta.activarTarjeta(color);
-         }
     }
 
     public int cantidadEjercitosAColocar(Tablero tablero){
@@ -55,9 +49,20 @@ public class Jugador {
         origen.moverEjercitoA(destino,cantidadEjercitos);
     }
 
-
+    //Tarjetas
     public void agregarTarjeta(Tarjeta unaTarjeta){
-
         tarjetas.add(unaTarjeta);
     }
+
+    public void activarTarjetaPais(Tarjeta unaTarjeta){ //OK
+
+        for(Tarjeta tarjeta : tarjetas){
+            if(tarjeta.mismaTarjeta(unaTarjeta))
+                tarjeta.activarTarjeta(color);
+                tarjetasActivadas.add(tarjeta); //se prepara para hacer canjes de 3 tarjetas.
+                tarjetas.remove(tarjeta);
+        }
+    }
+//---------------------------------------------------------------------//
+
 }
