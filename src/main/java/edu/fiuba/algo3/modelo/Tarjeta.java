@@ -40,6 +40,10 @@ public class Tarjeta{
         return (pais.mismoPais(unPais));
     }
 
+    public boolean mismoSimbolo(Tarjeta otraTarjeta){
+        return otraTarjeta.mismoSimbolo(simbolo);
+    }
+
     public void comprobarExistencia(Map<Simbolo, Integer> simbolosAuxiliar) {
 
         if(!simbolosAuxiliar.containsKey(simbolo)){

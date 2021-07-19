@@ -17,7 +17,7 @@ public class CadenaDeResponsabilidad {
 
 
     public static void confirmarMovimiento(Pais origen, Pais destino, int cantidadEjercitos, Color color) throws Exception {
-        EjercitoMovible ejercitoMovible = new EjercitoMovible(origen,cantidadEjercitos,null);
+        EjercitoMovible ejercitoMovible = new EjercitoMovible(origen,cantidadEjercitos);
         Aliado esAliado = new Aliado(origen,destino);
         Limitrofe esLimitrofe = new Limitrofe(origen,destino);
         PaisConquistado paisOrigenConquistado = new PaisConquistado(origen,color, esLimitrofe);
