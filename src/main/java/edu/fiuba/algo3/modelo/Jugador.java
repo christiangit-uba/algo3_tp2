@@ -35,7 +35,7 @@ public class Jugador {
 
     public boolean colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais){
 
-        if(ejercitosAColocar > ejercitosTope) {
+        if(ejercitosAColocar > ejercitosTope || !unPais.mismoColor(color)) {
             return false;
         }else {
             for (int i = 0; i < ejercitosAColocar; i++) {
