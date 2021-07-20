@@ -64,11 +64,8 @@ public class Jugador {
         tarjetas.add(unaTarjeta);
     }
 
-    public int canjear(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo){
-
-        if(validarCanjes( tarjetasJugador,mazo))
+    public int canjear(){
            return canjes.cantidadACanjear();
-        return 0;
     }
 
 

@@ -12,6 +12,7 @@ public class TurnoDeColocacion{
     public TurnoDeColocacion(Tablero tablero, Tarjetero tarjetero) {
         this.tablero = tablero;
         this.tarjetero = tarjetero;
+        tope = 0;
     }
 
     public boolean sigueJuego() {
@@ -37,7 +38,7 @@ public class TurnoDeColocacion{
 
     public boolean canjearTarjetas(ArrayList<Tarjeta> tarjetas){
         if(jugador.validarCanjes(tarjetas, tarjetero)){
-            tope += jugador.canjear(tarjetas,tarjetero);
+            tope = tope + jugador.canjear();
             return true;
         }
         return false;
@@ -45,7 +46,7 @@ public class TurnoDeColocacion{
 
     public boolean colocarEjercito(Pais pais, int cantidadAColocar){
         if(jugador.colocarEjercitos(cantidadAColocar, tope,pais)){
-            tope -= cantidadAColocar;
+            tope = tope - cantidadAColocar;
             return true;
         }
         return false;

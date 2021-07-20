@@ -59,13 +59,6 @@ public class Tablero {
         return null;
     }
 
-   /* public void ejercitosPorTarjeta(Tarjeta tarjeta, Color color){
 
-        for(Pais pais : paises){
-            if(pais.mismoColor(color))
-                tarjeta.activarTarjeta(pais);
-        }
-    }
-    */
 
 }
