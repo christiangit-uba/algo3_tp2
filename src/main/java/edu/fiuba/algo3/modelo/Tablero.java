@@ -7,7 +7,7 @@ public class Tablero {
     ArrayList<Pais> paises;
     ArrayList<Continente> continentes;
 
-    Tablero(Tarjetero tarjetero) throws FileNotFoundException {
+    public Tablero(Tarjetero tarjetero) throws FileNotFoundException {
         this.paises = new ArrayList<>();
         this.continentes = new ArrayList<>();
         new Inicializador(paises, continentes, tarjetero);

@@ -28,4 +28,12 @@ public class Tarjetero {
     public void agregarTarjeta(Tarjeta tarjeta) {
         tarjetas.add(tarjeta);
     }
+
+    public Tarjeta buscarTarjeta(Pais pais) {
+        for (Tarjeta tarjeta : tarjetas){
+            if (tarjeta.mismaTarjeta(pais))
+                return tarjeta;
+        }
+        return null;
+    }
 }

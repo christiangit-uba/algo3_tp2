@@ -18,12 +18,14 @@ public class Jugador {
         unPais.agregarEjercito();
     }
 
-    public void activarTarjetaPais(Tarjeta unaTarjeta) {
+    public boolean activarTarjetaPais(Tarjeta unaTarjeta){
 
-        for (Tarjeta tarjeta : tarjetas) {
-            if (tarjeta.mismaTarjeta(unaTarjeta))
-                tarjeta.activarTarjeta(color);
-        }
+         for(Tarjeta tarjeta : tarjetas){
+             if(tarjeta.mismaTarjeta(unaTarjeta)){
+                return tarjeta.activarTarjeta(color);
+             }
+         }
+         return false;
     }
 
     public int cantidadEjercitosAColocar(Tablero tablero) {
@@ -31,14 +33,15 @@ public class Jugador {
     }
 
 
-    public void colocarEjercitos(int ejercitosAColocar, int ejercitosTope, Pais unPais) throws Exception {
+    public boolean colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais){
 
-        if (ejercitosAColocar > ejercitosTope) {
-            throw new Exception();
-        } else {
+        if(ejercitosAColocar > ejercitosTope) {
+            return false;
+        }else {
             for (int i = 0; i < ejercitosAColocar; i++) {
                 unPais.agregarEjercito();
             }
+            return true;
         }
     }
 
@@ -61,7 +64,7 @@ public class Jugador {
         tarjetas.add(unaTarjeta);
     }
 
-    public int Canjear(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo){
+    public int canjear(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo){
 
         if(validarCanjes( tarjetasJugador,mazo))
            return canjes.cantidadACanjear();

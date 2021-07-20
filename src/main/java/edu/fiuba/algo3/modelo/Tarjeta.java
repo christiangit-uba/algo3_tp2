@@ -22,14 +22,15 @@ public class Tarjeta{
         activada = false;
     }
 
-    public void activarTarjeta(Color unColor){
+    public boolean activarTarjeta(Color unColor){
 
         if(!activada && pais.mismoColor(unColor)){
             activada = true;
             pais.agregarEjercito();
             pais.agregarEjercito();
+            return true;
         }
-
+        return false;
     }
 
     public boolean mismaTarjeta(Tarjeta unaTarjeta){
