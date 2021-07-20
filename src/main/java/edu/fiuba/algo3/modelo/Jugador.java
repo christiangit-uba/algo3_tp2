@@ -72,7 +72,7 @@ public class Jugador {
     }
 
 
-   public boolean validarCanjes(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo) {
+    public boolean validarCanjes(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo) {
 
         if(comprobarValides(tarjetasJugador)){
             for(Tarjeta tarjetaJugador: tarjetasJugador) {
@@ -100,8 +100,11 @@ public class Jugador {
     }
 
     private boolean distintosSimbolos(Tarjeta tarjetaUno,Tarjeta tarjetaDos,Tarjeta tarjetaTres){
-        return((!tarjetaUno.mismoSimbolo(tarjetaDos)) && (!tarjetaUno.mismoSimbolo(tarjetaTres)) && (!tarjetaDos.mismoSimbolo(tarjetaTres)));
+       return((!tarjetaUno.mismoSimbolo(tarjetaDos)) && (!tarjetaUno.mismoSimbolo(tarjetaTres)) && (!tarjetaDos.mismoSimbolo(tarjetaTres)));
     }
 
+    public int cantidadTarjetas(){
+        return tarjetas.size();
+    }
 
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class rondaDeColocacionConTresJugadoresTest {
+public class RondaDeColocacionConTresJugadoresTest {
 
         @Test
         public void rondaConTresJugadoresConJugadorDosConAsiaConquistado() throws FileNotFoundException {
@@ -55,7 +55,6 @@ public class rondaDeColocacionConTresJugadoresTest {
             Etiopia.agregarColor(rojo);
             australia.agregarColor(verde);
             Francia.agregarColor(verde);
-            Argentina.agregarColor(rojo);
             tartaria.agregarColor(negro);
             mongolia.agregarColor(negro);
             turquia.agregarColor(negro);
@@ -71,8 +70,6 @@ public class rondaDeColocacionConTresJugadoresTest {
             china.agregarColor(negro);
             india.agregarColor(negro);
             kamtchatka.agregarColor(negro);
-
-
 
             TurnoDeColocacion turno = new TurnoDeColocacion(tablero, tarjetero);
             turno.turnoDe(jugador1);
