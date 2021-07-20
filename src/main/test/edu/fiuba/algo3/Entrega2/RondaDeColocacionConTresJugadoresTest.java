@@ -19,8 +19,8 @@ public class RondaDeColocacionConTresJugadoresTest {
             Color negro = new Color("negro");
 
             Jugador jugador1 = new Jugador(rojo);
-            Jugador jugador3 = new Jugador(verde);
             Jugador jugador2 = new Jugador(negro);
+            Jugador jugador3 = new Jugador(verde);
             Jugador jugadorAuxiliar = new Jugador(azul);
 
             Tarjetero tarjetero = new Tarjetero();

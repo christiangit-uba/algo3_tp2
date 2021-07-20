@@ -3,13 +3,13 @@ package edu.fiuba.algo3.Entrega2;
 import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaises {
+public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
 
     @Test
     public void PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaises() throws Exception {
@@ -19,7 +19,6 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaises {
         Color negro = new Color("negro");
 
         Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(negro);
         Jugador jugadorAuxiliar = new Jugador(azul);
 
         Tarjetero tarjetero = new Tarjetero();
@@ -57,6 +56,7 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaises {
 
         dadoAtacante.setValores(valoresDadoAtacante);
         dadoDefensor.setValores(valoresDadoDefensor);
+
         //--------------------ataque y ocupacion de chile----------------------------
         dadoAtacante.comparar(dadoDefensor,Argentina,Chile);
 
@@ -67,7 +67,8 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaises {
         assertEquals(jugador1.cantidadTarjetas(),1);
         assertEquals(Argentina.cantidadEjercitos(),3);
         assertTrue(Chile.mismoColor(rojo));
-        //--------------------ataque y ocupacion de brazil-----------------------------
+
+        //-------------------recarga de dados para segundo ataque---------------------
         valoresDadoAtacante.clear();
         valoresDadoDefensor.clear();
 
@@ -76,7 +77,8 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaises {
 
         dadoAtacante.setValores(valoresDadoAtacante);
         dadoDefensor.setValores(valoresDadoDefensor);
-        //-------------------recarga de dados para segundo ataque---------------------
+
+        //--------------------ataque y ocupacion de brazil-----------------------------
         dadoAtacante.comparar(dadoDefensor,Argentina,Brazil);
 
         Argentina.ocuparPais(Brazil,rojo);
