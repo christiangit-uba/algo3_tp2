@@ -1,24 +1,27 @@
 package edu.fiuba.algo3.Entrega1;
 
-import edu.fiuba.algo3.modelo.Color;
-import edu.fiuba.algo3.modelo.Distribucion;
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PruebaDistribucionPaisesTest {
+    private Tarjetero mazo = new Tarjetero();
+    private ValidarCanje validador = new ValidarCanje(mazo);
+
+    public PruebaDistribucionPaisesTest() throws FileNotFoundException {
+    }
 
     @Test
     public void ColocacionDeEjercitos() throws Exception {
         Color rojo = new Color("rojo");
         Color verde = new Color("verde");
 
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(verde);
+        Jugador jugador1 = new Jugador(rojo, validador);
+        Jugador jugador2 = new Jugador(verde, validador);
 
         Pais Argentina = new Pais("Argentina");
         Pais Etiopia = new Pais("Etiopia");

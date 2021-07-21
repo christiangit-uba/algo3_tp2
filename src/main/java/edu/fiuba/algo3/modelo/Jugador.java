@@ -4,15 +4,17 @@ import java.util.ArrayList;
 
 public class Jugador {
     private final Color color;
-    private int canjesHechos;
+    private ProximoCanje proximoCanje;
     private ArrayList<Tarjeta> tarjetas;
     private ArrayList<Tarjeta> tarjetasActivadas;
+    private ValidarCanje canje;
 
-    public Jugador(Color color){
+    public Jugador(Color color, ValidarCanje validadorCanje){
         tarjetas = new ArrayList<>();
         tarjetasActivadas = new ArrayList<>();
         this.color = color;
-        canjesHechos = 1;
+        proximoCanje = new ProximoCanje();
+        canje = validadorCanje;  //porque viene con una instancia del mazo.
     }
 
     public void asignarPais(Pais unPais){
@@ -55,14 +57,20 @@ public class Jugador {
     }
 
     public void activarTarjetaPais(Tarjeta unaTarjeta){ //OK
+        ArrayList<Tarjeta> aux = new ArrayList<>();
+        aux.addAll(tarjetas);
 
-        for(Tarjeta tarjeta : tarjetas){
+        for(Tarjeta tarjeta : aux){
             if(tarjeta.mismaTarjeta(unaTarjeta))
                 tarjeta.activarTarjeta(color);
                 tarjetasActivadas.add(tarjeta); //se prepara para hacer canjes de 3 tarjetas.
-                tarjetas.remove(tarjeta);
+
+                //tarjetas.remove(tarjeta);
         }
     }
 //---------------------------------------------------------------------//
+    public int hacerCanjes(){
+       return canje.validar(tarjetasActivadas, proximoCanje);
+    }
 
 }

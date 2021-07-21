@@ -6,7 +6,7 @@ public class Tarjeta{
     private Simbolo simbolo;
     private boolean activada = false;
 
-    public Tarjeta(Pais pais,Simbolo simbolo){
+    public Tarjeta(Pais pais, Simbolo simbolo){
         this.pais = pais;
         this.simbolo = simbolo;
     }
@@ -16,12 +16,12 @@ public class Tarjeta{
     }
 
     public boolean mismaTarjeta(Tarjeta unaTarjeta){
-        return unaTarjeta.mismaTarjeta(pais);
+        return unaTarjeta.mismoPais(pais);
     }
 
-    public boolean mismaTarjeta(Pais unPais){
+    public boolean mismoPais(Pais unPais){
         return (pais.mismoPais(unPais));
-    }
+    } //modificado.
 
     public void activarTarjeta(Color unColor){ //canje normal... ver si debe meterse en Canje.
 
@@ -39,9 +39,5 @@ public class Tarjeta{
     //------------Agregado---------//
     public Simbolo simbolo(){
         return simbolo;
-    }
-
-    public Tarjeta copiar(){
-        return (new Tarjeta(this.pais, this.simbolo));
     }
 }

@@ -9,29 +9,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TarjetaDePaisTest {
+    private Tarjetero mazo = new Tarjetero();
+    private ValidarCanje validador = new ValidarCanje(mazo);
+
+    public TarjetaDePaisTest() throws FileNotFoundException {
+    }
+
     @Test
     public void unJugadorTieneUnaTarjetaDeUnPaisPropioPorLoTantoTieneDosEjercitosNuevos() throws FileNotFoundException {
         Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
         Simbolo simboloGlobo = new Simbolo("Globo");
 
-        ArrayList<Jugador> jugadors = new ArrayList<>();
-        jugadors.add(jugador);
-        Tablero tablero = new Tablero(new Tarjetero());
+        Tablero tablero = new Tablero(mazo);
+        Jugador jugador = new Jugador(color, validador);
+
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        jugadores.add(jugador);
+
         Pais paisDeCarta = tablero.obtenerPais("Java");
-        Tarjeta tarjeta = new Tarjeta(paisDeCarta,simboloGlobo);
+        Tarjeta tarjeta = new Tarjeta(paisDeCarta, simboloGlobo);
 
         jugador.agregarTarjeta(tarjeta);
-        tablero.asignarPaises(jugadors);
 
+        tablero.asignarPaises(jugadores);
 
         assertEquals(paisDeCarta.cantidadEjercitos(),1);
 
         jugador.activarTarjetaPais(tarjeta);
-
         assertEquals(paisDeCarta.cantidadEjercitos(),3);
-
-
-
     }
 }

@@ -2,17 +2,24 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PruebasValidadorDeAtaqueTest {
+    private Tarjetero mazo = new Tarjetero();
+    private ValidarCanje validador = new ValidarCanje(mazo);
+
+    public PruebasValidadorDeAtaqueTest() throws FileNotFoundException {
+    }
 
     @Test
     public void unPaisAtacaAunPaisLimitrofeEnemigo() throws Exception {
         Color rojo = new Color("rojo");
         Color azul = new Color("azul");
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(azul);
+        Jugador jugador1 = new Jugador(rojo, validador);
+        Jugador jugador2 = new Jugador(azul, validador);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -34,7 +41,7 @@ public class PruebasValidadorDeAtaqueTest {
     @Test
     public void unJugadorAtacaAUnPaisVecinoAliadoLanzaExeption() {
         Color rojo = new Color("rojo");
-        Jugador jugador1 = new Jugador(rojo);
+        Jugador jugador1 = new Jugador(rojo, validador);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -56,8 +63,8 @@ public class PruebasValidadorDeAtaqueTest {
     public void unJugadorAtacaAUnPaisQueNoEsLimitrofeLanzaExeption() {
         Color rojo = new Color("rojo");
         Color azul = new Color("azul");
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(azul);
+        Jugador jugador1 = new Jugador(rojo, validador);
+        Jugador jugador2 = new Jugador(azul, validador);
 
         Pais Argentina = new Pais("Argentina");
         Pais Rusia = new Pais("Rusia");
@@ -76,8 +83,8 @@ public class PruebasValidadorDeAtaqueTest {
     public void PaisAtacaAOtroPaisConUnPaisNoConquistadoLanzoExepcion() {
         Color rosa = new Color("rosa");
         Color negro = new Color("negro");
-        Jugador jugador1 = new Jugador(rosa);
-        Jugador jugador2 = new Jugador(negro);
+        Jugador jugador1 = new Jugador(rosa, validador);
+        Jugador jugador2 = new Jugador(negro, validador);
 
         Pais Espana = new Pais("España");
         Pais Francia = new Pais("Francia");
@@ -97,8 +104,8 @@ public class PruebasValidadorDeAtaqueTest {
     public void PaisAtacaAOtroPaisConNingunaTropaLanzoExepcion() {
         Color rosa = new Color("rosa");
         Color negro = new Color("negro");
-        Jugador jugador1 = new Jugador(rosa);
-        Jugador jugador2 = new Jugador(negro);
+        Jugador jugador1 = new Jugador(rosa, validador);
+        Jugador jugador2 = new Jugador(negro, validador);
 
         Pais Espana = new Pais("España");
         Pais Francia = new Pais("Francia");
@@ -118,8 +125,8 @@ public class PruebasValidadorDeAtaqueTest {
     public void PaisAtacaAOtroPaisCon3Ejercitos() throws Exception {
         Color rosa = new Color("rosa");
         Color negro = new Color("negro");
-        Jugador jugador1 = new Jugador(rosa);
-        Jugador jugador2 = new Jugador(negro);
+        Jugador jugador1 = new Jugador(rosa, validador);
+        Jugador jugador2 = new Jugador(negro, validador);
 
         Pais Espana = new Pais("España");
         Pais Francia = new Pais("Francia");

@@ -6,85 +6,83 @@ import java.util.Map;
 
 public class ValidarCanje {
 
-    //---------------AGREGADO--o--MODIFICADO------------------//
-    private  Map<Simbolo, ArrayList<Tarjeta> > simbolosAuxiliar = new HashMap<>(); //para discriminar por simbolos distintos.
+    private Map<Simbolo, ArrayList<Tarjeta> > simbolosAuxiliar = new HashMap<>();
     private CanjesDeTresTarjetas canjes_3 = new CanjesDeTresTarjetas();
+    private ArrayList<Simbolo> simbolosJugador = new ArrayList<>();
+    private Tarjetero mazo;
 
-    //deberia existir una instancia del mazo?
-    public int validar(ArrayList<Tarjeta> tarjetas , Tarjetero mazo, int canjesJugador) {
+    public ValidarCanje(Tarjetero unMazo){
+        this.mazo = unMazo;
+    }
+
+    //recibe las tarjetas activadas del jugador.
+    public int validar(ArrayList<Tarjeta> tarjetas, ProximoCanje canjesJugador) {
         int ejercitos = 0;
 
+        //cargo los distintos simbolos de las tarjetas del jugador en una lista.
         for (Tarjeta tarjeta : tarjetas)
-            agregarTarjeta(simbolosAuxiliar, tarjeta);
+            if ( !simbolosJugador.contains(tarjeta.simbolo()) )
+                simbolosJugador.add(tarjeta.simbolo());
 
-        //tengo todas las tarjetas separadas por simbolos.
-        ejercitos += canjearTarjetasIguales(tarjetas, canjesJugador, mazo);
-        ejercitos += canjearTarjetasDistintas(tarjetas, canjesJugador, mazo);
+        for (Simbolo simbolo : simbolosJugador){
+            ArrayList<Tarjeta> tarjetasMismoSimbolo = new ArrayList<>();
+
+            for (Tarjeta tarjetaJugador : tarjetas)
+                if (tarjetaJugador.mismoSimbolo(simbolo))
+                    tarjetasMismoSimbolo.add(tarjetaJugador);
+
+            simbolosAuxiliar.put(simbolo, tarjetasMismoSimbolo); //agrego las tarjetas por simbolo.
+        }
+
+        ejercitos += canjearTarjetasIguales(tarjetas, canjesJugador);
+        ejercitos += canjearTarjetasDistintas(tarjetas, canjesJugador);
 
         return ejercitos;
     }
 
-    private void agregarTarjeta(Map<Simbolo, ArrayList<Tarjeta> > simbolosAuxiliar, Tarjeta tarjeta) {
-        Simbolo simbolo= tarjeta.simbolo();
+    private int canjearTarjetasIguales(ArrayList<Tarjeta> tarjetasDelJugador, ProximoCanje canjesJugador){
 
-        if (simbolosAuxiliar.containsKey(simbolo))
-            simbolosAuxiliar.get(simbolo).add(tarjeta); //agrego la tarjeta.
-
-        else{
-            ArrayList<Tarjeta> tarjetas = new ArrayList<>();
-            tarjetas.add(tarjeta);
-            simbolosAuxiliar.put(simbolo, tarjetas);
-        }
-    }
-
-    private int canjearTarjetasIguales(ArrayList<Tarjeta> tarjetasDelJugador, int canjesJugador, Tarjetero mazo){
-
-        //recorro simbolo por simbolo y voy sacando de a tres tarjetas.
-        ArrayList<Tarjeta> tarjetasConMismoSimbolo;
-        ArrayList<Tarjeta> tarjetasACanjear = new ArrayList<>();
         int ejercitos = 0;
 
-        for(Simbolo clave : simbolosAuxiliar.keySet()){
-            tarjetasConMismoSimbolo = simbolosAuxiliar.get(clave);
+        for(Simbolo simbolo : simbolosAuxiliar.keySet()){
+            ArrayList<Tarjeta> tarjetasConMismoSimbolo = new ArrayList<>();
+            ArrayList<Tarjeta> tarjetasACanjear = new ArrayList<>();
+            ArrayList<Simbolo> simboloCanjeado = new ArrayList<>();
 
-            //voy canjeando las tarjetas de a grupos de 3.
+            tarjetasConMismoSimbolo.addAll(simbolosAuxiliar.get(simbolo));
+            simboloCanjeado.add(simbolo);
+
             while(tarjetasConMismoSimbolo.size() >= 3){
 
                 tarjetasACanjear.add(tarjetasConMismoSimbolo.get(0));
                 tarjetasACanjear.add(tarjetasConMismoSimbolo.get(1));
                 tarjetasACanjear.add(tarjetasConMismoSimbolo.get(2));
 
-                //ya tengo la lista de las tarjetas a canjear.
-                ejercitos += canjes_3.cantidadACanjear(canjesJugador); //canjeo los iguales.
+                ejercitos += canjes_3.cantidadACanjear(canjesJugador);
+
+                borrarTarjetasDiccionario(simboloCanjeado, tarjetasACanjear);
+                tarjetasConMismoSimbolo.removeAll(tarjetasACanjear);
 
                 //borro las tarjetas elegidas.
-                borrarTresTarjetas(tarjetasDelJugador, mazo, tarjetasConMismoSimbolo);
+                borrarTresTarjetas(tarjetasDelJugador, tarjetasACanjear);
             }
         }
         return ejercitos;
     }
 
-    private void borrarTresTarjetas(ArrayList<Tarjeta> tarjetasJugador, Tarjetero mazo, ArrayList<Tarjeta> tarjetasABorrar){
-
-        for (Tarjeta tarjeta : tarjetasABorrar){
-            Tarjeta tarjetaCopia = tarjeta.copiar();
-            mazo.vuelveAlTarjetero(tarjetaCopia);   //se inicializa y se devuelve al mazo.
-
-            tarjetasABorrar.remove(tarjeta);
-            tarjetasJugador.remove(tarjeta);     //se le saca la tarjeta al jugador.
-        }
-    }
-
-    private int canjearTarjetasDistintas(ArrayList<Tarjeta> tarjetasDelJugador, int canjesJugador, Tarjetero mazo) {
+    private int canjearTarjetasDistintas(ArrayList<Tarjeta> tarjetasDelJugador, ProximoCanje canjesJugador) {
         ArrayList<Tarjeta> tarjetasConDistintoSimbolo;
         ArrayList<Tarjeta> tarjetasACanjear = new ArrayList<>();
+        ArrayList<Simbolo> simbolosCanjeados = new ArrayList<>();
+
         int tarjetasRestantes = contarTarjetasRestantes();
         int ejercitos = 0;
 
         while(tarjetasRestantes >= 3 && (tarjetasACanjear.size() == 0)){
 
-            for(Simbolo clave : simbolosAuxiliar.keySet()){
-                tarjetasConDistintoSimbolo = simbolosAuxiliar.get(clave);
+            for(Simbolo simbolo : simbolosAuxiliar.keySet()){
+                simbolosCanjeados.add(simbolo);
+                tarjetasConDistintoSimbolo = (simbolosAuxiliar.get(simbolo));
 
                 if(tarjetasConDistintoSimbolo.size() > 0)
                     tarjetasACanjear.add(tarjetasConDistintoSimbolo.get(0)); //saco la primera
@@ -92,28 +90,48 @@ public class ValidarCanje {
                 if(tarjetasACanjear.size() == 3){
                     ejercitos += canjes_3.cantidadACanjear(canjesJugador); //canjeo los distintos.
 
-                    //borro las tarjetas elegidas
-                    borrarTresTarjetas(tarjetasDelJugador, mazo,tarjetasConDistintoSimbolo);
-                }
+                    //borro las tarjetas del diccionario...
+                    borrarTarjetasDiccionario(simbolosCanjeados, tarjetasACanjear);
 
-                tarjetasRestantes = contarTarjetasRestantes();
+                    //borro las tarjetas elegidas
+                    borrarTresTarjetas(tarjetasDelJugador, tarjetasACanjear);
+                }
             }
+            tarjetasRestantes = contarTarjetasRestantes();
         }
         return ejercitos;
     }
 
+    private void borrarTarjetasDiccionario(ArrayList<Simbolo> simbolos, ArrayList<Tarjeta> tarjetasABorrar){
+        ArrayList<Tarjeta> aux;
+
+        for(Simbolo simbolo : simbolos) {
+            aux = simbolosAuxiliar.get(simbolo);
+            aux.removeAll(tarjetasABorrar);
+        }
+    }
+
+    private void borrarTresTarjetas(ArrayList<Tarjeta> tarjetasJugador, ArrayList<Tarjeta> tarjetasABorrar){
+        ArrayList<Tarjeta> copia = new ArrayList<>();
+        copia.addAll(tarjetasABorrar);
+
+        for (Tarjeta tarjeta : copia){
+            mazo.vuelveAlTarjetero(tarjeta);   //se inicializa y se devuelve al mazo.
+            tarjetasABorrar.remove(tarjeta);
+            tarjetasJugador.remove(tarjeta);   //se le saca la tarjeta al jugador.
+        }
+    }
+
     private int contarTarjetasRestantes(){
-        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+        ArrayList<Tarjeta> tarjetas;
         int restantes = 0;
 
-        for(Simbolo clave : simbolosAuxiliar.keySet()) {
-            tarjetas = simbolosAuxiliar.get(clave);
+        for(Simbolo simbolo : simbolosAuxiliar.keySet()) {
+            tarjetas = simbolosAuxiliar.get(simbolo);
             restantes += tarjetas.size();
         }
         return restantes;
     }
-
-    //--------------------------------------------------------//
 }
 
 

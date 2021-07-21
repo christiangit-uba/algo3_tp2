@@ -4,17 +4,19 @@ public class CanjesDeTresTarjetas {
 
     private int cantidadDisponibleACanjear = 4;
 
-    public int cantidadACanjear(int numeroCanjesRealizados){
+    public int cantidadACanjear(ProximoCanje proximo){
 
-        if(numeroCanjesRealizados <= 3){
-            cantidadDisponibleACanjear = cantidadDisponibleACanjear + 3*(numeroCanjesRealizados-1);
+        if(proximo.getProximo() < 3){
+            cantidadDisponibleACanjear = cantidadDisponibleACanjear + 3*(proximo.getProximo() -1);
+            proximo.pasarAProximo();
             return cantidadDisponibleACanjear;
         }
-        return (this.canjearMasDe4veces(numeroCanjesRealizados));
+        return (this.canjearMasDe4veces(proximo));
     }
 
-    private int canjearMasDe4veces(int numeroCanjesRealizados){
-        cantidadDisponibleACanjear = (numeroCanjesRealizados-1)*5;
+    private int canjearMasDe4veces(ProximoCanje proximo){
+        cantidadDisponibleACanjear = (proximo.getProximo() -1)*5;
+        proximo.pasarAProximo();
         return cantidadDisponibleACanjear;
     }
 }
