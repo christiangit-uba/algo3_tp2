@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Tarjetero {
     private ArrayList<Tarjeta> tarjetas;
@@ -35,5 +36,9 @@ public class Tarjetero {
                 return tarjeta;
         }
         return null;
+    }
+
+    public void mezclarMazo(){
+        Collections.shuffle(tarjetas);
     }
 }
