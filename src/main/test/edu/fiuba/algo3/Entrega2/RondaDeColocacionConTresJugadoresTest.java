@@ -14,9 +14,9 @@ public class RondaDeColocacionConTresJugadoresTest {
         @Test
         public void rondaConTresJugadoresConJugadorDosConAsiaConquistado() throws FileNotFoundException {
             Color rojo = new Color("rojo");
+            Color negro = new Color("negro");
             Color verde = new Color("verde");
             Color azul = new Color("azul");
-            Color negro = new Color("negro");
 
             Jugador jugador1 = new Jugador(rojo);
             Jugador jugador2 = new Jugador(negro);

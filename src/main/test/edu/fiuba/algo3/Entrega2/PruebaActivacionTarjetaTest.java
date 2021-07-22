@@ -27,7 +27,6 @@ public class PruebaActivacionTarjetaTest {
         jugadores.add(jugadorAuxiliar);
         tablero.asignarPaises(jugadores);
         jugadores.remove(jugadorAuxiliar);
-        ArrayList<Tarjeta> tarjetasSeleccionadas = new ArrayList<>();
 
         jugadores.add(jugador1);
         jugadores.add(jugador2);
@@ -72,6 +71,7 @@ public class PruebaActivacionTarjetaTest {
         assertFalse(turno.activarTarjeta(tarjetaArgentina));
 
         //Usuario selecciona para canjear sus tres cartas que son de simbolo globo
+        ArrayList<Tarjeta> tarjetasSeleccionadas = new ArrayList<>();
         tarjetasSeleccionadas.add(tarjetaArgentina);
         tarjetasSeleccionadas.add(tarjetaChile);
         tarjetasSeleccionadas.add(tarjetaEtiopia);

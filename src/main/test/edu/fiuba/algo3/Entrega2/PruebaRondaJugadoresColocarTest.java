@@ -24,18 +24,22 @@ public class PruebaRondaJugadoresColocarTest {
         Tablero tablero = new Tablero(tarjetero);
         ArrayList<Jugador> jugadores = new ArrayList<>();
 
+
         jugadores.add(jugadorAuxiliar);
         tablero.asignarPaises(jugadores);
+
 
         Pais Argentina = tablero.obtenerPais("Argentina");
         Pais Etiopia = tablero.obtenerPais("Etiopia");
         Pais Turquia = tablero.obtenerPais("Turquia");
         Pais Francia = tablero.obtenerPais("Francia");
 
+
         Argentina.agregarColor(rojo);
         Etiopia.agregarColor(rojo);
         Turquia.agregarColor(verde);
         Francia.agregarColor(verde);
+
 
         TurnoDeColocacion turno = new TurnoDeColocacion(tablero,tarjetero);
         turno.turnoDe(jugador1);
@@ -69,8 +73,5 @@ public class PruebaRondaJugadoresColocarTest {
         assertEquals(Turquia.cantidadEjercitos(),4);
         assertEquals(turno.getTope(),0);
         turno.terminarTurno();
-
-
-
     }
 }

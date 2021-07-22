@@ -177,4 +177,32 @@ public class PruebasValidadorDeAtaqueTest {
 
         assertEquals(3,Espana.cantidadEjercitos());
     }
+
+    @Test
+    public void unPaisAtacaSiempreLeQuedaUnEjercitoEnOrigen() throws Exception {
+        Color rojo = new Color("rojo");
+        Color azul = new Color("azul");
+        Jugador jugador1 = new Jugador(rojo);
+        Jugador jugador2 = new Jugador(azul);
+
+        Pais Argentina = new Pais("Argentina");
+        Pais Brazil = new Pais("Brazil");
+
+        Argentina.agregarLimitrofe(Brazil);
+        Brazil.agregarLimitrofe(Argentina);
+
+        jugador1.asignarPais(Argentina);
+        jugador2.asignarPais(Brazil);
+
+        Argentina.agregarEjercito();
+
+
+        ArrayList<Integer> valoresDadoAtacante = new ArrayList<>();
+        ArrayList<Integer> valoresDadoDefensor = new ArrayList<>();
+
+        jugador1.realizarAtaque(Argentina,Brazil,1,valoresDadoAtacante,valoresDadoDefensor);
+
+        assertEquals(1,Brazil.cantidadEjercitos());
+        assertEquals(1,Argentina.cantidadEjercitos());
+    }
 }
