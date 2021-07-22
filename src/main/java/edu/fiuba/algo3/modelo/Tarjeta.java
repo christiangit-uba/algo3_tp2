@@ -33,10 +33,6 @@ public class Tarjeta{
         return false;
     }
 
-    public boolean mismaTarjeta(Tarjeta unaTarjeta){
-        return unaTarjeta.mismaTarjeta(pais);
-    }
-
     public boolean mismaTarjeta(Pais unPais){
         return (pais.mismoPais(unPais));
     }
@@ -45,13 +41,5 @@ public class Tarjeta{
         return otraTarjeta.mismoSimbolo(simbolo);
     }
 
-    public void comprobarExistencia(Map<Simbolo, Integer> simbolosAuxiliar) {
 
-        if(!simbolosAuxiliar.containsKey(simbolo)){
-            simbolosAuxiliar.put(simbolo,1);
-        }else{
-            simbolosAuxiliar.put(simbolo,simbolosAuxiliar.get(simbolo) + 1);
-        }
-
-    }
 }
