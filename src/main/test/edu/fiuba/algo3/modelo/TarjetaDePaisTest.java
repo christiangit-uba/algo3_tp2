@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 public class TarjetaDePaisTest {
@@ -64,7 +66,7 @@ public class TarjetaDePaisTest {
     }
 
     @Test
-    public void unJugadorIntentaActivarDosVecesUnaTarjetaSoloAsignaDosEjercitos() throws FileNotFoundException {
+    public void unJugadorIntentaActivarDosVecesUnaTarjetaSoloAsignaDosEjercitos(){
         Color color = new Color("Rojo");
         Jugador jugador = new Jugador(color);
         Simbolo simboloGlobo = new Simbolo("Globo");
