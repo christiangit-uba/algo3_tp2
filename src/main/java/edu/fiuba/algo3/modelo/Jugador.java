@@ -20,12 +20,8 @@ public class Jugador {
 
     public boolean activarTarjetaPais(Tarjeta unaTarjeta){
 
-         for(Tarjeta tarjeta : tarjetas){
-             if(tarjeta.mismaTarjeta(unaTarjeta)){
-                return tarjeta.activarTarjeta(color);
-             }
-         }
-         return false;
+        return unaTarjeta.activarTarjeta(color);
+
     }
 
     public int cantidadEjercitosAColocar(Tablero tablero) {
