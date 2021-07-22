@@ -2,9 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
-public class TurnoDeColocacion{
-    Jugador jugador;
-    boolean sigueTurno = true;
+public class TurnoDeColocacion extends Turno{
     Tablero tablero;
     Tarjetero tarjetero;
     int tope;
@@ -15,21 +13,18 @@ public class TurnoDeColocacion{
         tope = 0;
     }
 
-    public boolean sigueJuego() {
-        return true;
-    }
-
-    public boolean sigueTurno() {
-        return sigueTurno;
-    }
-
-    public void turnoDe(Jugador jugador) {
-        this.jugador = jugador;
+    public void calcularTope(){
         tope = jugador.cantidadEjercitosAColocar(tablero);
     }
 
+    @Override
     public void terminarTurno(){
         sigueTurno = false;
+    }
+
+    @Override
+    public void recibirOrden() {
+
     }
 
     public boolean activarTarjeta(Tarjeta tarjeta){

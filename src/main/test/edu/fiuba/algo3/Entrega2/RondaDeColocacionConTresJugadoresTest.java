@@ -73,6 +73,7 @@ public class RondaDeColocacionConTresJugadoresTest {
 
             TurnoDeColocacion turno = new TurnoDeColocacion(tablero, tarjetero);
             turno.turnoDe(jugador1);
+            turno.calcularTope();
 
         /*Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
           paises y continentes conquistados
@@ -86,6 +87,7 @@ public class RondaDeColocacionConTresJugadoresTest {
 
             turno.terminarTurno();
             turno.turnoDe(jugador2);
+            turno.calcularTope();
 
             //15 paises /2 + 7 ejercitos por continente en asia son 14 a colocar
             assertEquals(turno.getTope(),14);
@@ -94,6 +96,7 @@ public class RondaDeColocacionConTresJugadoresTest {
 
             turno.terminarTurno();
             turno.turnoDe(jugador3);
+            turno.calcularTope();
 
             turno.colocarEjercito(Francia,2);
             assertEquals(Francia.cantidadEjercitos(),3);

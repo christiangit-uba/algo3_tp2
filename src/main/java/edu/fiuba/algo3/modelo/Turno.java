@@ -1,12 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
 public abstract class Turno {
-    /*
-    boolean sigueJuego();
+    protected Jugador jugador;
+    protected boolean sigueTurno = true;
 
-    boolean sigueTurno();
+    boolean sigueJuego(){
+        return true;
+    }
 
-    Turno recibirOrden();
+    boolean sigueTurno(){
+        return sigueTurno;
+    }
 
-    public abstract void turnoDe(Jugador jugador1);*/
+    public abstract void terminarTurno();
+
+    public abstract void recibirOrden();
+
+    public void turnoDe(Jugador jugador1){
+        this.jugador = jugador1;
+    }
+
 }

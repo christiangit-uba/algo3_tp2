@@ -59,6 +59,7 @@ public class PruebaActivacionTarjetaTest {
 
         TurnoDeColocacion turno = new TurnoDeColocacion(tablero,tarjetero);
         turno.turnoDe(jugador1);
+        turno.calcularTope();
 
         assertEquals(Argentina.cantidadEjercitos(),1);
         assertEquals(Etiopia.cantidadEjercitos(),1);
@@ -85,6 +86,7 @@ public class PruebaActivacionTarjetaTest {
 
         turno.terminarTurno();
         turno.turnoDe(jugador2);
+        turno.calcularTope();
 
         assertEquals(Turquia.cantidadEjercitos(),1);
         assertEquals(Francia.cantidadEjercitos(),1);

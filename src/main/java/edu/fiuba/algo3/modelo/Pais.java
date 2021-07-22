@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+
 public class Pais {
     private String nombre;
     private Ejercito ejercito;
@@ -23,13 +25,13 @@ public class Pais {
         ejercito = ejercito.agregarEjercito();
     }
 
-    public void atacaA(Pais defensor,int ejercitosAtaque){
-        defensor.teAtaca(this,ejercitosAtaque);
+    public void atacaA(Pais defensor, int ejercitosAtaque, ArrayList<Integer> valoresDadoAtacante, ArrayList<Integer> dadoDefensor){
+        Dado dadoAtacante = new Dado(ejercitosAtaque,valoresDadoAtacante);
+        defensor.teAtaca(this,dadoAtacante,dadoDefensor);
     }
 
-    public void teAtaca(Pais atacante,int ejercitosAtaque){
-        Dado dadoAtacante = new Dado(ejercitosAtaque);
-        Dado dadoDefensor = new Dado(ejercito.getCantidadDeEjercitos());
+    public void teAtaca(Pais atacante,Dado dadoAtacante, ArrayList<Integer> valoresDadoDefensor){
+        Dado dadoDefensor = new Dado(ejercito.getCantidadDeEjercitos(),valoresDadoDefensor);
         dadoAtacante.comparar(dadoDefensor,atacante,this);
     }
 

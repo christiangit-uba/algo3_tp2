@@ -45,11 +45,12 @@ public class Jugador {
         }
     }
 
-    public void realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar) throws Exception {
+    public boolean realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar,ArrayList<Integer> valorDadoAtacante, ArrayList<Integer> valorDadoDefensor) throws Exception {
         CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, color);
 
-        atacante.atacaA(defensor, cantidadEjercitosAUsar);
+        atacante.atacaA(defensor, cantidadEjercitosAUsar, valorDadoAtacante, valorDadoDefensor);
         atacante.ocuparPais(defensor, color);
+        return true;
     }
 
     public void realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {

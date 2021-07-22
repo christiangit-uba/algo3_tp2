@@ -1,26 +1,32 @@
-/*package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo;
+
+import java.util.ArrayList;
 
 public class TurnoDeAtaque extends Turno {
-    Jugador jugador;
-    boolean sigueTurno = true;
+    Tarjetero tarjetero;
+    protected boolean conquistoUnPaisAlmenos = false;
 
 
-    public TurnoDeAtaque(Jugador jugador) {
-        this.jugador = jugador;
+    public TurnoDeAtaque(Tarjetero tarjetero) {
+        this.tarjetero = tarjetero;
+    }
+
+    public void atacar(Pais paisAtacante, Pais paisDefensor, int cantidadTropas, ArrayList<Integer> valoresDadosAtacante, ArrayList<Integer> valoresDadoDefensor) throws Exception {
+        if(jugador.realizarAtaque(paisAtacante,paisDefensor,cantidadTropas,valoresDadosAtacante,valoresDadoDefensor)){
+            conquistoUnPaisAlmenos = true;
+        }
     }
 
     @Override
-    public boolean sigueJuego() {
-        return true;
+    public void terminarTurno() {
+        if(conquistoUnPaisAlmenos){
+            tarjetero.asignarTarjeta(jugador);
+        }
+        sigueTurno = false;
     }
 
     @Override
-    public boolean sigueTurno() {
-        return sigueTurno;
-    }
+    public void recibirOrden() {
 
-    @Override
-    public Turno recibirOrden() {
-        ;
     }
-}*/
+}

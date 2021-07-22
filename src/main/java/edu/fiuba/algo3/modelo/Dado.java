@@ -11,7 +11,13 @@ public class Dado {
     public Dado() {
     }
 
-    public Dado(int cantidadDeDados) {
+    public Dado(int cantidadDeDados, ArrayList<Integer> dados) {
+        this.dados = dados;
+        if(dados.isEmpty())
+            lanzar(cantidadDeDados);
+    }
+
+    public void lanzar(int cantidadDeDados){
         ArrayList<Integer> dadosNuevos = new ArrayList<>();
         Random random = new Random();
 

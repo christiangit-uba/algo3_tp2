@@ -45,26 +45,19 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
         assertTrue(Brazil.mismoColor(negro));
 
         //-----------------creacion y uso de un dado cargado---------------------------
-        DadoCargado dadoAtacante = new DadoCargado();
-        DadoCargado dadoDefensor = new DadoCargado();
 
+        TurnoDeAtaque turno = new TurnoDeAtaque(tarjetero);
         ArrayList<Integer> valoresDadoAtacante = new ArrayList<>();
         ArrayList<Integer> valoresDadoDefensor = new ArrayList<>();
 
         valoresDadoAtacante.add(6);
         valoresDadoDefensor.add(2);
 
-        dadoAtacante.setValores(valoresDadoAtacante);
-        dadoDefensor.setValores(valoresDadoDefensor);
 
         //--------------------ataque y ocupacion de chile----------------------------
-        dadoAtacante.comparar(dadoDefensor,Argentina,Chile);
+        turno.turnoDe(jugador1);
+        turno.atacar(Argentina,Chile,2,valoresDadoAtacante,valoresDadoDefensor);
 
-        Argentina.ocuparPais(Chile,rojo);
-
-        jugador1.agregarTarjeta(tarjetero.buscarTarjeta(Chile));
-
-        assertEquals(jugador1.cantidadTarjetas(),1);
         assertEquals(Argentina.cantidadEjercitos(),3);
         assertTrue(Chile.mismoColor(rojo));
 
@@ -75,18 +68,14 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
         valoresDadoAtacante.add(4);
         valoresDadoDefensor.add(1);
 
-        dadoAtacante.setValores(valoresDadoAtacante);
-        dadoDefensor.setValores(valoresDadoDefensor);
-
         //--------------------ataque y ocupacion de brazil-----------------------------
-        dadoAtacante.comparar(dadoDefensor,Argentina,Brazil);
+        turno.atacar(Argentina,Brazil,1,valoresDadoAtacante,valoresDadoDefensor);
 
-        Argentina.ocuparPais(Brazil,rojo);
-
-        jugador1.agregarTarjeta(tarjetero.buscarTarjeta(Brazil));
-
-        assertEquals(jugador1.cantidadTarjetas(),2);
         assertEquals(Argentina.cantidadEjercitos(),2);
         assertTrue(Brazil.mismoColor(rojo));
+
+        turno.terminarTurno();
+
+        assertEquals(jugador1.cantidadTarjetas(),1);
     }
 }
