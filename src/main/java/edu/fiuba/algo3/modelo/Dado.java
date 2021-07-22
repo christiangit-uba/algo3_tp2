@@ -8,7 +8,16 @@ public class Dado {
     private final int MAXIMO = 6;
     protected ArrayList<Integer> dados;
 
-    public Dado(int cantidadDeDados) {
+    public Dado() {
+    }
+
+    public Dado(int cantidadDeDados, ArrayList<Integer> dados) {
+        this.dados = dados;
+        if(dados.isEmpty())
+            lanzar(cantidadDeDados);
+    }
+
+    public void lanzar(int cantidadDeDados){
         ArrayList<Integer> dadosNuevos = new ArrayList<>();
         Random random = new Random();
 
@@ -18,9 +27,6 @@ public class Dado {
 
         dadosNuevos.sort(Collections.reverseOrder());
         dados = dadosNuevos;
-    }
-
-    public Dado() {
     }
 
     public void comparar(Dado defensa, Pais paisAtacante, Pais paisDefensor) {

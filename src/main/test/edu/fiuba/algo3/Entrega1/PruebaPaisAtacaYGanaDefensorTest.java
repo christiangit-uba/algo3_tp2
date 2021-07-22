@@ -27,8 +27,7 @@ public class PruebaPaisAtacaYGanaDefensorTest {
         Argentina.agregarEjercito();
         Brazil.agregarEjercito();
 
-        DadoTrucado dadoAtacante = new DadoTrucado();
-        DadoTrucado dadoDefensor = new DadoTrucado();
+
 
         ArrayList<Integer> valoresDadoAtacante = new ArrayList<>();
         ArrayList<Integer> valoresDadoDefensor = new ArrayList<>();
@@ -36,8 +35,9 @@ public class PruebaPaisAtacaYGanaDefensorTest {
         valoresDadoAtacante.add(6);
         valoresDadoDefensor.add(2);
 
-        dadoAtacante.setValores(valoresDadoAtacante);
-        dadoDefensor.setValores(valoresDadoDefensor);
+        Dado dadoAtacante = new Dado(1,valoresDadoAtacante);
+        Dado dadoDefensor = new Dado(1,valoresDadoDefensor);
+
 
         dadoAtacante.comparar(dadoDefensor,Argentina,Brazil);
 

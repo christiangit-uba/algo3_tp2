@@ -4,41 +4,101 @@ import java.util.ArrayList;
 
 public class Jugador {
     private final Color color;
-    public Jugador(Color color){
+    private Canje canjes;
+    private ArrayList<Tarjeta> tarjetas;
+
+    public Jugador(Color color) {
+        tarjetas = new ArrayList<>();
         this.color = color;
+        canjes = new Canje();
     }
 
-    public void asignarPais(Pais unPais){
+    public void asignarPais(Pais unPais) {
         unPais.agregarColor(color);
         unPais.agregarEjercito();
     }
 
-    public int cantidadEjercitosAColocar(Tablero tablero){
+    public boolean activarTarjetaPais(Tarjeta unaTarjeta){
+
+        return unaTarjeta.activarTarjeta(color);
+
+    }
+
+    public int cantidadEjercitosAColocar(Tablero tablero) {
         return tablero.cantidadEjercitosAColocar(color);
     }
 
 
-    public void colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais) throws Exception {
+    public boolean colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais){
 
-        if(ejercitosAColocar > ejercitosTope) {
-            throw new Exception();
+        if(ejercitosAColocar > ejercitosTope || !unPais.mismoColor(color)) {
+            return false;
         }else {
             for (int i = 0; i < ejercitosAColocar; i++) {
                 unPais.agregarEjercito();
             }
+            return true;
         }
     }
 
-    public void realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar) throws Exception{
+    public boolean realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar,ArrayList<Integer> valorDadoAtacante, ArrayList<Integer> valorDadoDefensor) throws Exception {
         CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, color);
 
-        atacante.atacaA(defensor,cantidadEjercitosAUsar);
-        atacante.ocuparPais(defensor,color);
+        atacante.atacaA(defensor, cantidadEjercitosAUsar, valorDadoAtacante, valorDadoDefensor);
+        atacante.ocuparPais(defensor, color);
+        return true;
     }
 
-    public void realizarMovimiento(Pais origen,Pais destino, int cantidadEjercitos) throws Exception {
-        CadenaDeResponsabilidad.confirmarMovimiento(origen,destino,cantidadEjercitos,color);
+    public void realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {
 
-        origen.moverEjercitoA(destino,cantidadEjercitos);
+        CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, color);
+        origen.moverEjercitoA(destino, cantidadEjercitos);
     }
+
+
+    public void agregarTarjeta(Tarjeta unaTarjeta) {
+
+        tarjetas.add(unaTarjeta);
+    }
+
+    public int canjear(){
+           return canjes.cantidadACanjear();
+    }
+
+
+    public boolean validarCanjes(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo) {
+
+        if(comprobarValides(tarjetasJugador)){
+            for(Tarjeta tarjetaJugador: tarjetasJugador) {
+                mazo.vuelveAlTarjetero(tarjetaJugador);
+                tarjetas.remove(tarjetaJugador);
+            }
+            canjes.sumarCanje();
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public boolean comprobarValides(ArrayList<Tarjeta> tarjetasSelecionadas){
+
+        Tarjeta tarjetaUno = tarjetasSelecionadas.get(0);
+        Tarjeta tarjetaDos = tarjetasSelecionadas.get(1);
+        Tarjeta tarjetaTres = tarjetasSelecionadas.get(2);
+
+        return(distintosSimbolos(tarjetaUno,tarjetaDos,tarjetaTres) || mismoSimbolo(tarjetaUno,tarjetaDos,tarjetaTres) );
+    }
+
+    private boolean mismoSimbolo(Tarjeta tarjetaUno, Tarjeta tarjetaDos, Tarjeta tarjetaTres) {
+        return(tarjetaUno.mismoSimbolo(tarjetaDos) && tarjetaUno.mismoSimbolo(tarjetaTres));
+    }
+
+    private boolean distintosSimbolos(Tarjeta tarjetaUno,Tarjeta tarjetaDos,Tarjeta tarjetaTres){
+       return((!tarjetaUno.mismoSimbolo(tarjetaDos)) && (!tarjetaUno.mismoSimbolo(tarjetaTres)) && (!tarjetaDos.mismoSimbolo(tarjetaTres)));
+    }
+
+    public int cantidadTarjetas(){
+        return tarjetas.size();
+    }
+
 }

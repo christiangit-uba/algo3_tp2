@@ -7,10 +7,10 @@ public class Tablero {
     ArrayList<Pais> paises;
     ArrayList<Continente> continentes;
 
-    Tablero() throws FileNotFoundException {
+    public Tablero(Tarjetero tarjetero) throws FileNotFoundException {
         this.paises = new ArrayList<>();
         this.continentes = new ArrayList<>();
-        new Inicializador(paises, continentes);
+        new Inicializador(paises, continentes, tarjetero);
     }
 
     public void asignarPaises(ArrayList<Jugador> jugadores) {
@@ -58,4 +58,7 @@ public class Tablero {
         }
         return null;
     }
+
+
+
 }

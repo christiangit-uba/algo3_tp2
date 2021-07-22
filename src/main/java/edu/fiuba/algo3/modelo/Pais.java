@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+
 public class Pais {
     private String nombre;
     private Ejercito ejercito;
@@ -23,13 +25,13 @@ public class Pais {
         ejercito = ejercito.agregarEjercito();
     }
 
-    public void atacaA(Pais defensor,int ejercitosAtaque){
-        defensor.teAtaca(this,ejercitosAtaque);
+    public void atacaA(Pais defensor, int ejercitosAtaque, ArrayList<Integer> valoresDadoAtacante, ArrayList<Integer> dadoDefensor){
+        Dado dadoAtacante = new Dado(ejercitosAtaque,valoresDadoAtacante);
+        defensor.teAtaca(this,dadoAtacante,dadoDefensor);
     }
 
-    public void teAtaca(Pais atacante,int ejercitosAtaque){
-        Dado dadoAtacante = new Dado(ejercitosAtaque);
-        Dado dadoDefensor = new Dado(ejercito.getCantidadDeEjercitos());
+    public void teAtaca(Pais atacante,Dado dadoAtacante, ArrayList<Integer> valoresDadoDefensor){
+        Dado dadoDefensor = new Dado(ejercito.getCantidadDeEjercitos(),valoresDadoDefensor);
         dadoAtacante.comparar(dadoDefensor,atacante,this);
     }
 
@@ -57,6 +59,10 @@ public class Pais {
         ejercito.agregarColor(color);
     }
 
+    public boolean mismoPais(Pais unPais){
+        return unPais.mismoNombre(nombre);
+    }
+
     public void moverEjercitoA(Pais paisDestino, int ejercitosAMover){
         for(int i = 0 ; i < ejercitosAMover ; i++){
             ejercito.sacarEjercito();
@@ -69,14 +75,14 @@ public class Pais {
     }
 
     public void ocuparPais(Pais unPais, Color color){
-        if(unPais.ocupable()){
+        if(unPais.esOcupable()){
             ejercito.sacarEjercito();
             unPais.agregarColor(color);
             unPais.agregarEjercito();
         }
     }
 
-    public boolean ocupable(){
+    public boolean esOcupable(){
         return (ejercito.ejercitoVacio());
     }
 

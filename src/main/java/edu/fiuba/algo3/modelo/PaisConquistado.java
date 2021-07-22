@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
-public class PaisConquistado implements Validador{
+public class PaisConquistado extends Validador {
     Pais pais;
     Validador siguiente;
     Color color;
@@ -15,11 +13,6 @@ public class PaisConquistado implements Validador{
 
     @Override
     public void validar() throws Exception {
-        if(!pais.mismoColor(color)){
-            throw new Exception();
-        }
-        if (siguiente != null){
-            siguiente.validar();
-        }
+        validar(!pais.mismoColor(color));
     }
 }

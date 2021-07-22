@@ -6,12 +6,11 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PruebaDadoTest {
+public class PruebaDadoComunTest {
 
 
     @Test
     public void PrueboDadosDefensorGanador1Ronda(){
-        DadoTrucado defensor = new DadoTrucado();
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -23,7 +22,7 @@ public class PruebaDadoTest {
         PaisAtacante.agregarEjercito();
         PaisDefensor.agregarEjercito();
 
-        defensor.setValores(dadoDefensor);
+        Dado defensor = new Dado(1,dadoDefensor);
 
         defensor.comparar(atacante,PaisAtacante,PaisDefensor);
 
@@ -32,7 +31,7 @@ public class PruebaDadoTest {
 
     @Test
     public void PrueboDadosAtacanteGanador1Ronda(){
-        DadoTrucado defensor = new DadoTrucado();
+
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -44,7 +43,7 @@ public class PruebaDadoTest {
         PaisAtacante.agregarEjercito();
         PaisDefensor.agregarEjercito();
 
-        defensor.setValores(dadoDefensor);
+        Dado defensor = new Dado(1,dadoDefensor);
 
         defensor.comparar(atacante,PaisAtacante,PaisDefensor);
 
@@ -53,7 +52,7 @@ public class PruebaDadoTest {
 
     @Test
     public void PrueboDadosAtacanteGanadorEn2RondaYDefensorUnaRonda(){
-        DadoTrucado defensor = new DadoTrucado();
+
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -74,7 +73,7 @@ public class PruebaDadoTest {
         PaisDefensor.agregarEjercito();
 
 
-        defensor.setValores(dadoDefensor);
+        Dado defensor = new Dado(1,dadoDefensor);
 
         defensor.comparar(atacante,PaisAtacante,PaisDefensor);
 
@@ -82,7 +81,7 @@ public class PruebaDadoTest {
     }
     @Test
     public void PrueboDadosAtacanteGanadorEn1RondaYDefensorEnDosRondas(){
-        DadoTrucado defensor = new DadoTrucado();
+
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -102,7 +101,7 @@ public class PruebaDadoTest {
         PaisAtacante.agregarEjercito();
         PaisDefensor.agregarEjercito();
 
-        defensor.setValores(dadoDefensor);
+        Dado defensor = new Dado(1,dadoDefensor);
 
         defensor.comparar(atacante,PaisAtacante,PaisDefensor);
 
@@ -110,7 +109,7 @@ public class PruebaDadoTest {
     }
     @Test
     public void PrueboDadosAtacanteGanadorEn3RondaYDefensorEn0Rondas(){
-        DadoTrucado defensor = new DadoTrucado();
+
         Pais PaisAtacante = new Pais("Estonia");
         Pais PaisDefensor = new Pais("Albania");
         ArrayList<Integer> atacante = new ArrayList<>();
@@ -123,14 +122,14 @@ public class PruebaDadoTest {
         dadoDefensor.add(2);
         dadoDefensor.add(1);
 
-        PaisAtacante.agregarEjercito();
-        PaisDefensor.agregarEjercito();
-        PaisAtacante.agregarEjercito();
-        PaisDefensor.agregarEjercito();
-        PaisAtacante.agregarEjercito();
-        PaisDefensor.agregarEjercito();
+        Dado defensor = new Dado(1,dadoDefensor);
 
-        defensor.setValores(dadoDefensor);
+        PaisAtacante.agregarEjercito();
+        PaisDefensor.agregarEjercito();
+        PaisAtacante.agregarEjercito();
+        PaisDefensor.agregarEjercito();
+        PaisAtacante.agregarEjercito();
+        PaisDefensor.agregarEjercito();
 
         defensor.comparar(atacante,PaisAtacante,PaisDefensor);
 
