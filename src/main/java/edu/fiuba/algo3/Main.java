@@ -12,9 +12,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Paths.get("src/main/java/edu/fiuba/algo3/asd.fxml").toUri().toURL());
-        primaryStage.setTitle("Hello World");
+        Parent root = FXMLLoader.load(Paths.get("src/main/java/edu/fiuba/algo3/vista/PantallaInicio.fxml").toUri().toURL());
+        primaryStage.setTitle("TEG");
+
         primaryStage.setScene(new Scene(root, 300, 275));
+
         primaryStage.show();
     }
 

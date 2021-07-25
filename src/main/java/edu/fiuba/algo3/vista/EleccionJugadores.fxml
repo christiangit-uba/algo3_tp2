@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controlador.PantallaInicioControlador">
+   <children>
+      <ImageView fx:id="FondoInicio" fitHeight="410.0" fitWidth="608.0" layoutX="98.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../docs/Cod2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="LogoTEG" fitHeight="150.0" fitWidth="200.0" layoutX="74.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../docs/TituloPantallaInicioTEG.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="CantidadJugadores" layoutX="227.0" layoutY="201.0" />
+      <Button fx:id="Elegir" layoutX="275.0" layoutY="256.0" mnemonicParsing="false" onAction="#ElegirCantidad" text="Elegir" />
+   </children>
+</AnchorPane>

@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.fiuba.algo3.controlador.PantallaPrincipalControlador"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<Pane prefHeight="607.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controlador.PantallaInicioControlador">
+   <children>
+      <ImageView fx:id="FondoInicio" fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../docs/WhatsApp_Image_2021-07-25_at_11.34.26_AM.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="LogoTEG" fitHeight="150.0" fitWidth="200.0" layoutX="96.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../docs/TituloPantallaInicioTEG.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="botonEmpezar" layoutX="488.0" layoutY="348.0" mnemonicParsing="false" onAction="#empezarJuego" text="Empezar partida" />
+      <Button fx:id="botonSalir" layoutX="521.0" layoutY="483.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
+   </children>
+</Pane>
