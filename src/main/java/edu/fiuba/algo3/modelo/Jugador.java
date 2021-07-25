@@ -28,7 +28,6 @@ public class Jugador {
         return tablero.cantidadEjercitosAColocar(color);
     }
 
-
     public boolean colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais){
 
         if(ejercitosAColocar > ejercitosTope || !unPais.mismoColor(color)) {
@@ -55,32 +54,54 @@ public class Jugador {
         origen.moverEjercitoA(destino, cantidadEjercitos);
     }
 
-
     public void agregarTarjeta(Tarjeta unaTarjeta) {
 
         tarjetas.add(unaTarjeta);
     }
 
-    public int canjear(){
+    //Canjes
+    public ArrayList<Tarjeta> mostrarTarjetas(){
+        /*
+        muestra las tarjetas del jugador con javafx.
+        cada tarjeta elegida se acumula en un array hasta llegar a 3
+        y lo devuelve.
+         */
+
+        ArrayList<Tarjeta> aux = new ArrayList<>();
+        //elije las primeras 3 tarjetas
+        aux.add(tarjetas.get(0));
+        aux.add(tarjetas.get(1));
+        aux.add(tarjetas.get(2));
+        return aux; //solo para pruebas unitarias de turno colocacion.
+    }
+
+    //seguro existe en el array.
+    public Tarjeta elegirTarjeta(Tarjeta tarjetaJugador){
+
+        int indice = tarjetas.indexOf(tarjetaJugador);
+        return tarjetas.get(indice);
+    }
+
+    private int canjear(){
            return canjes.cantidadACanjear();
     }
 
+    //recibe un array con Sòlo 3 tarjetas seleccionadas, que posee el jugador.
+    public int validarCanjes(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo) {
 
-    public boolean validarCanjes(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo) {
-
-        if(comprobarValides(tarjetasJugador)){
+        if(comprobarValidez(tarjetasJugador)){
             for(Tarjeta tarjetaJugador: tarjetasJugador) {
                 mazo.vuelveAlTarjetero(tarjetaJugador);
                 tarjetas.remove(tarjetaJugador);
             }
-            canjes.sumarCanje();
-            return true;
+
+            return canjear();
         }
-        else
-            return false;
+        return 0;
     }
 
-    public boolean comprobarValides(ArrayList<Tarjeta> tarjetasSelecionadas){
+    //siempre recibe un array sólo de 3 tarjetas.
+    public boolean comprobarValidez(ArrayList<Tarjeta> tarjetasSelecionadas){
 
         Tarjeta tarjetaUno = tarjetasSelecionadas.get(0);
         Tarjeta tarjetaDos = tarjetasSelecionadas.get(1);

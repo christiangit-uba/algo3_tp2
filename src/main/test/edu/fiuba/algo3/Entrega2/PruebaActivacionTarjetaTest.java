@@ -31,7 +31,6 @@ public class PruebaActivacionTarjetaTest {
         jugadores.add(jugador1);
         jugadores.add(jugador2);
 
-
         Pais Argentina = tablero.obtenerPais("Argentina");
         Pais Etiopia = tablero.obtenerPais("Etiopia");
         Pais chile = tablero.obtenerPais("Chile");
@@ -57,6 +56,7 @@ public class PruebaActivacionTarjetaTest {
         Francia.agregarColor(verde);
 
         TurnoDeColocacion turno = new TurnoDeColocacion(tablero,tarjetero);
+
         turno.turnoDe(jugador1);
         turno.calcularTope();
 
@@ -70,13 +70,14 @@ public class PruebaActivacionTarjetaTest {
         assertEquals(Etiopia.cantidadEjercitos(),3);
         assertFalse(turno.activarTarjeta(tarjetaArgentina));
 
-        //Usuario selecciona para canjear sus tres cartas que son de simbolo globo
+        //Usuario selecciona para canjear sus tres cartas que son de simbolo globo.
+        /*
         ArrayList<Tarjeta> tarjetasSeleccionadas = new ArrayList<>();
         tarjetasSeleccionadas.add(tarjetaArgentina);
         tarjetasSeleccionadas.add(tarjetaChile);
         tarjetasSeleccionadas.add(tarjetaEtiopia);
-
-        turno.canjearTarjetas(tarjetasSeleccionadas);
+        */
+        turno.canjearTarjetas();
 
         //tope equivale 4 ejercitos por el primer canjes mas 3 ejercitos por la cantidad de paises
         assertEquals(turno.getTope(),7);

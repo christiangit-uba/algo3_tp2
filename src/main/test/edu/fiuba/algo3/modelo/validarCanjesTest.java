@@ -9,13 +9,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class validarCanjesTest {
 
+    private Tarjetero tarjetero = new Tarjetero();
+    private Color color = new Color("Rojo");
+    private Jugador jugador = new Jugador(color);
+    private Simbolo simboloGlobo = new Simbolo("Globo");
+    private Simbolo simbolocanon = new Simbolo("Cañon");
+    private Simbolo simboloBarco = new Simbolo("Barco");
+
+    private ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+    public validarCanjesTest() throws FileNotFoundException {
+    }
 
     @Test
-    public void segundaFormaDeValidar1() throws FileNotFoundException {
-        Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
-        Simbolo simboloGlobo = new Simbolo("Globo");
+    public void cajear_3_TarjetasIgualesDeuelve_4_Ejercitos()  {
 
         Tarjeta tarjetaUno = new Tarjeta(new Pais("Java"),simboloGlobo);
         Tarjeta tarjetaDos = new Tarjeta(new Pais("Etiopia"),simboloGlobo);
@@ -25,25 +31,16 @@ public class validarCanjesTest {
         jugador.agregarTarjeta(tarjetaDos);
         jugador.agregarTarjeta(tarjetaTres);
 
-        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
         tarjetas.add(tarjetaUno);
         tarjetas.add(tarjetaDos);
         tarjetas.add(tarjetaTres);
 
-
-        assertTrue(jugador.validarCanjes(tarjetas,tarjetero) );
-        assertEquals(tarjetero.size(),3);
-
+        assertEquals(4, jugador.validarCanjes(tarjetas,tarjetero) );
+        assertEquals(3, tarjetero.size());
     }
 
     @Test
-    public void segundaFormaDeValidar2() throws FileNotFoundException {
-        Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
-        Simbolo simboloGlobo = new Simbolo("Globo");
-        Simbolo simbolocanon = new Simbolo("Cañon");
-        Simbolo simboloBarco = new Simbolo("Barco");
+    public void canjear_3_TarjetasDistintasDevuelve_4_Ejercitos() {
 
         Tarjeta tarjetaUno = new Tarjeta(new Pais("Java"),simboloGlobo);
         Tarjeta tarjetaDos = new Tarjeta(new Pais("Etiopia"),simbolocanon);
@@ -53,25 +50,17 @@ public class validarCanjesTest {
         jugador.agregarTarjeta(tarjetaDos);
         jugador.agregarTarjeta(tarjetaTres);
 
-        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
         tarjetas.add(tarjetaUno);
         tarjetas.add(tarjetaDos);
         tarjetas.add(tarjetaTres);
 
-
-        assertTrue(jugador.validarCanjes(tarjetas,tarjetero) );
-        assertEquals(tarjetero.size(),3);
+        assertEquals(4, jugador.validarCanjes(tarjetas,tarjetero) );
+        assertEquals(3, tarjetero.size());
 
     }
 
     @Test
-    public void segundaFormaDeValidar3() throws FileNotFoundException {
-        Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
-        Simbolo simboloGlobo = new Simbolo("Globo");
-        Simbolo simbolocanon = new Simbolo("Cañon");
-
+    public void canjear_2_TarjetasIgualesY_1_DistintaDevuelve_0_Ejercitos(){
 
         Tarjeta tarjetaUno = new Tarjeta(new Pais("Java"),simboloGlobo);
         Tarjeta tarjetaDos = new Tarjeta(new Pais("Etiopia"),simbolocanon);
@@ -81,12 +70,11 @@ public class validarCanjesTest {
         jugador.agregarTarjeta(tarjetaDos);
         jugador.agregarTarjeta(tarjetaTres);
 
-        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
         tarjetas.add(tarjetaUno);
         tarjetas.add(tarjetaDos);
         tarjetas.add(tarjetaTres);
 
-        assertFalse(jugador.validarCanjes(tarjetas,tarjetero) );
+        assertEquals(0, jugador.validarCanjes(tarjetas,tarjetero) );
         assertEquals(tarjetero.size(),0);
     }
 

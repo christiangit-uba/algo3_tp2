@@ -24,7 +24,7 @@ public class Tarjetero {
 
     public int size(){
         return tarjetas.size();
-    }
+    } //solo para pruebas.
 
     public void agregarTarjeta(Tarjeta tarjeta) {
         tarjetas.add(tarjeta);

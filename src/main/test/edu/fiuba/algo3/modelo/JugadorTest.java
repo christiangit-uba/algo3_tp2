@@ -60,7 +60,6 @@ public class JugadorTest {
     }
 
     //Inicializacion
-
     @Test
     public void unPaisQueSeAsignaAUnJugadorAumentaSuEjercitoEn_1_(){
         jugador1 = new Jugador(colorBlanco);
@@ -139,4 +138,166 @@ public class JugadorTest {
         tablero.asignarPaises(jugadores);
         assertEquals(4, jugador6.cantidadEjercitosAColocar(tablero));
     }
+
+    //canjes
+    @Test
+    public void elJugadorPuedeElegir_3_TarjetasDeLasQuePosee(){
+
+        jugador1 = new Jugador(colorBlanco);
+        Simbolo simbolo = new Simbolo("Globo");
+        ArrayList<Tarjeta> elegidas = new ArrayList<>();
+
+        Tarjeta tarjetaUno = new Tarjeta(pais1,simbolo);
+        Tarjeta tarjetaDos = new Tarjeta(pais2,simbolo);
+        Tarjeta tarjetaTres = new Tarjeta(pais3,simbolo);
+
+        jugador1.agregarTarjeta(tarjetaUno);
+        jugador1.agregarTarjeta(tarjetaDos);
+        jugador1.agregarTarjeta(tarjetaTres);
+
+        elegidas.add(jugador1.elegirTarjeta(tarjetaUno));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaDos));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaTres));
+
+        assertEquals(3, elegidas.size());
+    }
+
+    @Test
+    public void elJugadoElije_3_TarjetasConElMismoSimboloYLasIntercambiaPor_4_Ejercitos() throws FileNotFoundException {
+
+        Tarjetero mazo = new Tarjetero();
+        jugador1 = new Jugador(colorBlanco);
+        Simbolo simbolo = new Simbolo("Globo");
+        ArrayList<Tarjeta> elegidas = new ArrayList<>();
+        int ejercitos = 0;
+
+        Tarjeta tarjetaUno = new Tarjeta(pais1,simbolo);
+        Tarjeta tarjetaDos = new Tarjeta(pais2,simbolo);
+        Tarjeta tarjetaTres = new Tarjeta(pais3,simbolo);
+
+        jugador1.agregarTarjeta(tarjetaUno);
+        jugador1.agregarTarjeta(tarjetaDos);
+        jugador1.agregarTarjeta(tarjetaTres);
+
+        //el jugador elije 3 tarjetas de las mostradas.
+        elegidas.add(jugador1.elegirTarjeta(tarjetaUno));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaDos));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaTres));
+
+        assertEquals(3, elegidas.size());
+
+        //las canjea y recibe 4 ejercitos.
+        ejercitos = jugador1.validarCanjes(elegidas, mazo);
+
+        assertEquals(4, ejercitos);
+        assertEquals(3, mazo.size());
+    }
+
+    @Test
+    public void elJugadoElijeUnTotalDe_6_TarjetasConElMismoSimboloYLasIntercambiaPor_11_Ejercitos() throws FileNotFoundException {
+
+        Tarjetero mazo = new Tarjetero();
+        jugador1 = new Jugador(colorBlanco);
+        Simbolo simbolo = new Simbolo("Globo");
+        ArrayList<Tarjeta> elegidas = new ArrayList<>();
+        int ejercitos = 0;
+
+        Tarjeta tarjetaUno = new Tarjeta(pais1,simbolo);
+        Tarjeta tarjetaDos = new Tarjeta(pais2,simbolo);
+        Tarjeta tarjetaTres = new Tarjeta(pais3,simbolo);
+        Tarjeta tarjetaCuatro = new Tarjeta(pais4,simbolo);
+        Tarjeta tarjetaCinco = new Tarjeta(pais1,simbolo);
+        Tarjeta tarjetaSeis = new Tarjeta(pais2,simbolo);
+
+        jugador1.agregarTarjeta(tarjetaUno);
+        jugador1.agregarTarjeta(tarjetaDos);
+        jugador1.agregarTarjeta(tarjetaTres);
+        jugador1.agregarTarjeta(tarjetaCuatro);
+        jugador1.agregarTarjeta(tarjetaCinco);
+        jugador1.agregarTarjeta(tarjetaSeis);
+
+        //para el primer canje.
+        elegidas.add(jugador1.elegirTarjeta(tarjetaUno));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaDos));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaTres));
+        assertEquals(3, elegidas.size());
+
+        //las canjea y recibe 4 ejercitos.
+        ejercitos += jugador1.validarCanjes(elegidas, mazo);
+
+        assertEquals(4, ejercitos);
+        assertEquals(3, mazo.size());
+        assertEquals(3, jugador1.cantidadTarjetas());
+
+        elegidas.clear();
+
+        //para el segundo canje.
+        elegidas.add(jugador1.elegirTarjeta(tarjetaCuatro));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaCinco));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaSeis));
+        assertEquals(3, elegidas.size());
+
+        //las canjea y recibe 7 ejercitos mas.
+        ejercitos += jugador1.validarCanjes(elegidas, mazo);
+
+        assertEquals(11, ejercitos);
+        assertEquals(6, mazo.size());
+        assertEquals(0, jugador1.cantidadTarjetas());
+    }
+
+    @Test
+    public void elJugadoElijeUnTotalDe_6_Tarjetas_3_ConElMismoSimboloY_3_ConDistintoSimbolo_LasIntercambiaPor_11_Ejercitos() throws FileNotFoundException {
+
+        Tarjetero mazo = new Tarjetero();
+        jugador1 = new Jugador(colorBlanco);
+        Simbolo simbolo = new Simbolo("Globo");
+        Simbolo simbolo1 = new Simbolo("Barco");
+        Simbolo simbolo2 = new Simbolo("cañon");
+
+        ArrayList<Tarjeta> elegidas = new ArrayList<>();
+        int ejercitos = 0;
+
+        Tarjeta tarjetaUno = new Tarjeta(pais1,simbolo);
+        Tarjeta tarjetaDos = new Tarjeta(pais2,simbolo);
+        Tarjeta tarjetaTres = new Tarjeta(pais3,simbolo);
+        Tarjeta tarjetaCuatro = new Tarjeta(pais4,simbolo);
+        Tarjeta tarjetaCinco = new Tarjeta(pais1,simbolo1);
+        Tarjeta tarjetaSeis = new Tarjeta(pais2,simbolo2);
+
+        jugador1.agregarTarjeta(tarjetaUno);
+        jugador1.agregarTarjeta(tarjetaDos);
+        jugador1.agregarTarjeta(tarjetaTres);
+        jugador1.agregarTarjeta(tarjetaCuatro);
+        jugador1.agregarTarjeta(tarjetaCinco);
+        jugador1.agregarTarjeta(tarjetaSeis);
+
+        //para el primer canje.
+        elegidas.add(jugador1.elegirTarjeta(tarjetaUno));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaDos));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaTres));
+        assertEquals(3, elegidas.size());
+
+        //las canjea las iguales y recibe 4 ejercitos.
+        ejercitos += jugador1.validarCanjes(elegidas, mazo);
+
+        assertEquals(4, ejercitos);
+        assertEquals(3, mazo.size());
+        assertEquals(3, jugador1.cantidadTarjetas());
+
+        elegidas.clear();
+
+        //para el segundo canje.
+        elegidas.add(jugador1.elegirTarjeta(tarjetaCuatro));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaCinco));
+        elegidas.add(jugador1.elegirTarjeta(tarjetaSeis));
+        assertEquals(3, elegidas.size());
+
+        //las canjea las distintas y recibe 7 ejercitos mas.
+        ejercitos += jugador1.validarCanjes(elegidas, mazo);
+
+        assertEquals(11, ejercitos);
+        assertEquals(6, mazo.size());
+        assertEquals(0, jugador1.cantidadTarjetas());
+    }
+
 }
