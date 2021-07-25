@@ -94,7 +94,7 @@ public class Jugador {
                 mazo.vuelveAlTarjetero(tarjetaJugador);
                 tarjetas.remove(tarjetaJugador);
             }
-
+            canjes.sumarCanje();
             return canjear();
         }
         return 0;

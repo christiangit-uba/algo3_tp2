@@ -13,7 +13,7 @@ public class Canje {
     }
 
     public int cantidadACanjear(){
-        this.sumarCanje();
+        if(cantidadDeCanjes == 0) return cantidadDeCanjes;
         if(cantidadDeCanjes < 3)
           return CANJEMINIMO + 3*(cantidadDeCanjes-1);
      return  (cantidadDeCanjes-1)*5;

@@ -13,65 +13,70 @@ public class CanjesTest {
     private Canje canje = new Canje();
 
     @Test
-    public void siUnJugadorNoHaRealizadoNingunCanjeYRealizaUnoEntoncesObtiene4ejercitos(){
+    public void siUnJugadorNoHaRealizadoNingunCanjeYRealizaUnoEntoncesObtiene0ejercitos(){
+
+        assertEquals(canje.cantidadACanjear(),0);
+    }
+    @Test
+    public void siUnJugadorHaRealizadoUnCanjeYRealizaUnoEntoncesObtiene4ejercitos(){
+
+        canje.sumarCanje();
 
         assertEquals(canje.cantidadACanjear(),4);
     }
     @Test
-    public void siUnJugadorHaRealizadoUnCanjeYRealizaUnoEntoncesObtiene7ejercitos(){
+    public void siUnJugadorHaRealizadoDosCanjeYRealizaUnoEntoncesObtiene7ejercitos(){
 
+        canje.sumarCanje();
         canje.sumarCanje();
 
         assertEquals(canje.cantidadACanjear(),7);
     }
     @Test
-    public void siUnJugadorHaRealizadoDosCanjeYRealizaUnoEntoncesObtiene10ejercitos(){
+    public void siUnJugadorHaRealizadoTresCanjeYRealizaUnoEntoncesObtiene10ejercitos() {
 
         canje.sumarCanje();
         canje.sumarCanje();
+        canje.sumarCanje();
 
-        assertEquals(canje.cantidadACanjear(),10);
+        assertEquals(canje.cantidadACanjear(), 10);
     }
     @Test
-    public void siUnJugadorHaRealizadoTresCanjeYRealizaUnoEntoncesObtiene15ejercitos() {
-
-        canje.sumarCanje();
-        canje.sumarCanje();
-        canje.sumarCanje();
-
-        assertEquals(canje.cantidadACanjear(), 15);
-    }
-    @Test
-    public void siUnJugadorHaRealizadoCuatroCanjeYRealizaUnoEntoncesObtiene20ejercitos(){
+    public void siUnJugadorHaRealizadoCuatroCanjeYRealizaUnoEntoncesObtiene15ejercitos(){
 
         canje.sumarCanje();
         canje.sumarCanje();
         canje.sumarCanje();
         canje.sumarCanje();
 
-        assertEquals(canje.cantidadACanjear(),20);
+        assertEquals(canje.cantidadACanjear(),15);
     }
 
     @Test
     public void siSeHacen_5_CanjesSucesivosSeObtieneUnTotalDe_56_Ejercitos(){
 
         //primero
+        canje.sumarCanje();
         int ejercitos = canje.cantidadACanjear();
         assertEquals(4, ejercitos);
 
         //segundo
+        canje.sumarCanje();
         ejercitos += canje.cantidadACanjear();
         assertEquals(11, ejercitos);
 
         //tercero
+        canje.sumarCanje();
         ejercitos += canje.cantidadACanjear();
         assertEquals(21, ejercitos);
 
         //cuarto
+        canje.sumarCanje();
         ejercitos += canje.cantidadACanjear();
         assertEquals(36, ejercitos);
 
         //quinto
+        canje.sumarCanje();
         ejercitos += canje.cantidadACanjear();
         assertEquals(56, ejercitos);
     }
