@@ -13,8 +13,8 @@ public class validarCanjesTest {
     @Test
     public void segundaFormaDeValidar1() throws FileNotFoundException {
         Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
+        ColorJugador colorJugador = new ColorJugador("Rojo");
+        Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
 
         Tarjeta tarjetaUno = new Tarjeta(new Pais("Java"),simboloGlobo);
@@ -39,8 +39,8 @@ public class validarCanjesTest {
     @Test
     public void segundaFormaDeValidar2() throws FileNotFoundException {
         Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
+        ColorJugador colorJugador = new ColorJugador("Rojo");
+        Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
         Simbolo simbolocanon = new Simbolo("Cañon");
         Simbolo simboloBarco = new Simbolo("Barco");
@@ -67,8 +67,8 @@ public class validarCanjesTest {
     @Test
     public void segundaFormaDeValidar3() throws FileNotFoundException {
         Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
+        ColorJugador colorJugador = new ColorJugador("Rojo");
+        Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
         Simbolo simbolocanon = new Simbolo("Cañon");
 

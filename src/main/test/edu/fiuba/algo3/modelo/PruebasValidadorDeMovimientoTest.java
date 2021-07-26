@@ -10,7 +10,7 @@ public class PruebasValidadorDeMovimientoTest {
 
     @Test
     public void unJugadorCompruebaSiElPaisVecinoEsAliadoEsteLoEsPorLoTantoLePasaUnEjercito() throws Exception {
-        Color rojo = new Color("rojo");
+        ColorJugador rojo = new ColorJugador("rojo");
         Jugador jugador1 = new Jugador(rojo);
 
         Pais Argentina = new Pais("Argentina");
@@ -31,8 +31,8 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void unJugadorCompruebaSiElPaisVecinoEsAliadoEsteNoLoEsPorLoTantoLanzaExeption() {
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
+        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador azul = new ColorJugador("azul");
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(azul);
 
@@ -53,7 +53,7 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void unPaisCon1EjercitoMueveUnEjercitoAUnPaisVecinoLanzaExepcion() {
-        Color rojo = new Color("rojo");
+        ColorJugador rojo = new ColorJugador("rojo");
         Jugador jugador1 = new Jugador(rojo);
 
         Pais Argentina = new Pais("Argentina");
@@ -71,7 +71,7 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void PasoUnEjercitoAOtroPaisEsteNoEsLimitrofeLanzoExepcion() {
-        Color rojo = new Color("rojo");
+        ColorJugador rojo = new ColorJugador("rojo");
         Jugador jugador1 = new Jugador(rojo);
 
         Pais Argentina = new Pais("Argentina");
@@ -86,8 +86,8 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void PaisLimitrofeNoEstaConquistadoLanzoExepcion() {
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
+        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador azul = new ColorJugador("azul");
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(azul);
 

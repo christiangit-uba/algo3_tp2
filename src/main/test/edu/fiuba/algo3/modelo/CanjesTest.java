@@ -55,8 +55,8 @@ public class CanjesTest {
         @Test
         public void unJugadorConCuatroTarjetasCanjeaTresAhoraTieneUna() throws FileNotFoundException {
             Tarjetero tarjetero = new Tarjetero();
-            Color color = new Color("Azul");
-            Jugador jugador = new Jugador(color);
+            ColorJugador colorJugador = new ColorJugador("Azul");
+            Jugador jugador = new Jugador(colorJugador);
             Simbolo simbolo = new Simbolo("Globo");
             Pais paisUno = new Pais("Peru");
             Pais paisDos = new Pais("Brazil");

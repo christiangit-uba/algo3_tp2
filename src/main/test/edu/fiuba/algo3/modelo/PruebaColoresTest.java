@@ -8,17 +8,17 @@ public class PruebaColoresTest {
 
     @Test
     public void DosColoresConElMismoNombreSonElMismoColor(){
-        Color unColor = new Color("Azul");
-        Color otroColor = new Color("Azul");
+        ColorJugador unColorJugador = new ColorJugador("Azul");
+        ColorJugador otroColorJugador = new ColorJugador("Azul");
 
-        assertTrue(unColor.mismoColor(otroColor));
+        assertTrue(unColorJugador.mismoColor(otroColorJugador));
     }
 
     @Test
     public void creoElColorAzulSuCodigoEsAzul(){
-        Color unColor = new Color("Azul");
+        ColorJugador unColorJugador = new ColorJugador("Azul");
 
-        assertEquals(unColor.color(),"Azul");
+        assertEquals(unColorJugador.color(),"Azul");
     }
 
 }

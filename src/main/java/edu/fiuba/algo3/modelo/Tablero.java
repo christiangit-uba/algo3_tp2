@@ -20,26 +20,26 @@ public class Tablero {
 
     }
 
-    public int cantidadEjercitosAColocar(Color color){
-        int cantidadPorPais =  cantidadDePaises(color);
-        int cantidadPorContinente = cantidadEjercitosPorContinente(color);
+    public int cantidadEjercitosAColocar(ColorJugador colorJugador){
+        int cantidadPorPais =  cantidadDePaises(colorJugador);
+        int cantidadPorContinente = cantidadEjercitosPorContinente(colorJugador);
         return cantidadPaisesAColocar(cantidadPorPais,cantidadPorContinente);
     }
 
-    public int cantidadEjercitosPorContinente(Color color){
+    public int cantidadEjercitosPorContinente(ColorJugador colorJugador){
         int continentesConquistados = 0;
         for(Continente continente: continentes){
-            if(continente.conquistado(color) != 0)
-                continentesConquistados = continentesConquistados + continente.conquistado(color);
+            if(continente.conquistado(colorJugador) != 0)
+                continentesConquistados = continentesConquistados + continente.conquistado(colorJugador);
         }
         return continentesConquistados;
     }
 
-    public int cantidadDePaises(Color color){
+    public int cantidadDePaises(ColorJugador colorJugador){
         int cantidadPaises = 0;
 
         for(Pais pais: paises){
-            if(pais.mismoColor(color))
+            if(pais.mismoColor(colorJugador))
                 cantidadPaises = cantidadPaises + 1;
         }
         return cantidadPaises;

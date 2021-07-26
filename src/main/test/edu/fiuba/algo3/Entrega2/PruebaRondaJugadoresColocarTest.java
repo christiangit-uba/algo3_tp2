@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class PruebaRondaJugadoresColocarTest {
     @Test
     public void PruebaActivacionTarjeta() throws FileNotFoundException {
-        Color rojo = new Color("rojo");
-        Color verde = new Color("verde");
-        Color azul = new Color("azul");
+        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador verde = new ColorJugador("verde");
+        ColorJugador azul = new ColorJugador("azul");
 
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(verde);

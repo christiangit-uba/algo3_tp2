@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 
-public class TarjeteroTest {
+/*public class TarjeteroTest {
     @Test
     public void agregoUnaTarjetaDelTarjeteroAUnJugadorPorLoTantoElTarjeteroTieneUnaTarjetaMenos() throws FileNotFoundException {
         Juego juego = new Juego();
@@ -41,3 +41,4 @@ public class TarjeteroTest {
     }
 
 }
+*/

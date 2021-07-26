@@ -8,53 +8,53 @@ public class PruebaContinenteTest {
 
     @Test
     public void creoUnContinenteQueDevuelve7EjercitosPorPaisesConMismoColor(){
-        Color color = new Color("Rojo");
+        ColorJugador colorJugador = new ColorJugador("Rojo");
         Continente continente = new Continente("asia",7);
         Pais paisUno = new Pais("china");
-        paisUno.agregarColor(color);
+        paisUno.agregarColor(colorJugador);
         continente.agregarPais(paisUno);
 
-        assertEquals(continente.conquistado(color),7);
+        assertEquals(continente.conquistado(colorJugador),7);
     }
 
     @Test
     public void creoUnContinenteQueDevuelve7EjercitosPorPaisesConMismoColorPeroLePasoColorDistinto(){
-        Color color = new Color("Rojo");
-        Color otroColor = new Color("Verde");
+        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador otroColorJugador = new ColorJugador("Verde");
         Continente continente = new Continente("asia",7);
         Pais paisUno = new Pais("china");
-        paisUno.agregarColor(color);
+        paisUno.agregarColor(colorJugador);
         continente.agregarPais(paisUno);
 
-        assertEquals(continente.conquistado(otroColor),0);
+        assertEquals(continente.conquistado(otroColorJugador),0);
     }
 
     @Test
     public void ElContinenteTieneDentroDosPaisesDeDistintosColoresPorLoTantoNoHayConquista(){
-        Color color = new Color("Rojo");
-        Color otroColor = new Color("Verde");
+        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador otroColorJugador = new ColorJugador("Verde");
         Continente continente = new Continente("asia",7);
         Pais paisUno = new Pais("china");
         Pais paisDos = new Pais("japon");
-        paisUno.agregarColor(color);
-        paisDos.agregarColor(otroColor);
+        paisUno.agregarColor(colorJugador);
+        paisDos.agregarColor(otroColorJugador);
         continente.agregarPais(paisUno);
         continente.agregarPais(paisDos);
 
-        assertEquals(continente.conquistado(otroColor),0);
+        assertEquals(continente.conquistado(otroColorJugador),0);
     }
 
     @Test
     public void ElContinenteTieneDentroDosPaisesConMismosColoresPorLoTantoHayConquista(){
-        Color color = new Color("Verde");
+        ColorJugador colorJugador = new ColorJugador("Verde");
         Continente continente = new Continente("asia",7);
         Pais paisUno = new Pais("china");
         Pais paisDos = new Pais("japon");
-        paisUno.agregarColor(color);
-        paisDos.agregarColor(color);
+        paisUno.agregarColor(colorJugador);
+        paisDos.agregarColor(colorJugador);
         continente.agregarPais(paisUno);
         continente.agregarPais(paisDos);
 
-        assertEquals(continente.conquistado(color),7);
+        assertEquals(continente.conquistado(colorJugador),7);
     }
 }

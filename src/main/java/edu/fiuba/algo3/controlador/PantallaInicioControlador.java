@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.controlador;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -27,16 +29,10 @@ public class PantallaInicioControlador {
     @FXML
     private ImageView LogoTEG;
 
-    @FXML
-    private TextField CantidadJugadores;
 
     @FXML
     private Button Elegir;
 
-    @FXML
-    void ElegirCantidad(ActionEvent event) {
-        CantidadJugadores.setText("Hola");
-    }
 
     @FXML
     private Button botonEmpezar;

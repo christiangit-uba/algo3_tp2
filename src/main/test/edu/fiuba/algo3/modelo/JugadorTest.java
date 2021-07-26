@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JugadorTest {
-    private Color colorBlanco = new Color("ffffff");
-    private Color colorNegro = new Color("000000");
-    private Color colorVerde = new Color("verde");
-    private Color colorRojo = new Color("rojo");
-    private Color colorAzul = new Color("azul");
-    private Color colorAmarillo = new Color("amarillo");
+    private ColorJugador colorJugadorBlanco = new ColorJugador("ffffff");
+    private ColorJugador colorJugadorNegro = new ColorJugador("000000");
+    private ColorJugador colorJugadorVerde = new ColorJugador("verde");
+    private ColorJugador colorJugadorRojo = new ColorJugador("rojo");
+    private ColorJugador colorJugadorAzul = new ColorJugador("azul");
+    private ColorJugador colorJugadorAmarillo = new ColorJugador("amarillo");
 
     private Jugador jugador1;
     private Jugador jugador2;
@@ -40,37 +40,37 @@ public class JugadorTest {
 
     @Test
     public void unPaisAsignadoAUnJugadorTomaElColorDelJugador() {
-        jugador1 = new Jugador(colorBlanco);
+        jugador1 = new Jugador(colorJugadorBlanco);
         jugador1.asignarPais(pais1);
-        assert(pais1.mismoColor(colorBlanco));
+        assert(pais1.mismoColor(colorJugadorBlanco));
     }
 
     @Test
     public void sePuedenAsignarVariosPaisesAUnJugador() {
-        jugador1 = new Jugador(colorBlanco);
+        jugador1 = new Jugador(colorJugadorBlanco);
         jugador1.asignarPais(pais1);
         jugador1.asignarPais(pais2);
         jugador1.asignarPais(pais3);
         jugador1.asignarPais(pais4);
 
-        assert(pais1.mismoColor(colorBlanco));
-        assert(pais2.mismoColor(colorBlanco));
-        assert(pais3.mismoColor(colorBlanco));
-        assert(pais4.mismoColor(colorBlanco));
+        assert(pais1.mismoColor(colorJugadorBlanco));
+        assert(pais2.mismoColor(colorJugadorBlanco));
+        assert(pais3.mismoColor(colorJugadorBlanco));
+        assert(pais4.mismoColor(colorJugadorBlanco));
     }
 
     //Inicializacion
 
     @Test
     public void unPaisQueSeAsignaAUnJugadorAumentaSuEjercitoEn_1_(){
-        jugador1 = new Jugador(colorBlanco);
+        jugador1 = new Jugador(colorJugadorBlanco);
         jugador1.asignarPais(pais1);
         assertEquals(1, pais1.cantidadEjercitos());
     }
 
     @Test
     public void unJugadorPuedeColocarLos_5_EjercitosInicialesEnUnPais() throws Exception {
-        jugador1 = new Jugador(colorBlanco);
+        jugador1 = new Jugador(colorJugadorBlanco);
         jugador1.asignarPais(pais1);
         assertEquals(1, pais1.cantidadEjercitos());
 
@@ -80,7 +80,7 @@ public class JugadorTest {
 
     @Test
     public void unJugador_No_PuedeColocarEnUnPaisMasDeLosEjercitosPermitidos(){
-        jugador1 = new Jugador(colorBlanco);
+        jugador1 = new Jugador(colorJugadorBlanco);
         jugador1.asignarPais(pais1);
         assertEquals(1, pais1.cantidadEjercitos());
 
@@ -95,39 +95,39 @@ public class JugadorTest {
 
     @Test
     public void losPaisesEntregadosPorElTableroObtienenElColorDelJugador(){
-        jugador1 = new Jugador(colorBlanco);
+        jugador1 = new Jugador(colorJugadorBlanco);
         pais1 = tablero.obtenerPais("Argentina");
         assert(pais1.mismoNombre("Argentina"));
 
         jugador1.asignarPais(pais1);
-        assert(pais1.mismoColor(colorBlanco));
+        assert(pais1.mismoColor(colorJugadorBlanco));
     }
 
     @Test
     public void sePuedenRepartirLos_50_PaisesDelTablero() throws FileNotFoundException{ //copiado de pruebasTablero
 
         Tablero tablero = new Tablero(new Tarjetero());
-        Color colorJugadorUno = new Color("verde");
-        Color colorJugadorDos = new Color("rojo");
-        Jugador jugadorUno = new Jugador(colorJugadorUno);
-        Jugador jugadorDos = new Jugador(colorJugadorDos);
+        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde");
+        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo");
+        Jugador jugadorUno = new Jugador(colorJugadorJugadorUno);
+        Jugador jugadorDos = new Jugador(colorJugadorJugadorDos);
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(jugadorUno);
         jugadores.add(jugadorDos);
         tablero.asignarPaises(jugadores);
 
-        assertEquals(tablero.cantidadDePaises(colorJugadorUno), 25);
-        assertEquals(tablero.cantidadDePaises(colorJugadorDos), 25); //agregado
+        assertEquals(tablero.cantidadDePaises(colorJugadorJugadorUno), 25);
+        assertEquals(tablero.cantidadDePaises(colorJugadorJugadorDos), 25); //agregado
     }
 
     @Test
     public void con_6_jugadoresLaCantidadMinimaDeEjercitosQuePuedoColocarEnLaPrimeraRondaEs_4_(){
-        jugador1 = new Jugador(colorBlanco);
-        jugador2 = new Jugador(colorNegro);
-        jugador3 = new Jugador(colorRojo);
-        jugador4 = new Jugador(colorAmarillo);
-        jugador5 = new Jugador(colorAzul);
-        jugador6 = new Jugador(colorVerde);
+        jugador1 = new Jugador(colorJugadorBlanco);
+        jugador2 = new Jugador(colorJugadorNegro);
+        jugador3 = new Jugador(colorJugadorRojo);
+        jugador4 = new Jugador(colorJugadorAmarillo);
+        jugador5 = new Jugador(colorJugadorAzul);
+        jugador6 = new Jugador(colorJugadorVerde);
 
         jugadores.add(jugador1);
         jugadores.add(jugador2);

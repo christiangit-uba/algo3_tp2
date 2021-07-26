@@ -3,35 +3,35 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 public class Jugador {
-    private final Color color;
+    private final ColorJugador colorJugador;
     private Canje canjes;
     private ArrayList<Tarjeta> tarjetas;
 
-    public Jugador(Color color) {
+    public Jugador(ColorJugador colorJugador) {
         tarjetas = new ArrayList<>();
-        this.color = color;
+        this.colorJugador = colorJugador;
         canjes = new Canje();
     }
 
     public void asignarPais(Pais unPais) {
-        unPais.agregarColor(color);
+        unPais.agregarColor(colorJugador);
         unPais.agregarEjercito();
     }
 
     public boolean activarTarjetaPais(Tarjeta unaTarjeta){
 
-        return unaTarjeta.activarTarjeta(color);
+        return unaTarjeta.activarTarjeta(colorJugador);
 
     }
 
     public int cantidadEjercitosAColocar(Tablero tablero) {
-        return tablero.cantidadEjercitosAColocar(color);
+        return tablero.cantidadEjercitosAColocar(colorJugador);
     }
 
 
     public boolean colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais){
 
-        if(ejercitosAColocar > ejercitosTope || !unPais.mismoColor(color)) {
+        if(ejercitosAColocar > ejercitosTope || !unPais.mismoColor(colorJugador)) {
             return false;
         }else {
             for (int i = 0; i < ejercitosAColocar; i++) {
@@ -42,16 +42,16 @@ public class Jugador {
     }
 
     public boolean realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar,ArrayList<Integer> valorDadoAtacante, ArrayList<Integer> valorDadoDefensor) throws Exception {
-        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, color);
+        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
 
         atacante.atacaA(defensor, cantidadEjercitosAUsar, valorDadoAtacante, valorDadoDefensor);
-        atacante.ocuparPais(defensor, color);
+        atacante.ocuparPais(defensor, colorJugador);
         return true;
     }
 
     public void realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {
 
-        CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, color);
+        CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, colorJugador);
         origen.moverEjercitoA(destino, cantidadEjercitos);
     }
 
@@ -101,4 +101,11 @@ public class Jugador {
         return tarjetas.size();
     }
 
+    public String color() {
+        return colorJugador.nombre();
+    }
+
+    public String colorCodigo() {
+        return colorJugador.codigo();
+    }
 }

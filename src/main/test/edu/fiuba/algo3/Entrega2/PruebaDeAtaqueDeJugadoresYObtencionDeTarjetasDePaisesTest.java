@@ -14,9 +14,9 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
     @Test
     public void PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaises() throws Exception {
         //---------------inicializacion jugadores, tablero y tarjetero-----------------------
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
-        Color negro = new Color("negro");
+        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador azul = new ColorJugador("azul");
+        ColorJugador negro = new ColorJugador("negro");
 
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugadorAuxiliar = new Jugador(azul);

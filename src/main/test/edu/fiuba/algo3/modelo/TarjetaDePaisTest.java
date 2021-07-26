@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class TarjetaDePaisTest {
     @Test
     public void unJugadorTieneUnaTarjetaDeUnPaisPropioPorLoTantoTieneDosEjercitosNuevos() throws FileNotFoundException {
-        Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
+        ColorJugador colorJugador = new ColorJugador("Rojo");
+        Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
 
         ArrayList<Jugador> jugadors = new ArrayList<>();
@@ -36,10 +36,10 @@ public class TarjetaDePaisTest {
 
     @Test
     public void unJugadorIntentaActivarUnaTarjetaDeUnPaisQueNoPoseeNoAsignaEjercitos() throws FileNotFoundException {
-        Color color = new Color("Rojo");
-        Color otroColor = new Color("Azul");
-        Jugador jugador = new Jugador(color);
-        Jugador otroJugador = new Jugador(otroColor);
+        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador otroColorJugador = new ColorJugador("Azul");
+        Jugador jugador = new Jugador(colorJugador);
+        Jugador otroJugador = new Jugador(otroColorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
 
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -58,7 +58,7 @@ public class TarjetaDePaisTest {
         tablero.asignarPaises(jugadores);
 
         //Le asigno el pais al jugador dos, asignandole el color de este
-        paisDeCarta.agregarColor(otroColor);
+        paisDeCarta.agregarColor(otroColorJugador);
 
         assertFalse(jugador.activarTarjetaPais(tarjeta));
         assertEquals(paisDeCarta.cantidadEjercitos(),1);
@@ -67,8 +67,8 @@ public class TarjetaDePaisTest {
 
     @Test
     public void unJugadorIntentaActivarDosVecesUnaTarjetaSoloAsignaDosEjercitos(){
-        Color color = new Color("Rojo");
-        Jugador jugador = new Jugador(color);
+        ColorJugador colorJugador = new ColorJugador("Rojo");
+        Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
         Pais unPais = new Pais("Brazil");
         Tarjeta tarjeta = new Tarjeta(unPais,simboloGlobo);

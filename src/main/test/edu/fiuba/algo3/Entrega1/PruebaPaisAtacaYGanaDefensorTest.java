@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PruebaPaisAtacaYGanaDefensorTest {
     @Test
     public void unPaisAtacaAunPaisLimitrofeEnemigoYGana(){
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
+        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador azul = new ColorJugador("azul");
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");

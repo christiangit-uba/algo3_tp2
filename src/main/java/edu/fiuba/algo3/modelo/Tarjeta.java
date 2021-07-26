@@ -1,8 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 public class Tarjeta{
 
     private Pais pais;
@@ -22,9 +19,9 @@ public class Tarjeta{
         activada = false;
     }
 
-    public boolean activarTarjeta(Color unColor){
+    public boolean activarTarjeta(ColorJugador unColorJugador){
 
-        if(!activada && pais.mismoColor(unColor)){
+        if(!activada && pais.mismoColor(unColorJugador)){
             activada = true;
             pais.agregarEjercito();
             pais.agregarEjercito();

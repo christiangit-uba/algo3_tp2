@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.Entrega1;
 
-import edu.fiuba.algo3.modelo.Color;
+import edu.fiuba.algo3.modelo.ColorJugador;
 import edu.fiuba.algo3.modelo.Dado;
 import edu.fiuba.algo3.modelo.Pais;
 import org.junit.jupiter.api.Test;
@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PruebaPaisAtacaAUnPaisLimitrofeYPierdeTest {
     @Test
     public void unPaisAtacaAunPaisLimitrofeEnemigoYGana(){
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
+        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador azul = new ColorJugador("azul");
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
