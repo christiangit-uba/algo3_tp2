@@ -46,7 +46,7 @@ public class Jugador {
     }
 
     public boolean realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar,ArrayList<Integer> valorDadoAtacante, ArrayList<Integer> valorDadoDefensor) throws Exception {
-        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
+        //CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
 
         atacante.atacaA(defensor, cantidadEjercitosAUsar, valorDadoAtacante, valorDadoDefensor);
         atacante.ocuparPais(defensor, colorJugador);
@@ -124,5 +124,9 @@ public class Jugador {
 
     public String nombre() {
         return nombre;
+    }
+
+    public ColorJugador getColor() {
+        return colorJugador;
     }
 }

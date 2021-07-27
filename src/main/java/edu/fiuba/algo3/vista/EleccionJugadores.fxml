@@ -14,11 +14,6 @@
             <Image url="@../../../../../../../docs/Cod2.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="LogoTEG" fitHeight="150.0" fitWidth="200.0" layoutX="74.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../docs/TituloPantallaInicioTEG.jpg" />
-         </image>
-      </ImageView>
       <Button fx:id="Elegir" layoutX="275.0" layoutY="256.0" mnemonicParsing="false" onAction="#ElegirCantidad" text="Elegir" />
       <ComboBox fx:id="CantidadDeJugadores" layoutX="225.0" layoutY="157.0" onAction="#Cantidad" prefWidth="150.0" />
       <Label fx:id="Error" layoutX="286.0" layoutY="195.0" />

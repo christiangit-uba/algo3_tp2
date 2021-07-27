@@ -102,4 +102,23 @@ public class Juego {
     public String colorJugadorEnTurno() {
         return ronda.jugadorEnRonda().color();
     }
+
+    public boolean ataqueSimulado(String origen, String destino, int cantidad) throws Exception {
+        Pais paisAtacante =  tablero.obtenerPais(origen);
+        Pais paisDefensor =  tablero.obtenerPais(destino);
+        paisAtacante.agregarColor(jugadores.get(0).getColor());
+        paisDefensor.agregarColor(jugadores.get(1).getColor());
+        paisAtacante.agregarEjercito();
+        paisAtacante.agregarEjercito();
+        paisDefensor.agregarEjercito();
+        ArrayList<Integer> atacante= new ArrayList<>();
+        ArrayList<Integer> defensor= new ArrayList<>();
+        atacante.add(5);
+        defensor.add(1);
+        return jugadores.get(0).realizarAtaque(paisAtacante,paisDefensor,1,atacante,defensor);
+    }
+
+    public int cantidadDeEjercito(String nombre) {
+        return tablero.obtenerPais(nombre).cantidadEjercitos();
+    }
 }
