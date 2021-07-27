@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -86,8 +87,8 @@ public class CanjesTest {
     public void unJugadorConCuatroTarjetasCanjeaTresAhoraTieneUna() throws FileNotFoundException {
 
         Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("Azul");
-        Jugador jugador = new Jugador(color);
+        ColorJugador color = new ColorJugador("Azul","0007");
+        Jugador jugador = new Jugador("Jugador1",color);
         Simbolo simbolo = new Simbolo("Globo");
 
         Pais paisUno = new Pais("Peru");
@@ -116,7 +117,7 @@ public class CanjesTest {
         tarjetasCanje.add(tarjetaTres);
 
         //Canjea las primeras 3 tarjetas
-        assertTrue( jugador.validarCanjes(tarjetasCanje, tarjetero) != 0);
+        assertTrue( jugador.validarCanjes(tarjetasCanje, tarjetero));
         //Le quedo 1 tarjeta
         assertEquals(jugador.cantidadTarjetas(),1);
         //Puede activar la tarjeta que deberia quedarle

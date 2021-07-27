@@ -39,8 +39,8 @@ public class Pais {
         return (ejercito.mismoColor(otroPais));
     }
 
-    public boolean mismoColor(Color color){
-        return (ejercito.mismoColor(color));
+    public boolean mismoColor(ColorJugador colorJugador){
+        return (ejercito.mismoColor(colorJugador));
     }
 
     public void perdioEjercito(){
@@ -55,8 +55,8 @@ public class Pais {
         return nombre.equals(pais);
     }
 
-    public void agregarColor(Color color) {
-        ejercito.agregarColor(color);
+    public void agregarColor(ColorJugador colorJugador) {
+        ejercito.agregarColor(colorJugador);
     }
 
     public boolean mismoPais(Pais unPais){
@@ -74,10 +74,10 @@ public class Pais {
         return ejercito.puedeAtacar(cantidadEjecitosAUsar);
     }
 
-    public void ocuparPais(Pais unPais, Color color){
+    public void ocuparPais(Pais unPais, ColorJugador colorJugador){
         if(unPais.esOcupable()){
             ejercito.sacarEjercito();
-            unPais.agregarColor(color);
+            unPais.agregarColor(colorJugador);
             unPais.agregarEjercito();
         }
     }

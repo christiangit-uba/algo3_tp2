@@ -3,105 +3,89 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 public class Jugador {
-    private final Color color;
+    private final ColorJugador colorJugador;
+    private final String nombre;
     private Canje canjes;
     private ArrayList<Tarjeta> tarjetas;
+    private int tope;
 
-    public Jugador(Color color) {
+    public Jugador(String nombre, ColorJugador colorJugador) {
+        this.nombre = nombre;
         tarjetas = new ArrayList<>();
-        this.color = color;
+        this.colorJugador = colorJugador;
         canjes = new Canje();
     }
 
     public void asignarPais(Pais unPais) {
-        unPais.agregarColor(color);
+        unPais.agregarColor(colorJugador);
         unPais.agregarEjercito();
     }
 
     public boolean activarTarjetaPais(Tarjeta unaTarjeta){
 
-        return unaTarjeta.activarTarjeta(color);
+        return unaTarjeta.activarTarjeta(colorJugador);
 
     }
 
     public int cantidadEjercitosAColocar(Tablero tablero) {
-        return tablero.cantidadEjercitosAColocar(color);
+        return tablero.cantidadEjercitosAColocar(colorJugador);
     }
 
-    public boolean colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais){
 
-        if(ejercitosAColocar > ejercitosTope || !unPais.mismoColor(color)) {
+    public boolean colocarEjercitos(int ejercitosAColocar, Pais unPais){
+
+        if(ejercitosAColocar > tope || !unPais.mismoColor(colorJugador)) {
             return false;
         }else {
             for (int i = 0; i < ejercitosAColocar; i++) {
                 unPais.agregarEjercito();
             }
+            tope = tope - ejercitosAColocar;
             return true;
         }
     }
 
     public boolean realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar,ArrayList<Integer> valorDadoAtacante, ArrayList<Integer> valorDadoDefensor) throws Exception {
-        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, color);
+        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
 
         atacante.atacaA(defensor, cantidadEjercitosAUsar, valorDadoAtacante, valorDadoDefensor);
-        atacante.ocuparPais(defensor, color);
+        atacante.ocuparPais(defensor, colorJugador);
         return true;
     }
 
-    public void realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {
+    public boolean realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {
 
-        CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, color);
+        CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, colorJugador);
         origen.moverEjercitoA(destino, cantidadEjercitos);
+        return true;
     }
+
 
     public void agregarTarjeta(Tarjeta unaTarjeta) {
 
         tarjetas.add(unaTarjeta);
     }
 
-    //Canjes
-    public ArrayList<Tarjeta> mostrarTarjetas(){
-        /*
-        muestra las tarjetas del jugador con javafx.
-        cada tarjeta elegida se acumula en un array hasta llegar a 3
-        y lo devuelve.
-         */
-
-        ArrayList<Tarjeta> aux = new ArrayList<>();
-        //elije las primeras 3 tarjetas
-        aux.add(tarjetas.get(0));
-        aux.add(tarjetas.get(1));
-        aux.add(tarjetas.get(2));
-        return aux; //solo para pruebas unitarias de turno colocacion.
+    public void canjear(){
+        tope = tope + canjes.cantidadACanjear();
     }
 
-    //seguro existe en el array.
-    public Tarjeta elegirTarjeta(Tarjeta tarjetaJugador){
 
-        int indice = tarjetas.indexOf(tarjetaJugador);
-        return tarjetas.get(indice);
-    }
+    public boolean validarCanjes(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo) {
 
-    private int canjear(){
-           return canjes.cantidadACanjear();
-    }
-
-    //recibe un array con Sòlo 3 tarjetas seleccionadas, que posee el jugador.
-    public int validarCanjes(ArrayList<Tarjeta> tarjetasJugador,Tarjetero mazo) {
-
-        if(comprobarValidez(tarjetasJugador)){
+        if(comprobarValides(tarjetasJugador)){
             for(Tarjeta tarjetaJugador: tarjetasJugador) {
                 mazo.vuelveAlTarjetero(tarjetaJugador);
                 tarjetas.remove(tarjetaJugador);
             }
             canjes.sumarCanje();
-            return canjear();
+            return true;
         }
-        return 0;
+        else
+            return false;
     }
 
-    //siempre recibe un array sólo de 3 tarjetas.
-    public boolean comprobarValidez(ArrayList<Tarjeta> tarjetasSelecionadas){
+    public boolean comprobarValides(ArrayList<Tarjeta> tarjetasSelecionadas){
 
         Tarjeta tarjetaUno = tarjetasSelecionadas.get(0);
         Tarjeta tarjetaDos = tarjetasSelecionadas.get(1);
@@ -115,11 +99,38 @@ public class Jugador {
     }
 
     private boolean distintosSimbolos(Tarjeta tarjetaUno,Tarjeta tarjetaDos,Tarjeta tarjetaTres){
-       return((!tarjetaUno.mismoSimbolo(tarjetaDos)) && (!tarjetaUno.mismoSimbolo(tarjetaTres)) && (!tarjetaDos.mismoSimbolo(tarjetaTres)));
+        return((!tarjetaUno.mismoSimbolo(tarjetaDos)) && (!tarjetaUno.mismoSimbolo(tarjetaTres)) && (!tarjetaDos.mismoSimbolo(tarjetaTres)));
     }
 
     public int cantidadTarjetas(){
         return tarjetas.size();
     }
 
+    public String color() {
+        return colorJugador.nombre();
+    }
+
+    public String colorCodigo() {
+        return colorJugador.codigo();
+    }
+
+    public void setTope(int tope) {
+        this.tope = tope;
+    }
+
+    public int getTope() {
+        return tope;
+    }
+
+    public void reiniciarTope(Tablero tablero) {
+        tope = cantidadEjercitosAColocar(tablero);
+    }
+
+    public String nombre() {
+        return nombre;
+    }
+
+    public ColorJugador getColor() {
+        return colorJugador;
+    }
 }

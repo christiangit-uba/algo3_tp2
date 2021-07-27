@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class TarjeteroTest {
     @Test
     public void agregoUnaTarjetaDelTarjeteroAUnJugadorPorLoTantoElTarjeteroTieneUnaTarjetaMenos() throws FileNotFoundException {
-        Juego juego = new Juego();
+        Juego juego = new Juego(6);
         Tarjetero tarjetero = juego.getTarjetero();
-        Color color = new Color("morado");
-        Jugador jugador = new Jugador(color);
+        ColorJugador colorJugador = new ColorJugador("morado","001");
+        Jugador jugador = new Jugador("Jugaddor1",colorJugador);
         assertEquals(tarjetero.size(),50);
         tarjetero.asignarTarjeta(jugador);
         assertEquals(tarjetero.size(),49);
@@ -24,8 +24,8 @@ public class TarjeteroTest {
     @Test
     public void agregoUnaTarjetaAUnJugadorYEsaTarjetaYaNoEstaEnElMazo() throws FileNotFoundException {
         Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("morado");
-        Jugador jugador = new Jugador(color);
+        ColorJugador colorJugador = new ColorJugador("morado","001");
+        Jugador jugador = new Jugador("JUgador1",colorJugador);
         Pais chile = new Pais("Chile");
         Simbolo globo = new Simbolo("Globo");
         Tarjeta tarjetaChile = new Tarjeta(chile,globo);

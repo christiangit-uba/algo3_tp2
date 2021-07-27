@@ -10,8 +10,8 @@ public class PruebasValidadorDeMovimientoTest {
 
     @Test
     public void unJugadorCompruebaSiElPaisVecinoEsAliadoEsteLoEsPorLoTantoLePasaUnEjercito() throws Exception {
-        Color rojo = new Color("rojo");
-        Jugador jugador1 = new Jugador(rojo);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -31,10 +31,10 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void unJugadorCompruebaSiElPaisVecinoEsAliadoEsteNoLoEsPorLoTantoLanzaExeption() {
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(azul);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        ColorJugador azul = new ColorJugador("azul","0002");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
+        Jugador jugador2 = new Jugador("Jugador2",azul);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -53,8 +53,8 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void unPaisCon1EjercitoMueveUnEjercitoAUnPaisVecinoLanzaExepcion() {
-        Color rojo = new Color("rojo");
-        Jugador jugador1 = new Jugador(rojo);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -71,8 +71,8 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void PasoUnEjercitoAOtroPaisEsteNoEsLimitrofeLanzoExepcion() {
-        Color rojo = new Color("rojo");
-        Jugador jugador1 = new Jugador(rojo);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
 
         Pais Argentina = new Pais("Argentina");
         Pais Africa = new Pais("Africa");
@@ -86,10 +86,10 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void PaisLimitrofeNoEstaConquistadoLanzoExepcion() {
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(azul);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        ColorJugador azul = new ColorJugador("azul","0002");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
+        Jugador jugador2 = new Jugador("Jugador2",azul);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");

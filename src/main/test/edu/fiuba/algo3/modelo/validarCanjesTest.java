@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class validarCanjesTest {
 
     private Tarjetero tarjetero = new Tarjetero();
-    private Color color = new Color("Rojo");
-    private Jugador jugador = new Jugador(color);
+    private ColorJugador colorJugador = new ColorJugador("Rojo","001");
+    private Jugador jugador = new Jugador("Jugador1",colorJugador);
     private Simbolo simboloGlobo = new Simbolo("Globo");
     private Simbolo simbolocanon = new Simbolo("Cañon");
     private Simbolo simboloBarco = new Simbolo("Barco");
@@ -35,7 +35,11 @@ public class validarCanjesTest {
         tarjetas.add(tarjetaDos);
         tarjetas.add(tarjetaTres);
 
-        assertEquals(4, jugador.validarCanjes(tarjetas,tarjetero) );
+
+        jugador.validarCanjes(tarjetas,tarjetero);
+        jugador.canjear();
+
+        assertEquals(4,jugador.getTope());
         assertEquals(3, tarjetero.size());
     }
 
@@ -54,7 +58,10 @@ public class validarCanjesTest {
         tarjetas.add(tarjetaDos);
         tarjetas.add(tarjetaTres);
 
-        assertEquals(4, jugador.validarCanjes(tarjetas,tarjetero) );
+        jugador.validarCanjes(tarjetas,tarjetero);
+        jugador.canjear();
+
+        assertEquals(4, jugador.getTope() );
         assertEquals(3, tarjetero.size());
 
     }
@@ -74,7 +81,7 @@ public class validarCanjesTest {
         tarjetas.add(tarjetaDos);
         tarjetas.add(tarjetaTres);
 
-        assertEquals(0, jugador.validarCanjes(tarjetas,tarjetero) );
+        assertFalse( jugador.validarCanjes(tarjetas,tarjetero) );
         assertEquals(tarjetero.size(),0);
     }
 

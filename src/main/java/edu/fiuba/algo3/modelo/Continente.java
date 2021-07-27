@@ -17,9 +17,9 @@ public class Continente {
         paises.add(unPais);
     }
 
-    public int conquistado(Color color){
+    public int conquistado(ColorJugador colorJugador){
         for(Pais pais: paises){
-            if(!pais.mismoColor(color))
+            if(!pais.mismoColor(colorJugador))
                 return 0;
         }
         return premioPorConquista;

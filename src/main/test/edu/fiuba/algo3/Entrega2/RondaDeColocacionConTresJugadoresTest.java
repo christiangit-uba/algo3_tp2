@@ -13,42 +13,48 @@ public class RondaDeColocacionConTresJugadoresTest {
 
         @Test
         public void rondaConTresJugadoresConJugadorDosConAsiaConquistado() throws FileNotFoundException {
-            Color rojo = new Color("rojo");
-            Color negro = new Color("negro");
-            Color verde = new Color("verde");
-            Color azul = new Color("azul");
+            ColorJugador rojo = new ColorJugador("rojo","001");
+            ColorJugador negro = new ColorJugador("negro","002");
+            ColorJugador verde = new ColorJugador("verde","003");
+            ColorJugador azul = new ColorJugador("azul","004");
 
-            Jugador jugador1 = new Jugador(rojo);
-            Jugador jugador2 = new Jugador(negro);
-            Jugador jugador3 = new Jugador(verde);
-            Jugador jugadorAuxiliar = new Jugador(azul);
+            Jugador jugador1 = new Jugador("Jugador1",rojo);
+            Jugador jugador2 = new Jugador("Jugador2",negro);
+            Jugador jugador3 = new Jugador("Jugador3",verde);
+            Jugador jugadorAuxiliar = new Jugador("JugadorAuxiliar",azul);
 
-            Tarjetero tarjetero = new Tarjetero();
-            Tablero tablero = new Tablero(tarjetero);
+            Juego juego = new Juego(3);
             ArrayList<Jugador> jugadores = new ArrayList<>();
 
             jugadores.add(jugadorAuxiliar);
-            tablero.asignarPaises(jugadores);
+            juego.agregarJugadores(jugadores);
+            juego.asignarPaises();
 
-            Pais Argentina = tablero.obtenerPais("Argentina");
-            Pais Etiopia = tablero.obtenerPais("Etiopia");
-            Pais australia = tablero.obtenerPais("Australia");
-            Pais Francia = tablero.obtenerPais("Francia");
-            Pais tartaria = tablero.obtenerPais("Tartaria");
-            Pais mongolia = tablero.obtenerPais("Mongolia");
-            Pais turquia = tablero.obtenerPais("Turquia");
-            Pais iran = tablero.obtenerPais("Iran");
-            Pais israel = tablero.obtenerPais("Israel");
-            Pais aral = tablero.obtenerPais("Aral");
-            Pais taymir = tablero.obtenerPais("Taymir");
-            Pais siberia = tablero.obtenerPais("Siberia");
-            Pais japon = tablero.obtenerPais("Japon");
-            Pais gobi = tablero.obtenerPais("Gobi");
-            Pais malasia = tablero.obtenerPais("Malasia");
-            Pais arabia = tablero.obtenerPais("Arabia");
-            Pais india = tablero.obtenerPais("India");
-            Pais china = tablero.obtenerPais("China");
-            Pais kamtchatka = tablero.obtenerPais("Kamtchatka");
+            jugadores.remove(jugadorAuxiliar);
+            jugadores.add(jugador1);
+            jugadores.add(jugador2);
+            jugadores.add(jugador3);
+            juego.agregarJugadores(jugadores);
+
+            Pais Argentina = juego.obtenerPais("Argentina");
+            Pais Etiopia =juego.obtenerPais("Etiopia");
+            Pais australia = juego.obtenerPais("Australia");
+            Pais Francia = juego.obtenerPais("Francia");
+            Pais tartaria = juego.obtenerPais("Tartaria");
+            Pais mongolia = juego.obtenerPais("Mongolia");
+            Pais turquia = juego.obtenerPais("Turquia");
+            Pais iran = juego.obtenerPais("Iran");
+            Pais israel = juego.obtenerPais("Israel");
+            Pais aral = juego.obtenerPais("Aral");
+            Pais taymir = juego.obtenerPais("Taymir");
+            Pais siberia = juego.obtenerPais("Siberia");
+            Pais japon = juego.obtenerPais("Japon");
+            Pais gobi = juego.obtenerPais("Gobi");
+            Pais malasia = juego.obtenerPais("Malasia");
+            Pais arabia = juego.obtenerPais("Arabia");
+            Pais india = juego.obtenerPais("India");
+            Pais china = juego.obtenerPais("China");
+            Pais kamtchatka = juego.obtenerPais("Kamtchatka");
 
 
             Argentina.agregarColor(rojo);
@@ -71,37 +77,34 @@ public class RondaDeColocacionConTresJugadoresTest {
             india.agregarColor(negro);
             kamtchatka.agregarColor(negro);
 
-            TurnoDeColocacion turno = new TurnoDeColocacion(tablero, tarjetero);
-            turno.turnoDe(jugador1);
-            turno.calcularTope();
+          juego.iniciarTurno();
 
         /*Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
           paises y continentes conquistados
-        */
-            assertEquals(turno.getTope(), 3);
+          */
+
+            assertEquals(juego.getTope(), 3);
             assertEquals(Argentina.cantidadEjercitos(), 1);
 
-            turno.colocarEjercito(Argentina, 3);
+            juego.colocarEjercito(Argentina, 3);
             assertEquals(Argentina.cantidadEjercitos(), 4);
-            assertEquals(turno.getTope(), 0);
+            assertEquals(juego.getTope(), 0);
 
-            turno.terminarTurno();
-            turno.turnoDe(jugador2);
-            turno.calcularTope();
+            juego.terminarTurno();
+            juego.iniciarTurno();
 
             //15 paises /2 + 7 ejercitos por continente en asia son 14 a colocar
-            assertEquals(turno.getTope(),14);
-            turno.colocarEjercito(kamtchatka,14);
+            assertEquals(juego.getTope(),14);
+            juego.colocarEjercito(kamtchatka,14);
             assertEquals(kamtchatka.cantidadEjercitos(),15);
 
-            turno.terminarTurno();
-            turno.turnoDe(jugador3);
-            turno.calcularTope();
+           juego.terminarTurno();
+           juego.iniciarTurno();
 
-            turno.colocarEjercito(Francia,2);
+            juego.colocarEjercito(Francia,2);
             assertEquals(Francia.cantidadEjercitos(),3);
 
-            turno.terminarTurno();
+            juego.terminarTurno();
 
         }
 

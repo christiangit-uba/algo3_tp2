@@ -12,36 +12,39 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class PruebaActivacionTarjetaTest {
     @Test
     public void PruebaActivacionTarjeta() throws FileNotFoundException {
-        Color rojo = new Color("rojo");
-        Color verde = new Color("verde");
-        Color negro = new Color("negro");
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        ColorJugador verde = new ColorJugador("verde","002");
+        ColorJugador negro = new ColorJugador("negro","003");
 
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(verde);
-        Jugador jugadorAuxiliar =  new Jugador(negro);
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
+        Jugador jugador2 = new Jugador("Jugador2",verde);
+        Jugador jugadorAuxiliar =  new Jugador("JugadorAuxiliar",negro);
 
-        Tarjetero tarjetero = new Tarjetero();
-        Tablero tablero = new Tablero(tarjetero);
-
+        Juego juego = new Juego(2);
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(jugadorAuxiliar);
-        tablero.asignarPaises(jugadores);
+
+        juego.agregarJugadores(jugadores);
+
+        juego.asignarPaises();
         jugadores.remove(jugadorAuxiliar);
 
         jugadores.add(jugador1);
         jugadores.add(jugador2);
 
-        Pais Argentina = tablero.obtenerPais("Argentina");
-        Pais Etiopia = tablero.obtenerPais("Etiopia");
-        Pais chile = tablero.obtenerPais("Chile");
-        Pais Turquia = tablero.obtenerPais("Turquia");
-        Pais Francia = tablero.obtenerPais("Francia");
+        juego.agregarJugadores(jugadores);
 
-        Tarjeta tarjetaArgentina = tarjetero.buscarTarjeta(Argentina);
-        Tarjeta tarjetaEtiopia = tarjetero.buscarTarjeta(Etiopia);
-        Tarjeta tarjetaChile = tarjetero.buscarTarjeta(chile);
-        Tarjeta tarjetaTurquia = tarjetero.buscarTarjeta(Turquia);
-        Tarjeta tarjetaFrancia = tarjetero.buscarTarjeta(Francia);
+        Pais Argentina = juego.obtenerPais("Argentina");
+        Pais Etiopia = juego.obtenerPais("Etiopia");
+        Pais chile = juego.obtenerPais("Chile");
+        Pais Turquia = juego.obtenerPais("Turquia");
+        Pais Francia = juego.obtenerPais("Francia");
+
+        Tarjeta tarjetaArgentina = juego.buscarTarjeta(Argentina);
+        Tarjeta tarjetaEtiopia = juego.buscarTarjeta(Etiopia);
+        Tarjeta tarjetaChile = juego.buscarTarjeta(chile);
+        Tarjeta tarjetaTurquia = juego.buscarTarjeta(Turquia);
+        Tarjeta tarjetaFrancia = juego.buscarTarjeta(Francia);
 
         jugador1.agregarTarjeta(tarjetaArgentina);
         jugador1.agregarTarjeta(tarjetaEtiopia);
@@ -55,49 +58,46 @@ public class PruebaActivacionTarjetaTest {
         Turquia.agregarColor(verde);
         Francia.agregarColor(verde);
 
-        TurnoDeColocacion turno = new TurnoDeColocacion(tablero,tarjetero);
-
-        turno.turnoDe(jugador1);
-        turno.calcularTope();
+        juego.iniciarTurno();
 
         assertEquals(Argentina.cantidadEjercitos(),1);
         assertEquals(Etiopia.cantidadEjercitos(),1);
 
-        turno.activarTarjeta(tarjetaArgentina);
-        turno.activarTarjeta(tarjetaEtiopia);
+        juego.activarTarjeta(tarjetaArgentina);
+        juego.activarTarjeta(tarjetaEtiopia);
 
         assertEquals(Argentina.cantidadEjercitos(),3);
         assertEquals(Etiopia.cantidadEjercitos(),3);
-        assertFalse(turno.activarTarjeta(tarjetaArgentina));
+        assertFalse(juego.activarTarjeta(tarjetaArgentina));
 
         //Usuario selecciona para canjear sus tres cartas que son de simbolo globo.
-        /*
+
         ArrayList<Tarjeta> tarjetasSeleccionadas = new ArrayList<>();
         tarjetasSeleccionadas.add(tarjetaArgentina);
         tarjetasSeleccionadas.add(tarjetaChile);
         tarjetasSeleccionadas.add(tarjetaEtiopia);
-        */
-        turno.canjearTarjetas();
+
+        juego.canjearTarjetas(tarjetasSeleccionadas);
 
         //tope equivale 4 ejercitos por el primer canjes mas 3 ejercitos por la cantidad de paises
-        assertEquals(turno.getTope(),7);
-        turno.colocarEjercito(Argentina,7);
+        assertEquals(juego.getTope(),7);
+        juego.colocarEjercito(Argentina,7);
 
         assertEquals(Argentina.cantidadEjercitos(),10);
 
-        turno.terminarTurno();
-        turno.turnoDe(jugador2);
-        turno.calcularTope();
+        juego.terminarTurno();
+        juego.iniciarTurno();
+
 
         assertEquals(Turquia.cantidadEjercitos(),1);
         assertEquals(Francia.cantidadEjercitos(),1);
 
-        turno.activarTarjeta(tarjetaFrancia);
-        turno.activarTarjeta(tarjetaTurquia);
+        juego.activarTarjeta(tarjetaFrancia);
+      juego.activarTarjeta(tarjetaTurquia);
 
         assertEquals(Francia.cantidadEjercitos(),3);
         assertEquals(Turquia.cantidadEjercitos(),3);
-        assertFalse(turno.activarTarjeta(tarjetaTurquia));
-        turno.terminarTurno();
+        assertFalse(juego.activarTarjeta(tarjetaTurquia));
+        juego.terminarTurno();
     }
 }
