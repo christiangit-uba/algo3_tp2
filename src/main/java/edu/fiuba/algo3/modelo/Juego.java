@@ -5,37 +5,40 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Juego {
+    private static ArrayList<ColorJugador> colores;
     private Tablero tablero;
     private Tarjetero tarjetero;
-    private Turno turno;
     private ArrayList<Jugador> jugadores;
-    private ArrayList<ColorJugador> colores;
     private int jugadorEnTurno;
+    private boolean conquistoUnPaisAlmenos = false;
+    private Ronda ronda;
 
     public Juego(int cantidad) throws FileNotFoundException {
         tarjetero = new Tarjetero();
         tablero = new Tablero(tarjetero);
+        jugadores = new ArrayList<>();
+        colores = new ArrayList<>();
         inicializarColores();
         inicializarJugadores(cantidad);
+        ronda = new Ronda(jugadores);
     }
 
     private void inicializarColores() {
-        colores.add(new ColorJugador("Azul","077bb"));
-        colores.add(new ColorJugador("Rojo","cc3311"));
-        colores.add(new ColorJugador("Amarillo","ee7733"));
-        colores.add(new ColorJugador("Verde","009988"));
-        colores.add(new ColorJugador("Rosa","ee3377"));
-        colores.add(new ColorJugador("Negro","000000"));
+        //configurar colores validos
+        colores.add(new ColorJugador("blue","0000FF"));
+        colores.add(new ColorJugador("red","FF0000"));
+        colores.add(new ColorJugador("Amarillo","0x0000FF"));
+        colores.add(new ColorJugador("Verde","0x0000FF"));
+        colores.add(new ColorJugador("Rosa","0x0000FF"));
+        colores.add(new ColorJugador("Negro","0x0000FF"));
     }
 
     private void inicializarJugadores(int cantidad) {
-        ArrayList<Jugador> jugadores = new ArrayList<>();
         int i = 0;
         while (i < cantidad){
-            jugadores.add(new Jugador(colores.get(i)));
+            jugadores.add(new Jugador("jugador"+(i+1),colores.get(i)));
             i++;
         }
-        this.jugadores = jugadores;
     }
 
     public Tarjetero getTarjetero(){
@@ -48,39 +51,55 @@ public class Juego {
         return jugadores.get(jugadorEnTurno);
     }
 
-    public ArrayList<Jugador> jugadores() {
-        return jugadores;
+
+
+    public void atacar(String paisAtacante, String paisDefensor, int cantidadTropas, ArrayList<Integer> valoresDadosAtacante, ArrayList<Integer> valoresDadoDefensor) throws Exception {
+        if(ronda.jugadorEnRonda().realizarAtaque(tablero.obtenerPais(paisAtacante),tablero.obtenerPais(paisDefensor) ,cantidadTropas,valoresDadosAtacante,valoresDadoDefensor)){
+            conquistoUnPaisAlmenos = true;
+        }
     }
 
-    /*public Jugador siguienteJugador(){
-        if (jugadorEnTurno == jugadores.size()-1){
-
-        }
-
-    }*/
-
-
-
-/*
-    Juego(int cantidadDeJugadores) throws FileNotFoundException {
-        tarjetero = new Tarjetero();
-        tablero = new Tablero(tarjetero);
-
-        Random random = new Random();
-        int jugadorInicial = random.nextInt(jugadores.size()-1);
-
-
-        tablero.asignarPaises(jugadores);
+    public boolean activarTarjeta(Tarjeta tarjeta){
+        return ronda.jugadorEnRonda().activarTarjetaPais(tarjeta);
     }
 
-    public void jugar(){
-        turno = new TurnoDeColocacion(jugadores.get(0));
-
-        while (turno.sigueJuego()){
-            while (turno.sigueTurno()){
-                turno = turno.recibirOrden();
-            }
-            turno = turno.siguienteTurno(jugadores);
+    public boolean canjearTarjetas(ArrayList<Tarjeta> tarjetas){
+        if(ronda.jugadorEnRonda().validarCanjes(tarjetas, tarjetero)){
+            ronda.jugadorEnRonda().canjear();
+            return true;
         }
-    }*/
+        return false;
+    }
+
+    public boolean colocarEjercito(Pais pais, int cantidadAColocar){
+        return ronda.jugadorEnRonda().colocarEjercitos(cantidadAColocar, pais);
+    }
+
+    public int getTope(){
+        return ronda.jugadorEnRonda().getTope();
+    }
+
+    public boolean terminarTurno() {
+        if(conquistoUnPaisAlmenos){
+            tarjetero.asignarTarjeta(ronda.jugadorEnRonda());
+        }
+        //ronda.jugadorEnRonda().reiniciarTope(tablero);
+        return ronda.pasarTurno();
+    }
+
+    public boolean moverEjercito(String origen, String destino, int cantidadEjercitos) throws Exception {
+        return ronda.jugadorEnRonda().realizarMovimiento(tablero.obtenerPais(origen),tablero.obtenerPais(destino),cantidadEjercitos);
+    }
+
+    public String colorCodigoJugadorEnTurno() {
+        return ronda.jugadorEnRonda().colorCodigo();
+    }
+
+    public String nombreJugadorEnTurno() {
+        return ronda.jugadorEnRonda().nombre();
+    }
+
+    public String colorJugadorEnTurno() {
+        return ronda.jugadorEnRonda().color();
+    }
 }

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Juego;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,15 +12,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Paths;
-import java.text.BreakIterator;
 
 public class EleccionDeJugadoresControlador {
     private int cantidadElegida = 0;
@@ -58,19 +56,21 @@ public class EleccionDeJugadoresControlador {
 
     @FXML
     void ElegirCantidad(ActionEvent event) throws IOException {
-        if (cantidadElegida != 0){
-            Juego juego = new Juego(cantidadElegida);
-            new CargarNombresDeJugadoresControlador(juego);
+        if (cantidadElegida != 0) {
+            URL location = Paths.get("src/main/java/edu/fiuba/algo3/vista/PantallaDeJuego.fxml").toUri().toURL();
+            FXMLLoader fxmlLoader = new FXMLLoader(location);
 
-            root = FXMLLoader.load(Paths.get("src/main/java/edu/fiuba/algo3/vista/CargarNombresDeJugadoresControlador.java.fxml").toUri().toURL());
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(fxmlLoader.load());
+
+            PantallaDeJuegoControlador inicio = (PantallaDeJuegoControlador) fxmlLoader.getController();
+            inicio.recibirParametros(cantidadElegida);
+            System.out.println(cantidadElegida);
+
             stage.setScene(scene);
             stage.show();
-
-
         }
-        Error.setText("Debe seleccionar una cantidad");
+        Error.setText("Ingrese una cantidad valida");
         Error.setTextFill(Color.RED);
     }
 }

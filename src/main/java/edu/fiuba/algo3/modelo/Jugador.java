@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 public class Jugador {
     private final ColorJugador colorJugador;
+    private final String nombre;
     private Canje canjes;
     private ArrayList<Tarjeta> tarjetas;
+    private int tope;
 
-    public Jugador(ColorJugador colorJugador) {
+    public Jugador(String nombre, ColorJugador colorJugador) {
+        this.nombre = nombre;
         tarjetas = new ArrayList<>();
         this.colorJugador = colorJugador;
         canjes = new Canje();
@@ -29,14 +32,15 @@ public class Jugador {
     }
 
 
-    public boolean colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais){
+    public boolean colocarEjercitos(int ejercitosAColocar, Pais unPais){
 
-        if(ejercitosAColocar > ejercitosTope || !unPais.mismoColor(colorJugador)) {
+        if(ejercitosAColocar > tope || !unPais.mismoColor(colorJugador)) {
             return false;
         }else {
             for (int i = 0; i < ejercitosAColocar; i++) {
                 unPais.agregarEjercito();
             }
+            tope = tope - ejercitosAColocar;
             return true;
         }
     }
@@ -49,10 +53,11 @@ public class Jugador {
         return true;
     }
 
-    public void realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {
+    public boolean realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {
 
         CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, colorJugador);
         origen.moverEjercitoA(destino, cantidadEjercitos);
+        return true;
     }
 
 
@@ -61,8 +66,8 @@ public class Jugador {
         tarjetas.add(unaTarjeta);
     }
 
-    public int canjear(){
-           return canjes.cantidadACanjear();
+    public void canjear(){
+           tope = tope + canjes.cantidadACanjear();
     }
 
 
@@ -107,5 +112,17 @@ public class Jugador {
 
     public String colorCodigo() {
         return colorJugador.codigo();
+    }
+
+    public int getTope() {
+        return tope;
+    }
+
+    public void reiniciarTope(Tablero tablero) {
+        tope = cantidadEjercitosAColocar(tablero);
+    }
+
+    public String nombre() {
+        return nombre;
     }
 }
