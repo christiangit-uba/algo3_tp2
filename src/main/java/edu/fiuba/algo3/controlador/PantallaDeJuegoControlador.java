@@ -16,6 +16,7 @@ public class PantallaDeJuegoControlador {
     private Juego juego;
     private int cantidadJugadores;
 
+
     public void recibirParametros(int cantidadElegida){
         cantidadJugadores = cantidadElegida;
     }
@@ -46,6 +47,10 @@ public class PantallaDeJuegoControlador {
         juego = new Juego(cantidadJugadores);
         colorDeJugador.setFill(Color.web(juego.colorCodigoJugadorEnTurno()));
         jugadorEnTurno.setText(juego.nombreJugadorEnTurno()+": "+ juego.colorJugadorEnTurno());
+
+        PuntosJava.setText(String.valueOf(juego.cantidadDeEjercito(BotonJava.getText())));
+        PuntosFrancia.setText(String.valueOf(juego.cantidadDeEjercito(BotonFrancia.getText())));
+
         BotonJava.setStyle("-fx-background-color: "+ juego.colorJugadorEnTurno());
         juego.terminarTurno();
         BotonFrancia.setStyle("-fx-background-color: "+ juego.colorJugadorEnTurno());
@@ -54,17 +59,27 @@ public class PantallaDeJuegoControlador {
     @FXML
     void AccionJava(ActionEvent event) {
         BotonJava.setStyle("-fx-background-color: grey");
+        //paisAtaque = "Java";
     }
 
     @FXML
     void AccionFrancia(ActionEvent event) {
         BotonFrancia.setStyle("-fx-background-color: grey");
-
     }
 
     @FXML
-    void RealizarAtaque(ActionEvent event) {
+    void RealizarAtaque(ActionEvent event) throws Exception {
 
+        BotonFrancia.setStyle("-fx-background-color: "+ juego.colorJugadorEnTurno());
+        juego.terminarTurno();
+        BotonJava.setStyle("-fx-background-color: "+ juego.colorJugadorEnTurno());
+
+        if (juego.ataqueSimulado(BotonJava.getText(),BotonFrancia.getText(),1)){
+            BotonFrancia.setStyle("-fx-background-color: "+ juego.colorJugadorEnTurno());
+        }
+
+        PuntosJava.setText(String.valueOf(juego.cantidadDeEjercito(BotonJava.getText())));
+        PuntosFrancia.setText(String.valueOf(juego.cantidadDeEjercito(BotonFrancia.getText())));
     }
 
     @FXML
