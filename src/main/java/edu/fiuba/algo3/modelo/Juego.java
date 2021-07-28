@@ -124,4 +124,20 @@ public class Juego {
     public Tarjeta buscarTarjeta(Pais unPais) {
         return tarjetero.buscarTarjeta(unPais);
     }
+
+    public void randomizarJugadores() {
+        ArrayList<Jugador> nuevoOrden = new ArrayList<>();
+        Random random = new Random();
+
+        int primeroEnJugar = random.nextInt(jugadores.size()-1);
+
+        for (int i = primeroEnJugar; i< jugadores.size(); i++){
+            nuevoOrden.add(jugadores.get(i));
+        }
+        for(int i = 0; i < primeroEnJugar; i++){
+            nuevoOrden.add(jugadores.get(i));
+        }
+
+        jugadores = nuevoOrden;
+    }
 }
