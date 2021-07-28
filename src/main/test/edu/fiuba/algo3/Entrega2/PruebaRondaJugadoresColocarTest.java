@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-
+/*
 public class PruebaRondaJugadoresColocarTest {
     @Test
     public void PruebaActivacionTarjeta() throws FileNotFoundException {
@@ -47,7 +47,7 @@ public class PruebaRondaJugadoresColocarTest {
 
         /*Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
           paises y continentes conquistados
-        */
+
         assertEquals(turno.getTope(),3);
         assertEquals(Argentina.cantidadEjercitos(),1);
 
@@ -75,3 +75,4 @@ public class PruebaRondaJugadoresColocarTest {
         turno.terminarTurno();
     }
 }
+*/

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-
+/*
 public class TarjetaDePaisTest {
     @Test
     public void unJugadorTieneUnaTarjetaDeUnPaisPropioPorLoTantoTieneDosEjercitosNuevos() throws FileNotFoundException {
@@ -82,3 +82,5 @@ public class TarjetaDePaisTest {
     }
 
 }
+
+ */

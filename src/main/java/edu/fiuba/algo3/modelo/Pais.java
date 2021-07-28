@@ -89,4 +89,19 @@ public class Pais {
     public boolean puedeMoverse(int cantidadEjercitos) {
         return ejercito.puedeMoverse(cantidadEjercitos);
     }
+
+
+    //Agrego para obtener el color del Pais
+    public ColorJugador color(){
+        return ejercito.colorJugador;
+    }
+
+    //Agrego para obtener el nombre del Pais
+    public String nombre(){
+        return nombre;
+    }
+
+    public ArrayList<String> obtenerLimitrofes(){
+        return this.limitrofes.obtenerLimitrofes();
+    }
 }

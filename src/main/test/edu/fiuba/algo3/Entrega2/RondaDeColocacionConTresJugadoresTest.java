@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-
+/*
 public class RondaDeColocacionConTresJugadoresTest {
 
         @Test
@@ -77,7 +77,7 @@ public class RondaDeColocacionConTresJugadoresTest {
 
         /*Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
           paises y continentes conquistados
-        */
+
             assertEquals(turno.getTope(), 3);
             assertEquals(Argentina.cantidadEjercitos(), 1);
 
@@ -106,3 +106,4 @@ public class RondaDeColocacionConTresJugadoresTest {
         }
 
 }
+*/

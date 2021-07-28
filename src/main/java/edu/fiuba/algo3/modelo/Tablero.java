@@ -59,6 +59,15 @@ public class Tablero {
         return null;
     }
 
+    //Metodo para obtener los paises de un jugador
+    public ArrayList<String> paisesDelJugador(ColorJugador colorJugador){
+        ArrayList<String> paisesJugador = new ArrayList<>();
+        for(Pais pais: paises){
+            if(pais.mismoColor(colorJugador))
+                paisesJugador.add(pais.nombre());
+        }
+        return paisesJugador;
+    }
 
 
 }

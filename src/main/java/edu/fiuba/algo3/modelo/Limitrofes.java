@@ -12,4 +12,13 @@ public class Limitrofes {
     public void agregarLimitrofe(Pais paisLimitrofeNuevo) {
         paisesLimitrofes.add(paisLimitrofeNuevo);
     }
+
+    //Agrego metodo para obtenerLimitrofes
+    public ArrayList<String> obtenerLimitrofes(){
+        ArrayList<String> nombrePaises = new ArrayList<>();
+       for(Pais pais: paisesLimitrofes){
+           nombrePaises.add(pais.nombre());
+       }
+       return nombrePaises;
+    }
 }

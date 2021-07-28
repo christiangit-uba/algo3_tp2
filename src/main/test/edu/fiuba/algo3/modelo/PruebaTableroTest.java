@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+/*
 public class PruebaTableroTest {
 
     private Tablero mapa;
@@ -262,3 +262,5 @@ public class PruebaTableroTest {
         assert(pais1.mismoColor(colorJugadorBlanco));
     }
 }
+
+ */

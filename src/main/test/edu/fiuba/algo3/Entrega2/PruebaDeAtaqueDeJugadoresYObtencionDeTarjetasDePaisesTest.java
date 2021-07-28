@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+/*
 public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
 
     @Test
@@ -79,3 +79,4 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
         assertEquals(jugador1.cantidadTarjetas(),1);
     }
 }
+*/

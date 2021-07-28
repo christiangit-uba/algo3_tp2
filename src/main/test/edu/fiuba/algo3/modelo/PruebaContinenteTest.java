@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/*
 public class PruebaContinenteTest {
 
     @Test
@@ -58,3 +58,6 @@ public class PruebaContinenteTest {
         assertEquals(continente.conquistado(colorJugador),7);
     }
 }
+
+
+ */

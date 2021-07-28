@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*
 public class JugadorTest {
     private ColorJugador colorJugadorBlanco = new ColorJugador("ffffff");
     private ColorJugador colorJugadorNegro = new ColorJugador("000000");
@@ -140,3 +140,5 @@ public class JugadorTest {
         assertEquals(4, jugador6.cantidadEjercitosAColocar(tablero));
     }
 }
+
+ */

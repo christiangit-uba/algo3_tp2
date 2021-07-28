@@ -108,4 +108,8 @@ public class Jugador {
     public String colorCodigo() {
         return colorJugador.codigo();
     }
+
+    public ColorJugador obtenerColor(){
+        return colorJugador;
+    }
 }
