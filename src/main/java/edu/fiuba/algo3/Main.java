@@ -11,16 +11,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URI;
 import java.nio.file.Paths;
 
 public class Main extends Application {
 
     private double xOffset;
     private double yOffset;
+    public AudioClip musica;
 
     @FXML
     private Button BotonEmpezar;
@@ -57,6 +61,8 @@ public class Main extends Application {
         Scene scene = new Scene(root, Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT); //quita la vista de la ventana de windows
 
+        musica = reproductorDeMusica();
+
         //File estiloboton = new File("src/main/java/edu/fiuba/algo3/estilos/botones.css");
         //InputStream hojaCss = (InputStream) new FileInputStream(estiloboton);
 
@@ -70,5 +76,20 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public AudioClip reproductorDeMusica(){
+
+        String direccionMusicaInicio = "docs/battlefield-1942-soundtrack-main-theme-by-joel-eriksson.mp3";
+
+        File dir = new File(direccionMusicaInicio);
+        URI path = dir.toURI();
+        String direccionParaMedia = path.toString();
+        Media musica = new Media(direccionParaMedia);
+        AudioClip mediaPlayer = new AudioClip(musica.getSource());
+        mediaPlayer.setCycleCount(AudioClip.INDEFINITE);
+        mediaPlayer.play();
+        mediaPlayer.setVolume(2);
+        return mediaPlayer;
     }
 }

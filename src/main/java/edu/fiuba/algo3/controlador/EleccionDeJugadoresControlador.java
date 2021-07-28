@@ -11,10 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,6 +40,15 @@ public class EleccionDeJugadoresControlador {
     private ImageView FondoInicio;
 
     @FXML
+    private Menu reproductorMusica;
+
+    @FXML
+    private Menu ajustePantalla;
+
+    @FXML
+    private Menu ayudaUsuario;
+
+    @FXML
     private ImageView LogoTEG;
 
     @FXML
@@ -63,7 +71,7 @@ public class EleccionDeJugadoresControlador {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(fxmlLoader.load());
 
-            PantallaDeJuegoControlador inicio = (PantallaDeJuegoControlador) fxmlLoader.getController();
+            PantallaDeJuegoControlador inicio = /*(PantallaDeJuegoControlador)*/ fxmlLoader.getController();
             inicio.recibirParametros(cantidadElegida);
             System.out.println(cantidadElegida);
 
