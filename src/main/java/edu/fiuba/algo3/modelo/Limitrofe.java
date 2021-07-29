@@ -12,6 +12,6 @@ public class Limitrofe extends Validador{
 
     @Override
     public void validar() throws Exception{
-       validar(!paisAtacante.esLimitrofe(paisDefensor));
+       validar(!paisAtacante.esLimitrofe(paisDefensor),"Error los paises no son limitrofes");
     }
 }

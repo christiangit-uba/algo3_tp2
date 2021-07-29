@@ -12,6 +12,6 @@ public class Enemigo extends Validador {
 
     @Override
     public void validar() throws Exception {
-        validar(paisAtacante.mismoColor(paisDefensor));
+        validar(paisAtacante.mismoColor(paisDefensor),"Error el pais de ataque es el mismo color que el pais defensor");
     }
 }

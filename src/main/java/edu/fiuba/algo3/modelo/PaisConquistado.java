@@ -13,6 +13,6 @@ public class PaisConquistado extends Validador {
 
     @Override
     public void validar() throws Exception {
-        validar(!pais.mismoColor(colorJugador));
+        validar(!pais.mismoColor(colorJugador),"Error el pais que desea atacar le pertenece al atacante");
     }
 }

@@ -12,9 +12,6 @@ public class Aliado extends Validador{
 
     @Override
     public void validar() throws Exception {
-        if(!paisOrigen.mismoColor(paisDestino))
-            throw new Exception();
-        if (siguiente != null)
-            siguiente.validar();
+       validar(!paisOrigen.mismoColor(paisDestino),"Error el pais de origen es de distinto color que el de destino");
     }
 }
