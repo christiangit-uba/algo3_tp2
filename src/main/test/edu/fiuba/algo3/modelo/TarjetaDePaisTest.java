@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-/*
+
 public class TarjetaDePaisTest {
     @Test
     public void unJugadorTieneUnaTarjetaDeUnPaisPropioPorLoTantoTieneDosEjercitosNuevos() throws FileNotFoundException {
-        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador colorJugador = new ColorJugador("Rojo","rojo");
         Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
 
@@ -36,8 +36,8 @@ public class TarjetaDePaisTest {
 
     @Test
     public void unJugadorIntentaActivarUnaTarjetaDeUnPaisQueNoPoseeNoAsignaEjercitos() throws FileNotFoundException {
-        ColorJugador colorJugador = new ColorJugador("Rojo");
-        ColorJugador otroColorJugador = new ColorJugador("Azul");
+        ColorJugador colorJugador = new ColorJugador("Rojo","rojo");
+        ColorJugador otroColorJugador = new ColorJugador("Azul","azul");
         Jugador jugador = new Jugador(colorJugador);
         Jugador otroJugador = new Jugador(otroColorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
@@ -67,7 +67,7 @@ public class TarjetaDePaisTest {
 
     @Test
     public void unJugadorIntentaActivarDosVecesUnaTarjetaSoloAsignaDosEjercitos(){
-        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador colorJugador = new ColorJugador("Rojo","rojo");
         Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
         Pais unPais = new Pais("Brazil");
@@ -83,4 +83,4 @@ public class TarjetaDePaisTest {
 
 }
 
- */
+

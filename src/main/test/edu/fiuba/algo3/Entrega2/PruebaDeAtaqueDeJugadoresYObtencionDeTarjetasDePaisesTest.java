@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-/*
+
 public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
 
     @Test
     public void PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaises() throws Exception {
         //---------------inicializacion jugadores, tablero y tarjetero-----------------------
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador azul = new ColorJugador("azul");
-        ColorJugador negro = new ColorJugador("negro");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
+        ColorJugador azul = new ColorJugador("azul","azul");
+        ColorJugador negro = new ColorJugador("negro","negro");
 
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugadorAuxiliar = new Jugador(azul);
@@ -79,4 +79,3 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
         assertEquals(jugador1.cantidadTarjetas(),1);
     }
 }
-*/

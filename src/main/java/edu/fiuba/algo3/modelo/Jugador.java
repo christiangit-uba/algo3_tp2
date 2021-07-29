@@ -45,7 +45,7 @@ public class Jugador {
     }
 
     public boolean realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar,ArrayList<Integer> valorDadoAtacante, ArrayList<Integer> valorDadoDefensor) throws Exception {
-        //CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
+        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
 
         atacante.atacaA(defensor, cantidadEjercitosAUsar, valorDadoAtacante, valorDadoDefensor);
         atacante.ocuparPais(defensor, colorJugador);
@@ -54,7 +54,7 @@ public class Jugador {
 
     public void realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {
 
-        //CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, colorJugador);
+        CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, colorJugador);
         origen.moverEjercitoA(destino, cantidadEjercitos);
     }
 
@@ -118,6 +118,10 @@ public class Jugador {
 
     public int tope(){
         return topeEjercitos;
+    }
+
+    public void asignarTope(int nuevoTope){
+        topeEjercitos = nuevoTope;
     }
 
     public void calcularTope(Tablero tablero){

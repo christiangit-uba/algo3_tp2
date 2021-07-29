@@ -6,14 +6,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-/*
+
 public class JugadorTest {
-    private ColorJugador colorJugadorBlanco = new ColorJugador("ffffff");
-    private ColorJugador colorJugadorNegro = new ColorJugador("000000");
-    private ColorJugador colorJugadorVerde = new ColorJugador("verde");
-    private ColorJugador colorJugadorRojo = new ColorJugador("rojo");
-    private ColorJugador colorJugadorAzul = new ColorJugador("azul");
-    private ColorJugador colorJugadorAmarillo = new ColorJugador("amarillo");
+    private ColorJugador colorJugadorBlanco = new ColorJugador("blanco","ffffff");
+    private ColorJugador colorJugadorNegro = new ColorJugador("negro","negro");
+    private ColorJugador colorJugadorVerde = new ColorJugador("verde","verde");
+    private ColorJugador colorJugadorRojo = new ColorJugador("rojo","verde");
+    private ColorJugador colorJugadorAzul = new ColorJugador("azul","verde");
+    private ColorJugador colorJugadorAmarillo = new ColorJugador("amarillo","verde");
 
     private Jugador jugador1;
     private Jugador jugador2;
@@ -70,12 +70,26 @@ public class JugadorTest {
 
     @Test
     public void unJugadorPuedeColocarLos_5_EjercitosInicialesEnUnPais() throws Exception {
-        jugador1 = new Jugador(colorJugadorBlanco);
-        jugador1.asignarPais(pais1);
-        assertEquals(1, pais1.cantidadEjercitos());
+        Juego nuevoJuego = new Juego(2);
+        Jugador jugador1 = nuevoJuego.jugadores().get(0);
+        Jugador jugador2 = nuevoJuego.jugadores().get(1);
 
-        jugador1.colocarEjercitos(5, 6, pais1); //el tope deberia ser <= ?
-        assertEquals(6, pais1.cantidadEjercitos());
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+
+
+        nuevoJuego.tablero().asignarPaises(jugadores);
+        
+        Pais pais = nuevoJuego.tablero().obtenerPais("Argentina");
+
+        pais.agregarColor(jugador1.obtenerColor());
+
+        assertEquals(1, pais.cantidadEjercitos());
+
+        jugador1.calcularTope(nuevoJuego.tablero());
+        jugador1.colocarEjercitos(5,pais); //el tope deberia ser <= ?
+        assertEquals(6, pais.cantidadEjercitos());
     }
 
     @Test
@@ -85,7 +99,7 @@ public class JugadorTest {
         assertEquals(1, pais1.cantidadEjercitos());
 
         try {
-            jugador1.colocarEjercitos(5, 4, pais1);
+            jugador1.colocarEjercitos(5,  pais1);
         }catch (Exception e){
             assertEquals(1, pais1.cantidadEjercitos());
         }
@@ -107,8 +121,8 @@ public class JugadorTest {
     public void sePuedenRepartirLos_50_PaisesDelTablero() throws FileNotFoundException{ //copiado de pruebasTablero
 
         Tablero tablero = new Tablero(new Tarjetero());
-        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde");
-        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo");
+        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde","verde");
+        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo","rojo");
         Jugador jugadorUno = new Jugador(colorJugadorJugadorUno);
         Jugador jugadorDos = new Jugador(colorJugadorJugadorDos);
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -121,24 +135,12 @@ public class JugadorTest {
     }
 
     @Test
-    public void con_6_jugadoresLaCantidadMinimaDeEjercitosQuePuedoColocarEnLaPrimeraRondaEs_4_(){
-        jugador1 = new Jugador(colorJugadorBlanco);
-        jugador2 = new Jugador(colorJugadorNegro);
-        jugador3 = new Jugador(colorJugadorRojo);
-        jugador4 = new Jugador(colorJugadorAmarillo);
-        jugador5 = new Jugador(colorJugadorAzul);
-        jugador6 = new Jugador(colorJugadorVerde);
+    public void con_6_jugadoresLaCantidadMinimaDeEjercitosQuePuedoColocarEnLaPrimeraRondaEs_4_() throws FileNotFoundException {
+        Juego nuevoJuego = new Juego(6);
 
-        jugadores.add(jugador1);
-        jugadores.add(jugador2);
-        jugadores.add(jugador3);
-        jugadores.add(jugador4);
-        jugadores.add(jugador5);
-        jugadores.add(jugador6);
-
-        tablero.asignarPaises(jugadores);
-        assertEquals(4, jugador6.cantidadEjercitosAColocar(tablero));
+        nuevoJuego.tablero().asignarPaises(nuevoJuego.jugadores());
+        nuevoJuego.jugadores().get(0).calcularTope(nuevoJuego.tablero());
+        assertEquals(4, nuevoJuego.jugadores().get(0).tope());
     }
 }
 
- */

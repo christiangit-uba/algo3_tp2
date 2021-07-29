@@ -14,10 +14,7 @@ public class Tablero {
     }
 
     public void asignarPaises(ArrayList<Jugador> jugadores) {
-
         (new Distribucion(jugadores, paises)).asignarEjercitosAPaises();
-
-
     }
 
     public int cantidadEjercitosAColocar(ColorJugador colorJugador){

@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-/*
+
 public class PruebaPaisAtacaAUnPaisLimitrofeYPierdeTest {
     @Test
     public void unPaisAtacaAunPaisLimitrofeEnemigoYGana(){
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador azul = new ColorJugador("azul");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
+        ColorJugador azul = new ColorJugador("azul","azul");
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -50,4 +50,3 @@ public class PruebaPaisAtacaAUnPaisLimitrofeYPierdeTest {
         assertTrue(Brazil.mismoColor(azul));
     }
 }
-*/

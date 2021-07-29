@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-/*
+
 public class PruebasValidadorDeMovimientoTest {
 
     @Test
     public void unJugadorCompruebaSiElPaisVecinoEsAliadoEsteLoEsPorLoTantoLePasaUnEjercito() throws Exception {
-        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
         Jugador jugador1 = new Jugador(rojo);
 
         Pais Argentina = new Pais("Argentina");
@@ -31,8 +31,8 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void unJugadorCompruebaSiElPaisVecinoEsAliadoEsteNoLoEsPorLoTantoLanzaExeption() {
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador azul = new ColorJugador("azul");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
+        ColorJugador azul = new ColorJugador("azul","azul");
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(azul);
 
@@ -46,6 +46,7 @@ public class PruebasValidadorDeMovimientoTest {
         jugador2.asignarPais(Brazil);
 
         Argentina.agregarEjercito();
+        Argentina.agregarEjercito();
 
         assertThrows(Exception.class,
                 ()-> jugador1.realizarMovimiento(Argentina,Brazil,1));
@@ -53,7 +54,7 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void unPaisCon1EjercitoMueveUnEjercitoAUnPaisVecinoLanzaExepcion() {
-        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
         Jugador jugador1 = new Jugador(rojo);
 
         Pais Argentina = new Pais("Argentina");
@@ -71,7 +72,7 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void PasoUnEjercitoAOtroPaisEsteNoEsLimitrofeLanzoExepcion() {
-        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
         Jugador jugador1 = new Jugador(rojo);
 
         Pais Argentina = new Pais("Argentina");
@@ -86,8 +87,8 @@ public class PruebasValidadorDeMovimientoTest {
     }
     @Test
     public void PaisLimitrofeNoEstaConquistadoLanzoExepcion() {
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador azul = new ColorJugador("azul");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
+        ColorJugador azul = new ColorJugador("azul","azul");
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(azul);
 
@@ -107,4 +108,4 @@ public class PruebasValidadorDeMovimientoTest {
 
 }
 
- */
+

@@ -6,14 +6,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-/*
+
 public class validarCanjesTest {
 
 
     @Test
     public void segundaFormaDeValidar1() throws FileNotFoundException {
         Tarjetero tarjetero = new Tarjetero();
-        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador colorJugador = new ColorJugador("Rojo","Rojo");
         Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
 
@@ -39,7 +39,7 @@ public class validarCanjesTest {
     @Test
     public void segundaFormaDeValidar2() throws FileNotFoundException {
         Tarjetero tarjetero = new Tarjetero();
-        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador colorJugador = new ColorJugador("Rojo","Rojo");
         Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
         Simbolo simbolocanon = new Simbolo("Cañon");
@@ -67,7 +67,7 @@ public class validarCanjesTest {
     @Test
     public void segundaFormaDeValidar3() throws FileNotFoundException {
         Tarjetero tarjetero = new Tarjetero();
-        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador colorJugador = new ColorJugador("Rojo","rojo");
         Jugador jugador = new Jugador(colorJugador);
         Simbolo simboloGlobo = new Simbolo("Globo");
         Simbolo simbolocanon = new Simbolo("Cañon");
@@ -92,5 +92,3 @@ public class validarCanjesTest {
 
 }
 
-
- */

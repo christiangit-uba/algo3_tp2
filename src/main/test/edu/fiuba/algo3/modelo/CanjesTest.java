@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-/*
+
 public class CanjesTest {
 
     @Test
@@ -55,7 +55,7 @@ public class CanjesTest {
         @Test
         public void unJugadorConCuatroTarjetasCanjeaTresAhoraTieneUna() throws FileNotFoundException {
             Tarjetero tarjetero = new Tarjetero();
-            ColorJugador colorJugador = new ColorJugador("Azul");
+            ColorJugador colorJugador = new ColorJugador("Azul","Azul");
             Jugador jugador = new Jugador(colorJugador);
             Simbolo simbolo = new Simbolo("Globo");
             Pais paisUno = new Pais("Peru");
@@ -97,4 +97,3 @@ public class CanjesTest {
 
 
 }
-*/

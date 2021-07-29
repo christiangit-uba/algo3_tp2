@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/*
+
 public class PruebaTableroTest {
 
     private Tablero mapa;
@@ -15,45 +15,33 @@ public class PruebaTableroTest {
     }
     }
 
-    private String nombreArg = "Argentina";
-    private String nombreAus = "Australia";
-    private String nombreMon = "Mongolia";
-    private String nombreMex = "Mexico";
-    private String nombreEsp = "España";
-    private String nombreChi = "China";
-    private String nombreJava = "Java";
-    private String nombreUru = "Uruguay";
-    private String nombreBra = "Brazil";
-    private String nombreChile = "Chile";
-    private String nombrePer = "Peru";
+    private final String nombreArg = "Argentina";
+    private final String nombreAus = "Australia";
+    private final String nombreMon = "Mongolia";
+    private final String nombreMex = "Mexico";
+    private final String nombreEsp = "España";
+    private final String nombreChi = "China";
+    private final String nombreJava = "Java";
+    private final String nombreUru = "Uruguay";
+    private final String nombreBra = "Brazil";
+    private final String nombreChile = "Chile";
+    private final String nombrePer = "Peru";
 
-    private Pais argentina = new Pais("Argentina");
-    private Pais australia = new Pais(nombreAus);
-    private Pais mongolia = new Pais(nombreMon);
-    private Pais mexico = new Pais(nombreMex);
-    private Pais espania = new Pais(nombreEsp);
-    private Pais china = new Pais(nombreChi);
-    private Pais java = new Pais(nombreJava);
-
-    private Pais uruguay = new Pais(nombreUru);
-    private Pais brasil = new Pais(nombreBra);
-    private Pais chile = new Pais(nombreChile);
-    private Pais peru = new Pais(nombrePer);
 
     private Pais aux;
     private Pais pais1;
     private Pais pais2;
     private Pais pais3;
     private Pais pais4;
-    private Pais pais5;
 
-    private ColorJugador colorJugadorBlanco = new ColorJugador("ffffff");
+
+    private final ColorJugador colorJugadorBlanco = new ColorJugador("blanco","ffffff");
 
     @Test
     public void SeRepartenLosPaisesEntreDosJugadoresEntoncesJugador1Tiene25Paises() throws FileNotFoundException {
         Tablero tablero = new Tablero(new Tarjetero());
-        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde");
-        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo");
+        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde","verde");
+        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo","rojo");
         Jugador jugadorUno = new Jugador(colorJugadorJugadorUno);
         Jugador jugadorDos = new Jugador(colorJugadorJugadorDos);
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -66,9 +54,9 @@ public class PruebaTableroTest {
     @Test
     public void SeRepartenLosPaisesEntreTresJugadoresEntoncesJugador1Tiene17Paises() throws FileNotFoundException {
         Tablero tablero = new Tablero(new Tarjetero());
-        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde");
-        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo");
-        ColorJugador colorJugadorJugadorTres = new ColorJugador("azul");
+        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde","verde");
+        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo","rojo");
+        ColorJugador colorJugadorJugadorTres = new ColorJugador("azul","azul");
 
         Jugador jugadorUno = new Jugador(colorJugadorJugadorUno);
         Jugador jugadorDos = new Jugador(colorJugadorJugadorDos);
@@ -84,9 +72,9 @@ public class PruebaTableroTest {
     @Test
     public void SeRepartenLosPaisesEntreTresJugadoresEntoncesJugador3Tiene16Paises() throws FileNotFoundException {
         Tablero tablero = new Tablero(new Tarjetero());
-        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde");
-        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo");
-        ColorJugador colorJugadorJugadorTres = new ColorJugador("azul");
+        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde","verde");
+        ColorJugador colorJugadorJugadorDos = new ColorJugador("rojo","verde");
+        ColorJugador colorJugadorJugadorTres = new ColorJugador("azul","azul");
 
         Jugador jugadorUno = new Jugador(colorJugadorJugadorUno);
         Jugador jugadorDos = new Jugador(colorJugadorJugadorDos);
@@ -102,8 +90,8 @@ public class PruebaTableroTest {
     @Test
     public void JugadorUnoNoOcupaNingunContinenteEntoncesDevuelveCero() throws FileNotFoundException{
         Tablero tablero = new Tablero(new Tarjetero());
-        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde");
-        ColorJugador colorJugadorACambiar = new ColorJugador("rojo");
+        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde","verde");
+        ColorJugador colorJugadorACambiar = new ColorJugador("rojo","rojo");
         Jugador jugadorUno = new Jugador(colorJugadorJugadorUno);
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(jugadorUno);
@@ -118,8 +106,8 @@ public class PruebaTableroTest {
     @Test
     public void ColorRojoOcupaOccidenteContinenteEntoncesDevuelveDos() throws FileNotFoundException{
         Tablero tablero = new Tablero(new Tarjetero());
-        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde");
-        ColorJugador colorJugadorACambiar = new ColorJugador("rojo");
+        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde","verde");
+        ColorJugador colorJugadorACambiar = new ColorJugador("rojo","rojo");
         Jugador jugadorUno = new Jugador(colorJugadorJugadorUno);
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(jugadorUno);
@@ -136,8 +124,8 @@ public class PruebaTableroTest {
     @Test
     public void ColorRojoOcupaOccidenteYAfricaEntoncesDevuelveCinco() throws FileNotFoundException{
         Tablero tablero = new Tablero(new Tarjetero());
-        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde");
-        ColorJugador colorJugadorACambiar = new ColorJugador("rojo");
+        ColorJugador colorJugadorJugadorUno = new ColorJugador("verde","verde");
+        ColorJugador colorJugadorACambiar = new ColorJugador("rojo","rojo");
         Jugador jugadorUno = new Jugador(colorJugadorJugadorUno);
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(jugadorUno);
@@ -263,4 +251,4 @@ public class PruebaTableroTest {
     }
 }
 
- */
+

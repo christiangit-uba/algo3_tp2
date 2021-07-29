@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-/*
+
 public class PruebaPaisAtacaYGanaDefensorTest {
     @Test
     public void unPaisAtacaAunPaisLimitrofeEnemigoYGana(){
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador azul = new ColorJugador("azul");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
+        ColorJugador azul = new ColorJugador("azul","azul");
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -47,4 +47,3 @@ public class PruebaPaisAtacaYGanaDefensorTest {
         assertTrue(Brazil.mismoColor(rojo));
     }
 }
-*/

@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.Entrega1;
 
-import edu.fiuba.algo3.modelo.ColorJugador;
-import edu.fiuba.algo3.modelo.Distribucion;
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,54 +9,36 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PruebaDistribucionPaisesTest {
 
-    /*@Test
+    @Test
     public void ColocacionDeEjercitos() throws Exception {
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador verde = new ColorJugador("verde");
+        Juego juego = new Juego(2);
 
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(verde);
-
-        Pais Argentina = new Pais("Argentina");
-        Pais Etiopia = new Pais("Etiopia");
-        Pais Turquia = new Pais("Turquia");
-        Pais Java = new Pais("Java");
-
-        ArrayList<Pais> paises = new ArrayList<>();
-        paises.add(Argentina);
-        paises.add(Etiopia);
-        paises.add(Turquia);
-        paises.add(Java);
+        Jugador jugador1 = juego.jugadores().get(0);
+        Jugador jugador2 = juego.jugadores().get(1);
 
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(jugador1);
         jugadores.add(jugador2);
 
-        Distribucion distribucion = new Distribucion(jugadores,paises);
+        juego.tablero().asignarPaises(jugadores);
+        jugador1.calcularTope(juego.tablero());
+        jugador2.calcularTope(juego.tablero());
 
-        distribucion.asignarEjercito(0,jugador1);
-        distribucion.asignarEjercito(0,jugador2);
-        distribucion.asignarEjercito(0,jugador1);
-        distribucion.asignarEjercito(0,jugador2);
+        assertEquals(12,jugador1.tope());
+        assertEquals(12,jugador2.tope());
 
-        jugador1.colocarEjercitos(5,5,Argentina);
-        jugador2.colocarEjercitos(5,5,Etiopia);
-        jugador1.colocarEjercitos(3,3,Turquia);
-        jugador2.colocarEjercitos(3,3,Java);
+        Pais paisJugador1 = juego.tablero().obtenerPais("Argentina");
+        Pais paisJugador2 = juego.tablero().obtenerPais("Chile");
 
+        paisJugador1.agregarColor(jugador1.obtenerColor());
+        paisJugador2.agregarColor(jugador2.obtenerColor());
+        jugador1.colocarEjercitos(5,paisJugador1);
+        jugador2.colocarEjercitos(5,paisJugador2);
+        jugador1.colocarEjercitos(3,paisJugador1);
+        jugador2.colocarEjercitos(3,paisJugador2);
 
-        int acumulador = 0;
-        for (Pais pais : paises){
-            if (pais.mismoColor(rojo))
-                acumulador += pais.cantidadEjercitos();
-        }
-        assertEquals(acumulador,10);
+        assertEquals(9,paisJugador1.cantidadEjercitos());
+        assertEquals(9,paisJugador2.cantidadEjercitos());
 
-        acumulador = 0;
-        for (Pais pais : paises){
-            if (pais.mismoColor(verde))
-                acumulador += pais.cantidadEjercitos();
-        }
-        assertEquals(acumulador,10);
-    }*/
+    }
 }

@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-/*
+
 public class RondaDeColocacionConTresJugadoresTest {
 
         @Test
         public void rondaConTresJugadoresConJugadorDosConAsiaConquistado() throws FileNotFoundException {
-            ColorJugador rojo = new ColorJugador("rojo");
-            ColorJugador negro = new ColorJugador("negro");
-            ColorJugador verde = new ColorJugador("verde");
-            ColorJugador azul = new ColorJugador("azul");
+            ColorJugador rojo = new ColorJugador("rojo","rojo");
+            ColorJugador negro = new ColorJugador("negro","negro");
+            ColorJugador verde = new ColorJugador("verde","verde");
+            ColorJugador azul = new ColorJugador("azul","azul");
 
             Jugador jugador1 = new Jugador(rojo);
             Jugador jugador2 = new Jugador(negro);
@@ -75,8 +75,8 @@ public class RondaDeColocacionConTresJugadoresTest {
             turno.turnoDe(jugador1);
             turno.calcularTope();
 
-        /*Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
-          paises y continentes conquistados
+        //Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
+        //paises y continentes conquistados
 
             assertEquals(turno.getTope(), 3);
             assertEquals(Argentina.cantidadEjercitos(), 1);
@@ -106,4 +106,3 @@ public class RondaDeColocacionConTresJugadoresTest {
         }
 
 }
-*/

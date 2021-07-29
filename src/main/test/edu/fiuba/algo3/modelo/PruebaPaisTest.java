@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 import static org.junit.jupiter.api.Assertions.*;
-/*
+
 public class PruebaPaisTest {
 
     private Pais argentina = new Pais("Argentina");
@@ -17,8 +17,8 @@ public class PruebaPaisTest {
     private Pais brasil = new Pais("Brasil");
 
     private Pais otroChile = new Pais("Chile");
-    private ColorJugador colorJugadorBlanco = new ColorJugador("ffffff");
-    private ColorJugador colorJugadorNegro = new ColorJugador("000000");
+    private ColorJugador colorJugadorBlanco = new ColorJugador("Blanco","ffffff");
+    private ColorJugador colorJugadorNegro = new ColorJugador("negro","000000");
 
     //Inicializacion
     @Test
@@ -161,7 +161,7 @@ public class PruebaPaisTest {
 
     @Test
     public void DosPaisesAliadosTienenElMismoColorDeEjercito(){
-        ColorJugador colorJugador = new ColorJugador("077bb");
+        ColorJugador colorJugador = new ColorJugador("Amarillo","Amarillo");
         Pais unPais = new Pais("Rusia");
         Pais otroPais = new Pais("Mexico");
 
@@ -199,7 +199,7 @@ public class PruebaPaisTest {
     public void unPaisOcupaOtroYAhoraSonAliados(){
         Pais unPais = new Pais("Chile");
         Pais otroPais = new Pais("Argentina");
-        ColorJugador unColorJugador = new ColorJugador("Azul");
+        ColorJugador unColorJugador = new ColorJugador("Azul","Azul");
 
         unPais.agregarColor(unColorJugador);
         unPais.agregarEjercito();
@@ -251,4 +251,3 @@ public class PruebaPaisTest {
     }
 }
 
- */

@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-/*
+
 public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void unPaisAtacaAunPaisLimitrofeEnemigo() throws Exception {
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador azul = new ColorJugador("azul");
+        ColorJugador rojo = new ColorJugador("rojo","Rojo");
+        ColorJugador azul = new ColorJugador("azul","azul");
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(azul);
 
@@ -42,7 +42,7 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void unJugadorAtacaAUnPaisVecinoAliadoLanzaExeption() {
-        ColorJugador rojo = new ColorJugador("rojo");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
         Jugador jugador1 = new Jugador(rojo);
 
         Pais Argentina = new Pais("Argentina");
@@ -69,8 +69,8 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void unJugadorAtacaAUnPaisQueNoEsLimitrofeLanzaExeption() {
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador azul = new ColorJugador("azul");
+        ColorJugador rojo = new ColorJugador("rojo","Rojo");
+        ColorJugador azul = new ColorJugador("azul","azul");
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(azul);
 
@@ -95,8 +95,8 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void PaisAtacaAOtroPaisConUnPaisNoConquistadoLanzoExepcion() {
-        ColorJugador rosa = new ColorJugador("rosa");
-        ColorJugador negro = new ColorJugador("negro");
+        ColorJugador rosa = new ColorJugador("rosa","rosa");
+        ColorJugador negro = new ColorJugador("negro","negro");
         Jugador jugador1 = new Jugador(rosa);
         Jugador jugador2 = new Jugador(negro);
 
@@ -122,8 +122,8 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void PaisAtacaAOtroPaisConNingunaTropaLanzoExepcion() {
-        ColorJugador rosa = new ColorJugador("rosa");
-        ColorJugador negro = new ColorJugador("negro");
+        ColorJugador rosa = new ColorJugador("rosa","rosa");
+        ColorJugador negro = new ColorJugador("negro","negro");
         Jugador jugador1 = new Jugador(rosa);
         Jugador jugador2 = new Jugador(negro);
 
@@ -149,8 +149,8 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void PaisAtacaAOtroPaisCon3Ejercitos() throws Exception {
-        ColorJugador rosa = new ColorJugador("rosa");
-        ColorJugador negro = new ColorJugador("negro");
+        ColorJugador rosa = new ColorJugador("rosa","rosa");
+        ColorJugador negro = new ColorJugador("negro","negro");
         Jugador jugador1 = new Jugador(rosa);
         Jugador jugador2 = new Jugador(negro);
 
@@ -180,8 +180,8 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void unPaisAtacaSiempreLeQuedaUnEjercitoEnOrigen() throws Exception {
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador azul = new ColorJugador("azul");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
+        ColorJugador azul = new ColorJugador("azul","azul");
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(azul);
 
@@ -207,4 +207,3 @@ public class PruebasValidadorDeAtaqueTest {
     }
 }
 
- */

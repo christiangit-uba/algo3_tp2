@@ -5,14 +5,15 @@ public class CadenaDeResponsabilidad {
         CantidadDeEjercitos cantidadDeEjercitos = new CantidadDeEjercitos(atacante,cantidadEjercitosAUsar, null);
         Enemigo esEnemigo = new Enemigo(atacante,defensor);
         Limitrofe esLimitrofe = new Limitrofe(atacante,defensor);
-        PaisConquistado paisConquistado = new PaisConquistado(atacante, colorJugador, esLimitrofe);
+        //PaisConquistado paisConquistado = new PaisConquistado(atacante, colorJugador, esLimitrofe);
 
         cantidadDeEjercitos.siguiente(null);
         esEnemigo.siguiente(cantidadDeEjercitos);
         esLimitrofe.siguiente(esEnemigo);
-        paisConquistado.siguiente(esLimitrofe);
+        //paisConquistado.siguiente(esLimitrofe);
 
-        paisConquistado.validar();
+        //paisConquistado.validar();
+        esLimitrofe.validar();
     }
 
 
@@ -20,14 +21,15 @@ public class CadenaDeResponsabilidad {
         EjercitoMovible ejercitoMovible = new EjercitoMovible(origen,cantidadEjercitos);
         Aliado esAliado = new Aliado(origen,destino);
         Limitrofe esLimitrofe = new Limitrofe(origen,destino);
-        PaisConquistado paisOrigenConquistado = new PaisConquistado(origen, colorJugador, esLimitrofe);
+        //PaisConquistado paisOrigenConquistado = new PaisConquistado(origen, colorJugador, esLimitrofe);
 
         ejercitoMovible.siguiente(null);
         esAliado.siguiente(ejercitoMovible);
         esLimitrofe.siguiente(esAliado);
-        paisOrigenConquistado.siguiente(esLimitrofe);
+        //paisOrigenConquistado.siguiente(esLimitrofe);
 
-        paisOrigenConquistado.validar();
+        //paisOrigenConquistado.validar();
+        esLimitrofe.validar();
     }
 
 }

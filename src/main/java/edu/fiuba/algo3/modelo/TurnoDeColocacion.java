@@ -15,6 +15,7 @@ public class TurnoDeColocacion extends Turno{
 
     public void calcularTope(){
         tope = jugador.cantidadEjercitosAColocar(tablero);
+        jugador.asignarTope(tope);
     }
 
     @Override
@@ -34,6 +35,7 @@ public class TurnoDeColocacion extends Turno{
     public boolean canjearTarjetas(ArrayList<Tarjeta> tarjetas){
         if(jugador.validarCanjes(tarjetas, tarjetero)){
             tope = tope + jugador.canjear();
+            jugador.asignarTope(tope);
             return true;
         }
         return false;
@@ -42,6 +44,7 @@ public class TurnoDeColocacion extends Turno{
     public boolean colocarEjercito(Pais pais, int cantidadAColocar){
         if(jugador.colocarEjercitos(cantidadAColocar,pais)){
             tope = tope - cantidadAColocar;
+            jugador.asignarTope(tope);
             return true;
         }
         return false;

@@ -3,12 +3,12 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-/*
+
 public class PruebaContinenteTest {
 
     @Test
     public void creoUnContinenteQueDevuelve7EjercitosPorPaisesConMismoColor(){
-        ColorJugador colorJugador = new ColorJugador("Rojo");
+        ColorJugador colorJugador = new ColorJugador("Rojo","Rojo");
         Continente continente = new Continente("asia",7);
         Pais paisUno = new Pais("china");
         paisUno.agregarColor(colorJugador);
@@ -19,8 +19,8 @@ public class PruebaContinenteTest {
 
     @Test
     public void creoUnContinenteQueDevuelve7EjercitosPorPaisesConMismoColorPeroLePasoColorDistinto(){
-        ColorJugador colorJugador = new ColorJugador("Rojo");
-        ColorJugador otroColorJugador = new ColorJugador("Verde");
+        ColorJugador colorJugador = new ColorJugador("Rojo","Rojo");
+        ColorJugador otroColorJugador = new ColorJugador("Verde","Verde");
         Continente continente = new Continente("asia",7);
         Pais paisUno = new Pais("china");
         paisUno.agregarColor(colorJugador);
@@ -31,8 +31,8 @@ public class PruebaContinenteTest {
 
     @Test
     public void ElContinenteTieneDentroDosPaisesDeDistintosColoresPorLoTantoNoHayConquista(){
-        ColorJugador colorJugador = new ColorJugador("Rojo");
-        ColorJugador otroColorJugador = new ColorJugador("Verde");
+        ColorJugador colorJugador = new ColorJugador("Rojo","Rojo");
+        ColorJugador otroColorJugador = new ColorJugador("Verde","Verde");
         Continente continente = new Continente("asia",7);
         Pais paisUno = new Pais("china");
         Pais paisDos = new Pais("japon");
@@ -46,7 +46,7 @@ public class PruebaContinenteTest {
 
     @Test
     public void ElContinenteTieneDentroDosPaisesConMismosColoresPorLoTantoHayConquista(){
-        ColorJugador colorJugador = new ColorJugador("Verde");
+        ColorJugador colorJugador = new ColorJugador("Verde","Verde");
         Continente continente = new Continente("asia",7);
         Pais paisUno = new Pais("china");
         Pais paisDos = new Pais("japon");
@@ -60,4 +60,3 @@ public class PruebaContinenteTest {
 }
 
 
- */

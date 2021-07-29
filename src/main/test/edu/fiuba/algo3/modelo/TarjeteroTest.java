@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 
-/*public class TarjeteroTest {
+public class TarjeteroTest {
     @Test
     public void agregoUnaTarjetaDelTarjeteroAUnJugadorPorLoTantoElTarjeteroTieneUnaTarjetaMenos() throws FileNotFoundException {
-        Juego juego = new Juego();
+        Juego juego = new Juego(2);
         Tarjetero tarjetero = juego.getTarjetero();
-        Color color = new Color("morado");
+        ColorJugador color = new ColorJugador("morado","morado");
         Jugador jugador = new Jugador(color);
         assertEquals(tarjetero.size(),50);
         tarjetero.asignarTarjeta(jugador);
@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
     @Test
     public void agregoUnaTarjetaAUnJugadorYEsaTarjetaYaNoEstaEnElMazo() throws FileNotFoundException {
         Tarjetero tarjetero = new Tarjetero();
-        Color color = new Color("morado");
+        ColorJugador color = new ColorJugador("morado","morado");
         Jugador jugador = new Jugador(color);
         Pais chile = new Pais("Chile");
         Simbolo globo = new Simbolo("Globo");
@@ -41,4 +41,3 @@ import static org.junit.jupiter.api.Assertions.assertNull;
     }
 
 }
-*/

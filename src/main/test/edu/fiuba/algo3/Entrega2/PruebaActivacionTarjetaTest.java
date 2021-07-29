@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-/*
+
 public class PruebaActivacionTarjetaTest {
     @Test
     public void PruebaActivacionTarjeta() throws FileNotFoundException {
-        ColorJugador rojo = new ColorJugador("rojo");
-        ColorJugador verde = new ColorJugador("verde");
-        ColorJugador negro = new ColorJugador("negro");
+        ColorJugador rojo = new ColorJugador("rojo","rojo");
+        ColorJugador verde = new ColorJugador("verde","verde");
+        ColorJugador negro = new ColorJugador("negro","negro");
 
         Jugador jugador1 = new Jugador(rojo);
         Jugador jugador2 = new Jugador(verde);
@@ -100,4 +100,3 @@ public class PruebaActivacionTarjetaTest {
         turno.terminarTurno();
     }
 }
-*/
