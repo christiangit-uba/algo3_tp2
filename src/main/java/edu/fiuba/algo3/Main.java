@@ -59,7 +59,7 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image(imagen));  //cambia el icono del juego
 
         Scene scene = new Scene(root, Color.TRANSPARENT);
-        primaryStage.initStyle(StageStyle.TRANSPARENT); //quita la vista de la ventana de windows
+        //primaryStage.initStyle(StageStyle.TRANSPARENT); //quita la vista de la ventana de windows
 
         musica = reproductorDeMusica();
 

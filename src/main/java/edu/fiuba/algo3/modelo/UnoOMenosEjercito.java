@@ -40,4 +40,9 @@ public class UnoOMenosEjercito extends Ejercito{
     public boolean ejercitoVacio() {
         return cantidadDeEjercitos == 0;
     }
+
+    @Override
+    public String color() {
+        return colorJugador.nombre();
+    }
 }

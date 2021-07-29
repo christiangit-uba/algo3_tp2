@@ -89,4 +89,8 @@ public class Pais {
     public boolean puedeMoverse(int cantidadEjercitos) {
         return ejercito.puedeMoverse(cantidadEjercitos);
     }
+
+    public String color() {
+        return ejercito.color();
+    }
 }

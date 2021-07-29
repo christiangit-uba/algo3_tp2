@@ -9,7 +9,6 @@ public class Juego {
     private Tablero tablero;
     private Tarjetero tarjetero;
     private ArrayList<Jugador> jugadores;
-    private int jugadorEnTurno;
     private boolean conquistoUnPaisAlmenos = false;
     private Ronda ronda;
 
@@ -20,6 +19,7 @@ public class Juego {
         colores = new ArrayList<>();
         inicializarColores();
         inicializarJugadores(cantidad);
+        randomizarJugadores();
         ronda = new Ronda(jugadores);
     }
 
@@ -27,10 +27,10 @@ public class Juego {
         //configurar colores validos
         colores.add(new ColorJugador("blue","0000FF"));
         colores.add(new ColorJugador("red","FF0000"));
-        colores.add(new ColorJugador("Amarillo","0x0000FF"));
-        colores.add(new ColorJugador("Verde","0x0000FF"));
-        colores.add(new ColorJugador("Rosa","0x0000FF"));
-        colores.add(new ColorJugador("Negro","0x0000FF"));
+        colores.add(new ColorJugador("yellow",""));
+        colores.add(new ColorJugador("green",""));
+        colores.add(new ColorJugador("pink",""));
+        colores.add(new ColorJugador("violet",""));
     }
 
     private void inicializarJugadores(int cantidad) {
@@ -45,18 +45,12 @@ public class Juego {
         return tarjetero;
     }
 
-    public Jugador primerJugador(){
-        Random random = new Random();
-        jugadorEnTurno = random.nextInt(jugadores.size()-1);
-        return jugadores.get(jugadorEnTurno);
-    }
-
-
-
-    public void atacar(String paisAtacante, String paisDefensor, int cantidadTropas, ArrayList<Integer> valoresDadosAtacante, ArrayList<Integer> valoresDadoDefensor) throws Exception {
+    public Boolean atacar(String paisAtacante, String paisDefensor, int cantidadTropas, ArrayList<Integer> valoresDadosAtacante, ArrayList<Integer> valoresDadoDefensor) throws Exception {
         if(ronda.jugadorEnRonda().realizarAtaque(tablero.obtenerPais(paisAtacante),tablero.obtenerPais(paisDefensor) ,cantidadTropas,valoresDadosAtacante,valoresDadoDefensor)){
             conquistoUnPaisAlmenos = true;
+            return true;
         }
+        return false;
     }
 
     public boolean activarTarjeta(Tarjeta tarjeta){
@@ -99,6 +93,10 @@ public class Juego {
         return ronda.jugadorEnRonda().nombre();
     }
 
+    public void asignarPaises() {
+        tablero.asignarPaises(jugadores);
+    }
+
     public String colorJugadorEnTurno() {
         return ronda.jugadorEnRonda().color();
     }
@@ -120,5 +118,25 @@ public class Juego {
 
     public int cantidadDeEjercito(String nombre) {
         return tablero.obtenerPais(nombre).cantidadEjercitos();
+    }
+
+    public void randomizarJugadores() {
+        ArrayList<Jugador> nuevoOrden = new ArrayList<>();
+        Random random = new Random();
+
+        int primeroEnJugar = random.nextInt(jugadores.size()-1);
+
+        for (int i = primeroEnJugar; i< jugadores.size(); i++){
+            nuevoOrden.add(jugadores.get(i));
+        }
+        for(int i = 0; i < primeroEnJugar; i++){
+            nuevoOrden.add(jugadores.get(i));
+        }
+
+        jugadores = nuevoOrden;
+    }
+
+    public String colorPais(String nombre) {
+        return tablero.obtenerPais(nombre).color();
     }
 }

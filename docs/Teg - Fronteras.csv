@@ -1,5 +1,5 @@
-Francia;Europa,5;Alemania,España,Italia
-Gran Bretaña;Europa,5;Islandia,Alemania,España
+Francia;Europa,5;Alemania,Espana,Italia
+Gran Bretana;Europa,5;Islandia,Alemania,Espana
 Tartaria;Asia,7;Aral,Taymir,Siberia
 Mongolia;Asia,7;Aral,Siberia,Iran,Gobi,China
 Zaire;Africa,3;Madagascar,Sudafrica,Etiopia,Sahara
@@ -24,7 +24,7 @@ Taymir;Asia,7;Tartaria,Siberia
 Aral;Asia,7;Rusia,Iran,Mongolia,Siberia,Tartaria
 Siberia;Asia,7;Aral,Tartaria,Taymir,Kamtchatka,China,Mongolia
 Canada;America del Norte,5;Yukon,Oregon,Nueva York,Terranova
-Sahara;Africa,3;Brazil,España,Egipto,Etiopia,Zaire
+Sahara;Africa,3;Brazil,Espana,Egipto,Etiopia,Zaire
 Yukon;America del Norte,5;Alaska,Canada,Oregon
 Uruguay;America del Sur,3;Argentina,Brazil
 Groenlandia;America del Norte,5;Labrador,Nueva York,Islandia
@@ -34,7 +34,7 @@ Alaska;America del Norte,5;Yukon,Oregon,Kamtchatka
 Brazil;America del Sur,3;Colombia,Peru,Argentina,Uruguay,Sahara
 Gobi;Asia,7;Mongolia,China,Iran
 Italia;Europa,5;Alemania,Francia
-España;Europa,5;Sahara,Francia,Gran Bretaña
+Espana;Europa,5;Sahara,Francia,Gran Bretana
 Colombia;America del Sur,3;Mexico,Peru,Brazil
 Suecia;Europa,7;Rusia,Islandia
 Sudafrica;Africa,3;Zaire,Etiopia
@@ -43,8 +43,8 @@ India;Asia,7;China,Malasia,Iran,Sumatra
 Java;Oceania,2;Australia
 Mexico;America del Norte,5;Colombia,California
 Peru;America del Sur,3;Colombia,Brazil,Chile,Argentina
-Alemania;Europa,5;Polonia,Italia,Gran Bretaña,Francia
+Alemania;Europa,5;Polonia,Italia,Gran Bretana,Francia
 China;Asia,7;Kamtchatka,Siberia,Mongolia,Gobi,Iran,India,Malasia,Japon
 Labrador;America del Norte,5;Groenlandia,Terranova
-Islandia;Europa,5;Groenlandia,Suecia,Gran Bretaña
+Islandia;Europa,5;Groenlandia,Suecia,Gran Bretana
 Malasia;Asia,7;China,India,Borneo

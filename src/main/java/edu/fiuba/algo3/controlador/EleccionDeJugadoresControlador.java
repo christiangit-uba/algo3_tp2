@@ -73,7 +73,6 @@ public class EleccionDeJugadoresControlador {
 
             PantallaDeJuegoControlador inicio = /*(PantallaDeJuegoControlador)*/ fxmlLoader.getController();
             inicio.recibirParametros(cantidadElegida);
-            System.out.println(cantidadElegida);
 
             stage.setScene(scene);
             stage.show();

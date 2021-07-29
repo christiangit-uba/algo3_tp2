@@ -33,4 +33,6 @@ public abstract class Ejercito{
     abstract boolean puedeMoverse(int cantidadEjercitosAMover);
 
     public abstract boolean ejercitoVacio();
+
+    public abstract String color();
 }
