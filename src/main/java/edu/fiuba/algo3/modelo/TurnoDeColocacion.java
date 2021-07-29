@@ -40,7 +40,7 @@ public class TurnoDeColocacion extends Turno{
     }
 
     public boolean colocarEjercito(Pais pais, int cantidadAColocar){
-        if(jugador.colocarEjercitos(cantidadAColocar, tope,pais)){
+        if(jugador.colocarEjercitos(cantidadAColocar,pais)){
             tope = tope - cantidadAColocar;
             return true;
         }

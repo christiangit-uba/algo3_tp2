@@ -32,5 +32,15 @@ public abstract class Ejercito{
 
     abstract boolean puedeMoverse(int cantidadEjercitosAMover);
 
-    public abstract boolean ejercitoVacio();
+    public boolean ejercitoVacio(){
+        return cantidadDeEjercitos == 0;
+    }
+
+    abstract int ejercitosAtaque();
+
+    public int ejercitosDefensa(){
+        if(cantidadDeEjercitos > 3)
+            return 3;
+        return cantidadDeEjercitos;
+    }
 }

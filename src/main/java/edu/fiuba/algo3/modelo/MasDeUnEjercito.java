@@ -39,8 +39,10 @@ public class MasDeUnEjercito extends Ejercito{
     }
 
     @Override
-    public boolean ejercitoVacio() {
-        return false;
+    public int ejercitosAtaque(){
+        if(cantidadDeEjercitos > 3)
+            return 3;
+        return (cantidadDeEjercitos - 1);
     }
 
 }

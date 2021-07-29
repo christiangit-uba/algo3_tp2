@@ -6,11 +6,13 @@ public class Jugador {
     private final ColorJugador colorJugador;
     private Canje canjes;
     private ArrayList<Tarjeta> tarjetas;
+    private int topeEjercitos;
 
     public Jugador(ColorJugador colorJugador) {
         tarjetas = new ArrayList<>();
         this.colorJugador = colorJugador;
         canjes = new Canje();
+        topeEjercitos = 0;
     }
 
     public void asignarPais(Pais unPais) {
@@ -29,20 +31,21 @@ public class Jugador {
     }
 
 
-    public boolean colocarEjercitos(int ejercitosAColocar,int ejercitosTope, Pais unPais){
+    public boolean colocarEjercitos(int ejercitosAColocar, Pais unPais){
 
-        if(ejercitosAColocar > ejercitosTope || !unPais.mismoColor(colorJugador)) {
+        if(ejercitosAColocar > topeEjercitos || !unPais.mismoColor(colorJugador)) {
             return false;
         }else {
             for (int i = 0; i < ejercitosAColocar; i++) {
                 unPais.agregarEjercito();
             }
+            topeEjercitos = topeEjercitos - ejercitosAColocar;
             return true;
         }
     }
 
     public boolean realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar,ArrayList<Integer> valorDadoAtacante, ArrayList<Integer> valorDadoDefensor) throws Exception {
-        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
+        //CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
 
         atacante.atacaA(defensor, cantidadEjercitosAUsar, valorDadoAtacante, valorDadoDefensor);
         atacante.ocuparPais(defensor, colorJugador);
@@ -51,7 +54,7 @@ public class Jugador {
 
     public void realizarMovimiento(Pais origen, Pais destino, int cantidadEjercitos) throws Exception {
 
-        CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, colorJugador);
+        //CadenaDeResponsabilidad.confirmarMovimiento(origen, destino, cantidadEjercitos, colorJugador);
         origen.moverEjercitoA(destino, cantidadEjercitos);
     }
 
@@ -112,4 +115,13 @@ public class Jugador {
     public ColorJugador obtenerColor(){
         return colorJugador;
     }
+
+    public int tope(){
+        return topeEjercitos;
+    }
+
+    public void calcularTope(Tablero tablero){
+        topeEjercitos = topeEjercitos + cantidadEjercitosAColocar(tablero);
+    }
+
 }

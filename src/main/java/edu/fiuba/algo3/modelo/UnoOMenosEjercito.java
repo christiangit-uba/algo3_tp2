@@ -37,7 +37,8 @@ public class UnoOMenosEjercito extends Ejercito{
     }
 
     @Override
-    public boolean ejercitoVacio() {
-        return cantidadDeEjercitos == 0;
+    public int ejercitosAtaque(){
+        return 0;
     }
+
 }

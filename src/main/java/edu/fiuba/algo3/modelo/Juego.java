@@ -7,11 +7,9 @@ import java.util.Random;
 public class Juego {
     private Tablero tablero;
     private Tarjetero tarjetero;
-    private Turno turno;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private ArrayList<ColorJugador> colores = new ArrayList<>();
     private int jugadorEnTurno;
-    private int topeJugadorEnTurno;
     private boolean conquistoUnPaisAlmenos = false;
 
     public Juego(int cantidad) throws FileNotFoundException {
@@ -22,31 +20,28 @@ public class Juego {
     }
 
     private void inicializarColores() {
-        colores.add(new ColorJugador("red","0000FF"));
-        colores.add(new ColorJugador("blue","FF0000"));
-        colores.add(new ColorJugador("Yellow","FFFF00"));
-        colores.add(new ColorJugador("Verde","009988"));
-        colores.add(new ColorJugador("Rosa","ee3377"));
+        colores.add(new ColorJugador("Rojo","0000FF"));
+        colores.add(new ColorJugador("Azul","FF0000"));
+        colores.add(new ColorJugador("Amarillo","FFFF00"));
+        colores.add(new ColorJugador("Verde","00FF00"));
+        colores.add(new ColorJugador("Rosa","FF0080"));
         colores.add(new ColorJugador("Negro","000000"));
     }
 
     private void inicializarJugadores(int cantidad) {
+        Random random = new Random();
         int i = 0;
         while (i < cantidad){
             jugadores.add(new Jugador(colores.get(i)));
             i++;
         }
+        jugadorEnTurno = random.nextInt(cantidad - 1);
     }
 
     public Tarjetero getTarjetero(){
         return tarjetero;
     }
 
-    public Jugador primerJugador(){
-        Random random = new Random();
-        jugadorEnTurno = random.nextInt(jugadores.size()-1);
-        return jugadores.get(jugadorEnTurno);
-    }
 
     public ArrayList<Jugador> jugadores() {
         return jugadores;
@@ -79,7 +74,7 @@ public class Juego {
 
     public void canjearTarjetas(ArrayList<Tarjeta> tarjetas) throws Exception {
         if(jugadores.get(jugadorEnTurno).validarCanjes(tarjetas, tarjetero)){
-            topeJugadorEnTurno = topeJugadorEnTurno + jugadores.get(jugadorEnTurno).canjear();
+            //topeJugadorEnTurno = topeJugadorEnTurno + jugadores.get(jugadorEnTurno).canjear();
         }
         else
             throw new Exception();
@@ -87,13 +82,9 @@ public class Juego {
 
     public void colocarEjercito(String pais, int cantidadAColocar) throws Exception {
         Pais paisAColocar = obtenerPais(pais);
-        topeJugadorEnTurno = topeJugadorEnTurno + jugadores.get(jugadorEnTurno).cantidadEjercitosAColocar(tablero);
-
-        if(jugadores.get(jugadorEnTurno).colocarEjercitos(cantidadAColocar, topeJugadorEnTurno,paisAColocar)){
-            topeJugadorEnTurno = topeJugadorEnTurno - cantidadAColocar;
-        }
-        else
+        if(!jugadores.get(jugadorEnTurno).colocarEjercitos(cantidadAColocar,paisAColocar)) {
             throw new Exception();
+        }
     }
 
     public Tablero tablero(){
@@ -110,35 +101,17 @@ public class Juego {
         else
             jugadorEnTurno++;
     }
-    /*public Jugador siguienteJugador(){
-        if (jugadorEnTurno == jugadores.size()-1){
 
-        }
-
-    }*/
-
-
-
-/*
-    Juego(int cantidadDeJugadores) throws FileNotFoundException {
-        tarjetero = new Tarjetero();
-        tablero = new Tablero(tarjetero);
-
-        Random random = new Random();
-        int jugadorInicial = random.nextInt(jugadores.size()-1);
-
-
-        tablero.asignarPaises(jugadores);
+    public Jugador jugadorEnTurno(){
+        return jugadores.get(jugadorEnTurno);
     }
 
-    public void jugar(){
-        turno = new TurnoDeColocacion(jugadores.get(0));
+    public int obtenerTopeJugador(){
+        return jugadorEnTurno().tope();
+    }
 
-        while (turno.sigueJuego()){
-            while (turno.sigueTurno()){
-                turno = turno.recibirOrden();
-            }
-            turno = turno.siguienteTurno(jugadores);
-        }
-    }*/
+    public void calcularTopeJugador(){
+        jugadorEnTurno().calcularTope(tablero);
+    }
+
 }
