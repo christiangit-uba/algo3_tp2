@@ -23,6 +23,11 @@ public class Juego {
     public void IniciarJuego(){
         ronda = new Ronda(jugadores);
         ronda.iniciarPrimeraRonda(cantidadJugadores);
+        asignarPaises();
+    }
+
+    public void asignarPaises(){
+        tablero.asignarPaises(jugadores);
     }
     public void agregarJugadores(ArrayList<Jugador> jugadores){
         this.jugadores = jugadores;
@@ -37,7 +42,6 @@ public class Juego {
         jugadorEnTurno = ronda.jugadorEnRonda();
         jugadorEnTurno.reiniciarTope(tablero);
     }
-
 
 
     public void atacar(String paisAtacante, String paisDefensor, int cantidadTropas, ArrayList<Integer> valoresDadosAtacante, ArrayList<Integer> valoresDadoDefensor) throws Exception {
@@ -94,9 +98,6 @@ public class Juego {
         return tablero.obtenerPais(nombre).cantidadEjercitos();
     }
 
-    public void asignarPaises() {
-        tablero.asignarPaises(jugadores);
-    }
 
     public Pais obtenerPais(String unPais) {
         return tablero.obtenerPais(unPais);
