@@ -59,16 +59,12 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image(imagen));  //cambia el icono del juego
 
         Scene scene = new Scene(root, Color.TRANSPARENT);
-        //primaryStage.initStyle(StageStyle.TRANSPARENT); //quita la vista de la ventana de windows
+        primaryStage.initStyle(StageStyle.TRANSPARENT); //quita la vista de la ventana de windows
 
         musica = reproductorDeMusica();
 
-        //File estiloboton = new File("src/main/java/edu/fiuba/algo3/estilos/botones.css");
-        //InputStream hojaCss = (InputStream) new FileInputStream(estiloboton);
-
-        //URL stylesheet = Main.class.getResource("src/main/java/edu/fiuba/algo3/estilos/botones.css");
-        //String css = Main.class.getResource("src/main/java/edu/fiuba/algo3/estilos/botones.css").toExternalForm();
-        //scene.getStylesheets().add( css );
+        String css = (getClass().getResource("/estilos/botones.css")).toExternalForm();
+        scene.getStylesheets().add( css );
 
         primaryStage.setScene(scene);
         primaryStage.show();

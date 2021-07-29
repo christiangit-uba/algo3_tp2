@@ -1,0 +1,5 @@
+
+.button:hover{
+    -fx-base: #395bae;
+    -fx-cursor: hand;
+}

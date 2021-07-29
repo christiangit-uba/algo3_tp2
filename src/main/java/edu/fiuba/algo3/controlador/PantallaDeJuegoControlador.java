@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Juego;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,6 +28,18 @@ public class PantallaDeJuegoControlador {
 
     public void recibirParametros(int cantidadElegida){
         cantidadJugadores = cantidadElegida;
+    }
+
+    @FXML
+    private Button salirVentana;
+
+    @FXML
+    public void initialize() throws Exception {
+
+        //carga de estilos css
+        String css = (getClass().getResource("/estilos/botones.css")).toExternalForm();
+        salirVentana.getStylesheets().add(css);
+
     }
 
     @FXML
@@ -464,5 +477,10 @@ public class PantallaDeJuegoControlador {
     void TerminarTurno(ActionEvent event) {
         juego.terminarTurno();
         actualizarJugador();
+    }
+
+    @FXML
+    void salir(ActionEvent event) {
+        Platform.exit();
     }
 }
