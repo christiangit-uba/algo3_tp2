@@ -10,7 +10,7 @@ public class Main extends Application {
 
     public static void salir() {
         Platform.exit();
-        System.exit(0); 	//le envía un 0 al S.O.
+        System.exit(0);    //le envía un 0 al S.O.
     }
 
     @Override
@@ -19,10 +19,4 @@ public class Main extends Application {
         Stage inicio = (new PantallaInicio()).initialize(); //construye la escena inicial
         inicio.show();
     }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-
 }
