@@ -68,7 +68,7 @@ public class PruebaActivacionTarjetaTest {
 
         assertEquals(Argentina.cantidadEjercitos(),3);
         assertEquals(Etiopia.cantidadEjercitos(),3);
-        assertFalse(juego.activarTarjeta(tarjetaArgentina));
+
 
         //Usuario selecciona para canjear sus tres cartas que son de simbolo globo.
 
@@ -93,11 +93,11 @@ public class PruebaActivacionTarjetaTest {
         assertEquals(Francia.cantidadEjercitos(),1);
 
         juego.activarTarjeta(tarjetaFrancia);
-      juego.activarTarjeta(tarjetaTurquia);
+        juego.activarTarjeta(tarjetaTurquia);
 
         assertEquals(Francia.cantidadEjercitos(),3);
         assertEquals(Turquia.cantidadEjercitos(),3);
-        assertFalse(juego.activarTarjeta(tarjetaTurquia));
+
         juego.terminarTurno();
     }
 }

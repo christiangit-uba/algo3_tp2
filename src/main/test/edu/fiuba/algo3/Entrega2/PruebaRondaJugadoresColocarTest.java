@@ -63,14 +63,21 @@ public class PruebaRondaJugadoresColocarTest {
         juego.colocarEjercito(Etiopia,1);
 
         assertEquals(Etiopia.cantidadEjercitos(),2);
-        assertFalse(juego.colocarEjercito(Argentina,1));
+
+        juego.colocarEjercito(Argentina,1);
+        assertEquals(Argentina.cantidadEjercitos(),3);
 
         juego.terminarTurno();
         juego.iniciarTurno();
 
 
         assertEquals(juego.getTope(),3);
-        assertFalse(juego.colocarEjercito(Argentina,1));
+
+
+        //No se actualiza ya que el pais no le pertenece al jugador
+        assertEquals(Argentina.cantidadEjercitos(),3);
+        juego.colocarEjercito(Argentina,1);
+        assertEquals(Argentina.cantidadEjercitos(),3);
 
         juego.colocarEjercito(Turquia,3);
         assertEquals(Turquia.cantidadEjercitos(),4);

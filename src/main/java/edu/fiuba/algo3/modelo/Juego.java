@@ -62,8 +62,8 @@ public class Juego {
         return false;
     }
 
-    public boolean colocarEjercito(Pais pais, int cantidadAColocar){
-        return jugadorEnTurno.colocarEjercitos(cantidadAColocar, pais);
+    public void colocarEjercito(Pais pais, int cantidadAColocar){
+         jugadorEnTurno.colocarEjercitos(cantidadAColocar, pais);
     }
 
     public int getTope(){

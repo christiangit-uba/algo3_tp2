@@ -33,4 +33,23 @@ public abstract class Ejercito{
     abstract boolean puedeMoverse(int cantidadEjercitosAMover);
 
     public abstract boolean ejercitoVacio();
+
+    public  int colocarEjercito(int ejercitosAColocar, ColorJugador otroColor){
+
+        if(colorJugador.mismoColor(otroColor)){
+            for(int i = 0; i < ejercitosAColocar; i++)
+                agregarEjercito();
+            return ejercitosAColocar;
+        }
+        return 0;
+    }
+
+    public  boolean activarTarjeta(ColorJugador color){
+        if(colorJugador.mismoColor(color)){
+            agregarEjercito();
+            agregarEjercito();
+            return true;
+        }
+        return false;
+    }
 }

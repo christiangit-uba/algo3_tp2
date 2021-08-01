@@ -89,4 +89,12 @@ public class Pais {
     public boolean puedeMoverse(int cantidadEjercitos) {
         return ejercito.puedeMoverse(cantidadEjercitos);
     }
+
+    public int colocarEjercitos(int ejercitosAColocar, ColorJugador colorJugador) {
+       return ejercito.colocarEjercito(ejercitosAColocar,colorJugador);
+    }
+
+    public boolean activarTarjeta(ColorJugador unColorJugador) {
+        return ejercito.activarTarjeta(unColorJugador);
+    }
 }
