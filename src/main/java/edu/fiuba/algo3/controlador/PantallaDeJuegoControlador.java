@@ -51,6 +51,10 @@ public class PantallaDeJuegoControlador {
         System.out.println(jugadores);
     }
 
+    public static void actualizarEjercitosDelPais(Label ejercitosPais, int cantidad){
+        ejercitosPais.setText( Integer.toString(cantidad));
+    }
+
     private static void printPaises(){
 
         System.out.println(pais1);

@@ -27,7 +27,6 @@ public class PantallaTablero {
 
     private String[] lineaProcesada;
     Stage stage = new Stage();
-
     public Stage initialize() {
 
         //imagenes
@@ -113,7 +112,7 @@ public class PantallaTablero {
                 String linea = input.nextLine();
                 lineaProcesada = linea.split(",");
 
-                //etiquetado
+                //etiquetado.
                 Label etiqueta = new Label();
                 etiqueta.setText("1");
                 etiqueta.setPrefHeight(10);
@@ -125,6 +124,7 @@ public class PantallaTablero {
                 etiqueta.toFront();
                 etiqueta.setVisible(false);
 
+                //manejo de los paises.
                 Circle circulo = new Circle();
                 PantallaDeJuegoControlador.actualizarColorDelJugador("077bb", circulo);
 
