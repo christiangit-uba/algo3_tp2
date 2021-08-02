@@ -22,9 +22,11 @@ import java.net.URI;
 
 public class PantallaInicio {
 
+
     double xOffset;
     double yOffset;
     Stage primaryStage = new Stage();
+    private static AudioClip mediaPlayer;
 
     private void arrastrarVentana(Scene root, Stage primaryStage){
 
@@ -121,7 +123,7 @@ public class PantallaInicio {
         scene.getStylesheets().add(css);
 
         arrastrarVentana(scene, primaryStage);
-        //musica = reproductorDeMusica();
+        musica = reproductorDeMusica();
         primaryStage.setScene(scene);
 
         return primaryStage;
@@ -135,12 +137,21 @@ public class PantallaInicio {
         URI path = dir.toURI();
         String direccionParaMedia = path.toString();
         Media musica = new Media(direccionParaMedia);
-        AudioClip mediaPlayer = new AudioClip(musica.getSource());
+        mediaPlayer = new AudioClip(musica.getSource());
 
         mediaPlayer.setCycleCount(AudioClip.INDEFINITE);
-        mediaPlayer.play();
+        reproducirMusica();
         mediaPlayer.setVolume(1);
 
         return mediaPlayer;
     }
+
+    private void reproducirMusica(){
+        mediaPlayer.play();
+    }
+
+    public static void pararMusica(){
+        mediaPlayer.stop();
+    }
+
 }

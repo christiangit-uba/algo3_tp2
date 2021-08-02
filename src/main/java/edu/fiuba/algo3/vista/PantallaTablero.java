@@ -147,12 +147,15 @@ public class PantallaTablero {
             input.close();
 
         }catch (Exception e){
-            System.out.println("no se pudo abrir el archivo");
+            System.out.println("no se pudo abrir el archivo: '/resources/archivos/circulos.txt'");
         }
 
         Scene scene = new Scene(vista);
         String css = (EleccionDeJugadoresControlador.class.getResource("/estilos/paises.css")).toExternalForm();
         scene.getStylesheets().add(css);
+
+        //paro la musica
+        PantallaInicio.pararMusica();
 
         //centro la escena
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
