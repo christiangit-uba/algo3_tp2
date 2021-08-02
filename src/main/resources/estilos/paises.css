@@ -1,5 +1,53 @@
 
-.button:hover{
+.button{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 35;
+}
+
+#ejercitos{
+     -fx-font-family: "Comic Sans MS";
+     -fx-font-size: 35;
+}
+
+.label{
+    /*-fx-visibility: hidden;*/
+    -fx-text-fill: #f2efef;
+    -fx-font-size: 27;
+}
+
+.label:hover {
+    -fx-visibility: visible;
+}
+
+#pasaTurno{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 26;
+}
+
+#ejercitos{
+    -fx-text-fill: #01121c;
+    -fx-font-size: 25;
+}
+
+#jugador{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 35;
+    -fx-text-fill: #01121c;
+}
+
+#panel{
+    -fx-background-color: #ebe0a4;
+}
+
+#terminaTurno{
+    -fx-font-size: 21;
+}
+
+.button:hover, #textoEjercitos:hover{
     -fx-base: #395bae;
     -fx-cursor: hand;
+}
+
+#textoEjercitos:presed{
+    -fx-base: #ffffff;
 }

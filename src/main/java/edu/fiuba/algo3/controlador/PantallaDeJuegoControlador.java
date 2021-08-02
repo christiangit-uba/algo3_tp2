@@ -1,20 +1,87 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Juego;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import edu.fiuba.algo3.vista.PantallaTablero;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-
 
 public class PantallaDeJuegoControlador {
+
+    private static String pais1 = "";
+    private static String pais2 = "";
+    private static Label etiqueta1 = new Label();
+    private static Label etiqueta2 = new Label();
+    private static int jugadores = 0;
+
+    private static final String azul = "077bb";
+    private static final String rojo = "cc3311";
+    private static final String amarillo = "ee7733";
+    private static final String verde = "009988";
+    private static final String rosa = "ee3377";
+
+    public Stage initialize() throws FileNotFoundException {
+        return (new PantallaTablero()).initialize();
+    }
+
+    private static void borrarDatosPaises(){
+        pais1 = "";
+        PantallaTablero.ocultarEjercitos(etiqueta1);
+        pais2 = "";
+        PantallaTablero.ocultarEjercitos(etiqueta2);
+    }
+
+    public static void guardarPais(String pais, Label etiqueta) {
+
+        if( !pais1.isEmpty() && !pais2.isEmpty() ){
+            borrarDatosPaises();
+        }if (pais1.isEmpty()) {
+            pais1 = pais;
+            etiqueta1 = etiqueta;
+        } else {
+            pais2 = pais;
+            etiqueta2 = etiqueta;
+        }
+    }
+
+    public void setCantidadDeJugadores(int cantidadJugadores){
+        jugadores = cantidadJugadores;
+        System.out.println(jugadores);
+    }
+
+    private static void printPaises(){
+
+        System.out.println(pais1);
+        System.out.println(pais2);
+    }
+
+    public static void actualizarColorDelJugador(String color, Circle circulo) {
+
+        int r = 0, g = 0, b = 0;
+
+        switch(color){
+            case rosa:
+                r = 238; g = 51; b = 119;
+                break;
+            case verde:
+                r = 0; g = 153; b = 136;
+                break;
+            case amarillo:
+                r = 238; g = 119; b = 51;
+                break;
+            case rojo:
+                r = 204; g = 51; b = 17;
+                break;
+            case azul:
+                r = 0; g = 119; b = 187;
+                break;
+        }
+        circulo.setFill(Color.rgb(r, g, b));
+    }
+
+    /*
     private Juego juego;
     private int cantidadJugadores;
     Button[] botones;
@@ -25,138 +92,9 @@ public class PantallaDeJuegoControlador {
     private Button botonAtacante;
     private boolean partidaEmpezada = false;
 
-
     public void recibirParametros(int cantidadElegida){
         cantidadJugadores = cantidadElegida;
     }
-
-    @FXML
-    private Button salirVentana;
-
-    @FXML
-    public void initialize() throws Exception {
-
-        //carga de estilos css
-        String css = (getClass().getResource("/estilos/botones.css")).toExternalForm();
-        salirVentana.getStylesheets().add(css);
-
-    }
-
-    @FXML
-    private Label jugadorEnTurno;
-
-    @FXML
-    private Circle colorDeJugador;
-
-    @FXML
-    private TextField cantidadDeTropas;
-
-    @FXML
-    private Button atacar;
-    @FXML
-    private Button terminarTurno;
-    @FXML
-    private Button EmpezarJuego;
-    @FXML
-    private Button botonArgentina;
-    @FXML
-    private Button botonChile;
-    @FXML
-    private Button botonUruguay;
-    @FXML
-    private Button botonBrazil;
-    @FXML
-    private Button botonPeru;
-    @FXML
-    private Button botonColombia;
-    @FXML
-    private Button botonSahara;
-    @FXML
-    private Button botonZaire;
-    @FXML
-    private Button botonEtiopia;
-    @FXML
-    private Button botonEgipto;
-    @FXML
-    private Button botonEspana;
-    @FXML
-    private Button botonFrancia;
-    @FXML
-    private Button botonItalia;
-    @FXML
-    private Button botonAlemania;
-    @FXML
-    private Button botonPolonia;
-    @FXML
-    private Button botonRusia;
-    @FXML
-    private Button botonGranBretana;
-    @FXML
-    private Button botonArabia;
-    @FXML
-    private Button botonIsrael;
-    @FXML
-    private Button botonTurquia;
-    @FXML
-    private Button botonIran;
-    @FXML
-    private Button botonGobi;
-    @FXML
-    private Button botonMongolia;
-    @FXML
-    private Button botonSiberia;
-    @FXML
-    private Button botonChina;
-    @FXML
-    private Button botonMalasia;
-    @FXML
-    private Button botonIndia;
-    @FXML
-    private Button botonSumatra;
-    @FXML
-    private Button botonBorneo;
-    @FXML
-    private Button botonJava;
-    @FXML
-    private Button botonAustralia;
-    @FXML
-    private Button botonSuecia;
-    @FXML
-    private Button botonAral;
-    @FXML
-    private Button botonTartaria;
-    @FXML
-    private Button botonTaymir;
-    @FXML
-    private Button botonKamtchatka;
-    @FXML
-    private Button botonJapon;
-    @FXML
-    private Button botonMexico;
-    @FXML
-    private Button botonGroenlandia;
-    @FXML
-    private Button botonIslandia;
-    @FXML
-    private Button botonLabrador;
-    @FXML
-    private Button botonTerranova;
-    @FXML
-    private Button botonNuevaYork;
-    @FXML
-    private Button botonCalifornia;
-    @FXML
-    private Button botonOregon;
-    @FXML
-    private Button botonAlaska;
-    @FXML
-    private Button botonYukon;
-    @FXML
-    private Button botonCanada;
-    @FXML
-    private Button botonSudafrica;
-    @FXML
-    private Button botonMadagascar;
 
     private boolean setearAccion(Button boton) {
         String textoBoton = boton.getText();
@@ -175,256 +113,6 @@ public class PantallaDeJuegoControlador {
             return true;
         }
         return false;
-    }
-
-    @FXML
-    void AccionBrazil(ActionEvent event) {
-        setearAccion(botonBrazil);
-    }
-
-    @FXML
-    void accionAlaska(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionAlemania(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionArabia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionAral(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionArgentina(ActionEvent event) {
-        setearAccion(botonArgentina);
-    }
-
-    @FXML
-    void accionAustralia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionBorneo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionCalifornia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionCanada(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionChile(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionChina(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionColombia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionEgipto(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionEspana(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionEtiopia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionFrancia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionGobi(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionGranBretana(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionGroenlandia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionIndia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionIran(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionIslandia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionIsrael(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionItalia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionJapon(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionKamtchatka(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionLabrador(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionMadagascar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionMalasia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionMexico(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionMongolia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionNuevaYork(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionOregon(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionPeru(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionPolonia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionRusia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionSahara(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionSiberia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionSudafrica(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionSuecia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionSumatra(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionTartaria(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionTaymir(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionTerranova(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionTurquia(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionUruguay(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionYukon(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionZaire(ActionEvent event) {
-
-    }
-
-    @FXML
-    void accionJava(ActionEvent event) {
-
     }
 
     @FXML
@@ -483,4 +171,5 @@ public class PantallaDeJuegoControlador {
     void salir(ActionEvent event) {
         Platform.exit();
     }
+     */
 }
