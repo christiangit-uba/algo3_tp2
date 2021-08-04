@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.PantallaTablero;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -7,6 +8,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class PantallaDeJuegoControlador {
 
@@ -16,14 +18,14 @@ public class PantallaDeJuegoControlador {
     private static Label etiqueta2 = new Label();
     private static int jugadores = 0;
 
-    private static final String azul = "077bb";
-    private static final String rojo = "cc3311";
-    private static final String amarillo = "ee7733";
-    private static final String verde = "009988";
-    private static final String rosa = "ee3377";
+    private Juego juego;
+    private ArrayList<Circle> botones;
 
     public Stage initialize() throws FileNotFoundException {
-        return (new PantallaTablero()).initialize();
+        PantallaTablero vista = new PantallaTablero();
+        Stage stage = vista.initialize();
+        botones = vista.getBotones();
+        return stage;
     }
 
     private static void borrarDatosPaises(){
@@ -48,7 +50,17 @@ public class PantallaDeJuegoControlador {
 
     public void setCantidadDeJugadores(int cantidadJugadores){
         jugadores = cantidadJugadores;
-        System.out.println(jugadores);
+        try {
+            juego = new Juego(cantidadJugadores);
+        } catch (FileNotFoundException e) {
+            System.out.println("No se pudo cargar algun archivo del juego.");
+        }
+        String color;
+        juego.IniciarJuego();
+        for (Circle boton : botones){
+            boton.setFill(Color.web(juego.obtenerColorPais(boton.getId())));
+        }
+
     }
 
     public static void actualizarEjercitosDelPais(Label ejercitosPais, int cantidad){
@@ -59,30 +71,6 @@ public class PantallaDeJuegoControlador {
 
         System.out.println(pais1);
         System.out.println(pais2);
-    }
-
-    public static void actualizarColorDelJugador(String color, Circle circulo) {
-
-        int r = 0, g = 0, b = 0;
-
-        switch(color){
-            case rosa:
-                r = 238; g = 51; b = 119;
-                break;
-            case verde:
-                r = 0; g = 153; b = 136;
-                break;
-            case amarillo:
-                r = 238; g = 119; b = 51;
-                break;
-            case rojo:
-                r = 204; g = 51; b = 17;
-                break;
-            case azul:
-                r = 0; g = 119; b = 187;
-                break;
-        }
-        circulo.setFill(Color.rgb(r, g, b));
     }
 
     /*

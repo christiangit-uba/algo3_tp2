@@ -18,6 +18,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -27,6 +28,8 @@ public class PantallaTablero {
 
     private String[] lineaProcesada;
     Stage stage = new Stage();
+    private ArrayList<Circle> botones;
+
     public Stage initialize() {
 
         //imagenes
@@ -81,7 +84,7 @@ public class PantallaTablero {
         infoJugador.setPrefWidth(349);
         infoJugador.setId("jugador");
 
-        PantallaDeJuegoControlador.actualizarColorDelJugador("077bb", colorJugador);
+        //PantallaDeJuegoControlador.actualizarColorDelJugador("077bb", colorJugador);
         colorJugador.setLayoutX(594);
         colorJugador.setLayoutY(635);
         colorJugador.setRadius(25);
@@ -107,6 +110,8 @@ public class PantallaTablero {
         try {
             Scanner input = new Scanner(new File("src/main/resources/archivos/circulos.txt"));
 
+            botones = new ArrayList<>();
+
             while (input.hasNextLine()) {
 
                 String linea = input.nextLine();
@@ -126,7 +131,8 @@ public class PantallaTablero {
 
                 //manejo de los paises.
                 Circle circulo = new Circle();
-                PantallaDeJuegoControlador.actualizarColorDelJugador("077bb", circulo);
+                botones.add(circulo);
+
 
                 //0-nombre, 1-posx, 2-posy.
                 circulo.setId(lineaProcesada[0]);
@@ -173,5 +179,8 @@ public class PantallaTablero {
 
     public static void ocultarEjercitos(Label etiqueta){
         etiqueta.setVisible(false);
+    }
+    public ArrayList<Circle> getBotones(){
+        return botones;
     }
 }

@@ -13,16 +13,13 @@ public class ColorJugador {
         return nombre;
     }
 
-    public String color(){
-        return codigo;
-    }
 
     public Boolean mismoColor(ColorJugador otroColorJugador){
-        return otroColorJugador.mismoColor(codigo);
+        return otroColorJugador.mismoColor(nombre);
     }
 
     public Boolean mismoColor(String otroColor){
-        return (codigo.equals(otroColor));
+        return (nombre.equals(otroColor));
     }
 
     public String codigo() {

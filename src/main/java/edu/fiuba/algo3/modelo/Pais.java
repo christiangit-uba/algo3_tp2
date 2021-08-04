@@ -90,7 +90,15 @@ public class Pais {
         return ejercito.puedeMoverse(cantidadEjercitos);
     }
 
-    public String color() {
-        return ejercito.color();
+    public int colocarEjercitos(int ejercitosAColocar, ColorJugador colorJugador) {
+        return ejercito.colocarEjercito(ejercitosAColocar,colorJugador);
+    }
+
+    public boolean activarTarjeta(ColorJugador unColorJugador) {
+        return ejercito.activarTarjeta(unColorJugador);
+    }
+
+    public String getColor() {
+        return ejercito.getColor();
     }
 }

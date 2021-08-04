@@ -5,17 +5,17 @@ Peru,279,368
 Colombia,278,332
 Mexico,200,292
 California,144,266
-NuevaYork,181,229
+Nueva York,181,229
 Terranova,212,211
 Labrador,240,179
 Oregon,82,274
 Alaska,32,226
 Yukon,92,178
 Canada,144,128
-Groelandia,309,136
+Groenlandia,309,136
 Islandia,389,227
-España,461,329
-GranBretaña,475,244
+Espana,461,329
+Gran Bretana,475,244
 Suecia,534,164
 Rusia,608,193
 Polonia,608,193
@@ -36,7 +36,7 @@ Aral,647,150
 Tartaria,667,114
 Taymir,714,115
 Siberia,699,164
-Kamchatka,754,122
+Kamtchatka,754,122
 Gobi,732,232
 Mongolia,712,195
 China,804,210

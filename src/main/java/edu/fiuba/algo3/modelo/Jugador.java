@@ -32,21 +32,16 @@ public class Jugador {
     }
 
 
-    public boolean colocarEjercitos(int ejercitosAColocar, Pais unPais){
+    public void colocarEjercitos(int ejercitosAColocar, Pais unPais){
 
-        if(ejercitosAColocar > tope || !unPais.mismoColor(colorJugador)) {
-            return false;
-        }else {
-            for (int i = 0; i < ejercitosAColocar; i++) {
-                unPais.agregarEjercito();
-            }
-            tope = tope - ejercitosAColocar;
-            return true;
-        }
+        if(ejercitosAColocar <=  tope)
+
+            tope = tope - unPais.colocarEjercitos(ejercitosAColocar,colorJugador);
+
     }
 
     public boolean realizarAtaque(Pais atacante, Pais defensor, int cantidadEjercitosAUsar,ArrayList<Integer> valorDadoAtacante, ArrayList<Integer> valorDadoDefensor) throws Exception {
-        //CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
+        CadenaDeResponsabilidad.confirmarAtaque(atacante, defensor, cantidadEjercitosAUsar, colorJugador);
 
         atacante.atacaA(defensor, cantidadEjercitosAUsar, valorDadoAtacante, valorDadoDefensor);
         atacante.ocuparPais(defensor, colorJugador);
@@ -67,7 +62,7 @@ public class Jugador {
     }
 
     public void canjear(){
-           tope = tope + canjes.cantidadACanjear();
+        tope = tope + canjes.cantidadACanjear();
     }
 
 
@@ -99,7 +94,7 @@ public class Jugador {
     }
 
     private boolean distintosSimbolos(Tarjeta tarjetaUno,Tarjeta tarjetaDos,Tarjeta tarjetaTres){
-       return((!tarjetaUno.mismoSimbolo(tarjetaDos)) && (!tarjetaUno.mismoSimbolo(tarjetaTres)) && (!tarjetaDos.mismoSimbolo(tarjetaTres)));
+        return((!tarjetaUno.mismoSimbolo(tarjetaDos)) && (!tarjetaUno.mismoSimbolo(tarjetaTres)) && (!tarjetaDos.mismoSimbolo(tarjetaTres)));
     }
 
     public int cantidadTarjetas(){
@@ -112,6 +107,10 @@ public class Jugador {
 
     public String colorCodigo() {
         return colorJugador.codigo();
+    }
+
+    public void setTope(int tope) {
+        this.tope = tope;
     }
 
     public int getTope() {

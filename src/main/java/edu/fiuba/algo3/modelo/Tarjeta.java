@@ -21,11 +21,9 @@ public class Tarjeta{
 
     public boolean activarTarjeta(ColorJugador unColorJugador){
 
-        if(!activada && pais.mismoColor(unColorJugador)){
+        if(!activada){
             activada = true;
-            pais.agregarEjercito();
-            pais.agregarEjercito();
-            return true;
+            return pais.activarTarjeta(unColorJugador);
         }
         return false;
     }

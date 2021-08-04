@@ -43,9 +43,4 @@ public class MasDeUnEjercito extends Ejercito{
         return false;
     }
 
-    @Override
-    public String color() {
-        return colorJugador.nombre();
-    }
-
 }
