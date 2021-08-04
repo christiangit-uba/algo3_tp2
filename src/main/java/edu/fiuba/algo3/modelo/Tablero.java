@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Observable;
 
 public class Tablero {
     ArrayList<Pais> paises;
@@ -16,7 +17,6 @@ public class Tablero {
     public void asignarPaises(ArrayList<Jugador> jugadores) {
 
         (new Distribucion(jugadores, paises)).asignarEjercitosAPaises();
-
 
     }
 

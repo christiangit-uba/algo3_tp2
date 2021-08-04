@@ -22,6 +22,7 @@ public class PantallaDeJuegoControlador {
     private ArrayList<Circle> botones;
 
     public Stage initialize() throws FileNotFoundException {
+
         PantallaTablero vista = new PantallaTablero();
         Stage stage = vista.initialize();
         botones = vista.getBotones();
@@ -57,10 +58,10 @@ public class PantallaDeJuegoControlador {
         }
         String color;
         juego.IniciarJuego();
+
         for (Circle boton : botones){
             boton.setFill(Color.web(juego.obtenerColorPais(boton.getId())));
         }
-
     }
 
     public static void actualizarEjercitosDelPais(Label ejercitosPais, int cantidad){

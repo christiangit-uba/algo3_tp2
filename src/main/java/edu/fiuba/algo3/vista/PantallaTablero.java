@@ -19,10 +19,12 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
 
-public class PantallaTablero {
+public class PantallaTablero implements Observer {
 
     private static Circle colorJugador = new Circle();
 
@@ -182,5 +184,10 @@ public class PantallaTablero {
     }
     public ArrayList<Circle> getBotones(){
         return botones;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        
     }
 }

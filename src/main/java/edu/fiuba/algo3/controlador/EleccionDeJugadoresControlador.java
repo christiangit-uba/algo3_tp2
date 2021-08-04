@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class EleccionDeJugadoresControlador {
 
-    private static Stage stage = new Stage();
     private static ObservableList<Integer> numeros = FXCollections.observableArrayList(2,3,4,5,6);
     private static final ComboBox<Integer> cantidadDeJugadores = new ComboBox<>(numeros);
 
@@ -26,16 +25,14 @@ public class EleccionDeJugadoresControlador {
         return cantidadDeJugadores.getSelectionModel().getSelectedItem();
     }
 
-    public static Stage cargarTablero(ActionEvent event) throws IOException {
-
+    public static Stage cargarTablero() throws IOException {
 
         PantallaDeJuegoControlador juego = new PantallaDeJuegoControlador();
-        stage = juego.initialize();
+        Stage stage = juego.initialize();
 
         //le paso la cantidad de jugadores al tablero.
         juego.setCantidadDeJugadores(getCantidadJugadores());
 
         return stage;
     }
-
 }

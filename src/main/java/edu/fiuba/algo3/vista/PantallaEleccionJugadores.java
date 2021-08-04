@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonCantidadDeJugadoresControlador;
 import edu.fiuba.algo3.controlador.EleccionDeJugadoresControlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -44,7 +45,7 @@ public class PantallaEleccionJugadores {
         botonElegir.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent evento) {
                 try {
-                    Stage tablero = EleccionDeJugadoresControlador.cargarTablero(evento);
+                    Stage tablero = EleccionDeJugadoresControlador.cargarTablero();
                     primaryStage.hide();
                     tablero.show();
                 } catch (IOException e) {

@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.Main;
+import edu.fiuba.algo3.controlador.BotonEmpezarControlador;
+import edu.fiuba.algo3.controlador.BotonSalirControlador;
 import edu.fiuba.algo3.controlador.EleccionDeJugadoresControlador;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -91,14 +91,7 @@ public class PantallaInicio {
         botonEmpezar.setScaleY(1.7);
         botonEmpezar.setScaleZ(1.5);
 
-        botonEmpezar.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent evento) {
-
-                Stage jugadores = new EleccionDeJugadoresControlador().initialize();
-                primaryStage.hide();
-                jugadores.show();
-            }
-        });
+        botonEmpezar.setOnAction(new BotonEmpezarControlador(primaryStage));
 
         botonSalir.setLayoutX(400);
         botonSalir.setLayoutY(501);
@@ -108,11 +101,7 @@ public class PantallaInicio {
         botonSalir.setScaleX(1.2);
         botonSalir.setScaleY(1.3);
 
-        botonSalir.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent evento) {
-                Main.salir();
-            }
-        });
+        botonSalir.setOnAction(new BotonSalirControlador());
 
         //transparencias
         primaryStage.initStyle(StageStyle.TRANSPARENT); //quita la vista de la ventana de windows.
@@ -128,6 +117,8 @@ public class PantallaInicio {
 
         return primaryStage;
     }
+
+
 
     public AudioClip reproductorDeMusica(){
 
@@ -153,5 +144,4 @@ public class PantallaInicio {
     public static void pararMusica(){
         mediaPlayer.stop();
     }
-
 }
