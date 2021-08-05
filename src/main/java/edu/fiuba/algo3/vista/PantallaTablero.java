@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonPaisControlador;
 import edu.fiuba.algo3.controlador.EleccionDeJugadoresControlador;
-import edu.fiuba.algo3.controlador.PantallaDeJuegoControlador;
-import javafx.event.EventHandler;
+import edu.fiuba.algo3.modelo.tableroObservable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
@@ -23,14 +22,18 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 
-
 public class PantallaTablero implements Observer {
 
     private static Circle colorJugador = new Circle();
+    private final tableroObservable modelo;
 
     private String[] lineaProcesada;
     Stage stage = new Stage();
-    private ArrayList<Circle> botones;
+    private ArrayList<Circle> paises;
+
+    public PantallaTablero(tableroObservable modelo) {
+        this.modelo = modelo;
+    }
 
     public Stage initialize() {
 
@@ -79,17 +82,16 @@ public class PantallaTablero implements Observer {
         botonCartas.setPrefHeight(94);
         botonCartas.setPrefWidth(320);
 
-        Label infoJugador = new Label("JUGADOR");
+        /*Label infoJugador = new Label("JUGADOR");
         infoJugador.setLayoutX(350);
         infoJugador.setLayoutY(588);
         infoJugador.setPrefHeight(94);
         infoJugador.setPrefWidth(349);
-        infoJugador.setId("jugador");
+        infoJugador.setId("jugador"+color);
 
-        //PantallaDeJuegoControlador.actualizarColorDelJugador("077bb", colorJugador);
         colorJugador.setLayoutX(594);
         colorJugador.setLayoutY(635);
-        colorJugador.setRadius(25);
+        colorJugador.setRadius(25);*/
 
         Label ejercitos = new Label("EJERCITOS A MOVER");
         ejercitos.setLayoutX(920);
@@ -105,49 +107,47 @@ public class PantallaTablero implements Observer {
         ejercitosAMover.setPrefWidth(259);
         ejercitosAMover.setId("textoEjercitos");
 
-        Group vista = new Group(panelPrincipal, botonAtaque, siguienteFase, botonCartas,
-                infoJugador, colorJugador, botonTerminarTurno, botonMover, ejercitosAMover, ejercitos);
+        PaneDeColocacion paneDeColocacion = new PaneDeColocacion();
 
+        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas,paneDeColocacion.getPane(), colorJugador, botonTerminarTurno);
+        paneDeColocacion.ocultar();
+        paneDeColocacion.mostrar();
         //se añaden los circulos de los paises.
         try {
             Scanner input = new Scanner(new File("src/main/resources/archivos/circulos.txt"));
 
-            botones = new ArrayList<>();
+            paises = new ArrayList<>();
+            Label etiqueta;
 
             while (input.hasNextLine()) {
 
                 String linea = input.nextLine();
                 lineaProcesada = linea.split(",");
 
-                //etiquetado.
-                Label etiqueta = new Label();
-                etiqueta.setText("1");
-                etiqueta.setPrefHeight(10);
-                etiqueta.setPrefWidth(3);
-
-                etiqueta.setLayoutX( Integer.parseInt(lineaProcesada[1]) -10 ); //10
-                etiqueta.setLayoutY( Integer.parseInt(lineaProcesada[2]) -22 ); //22
-                etiqueta.setId("etiqueta" + lineaProcesada[0]); //etiquetaPais
-                etiqueta.toFront();
-                etiqueta.setVisible(false);
-
                 //manejo de los paises.
                 Circle circulo = new Circle();
-                botones.add(circulo);
-
+                //paises.add(circulo);
 
                 //0-nombre, 1-posx, 2-posy.
                 circulo.setId(lineaProcesada[0]);
                 circulo.setLayoutX( Integer.parseInt(lineaProcesada[1]) );
                 circulo.setLayoutY( Integer.parseInt(lineaProcesada[2]) );
                 circulo.setRadius(14);
-                circulo.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        PantallaDeJuegoControlador.guardarPais(circulo.getId(), etiqueta);
-                        mostrarEjercitos(etiqueta);
-                    }
-                });
+
+                etiqueta = new Label();
+                etiqueta.setPrefHeight(10);
+                etiqueta.setPrefWidth(3);
+
+                etiqueta.setLayoutX( Integer.parseInt(lineaProcesada[1]) -10 ); //10
+                etiqueta.setLayoutY( Integer.parseInt(lineaProcesada[2]) -22 ); //22
+                etiqueta.toFront();
+                etiqueta.setVisible(true);
+
+
+                circulo.setOnMouseClicked(new BotonPaisControlador());
+
+                PaisVista paisVista = new PaisVista(circulo,modelo,etiqueta);
+                modelo.addObserver(paisVista);
 
                 vista.getChildren().add(circulo);
                 vista.getChildren().add(etiqueta);
@@ -182,12 +182,12 @@ public class PantallaTablero implements Observer {
     public static void ocultarEjercitos(Label etiqueta){
         etiqueta.setVisible(false);
     }
-    public ArrayList<Circle> getBotones(){
-        return botones;
+    public ArrayList<Circle> getPaises(){
+        return paises;
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        
+
     }
 }

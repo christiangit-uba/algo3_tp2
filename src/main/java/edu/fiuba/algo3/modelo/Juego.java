@@ -12,7 +12,7 @@ public class Juego {
     private Jugador jugadorEnTurno;
     private boolean conquistoUnPaisAlmenos = false;
     private Ronda ronda;
-    private ModeloObservable modelo;
+    private tableroObservable modelo;
 
     public Juego(int cantidad) throws FileNotFoundException {
 
@@ -22,13 +22,13 @@ public class Juego {
         cantidadJugadores = cantidad;
     }
 
-    public void IniciarJuego(){
+    public tableroObservable IniciarJuego(){
         ronda = new Ronda(jugadores);
         ronda.iniciarPrimeraRonda(cantidadJugadores);
         asignarPaises();
-        modelo = new ModeloObservable(tablero);
-
-
+        modelo = new tableroObservable(tablero);
+        modelo.setChange();
+        return modelo;
     }
 
     public void asignarPaises(){

@@ -1,0 +1,13 @@
+package edu.fiuba.algo3.controlador;
+
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.shape.Circle;
+
+public class BotonPaisControlador implements EventHandler {
+    @Override
+    public void handle(Event event) {
+        Circle circulo = (Circle) event.getSource();
+        PantallaDeJuegoControlador.guardarPais(circulo.getId());
+    }
+}

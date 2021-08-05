@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonCantidadDeJugadoresControlador;
-import edu.fiuba.algo3.controlador.EleccionDeJugadoresControlador;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import edu.fiuba.algo3.controlador.BotonElegirCantidadControlador;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,8 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.io.IOException;
 
 public class PantallaEleccionJugadores {
 
@@ -42,17 +37,7 @@ public class PantallaEleccionJugadores {
         botonElegir.setScaleY(1.7);
         botonElegir.setScaleZ(1.5);
 
-        botonElegir.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent evento) {
-                try {
-                    Stage tablero = EleccionDeJugadoresControlador.cargarTablero();
-                    primaryStage.hide();
-                    tablero.show();
-                } catch (IOException e) {
-                    //e.printStackTrace();
-                }
-            }
-        });
+        botonElegir.setOnAction(new BotonElegirCantidadControlador(primaryStage));
 
         cantidadDeJugadores.setLayoutX(250);
         cantidadDeJugadores.setLayoutY(250);

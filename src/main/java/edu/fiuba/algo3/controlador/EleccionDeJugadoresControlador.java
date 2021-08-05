@@ -3,13 +3,9 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.vista.PantallaEleccionJugadores;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class EleccionDeJugadoresControlador {
@@ -25,14 +21,7 @@ public class EleccionDeJugadoresControlador {
         return cantidadDeJugadores.getSelectionModel().getSelectedItem();
     }
 
-    public static Stage cargarTablero() throws IOException {
-
-        PantallaDeJuegoControlador juego = new PantallaDeJuegoControlador();
-        Stage stage = juego.initialize();
-
-        //le paso la cantidad de jugadores al tablero.
-        juego.setCantidadDeJugadores(getCantidadJugadores());
-
-        return stage;
+    public static void cargarTablero() throws IOException {
+        new PantallaDeJuegoControlador(getCantidadJugadores());
     }
 }

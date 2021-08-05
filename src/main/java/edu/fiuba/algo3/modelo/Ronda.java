@@ -36,10 +36,10 @@ public class Ronda {
         //configurar colores validos
         colores.add(new ColorJugador("azul","0000FF"));
         colores.add(new ColorJugador("rojo","FF0000"));
-        colores.add(new ColorJugador("Amarillo","0x0000FF"));
-        colores.add(new ColorJugador("Verde","0x0000FF"));
-        colores.add(new ColorJugador("Rosa","0x0000FF"));
-        colores.add(new ColorJugador("Negro","0x0000FF"));
+        colores.add(new ColorJugador("Amarillo","FFFF00"));
+        colores.add(new ColorJugador("Verde","00FF00"));
+        colores.add(new ColorJugador("Rosa","FF0080"));
+        colores.add(new ColorJugador("Negro","000000"));
     }
 
     private void inicializarJugadores(int cantidad) {
