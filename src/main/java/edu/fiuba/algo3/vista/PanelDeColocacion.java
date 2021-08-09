@@ -1,23 +1,15 @@
 package edu.fiuba.algo3.vista;
 
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-
-import java.util.Observable;
-import java.util.Observer;
 
 
-public class PaneDeColocacion{
+public class PanelDeColocacion {
     private final Pane pane;
 
-    public PaneDeColocacion(){
+    public PanelDeColocacion(){
         Label cantidadRestante = new Label();
         cantidadRestante.setStyle("-fx-text-fill: black");
         cantidadRestante.setText("CANTIDAD RESTANTE");
@@ -39,11 +31,11 @@ public class PaneDeColocacion{
         botonColocar.setPrefHeight(94);
         botonColocar.setPrefWidth(259);
 
-        Button paisDestino = new Button("COLOCAR EJERCITO");
+        Button paisDestino = new Button("COLOCAR");
         paisDestino.setLayoutX(920);
         paisDestino.setLayoutY(310);
         paisDestino.setPrefHeight(42);
-        paisDestino.setPrefWidth(274);
+        paisDestino.setPrefWidth(280);
         paisDestino.setId("paisDestino");
 
         pane = new Pane();

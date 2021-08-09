@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonPaisControlador;
-import edu.fiuba.algo3.controlador.EleccionDeJugadoresControlador;
+import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.tableroObservable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -50,24 +49,13 @@ public class PantallaTablero implements Observer {
         panelPrincipal.setId("panel");
 
         //botones
-        Button botonAtaque = new Button("ATACAR");
-        botonAtaque.setLayoutX(915);
-        botonAtaque.setLayoutY(50); //491
-        botonAtaque.setPrefHeight(94);
-        botonAtaque.setPrefWidth(259);
-
-        Button botonMover = new Button("MOVER");
-        botonMover.setLayoutX(915);
-        botonMover.setLayoutY(180); //380
-        botonMover.setPrefHeight(94);
-        botonMover.setPrefWidth(259);
-
         Button botonTerminarTurno = new Button("TERMINAR TURNO");
         botonTerminarTurno.setLayoutX(925);
-        botonTerminarTurno.setLayoutY(460);  //420
+        botonTerminarTurno.setLayoutY(588);  //420
         botonTerminarTurno.setPrefHeight(80); //94
         botonTerminarTurno.setPrefWidth(234);
         botonTerminarTurno.setId("terminaTurno");
+        botonTerminarTurno.setOnAction(new BotonFinTurnoContorlador(this));
 
         Button siguienteFase = new Button("PASAR TURNO");
         siguienteFase.setLayoutX(643);
@@ -75,12 +63,14 @@ public class PantallaTablero implements Observer {
         siguienteFase.setPrefHeight(94);
         siguienteFase.setPrefWidth(234);
         siguienteFase.setId("pasaTurno");
+        siguienteFase.setOnAction(new BotonFinFaseContorlador(this));
 
         Button botonCartas = new Button("VER CARTAS");
         botonCartas.setLayoutX(7);
         botonCartas.setLayoutY(588);
         botonCartas.setPrefHeight(94);
         botonCartas.setPrefWidth(320);
+        botonCartas.setOnAction(new BotonCartasContorlador(this));
 
         /*Label infoJugador = new Label("JUGADOR");
         infoJugador.setLayoutX(350);
@@ -93,7 +83,7 @@ public class PantallaTablero implements Observer {
         colorJugador.setLayoutY(635);
         colorJugador.setRadius(25);*/
 
-        Label ejercitos = new Label("EJERCITOS A MOVER");
+        Label ejercitos = new Label("EJERCITOS A COLOCAR");
         ejercitos.setLayoutX(920);
         ejercitos.setLayoutY(310);
         ejercitos.setPrefHeight(42);
@@ -107,10 +97,10 @@ public class PantallaTablero implements Observer {
         ejercitosAMover.setPrefWidth(259);
         ejercitosAMover.setId("textoEjercitos");
 
-        PaneDeColocacion paneDeColocacion = new PaneDeColocacion();
+        PanelReagrupacion paneDeColocacion = new PanelReagrupacion();
 
         Group vista = new Group(panelPrincipal, siguienteFase, botonCartas,paneDeColocacion.getPane(), colorJugador, botonTerminarTurno);
-        paneDeColocacion.ocultar();
+        //paneDeColocacion.ocultar();
         paneDeColocacion.mostrar();
         //se añaden los circulos de los paises.
         try {
