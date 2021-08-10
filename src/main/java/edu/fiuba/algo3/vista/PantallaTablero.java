@@ -29,6 +29,10 @@ public class PantallaTablero implements Observer {
     private String[] lineaProcesada;
     Stage stage = new Stage();
     private ArrayList<Circle> paises;
+    private PanelAtaque panelAtaque;
+    private PanelReagrupacion panelReagrupacion;
+    private PanelDeColocacion panelDeColocacion;
+    private Panel panelEnUso;
 
     public PantallaTablero(tableroObservable modelo) {
         this.modelo = modelo;
@@ -97,11 +101,14 @@ public class PantallaTablero implements Observer {
         ejercitosAMover.setPrefWidth(259);
         ejercitosAMover.setId("textoEjercitos");
 
-        PanelReagrupacion paneDeColocacion = new PanelReagrupacion();
+        panelAtaque = new PanelAtaque();
+        panelReagrupacion = new PanelReagrupacion();
+        panelDeColocacion = new PanelDeColocacion();
 
-        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas,paneDeColocacion.getPane(), colorJugador, botonTerminarTurno);
-        //paneDeColocacion.ocultar();
-        paneDeColocacion.mostrar();
+        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas,panelDeColocacion.getPane(), colorJugador, botonTerminarTurno);
+        panelDeColocacion.mostrar();
+        panelEnUso = panelDeColocacion;
+
         //se añaden los circulos de los paises.
         try {
             Scanner input = new Scanner(new File("src/main/resources/archivos/circulos.txt"));
@@ -179,5 +186,17 @@ public class PantallaTablero implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
+    }
+
+    public void limpiarPaises() {
+        panelEnUso.limpiarPaises();
+    }
+
+    public void setPaisOrigen(String pais) {
+        panelEnUso.setPaisOrigen(pais);
+    }
+
+    public void setPaisDestino(String pais) {
+        panelEnUso.setPaisDestino(pais);
     }
 }

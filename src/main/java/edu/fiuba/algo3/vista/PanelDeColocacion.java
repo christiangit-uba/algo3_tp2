@@ -6,17 +6,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 
-public class PanelDeColocacion {
+public class PanelDeColocacion extends Panel{
     private final Pane pane;
 
     public PanelDeColocacion(){
-        Label cantidadRestante = new Label();
-        cantidadRestante.setStyle("-fx-text-fill: black");
-        cantidadRestante.setText("CANTIDAD RESTANTE");
-        cantidadRestante.setLayoutX(920);
-        cantidadRestante.setLayoutY(20); //70
-        cantidadRestante.setPrefHeight(100);
-        cantidadRestante.setPrefWidth(400);
+        super();
+        Label cabezera = crearLabelCabezera("TURNO DE COLOCACION");
 
         Label ejercitos = new Label();
         ejercitos.setStyle("-fx-text-fill: black");
@@ -31,15 +26,15 @@ public class PanelDeColocacion {
         botonColocar.setPrefHeight(94);
         botonColocar.setPrefWidth(259);
 
-        Button paisDestino = new Button("COLOCAR");
+        /*Button paisDestino = new Button("COLOCAR");
         paisDestino.setLayoutX(920);
         paisDestino.setLayoutY(310);
         paisDestino.setPrefHeight(42);
         paisDestino.setPrefWidth(280);
-        paisDestino.setId("paisDestino");
+        paisDestino.setId("paisDestino");*/
 
         pane = new Pane();
-        pane.getChildren().addAll(cantidadRestante, ejercitos, botonColocar,paisDestino);
+        pane.getChildren().addAll(cabezera, ejercitos, paisOrigen);
     }
 
     public Pane getPane() {

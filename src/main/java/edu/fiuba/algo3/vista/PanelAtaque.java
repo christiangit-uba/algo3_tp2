@@ -6,23 +6,17 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-public class PanelAtaque {
+public class PanelAtaque extends Panel{
     private final Pane pane;
 
     public PanelAtaque(){
-        Label cantidadRestante = new Label();
-        cantidadRestante.setStyle("-fx-text-fill: black");
-        cantidadRestante.setText("ATACAR PAIS");
-        cantidadRestante.setLayoutX(920);
-        cantidadRestante.setLayoutY(20); //70
-        cantidadRestante.setPrefHeight(100);
-        cantidadRestante.setPrefWidth(400);
+        Label cabezera = crearLabelCabezera("TURNO DE ATAQUE");
 
         /*ComboBox<> paisOrigen = new ComboBox<>;
 
         ComboBox<> paisDestino = new ComboBox<>;*/
 
-        ComboBox<Pais> paisAtacante = new ComboBox();
+        /*ComboBox<Pais> paisAtacante = new ComboBox();
         paisAtacante.setLayoutX(915);
         paisAtacante.setLayoutY(180);
         paisAtacante.setPrefHeight(25);
@@ -32,7 +26,7 @@ public class PanelAtaque {
         paisObjetivo.setLayoutX(915);
         paisObjetivo.setLayoutY(300);
         paisObjetivo.setPrefHeight(25);
-        paisObjetivo.setPrefWidth(250);
+        paisObjetivo.setPrefWidth(250);*/
 
         Button botonAtacar = new Button("ATACAR");
         botonAtacar.setLayoutX(915);
@@ -42,7 +36,7 @@ public class PanelAtaque {
         //botonAtacar.setId("paisDestino");
 
         pane = new Pane();
-        pane.getChildren().addAll(cantidadRestante, paisAtacante, paisObjetivo, botonAtacar);
+        pane.getChildren().addAll(cabezera, paisOrigen, paisDestino, botonAtacar);
     }
 
     public Pane getPane() {

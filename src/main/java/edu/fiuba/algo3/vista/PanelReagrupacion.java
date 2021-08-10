@@ -7,19 +7,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-public class PanelReagrupacion {
+public class PanelReagrupacion extends Panel{
     private final Pane pane;
 
     public PanelReagrupacion(){
-        Label cantidadRestante = new Label();
-        cantidadRestante.setStyle("-fx-text-fill: black");
-        cantidadRestante.setText("REAGRUPAR TROPAS");
-        cantidadRestante.setLayoutX(917);
-        cantidadRestante.setLayoutY(20); //70
-        cantidadRestante.setPrefHeight(100);
-        cantidadRestante.setPrefWidth(400);
+        Label cabezera = crearLabelCabezera("TURNO DE REAGRUPACION");
 
-        ComboBox<Pais> paisOrigen = new ComboBox();
+        /*ComboBox<Pais> paisOrigen = new ComboBox();
         paisOrigen.setLayoutX(915);
         paisOrigen.setLayoutY(180);
         paisOrigen.setPrefHeight(25);
@@ -29,7 +23,7 @@ public class PanelReagrupacion {
         paisDestino.setLayoutX(915);
         paisDestino.setLayoutY(300);
         paisDestino.setPrefHeight(25);
-        paisDestino.setPrefWidth(250);
+        paisDestino.setPrefWidth(250);*/
 
         Button botonMover = new Button("MOVER");
         botonMover.setLayoutX(915);
@@ -40,7 +34,7 @@ public class PanelReagrupacion {
         botonMover.setOnAction(new BotonMoverTropasControlador());
 
         pane = new Pane();
-        pane.getChildren().addAll(cantidadRestante, paisOrigen, paisDestino, botonMover);
+        pane.getChildren().addAll(cabezera, paisOrigen, paisDestino, botonMover);
     }
 
     public Pane getPane() {
