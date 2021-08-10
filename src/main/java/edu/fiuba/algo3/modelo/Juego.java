@@ -2,9 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.Random;
 
-public class Juego {
+public class Juego extends Observable {
     private int cantidadJugadores;
     private Tablero tablero;
     private Tarjetero tarjetero;
@@ -14,7 +15,7 @@ public class Juego {
     private Ronda ronda;
     private tableroObservable modelo;
 
-    public Juego(int cantidad) throws FileNotFoundException {
+    public Juego(int cantidad)  throws FileNotFoundException {
 
         tarjetero = new Tarjetero();
         tablero = new Tablero(tarjetero);
@@ -22,13 +23,12 @@ public class Juego {
         cantidadJugadores = cantidad;
     }
 
-    public tableroObservable IniciarJuego(){
+    public void IniciarJuego(){
         ronda = new Ronda(jugadores);
         ronda.iniciarPrimeraRonda(cantidadJugadores);
         asignarPaises();
-        modelo = new tableroObservable(tablero);
-        modelo.setChange();
-        return modelo;
+        iniciarTurno();
+        this.setChanged();
     }
 
     public void asignarPaises(){
@@ -68,8 +68,9 @@ public class Juego {
         return false;
     }
 
-    public void colocarEjercito(Pais pais, int cantidadAColocar){
-        jugadorEnTurno.colocarEjercitos(cantidadAColocar, pais);
+    public void colocarEjercito(String pais, int cantidadAColocar){
+        jugadorEnTurno.colocarEjercitos(cantidadAColocar, tablero.obtenerPais(pais));
+        this.setChanged();
     }
 
     public int getTope(){
@@ -131,5 +132,9 @@ public class Juego {
 
     public String obtenerColorPais(String nombre) {
         return obtenerPais(nombre).getColor();
+    }
+
+    public void setChange() {
+        this.setChanged();
     }
 }

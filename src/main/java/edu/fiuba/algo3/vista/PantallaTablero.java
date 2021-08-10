@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.*;
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.tableroObservable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -12,6 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextBoundsType;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -21,10 +25,10 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 
-public class PantallaTablero implements Observer {
+public class PantallaTablero {
 
     private static Circle colorJugador = new Circle();
-    private final tableroObservable modelo;
+    private final Juego modelo;
 
     private String[] lineaProcesada;
     Stage stage = new Stage();
@@ -34,7 +38,7 @@ public class PantallaTablero implements Observer {
     private PanelDeColocacion panelDeColocacion;
     private Panel panelEnUso;
 
-    public PantallaTablero(tableroObservable modelo) {
+    public PantallaTablero(Juego modelo) {
         this.modelo = modelo;
     }
 
@@ -101,20 +105,24 @@ public class PantallaTablero implements Observer {
         ejercitosAMover.setPrefWidth(259);
         ejercitosAMover.setId("textoEjercitos");
 
+        panelDeColocacion = new PanelDeColocacion(modelo);
+        modelo.addObserver(panelDeColocacion);
+
         panelAtaque = new PanelAtaque();
         panelReagrupacion = new PanelReagrupacion();
-        panelDeColocacion = new PanelDeColocacion();
 
-        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas,panelDeColocacion.getPane(), colorJugador, botonTerminarTurno);
-        panelDeColocacion.mostrar();
-        panelEnUso = panelDeColocacion;
+        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas,panelDeColocacion.getPane(),panelAtaque.getPane(),panelReagrupacion.getPane(), colorJugador, botonTerminarTurno);
+        panelAtaque.mostrar();
+        panelReagrupacion.ocultar();
+        panelDeColocacion.ocultar();
+        panelEnUso = panelAtaque;
 
         //se añaden los circulos de los paises.
         try {
             Scanner input = new Scanner(new File("src/main/resources/archivos/circulos.txt"));
 
             paises = new ArrayList<>();
-            Label etiqueta;
+            Text etiqueta;
 
             while (input.hasNextLine()) {
 
@@ -127,18 +135,21 @@ public class PantallaTablero implements Observer {
 
                 //0-nombre, 1-posx, 2-posy.
                 circulo.setId(lineaProcesada[0]);
-                circulo.setLayoutX( Integer.parseInt(lineaProcesada[1]) );
-                circulo.setLayoutY( Integer.parseInt(lineaProcesada[2]) );
+                circulo.setLayoutX( Integer.parseInt(lineaProcesada[1]));
+                circulo.setLayoutY( Integer.parseInt(lineaProcesada[2]));
                 circulo.setRadius(14);
 
-                etiqueta = new Label();
-                etiqueta.setPrefHeight(10);
-                etiqueta.setPrefWidth(3);
+                etiqueta = new Text();
 
-                etiqueta.setLayoutX( Integer.parseInt(lineaProcesada[1]) -10 ); //10
-                etiqueta.setLayoutY( Integer.parseInt(lineaProcesada[2]) -22 ); //22
+                //etiqueta.setPrefHeight(10);
+                //etiqueta.setPrefWidth(3);
+                etiqueta.setFont(new Font(30));
+                etiqueta.setBoundsType(TextBoundsType.VISUAL);
+                etiqueta.setLayoutX( Integer.parseInt(lineaProcesada[1]) -8); //10
+                etiqueta.setLayoutY( Integer.parseInt(lineaProcesada[2]) +9); //22
                 etiqueta.toFront();
-                etiqueta.setVisible(true);
+
+                //etiqueta.setVisible(true);
 
 
                 circulo.setOnMouseClicked(new BotonPaisControlador());
@@ -181,11 +192,6 @@ public class PantallaTablero implements Observer {
     }
     public ArrayList<Circle> getPaises(){
         return paises;
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-
     }
 
     public void limpiarPaises() {
