@@ -59,7 +59,7 @@ public class PanelDados {
         setearImagenDados(dadosDefensor,440);
 
 
-        stage.initStyle(StageStyle.TRANSPARENT); //quita la vista de la ventana de windows
+        stage.initStyle(StageStyle.TRANSPARENT);
 
         Scene scene = new Scene(pane);
 
