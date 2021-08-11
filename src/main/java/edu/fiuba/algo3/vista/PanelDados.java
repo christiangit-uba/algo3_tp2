@@ -85,7 +85,6 @@ public class PanelDados {
 
     private void arrastrarVentana(Scene root, Stage primaryStage){
 
-        //para arrastar la ventana.
         root.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
