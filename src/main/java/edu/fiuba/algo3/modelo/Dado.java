@@ -12,21 +12,22 @@ public class Dado {
     }
 
     public Dado(int cantidadDeDados, ArrayList<Integer> dados) {
-        this.dados = dados;
         if(dados.isEmpty())
-            lanzar(cantidadDeDados);
+            lanzar(cantidadDeDados,dados);
+        this.dados = dados;
     }
 
-    public void lanzar(int cantidadDeDados){
-        ArrayList<Integer> dadosNuevos = new ArrayList<>();
+    public void lanzar(int cantidadDeDados, ArrayList<Integer> dados){
         Random random = new Random();
 
         for (int i = 0; i < cantidadDeDados; i++) {
-            dadosNuevos.add(random.nextInt(MAXIMO) + 1 );
+            int num = (random.nextInt(MAXIMO) + 1);
+            while(dados.contains(num))
+                num = (random.nextInt(MAXIMO) + 1);
+            dados.add(num);
         }
 
-        dadosNuevos.sort(Collections.reverseOrder());
-        dados = dadosNuevos;
+        dados.sort(Collections.reverseOrder());
     }
 
     public void comparar(Dado defensa, Pais paisAtacante, Pais paisDefensor) {

@@ -46,4 +46,6 @@ public abstract class Ejercito{
     public String getColor(){
         return colorJugador.codigo();
     }
+
+    public abstract int ejercitosDefensa();
 }

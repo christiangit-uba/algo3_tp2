@@ -78,12 +78,15 @@ public class PantallaTablero implements Observer {
         colorJugador.setLayoutY(635);
         colorJugador.setRadius(25);
 
+
         Button botonCartas = new Button("VER CARTAS");
         botonCartas.setLayoutX(7);
         botonCartas.setLayoutY(588);
         botonCartas.setPrefHeight(94);
         botonCartas.setPrefWidth(320);
-        botonCartas.setOnAction(new BotonCartasContorlador(this));
+        botonCartas.setOnAction(new BotonCartasControlador(modelo));
+
+
 
         panelDeColocacion = new PanelDeColocacion(modelo);
         modelo.addObserver(panelDeColocacion);

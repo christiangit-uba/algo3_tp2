@@ -79,7 +79,7 @@ public class PruebaDeAtaqueDeJugadoresYObtencionDeTarjetasDePaisesTest {
         assertEquals(Argentina.cantidadEjercitos(),2);
         assertTrue(Brazil.mismoColor(rojo));
 
-        juego.terminarTurno();
+        juego.terminarTurno(false);
 
         assertEquals(jugador1.cantidadTarjetas(),1);
     }

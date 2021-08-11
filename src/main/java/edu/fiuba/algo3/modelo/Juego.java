@@ -58,12 +58,14 @@ public class Juego extends Observable {
     }
 
     public boolean activarTarjeta(Tarjeta tarjeta){
+        this.notifyObservers();
         return jugadorEnTurno.activarTarjetaPais(tarjeta);
     }
 
     public boolean canjearTarjetas(ArrayList<Tarjeta> tarjetas){
         if(jugadorEnTurno.validarCanjes(tarjetas, tarjetero)){
             jugadorEnTurno.canjear();
+            this.notifyObservers();
             return true;
         }
         return false;
@@ -123,6 +125,10 @@ public class Juego extends Observable {
         return tarjetero.buscarTarjeta(unPais);
     }
 
+    public Tarjeta buscarTarjetaJugador(Pais unPais){
+        return jugadorEnTurno.buscarTarjeta(unPais);
+    }
+
     public void randomizarJugadores() {
         ArrayList<Jugador> nuevoOrden = new ArrayList<>();
         Random random = new Random();
@@ -152,4 +158,20 @@ public class Juego extends Observable {
             jugador.setTope(i);
         }
     }
+
+
+
+
+
+
+    public ArrayList<Tarjeta> tarjetasJugador(){
+        return ronda.jugadorEnRonda().obtenerTarjetas();
+    }
+
+    public Jugador jugadorEnTurno(){
+        return ronda.jugadorEnRonda();
+    }
+
+
+
 }

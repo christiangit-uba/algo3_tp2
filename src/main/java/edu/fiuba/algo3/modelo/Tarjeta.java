@@ -36,5 +36,13 @@ public class Tarjeta{
         return otraTarjeta.mismoSimbolo(simbolo);
     }
 
+    public String obtenerID(){
+        return pais.nombre();
+    }
+
+    public String obtenerSimbolo(){
+        return simbolo.nombreSimbolo();
+    }
+
 
 }

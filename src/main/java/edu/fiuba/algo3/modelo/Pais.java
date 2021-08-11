@@ -31,7 +31,7 @@ public class Pais {
     }
 
     public void teAtaca(Pais atacante,Dado dadoAtacante, ArrayList<Integer> valoresDadoDefensor){
-        Dado dadoDefensor = new Dado(ejercito.getCantidadDeEjercitos(),valoresDadoDefensor);
+        Dado dadoDefensor = new Dado(ejercito.ejercitosDefensa(),valoresDadoDefensor);
         dadoAtacante.comparar(dadoDefensor,atacante,this);
     }
 
@@ -106,5 +106,9 @@ public class Pais {
 
     public String getColor() {
         return ejercito.getColor();
+    }
+
+    public String nombre(){
+        return nombre;
     }
 }

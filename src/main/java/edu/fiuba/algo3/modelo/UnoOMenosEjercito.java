@@ -41,4 +41,9 @@ public class UnoOMenosEjercito extends Ejercito{
         return cantidadDeEjercitos == 0;
     }
 
+    @Override
+    public int ejercitosDefensa() {
+        return cantidadDeEjercitos;
+    }
+
 }

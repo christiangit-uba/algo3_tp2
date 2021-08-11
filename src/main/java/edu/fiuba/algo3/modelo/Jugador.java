@@ -14,6 +14,7 @@ public class Jugador {
         tarjetas = new ArrayList<>();
         this.colorJugador = colorJugador;
         canjes = new Canje();
+        int tope = 0;
     }
 
     public void asignarPais(Pais unPais) {
@@ -22,9 +23,7 @@ public class Jugador {
     }
 
     public boolean activarTarjetaPais(Tarjeta unaTarjeta){
-
         return unaTarjeta.activarTarjeta(colorJugador);
-
     }
 
     public int cantidadEjercitosAColocar(Tablero tablero) {
@@ -86,7 +85,7 @@ public class Jugador {
         Tarjeta tarjetaDos = tarjetasSelecionadas.get(1);
         Tarjeta tarjetaTres = tarjetasSelecionadas.get(2);
 
-        return(distintosSimbolos(tarjetaUno,tarjetaDos,tarjetaTres) || mismoSimbolo(tarjetaUno,tarjetaDos,tarjetaTres) );
+        return(mismoSimbolo(tarjetaUno,tarjetaDos,tarjetaTres) || distintosSimbolos(tarjetaUno,tarjetaDos,tarjetaTres));
     }
 
     private boolean mismoSimbolo(Tarjeta tarjetaUno, Tarjeta tarjetaDos, Tarjeta tarjetaTres) {
@@ -128,4 +127,19 @@ public class Jugador {
     public ColorJugador getColor() {
         return colorJugador;
     }
+
+
+
+    public ArrayList<Tarjeta> obtenerTarjetas(){
+        return tarjetas;
+    }
+
+    public Tarjeta buscarTarjeta(Pais unPais){
+        for(Tarjeta tarjeta: tarjetas){
+            if(tarjeta.mismaTarjeta(unPais))
+                return tarjeta;
+        }
+        return null;
+    }
+
 }
