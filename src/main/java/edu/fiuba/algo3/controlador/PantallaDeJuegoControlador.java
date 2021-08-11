@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.tableroObservable;
 import edu.fiuba.algo3.vista.PantallaTablero;
 import javafx.stage.Stage;
 import java.io.FileNotFoundException;
@@ -14,6 +13,7 @@ public class PantallaDeJuegoControlador {
     private static int jugadores = 0;
     private static PantallaTablero vista;
     private static Juego juego;
+    private boolean turno;
 
     public PantallaDeJuegoControlador(int cantidadJugadores) {
         jugadores = cantidadJugadores;
@@ -25,9 +25,22 @@ public class PantallaDeJuegoControlador {
         juego.IniciarJuego();
 
         vista = new PantallaTablero(juego);
+
         Stage stage = vista.initialize();
-        juego.notifyObservers();
+        turno = true;
+        colocacion5y3(5);
         stage.show();
+    }
+
+    public static void pasarTurno(Boolean avanzaJugador) {
+        vista.terminarTurno(juego.terminarTurno(avanzaJugador));
+        juego.notifyObservers();
+    }
+
+    private void colocacion5y3(int i) {
+        juego.topeDeRonda(i);
+        vista.mostrarColocacion();
+        juego.notifyObservers();
     }
 
     private static void borrarDatosPaises(){
@@ -54,6 +67,7 @@ public class PantallaDeJuegoControlador {
 
     public static void colocarEjecito(int cantidadAColocar) {
         juego.colocarEjercito(pais1,cantidadAColocar);
+        borrarDatosPaises();
         juego.notifyObservers();
     }
 
@@ -63,5 +77,17 @@ public class PantallaDeJuegoControlador {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        borrarDatosPaises();
+        juego.notifyObservers();
+    }
+
+    public static void moverTropas() {
+        try {
+            juego.moverEjercito(pais1,pais2,1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        borrarDatosPaises();
+        juego.notifyObservers();
     }
 }

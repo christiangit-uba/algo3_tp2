@@ -91,7 +91,13 @@ public class Pais {
     }
 
     public int colocarEjercitos(int ejercitosAColocar, ColorJugador colorJugador) {
-        return ejercito.colocarEjercito(ejercitosAColocar,colorJugador);
+
+        if(ejercito.mismoColor(colorJugador)){
+            for(int i = 0; i < ejercitosAColocar; i++)
+                ejercito = ejercito.agregarEjercito();
+            return ejercitosAColocar;
+        }
+        return 0;
     }
 
     public boolean activarTarjeta(ColorJugador unColorJugador) {

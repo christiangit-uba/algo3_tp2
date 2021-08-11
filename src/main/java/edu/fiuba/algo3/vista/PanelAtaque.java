@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonAtacarControlador;
+import edu.fiuba.algo3.controlador.BotonPasarTurnoEnAtaqueControlador;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -8,6 +9,7 @@ import javafx.scene.layout.Pane;
 
 public class PanelAtaque extends Panel{
     private final Pane pane;
+    private Panel siguiente;
 
     public PanelAtaque(){
         super();
@@ -25,10 +27,23 @@ public class PanelAtaque extends Panel{
         botonAtacar.setLayoutY(460); //380
         botonAtacar.setPrefHeight(94);
         botonAtacar.setPrefWidth(259);
-        //botonAtacar.setId("paisDestino");
+
+        Button siguienteFase = new Button("PASAR TURNO");
+        siguienteFase.setLayoutX(643);
+        siguienteFase.setLayoutY(588);
+        siguienteFase.setPrefHeight(94);
+        siguienteFase.setPrefWidth(234);
+        siguienteFase.setId("pasaTurno");
+        siguienteFase.setOnAction(new BotonPasarTurnoEnAtaqueControlador());
+        siguienteFase.toFront();
 
         pane = new Pane();
-        pane.getChildren().addAll(cabezera,cantidadIngresada, paisOrigen, paisDestino, botonAtacar);
+        pane.getChildren().addAll(cabezera,cantidadIngresada, paisOrigen, paisDestino,siguienteFase, botonAtacar);
+    }
+
+    @Override
+    public void setContactos(Panel siguiente) {
+        this.siguiente = siguiente;
     }
 
     public Pane getPane() {
@@ -43,6 +58,8 @@ public class PanelAtaque extends Panel{
         pane.setVisible(true);
     }
 
-
-
+    @Override
+    public Panel siguientePanel(boolean sigueRonda) {
+        return siguiente;
+    }
 }

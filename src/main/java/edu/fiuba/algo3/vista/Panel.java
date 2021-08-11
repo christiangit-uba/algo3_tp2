@@ -54,4 +54,12 @@ public abstract class Panel extends Component {
     public void setPaisDestino(String pais) {
         paisDestino.setText(pais);
     }
+
+    public abstract void setContactos(Panel panelAtaque);
+
+    public abstract void ocultar();
+
+    public abstract void mostrar();
+
+    public abstract Panel siguientePanel(boolean sigueRonda);
 }

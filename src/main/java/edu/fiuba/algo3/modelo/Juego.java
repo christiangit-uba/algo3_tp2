@@ -54,6 +54,7 @@ public class Juego extends Observable {
         if(jugadorEnTurno.realizarAtaque(tablero.obtenerPais(paisAtacante),tablero.obtenerPais(paisDefensor) ,cantidadTropas,valoresDadosAtacante,valoresDadoDefensor)){
             conquistoUnPaisAlmenos = true;
         }
+        this.setChanged();
     }
 
     public boolean activarTarjeta(Tarjeta tarjeta){
@@ -77,15 +78,23 @@ public class Juego extends Observable {
         return jugadorEnTurno.getTope();
     }
 
-    public boolean terminarTurno() {
+    public boolean terminarTurno(Boolean avanzaJugador) {
+        this.setChanged();
         if(conquistoUnPaisAlmenos){
             tarjetero.asignarTarjeta(jugadorEnTurno);
         }
-        return ronda.pasarTurno();
+        
+        if (avanzaJugador){
+            boolean cond = ronda.pasarTurno();
+            jugadorEnTurno = ronda.jugadorEnRonda();
+            return cond;
+        }
+        return true;
     }
 
-    public boolean moverEjercito(String origen, String destino, int cantidadEjercitos) throws Exception {
-        return jugadorEnTurno.realizarMovimiento(tablero.obtenerPais(origen),tablero.obtenerPais(destino),cantidadEjercitos);
+    public void moverEjercito(String origen, String destino, int cantidadEjercitos) throws Exception {
+        jugadorEnTurno.realizarMovimiento(tablero.obtenerPais(origen), tablero.obtenerPais(destino), cantidadEjercitos);
+        this.setChanged();
     }
 
     public String colorCodigoJugadorEnTurno() {
@@ -136,5 +145,11 @@ public class Juego extends Observable {
 
     public void setChange() {
         this.setChanged();
+    }
+
+    public void topeDeRonda(int i) {
+        for(Jugador jugador : jugadores){
+            jugador.setTope(i);
+        }
     }
 }

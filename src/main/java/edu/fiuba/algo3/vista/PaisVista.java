@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.tableroObservable;
 import java.awt.Component;
 
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;

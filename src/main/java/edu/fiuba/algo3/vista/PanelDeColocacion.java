@@ -15,6 +15,7 @@ public class PanelDeColocacion extends Panel implements Observer {
     private final Pane pane;
     private final Juego modelo;
     protected Label ejercitos;
+    private Panel siguiente;
 
     public PanelDeColocacion(Juego modelo){
         super();
@@ -50,12 +51,23 @@ public class PanelDeColocacion extends Panel implements Observer {
         return pane;
     }
 
+    @Override
+    public void setContactos(Panel siguiente) {
+        this.siguiente = siguiente;
+    }
+
     public void ocultar() {
         pane.setVisible(false);
     }
 
     public void mostrar() {
         pane.setVisible(true);
+    }
+
+    @Override
+    public Panel siguientePanel(boolean sigueRonda) {
+        if (sigueRonda) return this;
+        return siguiente;
     }
 
     @Override
