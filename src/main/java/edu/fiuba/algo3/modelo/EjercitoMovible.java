@@ -12,7 +12,7 @@ public class EjercitoMovible extends Validador {
 
     @Override
     public void validar() throws Exception {
-        validar(!paisOrigen.puedeMoverse(cantidadEjercitos));
+        validar(!paisOrigen.puedeMoverse(cantidadEjercitos),"Error no se posee la cantidad de tropas disponibles para moverse");
     }
 
 }

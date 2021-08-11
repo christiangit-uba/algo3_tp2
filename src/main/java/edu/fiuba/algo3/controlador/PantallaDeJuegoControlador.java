@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.PantallaTablero;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -26,10 +27,12 @@ public class PantallaDeJuegoControlador {
 
         vista = new PantallaTablero(juego);
 
+
         Stage stage = vista.initialize();
         turno = true;
         colocacion5y3(5);
         stage.show();
+
     }
 
     public static void pasarTurno(Boolean avanzaJugador) {
@@ -75,17 +78,25 @@ public class PantallaDeJuegoControlador {
         try {
             juego.atacar(pais1,pais2, cantidad,new ArrayList<>(),new ArrayList<>());
         } catch (Exception e) {
-            e.printStackTrace();
+            crearAlerta(e.getMessage());
         }
         borrarDatosPaises();
         juego.notifyObservers();
+    }
+
+    private static void crearAlerta(String error) {
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setTitle("My Title");
+        a.setHeaderText(error);
+        a.setResizable(true);
+        a.showAndWait();
     }
 
     public static void moverTropas() {
         try {
             juego.moverEjercito(pais1,pais2,1);
         } catch (Exception e) {
-            e.printStackTrace();
+            crearAlerta(e.getMessage());
         }
         borrarDatosPaises();
         juego.notifyObservers();
