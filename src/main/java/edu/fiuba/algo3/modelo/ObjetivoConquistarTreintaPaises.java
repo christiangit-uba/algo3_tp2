@@ -6,7 +6,7 @@ public class ObjetivoConquistarTreintaPaises extends Objetivo {
 
 
     public ObjetivoConquistarTreintaPaises(){
-        objetivo = "Conquistar 30 paises";
+        objetivo = "CONQUISTAR 30 PAISES";
     }
 
     @Override

@@ -190,4 +190,8 @@ public class Juego extends Observable {
     public int cantidadPaisesConquistados() {
         return tablero.cantidadDePaises(jugadorEnTurno.getColor());
     }
+
+    public String objetivoJugador() {
+        return jugadorEnTurno.mostrarObjetivo();
+    }
 }
