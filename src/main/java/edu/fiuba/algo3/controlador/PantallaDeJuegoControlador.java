@@ -43,7 +43,7 @@ public class PantallaDeJuegoControlador {
     }
 
     public static void pasarTurno(Boolean avanzaJugador) {
-        vista.terminarTurno(juego.terminarTurno(avanzaJugador));
+        vista.terminarTurno(juego.terminarTurno(avanzaJugador),juego.juegoTerminado());
         juego.notifyObservers();
     }
 
@@ -169,7 +169,7 @@ public class PantallaDeJuegoControlador {
         tarjetasSeleccionadas.removeAll(tarjetasSeleccionadas);
 
         boolean cond = juego.activarTarjeta(tarjeta);
-        if(!cond)crearAlerta("Usted no posee ese pais o ya fue activado");
+        if(!cond)crearAlerta("Usted no posee ese pais o la tarjeta ya fue activada");
         juego.notifyObservers();
         return cond;
     }

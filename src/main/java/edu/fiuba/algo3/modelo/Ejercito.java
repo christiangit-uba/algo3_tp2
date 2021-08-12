@@ -34,15 +34,6 @@ public abstract class Ejercito{
 
     public abstract boolean ejercitoVacio();
 
-    public  boolean activarTarjeta(ColorJugador color){
-        if(colorJugador.mismoColor(color)){
-            this.agregarEjercito();
-            this.agregarEjercito();
-            return true;
-        }
-        return false;
-    }
-
     public String getColor(){
         return colorJugador.codigo();
     }

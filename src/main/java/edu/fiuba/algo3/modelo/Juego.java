@@ -14,6 +14,7 @@ public class Juego extends Observable {
     private boolean conquistoUnPaisAlmenos = false;
     private Ronda ronda;
     private tableroObservable modelo;
+    private String jugadorGanador;
 
     public Juego(int cantidad)  throws FileNotFoundException {
 
@@ -84,6 +85,7 @@ public class Juego extends Observable {
         this.setChanged();
         if(conquistoUnPaisAlmenos){
             tarjetero.asignarTarjeta(jugadorEnTurno);
+            conquistoUnPaisAlmenos = false;
         }
         
         if (avanzaJugador){
@@ -133,7 +135,7 @@ public class Juego extends Observable {
         ArrayList<Jugador> nuevoOrden = new ArrayList<>();
         Random random = new Random();
 
-        int primeroEnJugar = random.nextInt(jugadores.size()-1);
+        int primeroEnJugar = random.nextInt(jugadores.size());
 
         for (int i = primeroEnJugar; i< jugadores.size(); i++){
             nuevoOrden.add(jugadores.get(i));
@@ -173,5 +175,19 @@ public class Juego extends Observable {
     }
 
 
+    public boolean juegoTerminado() {
+        if(jugadorEnTurno.cumplioObjetivo(tablero)){
+            jugadorGanador = this.nombreJugadorEnTurno();
+            return true;
+        }
+        return false;
+    }
 
+    public String jugadorGanador() {
+        return jugadorGanador;
+    }
+
+    public int cantidadPaisesConquistados() {
+        return tablero.cantidadDePaises(jugadorEnTurno.getColor());
+    }
 }

@@ -19,15 +19,12 @@ public class Tarjeta{
         activada = false;
     }
 
-    public void activar(){
-        activada = false;
-    }
-
     public boolean activarTarjeta(ColorJugador unColorJugador){
 
-        if(!activada){
+        if(!activada && pais.mismoColor(unColorJugador)){
             activada = true;
-            return pais.activarTarjeta(unColorJugador);
+            pais.activarTarjeta();
+            return true;
         }
         return false;
     }

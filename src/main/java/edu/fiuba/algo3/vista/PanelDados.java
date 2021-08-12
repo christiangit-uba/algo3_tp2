@@ -70,10 +70,10 @@ public class PanelDados {
         stage.showAndWait();
 
     }
-
+    
     private void setearImagenDados(ArrayList<Integer> dados,int posicionX){
         for(int i = 0; i < dados.size(); i++) {
-            String path = "docs/dado" + dados.get(i) + ".png";
+            String path = "src/main/resources/imagenes/juego/dado" + dados.get(i) + ".png";
             ImageView dado = new ImageView(String.valueOf(Paths.get(path).toUri()));
             dado.setFitHeight(120);
             dado.setFitWidth(120);

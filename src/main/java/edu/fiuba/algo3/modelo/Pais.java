@@ -100,8 +100,9 @@ public class Pais {
         return 0;
     }
 
-    public boolean activarTarjeta(ColorJugador unColorJugador) {
-        return ejercito.activarTarjeta(unColorJugador);
+    public void activarTarjeta() {
+        ejercito = ejercito.agregarEjercito();
+        ejercito = ejercito.agregarEjercito();
     }
 
     public String getColor() {

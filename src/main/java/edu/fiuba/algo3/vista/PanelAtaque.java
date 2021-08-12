@@ -2,22 +2,28 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonAtacarControlador;
 import edu.fiuba.algo3.controlador.BotonPasarTurnoEnAtaqueControlador;
+import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
+import java.util.Observable;
+import java.util.Observer;
+
 public class PanelAtaque extends Panel{
     private final Pane pane;
     private Panel siguiente;
+    private Juego juego;
 
-    public PanelAtaque(){
+    public PanelAtaque(Juego modelo){
         super();
+        this.juego = modelo;
         Label cabezera = crearLabelCabezera("TURNO DE ATAQUE");
 
         TextField cantidadIngresada = new TextField();
         cantidadIngresada.setLayoutX(915);
-        cantidadIngresada.setLayoutY(180);
+        cantidadIngresada.setLayoutY(150);
         cantidadIngresada.setPrefHeight(94);
         cantidadIngresada.setPrefWidth(259);
 
@@ -37,8 +43,18 @@ public class PanelAtaque extends Panel{
         siguienteFase.setOnAction(new BotonPasarTurnoEnAtaqueControlador());
         siguienteFase.toFront();
 
+        Label atacante = new Label("ATACANTE");
+        atacante.setStyle("-fx-text-fill: black");
+        atacante.setLayoutX(915);
+        atacante.setLayoutY(270);
+
+        Label defensor = new Label("DEFENSOR");
+        defensor.setStyle("-fx-text-fill: black");
+        defensor.setLayoutX(915);
+        defensor.setLayoutY(370);
+
         pane = new Pane();
-        pane.getChildren().addAll(cabezera,cantidadIngresada, paisOrigen, paisDestino,siguienteFase, botonAtacar);
+        pane.getChildren().addAll(cabezera,cantidadIngresada, paisOrigen, paisDestino,siguienteFase, botonAtacar,atacante,defensor);
     }
 
     @Override
@@ -62,4 +78,5 @@ public class PanelAtaque extends Panel{
     public Panel siguientePanel(boolean sigueRonda) {
         return siguiente;
     }
+
 }

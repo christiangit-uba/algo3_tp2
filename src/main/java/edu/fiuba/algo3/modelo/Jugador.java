@@ -8,6 +8,7 @@ public class Jugador {
     private Canje canjes;
     private ArrayList<Tarjeta> tarjetas;
     private int tope;
+    private Objetivo objetivo;
 
     public Jugador(String nombre, ColorJugador colorJugador) {
         this.nombre = nombre;
@@ -142,4 +143,15 @@ public class Jugador {
         return null;
     }
 
+    public void agregarObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public String mostrarObjetivo(){
+        return objetivo.mostrarObjetivo();
+    }
+
+    public boolean cumplioObjetivo(Tablero tablero){
+        return objetivo.validarObjetivo(tablero,colorJugador);
+    }
 }

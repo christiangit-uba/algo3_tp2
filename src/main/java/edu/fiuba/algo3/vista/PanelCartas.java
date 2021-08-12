@@ -33,15 +33,12 @@ public class PanelCartas implements Observer {
         panelCartas.setPrefHeight(600.0);
         panelCartas.setPrefWidth(600.0);
 
-
-
         juego.getTarjetero().asignarTarjeta(juego.jugadorEnTurno());
         juego.getTarjetero().asignarTarjeta(juego.jugadorEnTurno());
         juego.getTarjetero().asignarTarjeta(juego.jugadorEnTurno());
         juego.getTarjetero().asignarTarjeta(juego.jugadorEnTurno());
         juego.getTarjetero().asignarTarjeta(juego.jugadorEnTurno());
         juego.getTarjetero().asignarTarjeta(juego.jugadorEnTurno());
-
 
         setearTarjetasSeleccion();
 

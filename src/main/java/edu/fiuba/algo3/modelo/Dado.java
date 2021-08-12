@@ -22,8 +22,6 @@ public class Dado {
 
         for (int i = 0; i < cantidadDeDados; i++) {
             int num = (random.nextInt(MAXIMO) + 1);
-            while(dados.contains(num))
-                num = (random.nextInt(MAXIMO) + 1);
             dados.add(num);
         }
 
