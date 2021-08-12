@@ -15,4 +15,8 @@ public class Simbolo {
         return (this.simbolo.equals(simbolo));
     }
 
+    public String nombreSimbolo(){
+        return simbolo;
+    }
+
 }

@@ -3,16 +3,16 @@ package edu.fiuba.algo3.modelo;
 public class PaisConquistado extends Validador {
     Pais pais;
     Validador siguiente;
-    Color color;
+    ColorJugador colorJugador;
 
-    PaisConquistado(Pais unPais, Color color , Validador siguiente){
+    PaisConquistado(Pais unPais, ColorJugador colorJugador, Validador siguiente){
         pais = unPais;
         this.siguiente = siguiente;
-        this.color = color;
+        this.colorJugador = colorJugador;
     }
 
     @Override
     public void validar() throws Exception {
-        validar(!pais.mismoColor(color));
+        validar(!pais.mismoColor(colorJugador),"Error el pais de origen no pertenece al jugador en turno");
     }
 }

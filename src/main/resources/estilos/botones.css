@@ -1,0 +1,34 @@
+
+#salirVentana{
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+}
+
+.ImageView, StackPane, scene{
+    -fx-background-color: transparent;
+}
+
+.button{
+    -fx-background-color: #f5ebb5;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 20,0,0,0 );
+    -fx-font-size: 14pt;
+    -fx-font-family: Algerian;
+}
+
+#salirVentana{
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+}
+
+.button:hover{
+    -fx-base: #395bae;
+    -fx-cursor: hand;
+}
+
+.button:pressed {
+
+}
+
+.button Text {
+    -fx-fill: white;
+}

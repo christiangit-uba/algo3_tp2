@@ -12,6 +12,7 @@ public class Pais {
         ejercito = new UnoOMenosEjercito(0);
         limitrofes = new Limitrofes();
     }
+
     public void agregarLimitrofe(Pais paisLimitrofes){
         paisLimitrofes.mismoNombre(nombre);
         this.limitrofes.agregarLimitrofe(paisLimitrofes);
@@ -31,7 +32,7 @@ public class Pais {
     }
 
     public void teAtaca(Pais atacante,Dado dadoAtacante, ArrayList<Integer> valoresDadoDefensor){
-        Dado dadoDefensor = new Dado(ejercito.getCantidadDeEjercitos(),valoresDadoDefensor);
+        Dado dadoDefensor = new Dado(ejercito.ejercitosDefensa(),valoresDadoDefensor);
         dadoAtacante.comparar(dadoDefensor,atacante,this);
     }
 
@@ -39,8 +40,8 @@ public class Pais {
         return (ejercito.mismoColor(otroPais));
     }
 
-    public boolean mismoColor(Color color){
-        return (ejercito.mismoColor(color));
+    public boolean mismoColor(ColorJugador colorJugador){
+        return (ejercito.mismoColor(colorJugador));
     }
 
     public void perdioEjercito(){
@@ -55,8 +56,8 @@ public class Pais {
         return nombre.equals(pais);
     }
 
-    public void agregarColor(Color color) {
-        ejercito.agregarColor(color);
+    public void agregarColor(ColorJugador colorJugador) {
+        ejercito.agregarColor(colorJugador);
     }
 
     public boolean mismoPais(Pais unPais){
@@ -74,10 +75,10 @@ public class Pais {
         return ejercito.puedeAtacar(cantidadEjecitosAUsar);
     }
 
-    public void ocuparPais(Pais unPais, Color color){
+    public void ocuparPais(Pais unPais, ColorJugador colorJugador){
         if(unPais.esOcupable()){
             ejercito.sacarEjercito();
-            unPais.agregarColor(color);
+            unPais.agregarColor(colorJugador);
             unPais.agregarEjercito();
         }
     }
@@ -88,5 +89,32 @@ public class Pais {
 
     public boolean puedeMoverse(int cantidadEjercitos) {
         return ejercito.puedeMoverse(cantidadEjercitos);
+    }
+
+    public int colocarEjercitos(int ejercitosAColocar, ColorJugador colorJugador) {
+
+        if(ejercito.mismoColor(colorJugador)){
+            for(int i = 0; i < ejercitosAColocar; i++)
+                ejercito = ejercito.agregarEjercito();
+            return ejercitosAColocar;
+        }
+        return 0;
+    }
+
+    public void activarTarjeta() {
+        ejercito = ejercito.agregarEjercito();
+        ejercito = ejercito.agregarEjercito();
+    }
+
+    public String getColor() {
+        return ejercito.getColor();
+    }
+
+    public String nombre(){
+        return nombre;
+    }
+
+    public void desactivarPais() {
+        ejercito = limitrofes.darEjercitos(ejercito);
     }
 }

@@ -2,22 +2,22 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class Ejercito{
     protected int cantidadDeEjercitos;
-    protected Color color;
+    protected ColorJugador colorJugador;
 
     public Ejercito(int cantidadEjercitos){
         cantidadDeEjercitos = cantidadEjercitos;
     }
 
-    public void agregarColor(Color unColor){
-        color = unColor;
+    public void agregarColor(ColorJugador unColorJugador){
+        colorJugador = unColorJugador;
     }
 
     public boolean mismoColor(Pais otroPais) {
-        return (otroPais.mismoColor(color));
+        return (otroPais.mismoColor(colorJugador));
     }
 
-    public boolean mismoColor(Color color){
-        return (this.color.mismoColor(color));
+    public boolean mismoColor(ColorJugador colorJugador){
+        return (this.colorJugador.mismoColor(colorJugador));
     }
 
     public int getCantidadDeEjercitos(){
@@ -33,4 +33,11 @@ public abstract class Ejercito{
     abstract boolean puedeMoverse(int cantidadEjercitosAMover);
 
     public abstract boolean ejercitoVacio();
+
+    public String getColor(){
+        return colorJugador.codigo();
+    }
+
+
+    public abstract int ejercitosDefensa();
 }

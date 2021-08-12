@@ -17,8 +17,8 @@ public class PruebaPaisTest {
     private Pais brasil = new Pais("Brasil");
 
     private Pais otroChile = new Pais("Chile");
-    private Color colorBlanco = new Color ("ffffff");
-    private Color colorNegro = new Color ("000000");
+    private ColorJugador colorJugadorBlanco = new ColorJugador("blanco","ffffff");
+    private ColorJugador colorJugadorNegro = new ColorJugador("negro","000000");
 
     //Inicializacion
     @Test
@@ -135,14 +135,14 @@ public class PruebaPaisTest {
     //Colores
     @Test
     public void elColorDeUnPaisInicializadoPuedeCambiarse(){
-        argentina.agregarColor(colorBlanco);
-        assert(argentina.mismoColor(colorBlanco));
+        argentina.agregarColor(colorJugadorBlanco);
+        assert(argentina.mismoColor(colorJugadorBlanco));
     }
 
     @Test
     public void dosPaisesDelMismoColorSonAliados(){
-        argentina.agregarColor(colorBlanco);
-        chile.agregarColor(colorBlanco);
+        argentina.agregarColor(colorJugadorBlanco);
+        chile.agregarColor(colorJugadorBlanco);
         assert(argentina.mismoColor(chile));
     }
 
@@ -161,12 +161,12 @@ public class PruebaPaisTest {
 
     @Test
     public void DosPaisesAliadosTienenElMismoColorDeEjercito(){
-        Color color = new Color("077bb");
+        ColorJugador colorJugador = new ColorJugador("azul","077bb");
         Pais unPais = new Pais("Rusia");
         Pais otroPais = new Pais("Mexico");
 
-        unPais.agregarColor(color);
-        otroPais.agregarColor(color);
+        unPais.agregarColor(colorJugador);
+        otroPais.agregarColor(colorJugador);
 
         assertTrue(unPais.mismoColor(otroPais));
     }
@@ -199,13 +199,13 @@ public class PruebaPaisTest {
     public void unPaisOcupaOtroYAhoraSonAliados(){
         Pais unPais = new Pais("Chile");
         Pais otroPais = new Pais("Argentina");
-        Color unColor = new Color("Azul");
+        ColorJugador unColorJugador = new ColorJugador("Azul","001");
 
-        unPais.agregarColor(unColor);
+        unPais.agregarColor(unColorJugador);
         unPais.agregarEjercito();
         unPais.agregarEjercito();
 
-        unPais.ocuparPais(otroPais,unColor);
+        unPais.ocuparPais(otroPais, unColorJugador);
 
         assertTrue(unPais.mismoColor(otroPais));
     }

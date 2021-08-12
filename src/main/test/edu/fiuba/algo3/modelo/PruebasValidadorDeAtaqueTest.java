@@ -11,10 +11,10 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void unPaisAtacaAunPaisLimitrofeEnemigo() throws Exception {
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(azul);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        ColorJugador azul = new ColorJugador("azul","0002");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
+        Jugador jugador2 = new Jugador("Jugador2",azul);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -42,8 +42,8 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void unJugadorAtacaAUnPaisVecinoAliadoLanzaExeption() {
-        Color rojo = new Color("rojo");
-        Jugador jugador1 = new Jugador(rojo);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");
@@ -69,10 +69,10 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void unJugadorAtacaAUnPaisQueNoEsLimitrofeLanzaExeption() {
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(azul);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        ColorJugador azul = new ColorJugador("azul","0002");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
+        Jugador jugador2 = new Jugador("Jugador2",azul);
 
         Pais Argentina = new Pais("Argentina");
         Pais Rusia = new Pais("Rusia");
@@ -95,10 +95,10 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void PaisAtacaAOtroPaisConUnPaisNoConquistadoLanzoExepcion() {
-        Color rosa = new Color("rosa");
-        Color negro = new Color("negro");
-        Jugador jugador1 = new Jugador(rosa);
-        Jugador jugador2 = new Jugador(negro);
+        ColorJugador rosa = new ColorJugador("rosa","0001");
+        ColorJugador negro = new ColorJugador("negro","0002");
+        Jugador jugador1 = new Jugador("Jugador1",rosa);
+        Jugador jugador2 = new Jugador("Jugador2",negro);
 
         Pais Espana = new Pais("España");
         Pais Francia = new Pais("Francia");
@@ -122,10 +122,10 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void PaisAtacaAOtroPaisConNingunaTropaLanzoExepcion() {
-        Color rosa = new Color("rosa");
-        Color negro = new Color("negro");
-        Jugador jugador1 = new Jugador(rosa);
-        Jugador jugador2 = new Jugador(negro);
+        ColorJugador rosa = new ColorJugador("rosa","0001");
+        ColorJugador negro = new ColorJugador("negro","0002");
+        Jugador jugador1 = new Jugador("Jugador1",rosa);
+        Jugador jugador2 = new Jugador("Jugador2",negro);
 
         Pais Espana = new Pais("España");
         Pais Francia = new Pais("Francia");
@@ -149,10 +149,10 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void PaisAtacaAOtroPaisCon3Ejercitos() throws Exception {
-        Color rosa = new Color("rosa");
-        Color negro = new Color("negro");
-        Jugador jugador1 = new Jugador(rosa);
-        Jugador jugador2 = new Jugador(negro);
+        ColorJugador rosa = new ColorJugador("rosa","0001");
+        ColorJugador negro = new ColorJugador("negro","0002");
+        Jugador jugador1 = new Jugador("Jugador1",rosa);
+        Jugador jugador2 = new Jugador("Jugador2",negro);
 
         Pais Espana = new Pais("España");
         Pais Francia = new Pais("Francia");
@@ -180,10 +180,10 @@ public class PruebasValidadorDeAtaqueTest {
 
     @Test
     public void unPaisAtacaSiempreLeQuedaUnEjercitoEnOrigen() throws Exception {
-        Color rojo = new Color("rojo");
-        Color azul = new Color("azul");
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(azul);
+        ColorJugador rojo = new ColorJugador("rojo","0001");
+        ColorJugador azul = new ColorJugador("azul","0001");
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
+        Jugador jugador2 = new Jugador("Jugador2",azul);
 
         Pais Argentina = new Pais("Argentina");
         Pais Brazil = new Pais("Brazil");

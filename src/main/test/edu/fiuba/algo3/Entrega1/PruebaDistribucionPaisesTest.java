@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.Entrega1;
 
-import edu.fiuba.algo3.modelo.Color;
+import edu.fiuba.algo3.modelo.ColorJugador;
 import edu.fiuba.algo3.modelo.Distribucion;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Pais;
@@ -14,11 +14,11 @@ public class PruebaDistribucionPaisesTest {
 
     @Test
     public void ColocacionDeEjercitos() throws Exception {
-        Color rojo = new Color("rojo");
-        Color verde = new Color("verde");
+        ColorJugador rojo = new ColorJugador("rojo","001");
+        ColorJugador verde = new ColorJugador("verde","002");
 
-        Jugador jugador1 = new Jugador(rojo);
-        Jugador jugador2 = new Jugador(verde);
+        Jugador jugador1 = new Jugador("Jugador1",rojo);
+        Jugador jugador2 = new Jugador("Jugador2",verde);
 
         Pais Argentina = new Pais("Argentina");
         Pais Etiopia = new Pais("Etiopia");
@@ -42,10 +42,13 @@ public class PruebaDistribucionPaisesTest {
         distribucion.asignarEjercito(0,jugador1);
         distribucion.asignarEjercito(0,jugador2);
 
-        jugador1.colocarEjercitos(5,5,Argentina);
-        jugador2.colocarEjercitos(5,5,Etiopia);
-        jugador1.colocarEjercitos(3,3,Turquia);
-        jugador2.colocarEjercitos(3,3,Java);
+        jugador1.setTope(10);
+        jugador2.setTope(10);
+
+        jugador1.colocarEjercitos(5,Argentina);
+        jugador2.colocarEjercitos(5,Etiopia);
+        jugador1.colocarEjercitos(3,Turquia);
+        jugador2.colocarEjercitos(3,Java);
 
 
         int acumulador = 0;
