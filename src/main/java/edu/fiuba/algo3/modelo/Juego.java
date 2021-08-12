@@ -13,7 +13,6 @@ public class Juego extends Observable {
     private Jugador jugadorEnTurno;
     private boolean conquistoUnPaisAlmenos = false;
     private Ronda ronda;
-    private tableroObservable modelo;
     private String jugadorGanador;
 
     public Juego(int cantidad)  throws FileNotFoundException {
