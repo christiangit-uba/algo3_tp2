@@ -17,11 +17,6 @@
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>11.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx-version}</version>
         </dependency>
@@ -38,9 +33,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>13</version>
+            <version>11.0.1</version>
         </dependency>
     </dependencies>
     <profiles>
@@ -112,6 +113,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-version}</version>
                 <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
                     <argLine>${argLine} -XX:MaxPermSize=256m</argLine>
                 </configuration>
             </plugin>

@@ -81,11 +81,11 @@ public class PruebaActivacionTarjetaTest {
 
         //tope equivale 4 ejercitos por el primer canjes mas 3 ejercitos por la cantidad de paises
         assertEquals(juego.getTope(),7);
-        juego.colocarEjercito(Argentina,7);
+        juego.colocarEjercito("Argentina",7);
 
         assertEquals(Argentina.cantidadEjercitos(),10);
 
-        juego.terminarTurno();
+        juego.terminarTurno(false);
         juego.iniciarTurno();
 
 
@@ -98,6 +98,6 @@ public class PruebaActivacionTarjetaTest {
         assertEquals(Francia.cantidadEjercitos(),3);
         assertEquals(Turquia.cantidadEjercitos(),3);
 
-        juego.terminarTurno();
+        juego.terminarTurno(false);
     }
 }

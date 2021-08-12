@@ -14,6 +14,7 @@ public class Jugador {
         tarjetas = new ArrayList<>();
         this.colorJugador = colorJugador;
         canjes = new Canje();
+        tope = 0;
     }
 
     public void asignarPais(Pais unPais) {
@@ -118,7 +119,7 @@ public class Jugador {
     }
 
     public void reiniciarTope(Tablero tablero) {
-        tope = cantidadEjercitosAColocar(tablero);
+        tope = tope + cantidadEjercitosAColocar(tablero);
     }
 
     public String nombre() {
