@@ -47,5 +47,6 @@ public abstract class Ejercito{
         return colorJugador.codigo();
     }
 
+
     public abstract int ejercitosDefensa();
 }
