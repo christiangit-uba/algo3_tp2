@@ -15,7 +15,7 @@ public class Jugador {
         tarjetas = new ArrayList<>();
         this.colorJugador = colorJugador;
         canjes = new Canje();
-        int tope = 0;
+        tope = 0;
     }
 
     public void asignarPais(Pais unPais) {
@@ -37,7 +37,6 @@ public class Jugador {
     public void colocarEjercitos(int ejercitosAColocar, Pais unPais){
 
         if(ejercitosAColocar <=  tope)
-
             tope = tope - unPais.colocarEjercitos(ejercitosAColocar,colorJugador);
 
     }
@@ -120,7 +119,7 @@ public class Jugador {
     }
 
     public void reiniciarTope(Tablero tablero) {
-        tope = tope + cantidadEjercitosAColocar(tablero);
+        tope = cantidadEjercitosAColocar(tablero);
     }
 
     public String nombre() {
