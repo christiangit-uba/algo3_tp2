@@ -13,6 +13,6 @@ public class CantidadDeEjercitos extends Validador {
     }
 
     public void validar() throws Exception{
-        validar(!paisAtacante.puedeAtacar(cantidadEjecitosAUsar));
+        validar(!paisAtacante.puedeAtacar(cantidadEjecitosAUsar),"Error no posee las tropas disponibles para atacar con la cantidad escrita");
     }
 }

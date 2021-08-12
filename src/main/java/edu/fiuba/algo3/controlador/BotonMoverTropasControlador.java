@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.controlador;
 
-import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 
-public class BotonMoverTropasControlador implements EventHandler<ActionEvent> {
-    @Override
-    public void handle(ActionEvent actionEvent) {
+public class BotonMoverTropasControlador implements EventHandler {
 
+    @Override
+    public void handle(Event event) {
+        PantallaDeJuegoControlador.moverTropas();
     }
 }

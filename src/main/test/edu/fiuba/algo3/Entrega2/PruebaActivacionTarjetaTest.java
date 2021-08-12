@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PruebaActivacionTarjetaTest {
+    /*
     @Test
     public void PruebaActivacionTarjeta() throws FileNotFoundException {
         ColorJugador rojo = new ColorJugador("rojo","0001");
@@ -100,4 +101,5 @@ public class PruebaActivacionTarjetaTest {
 
         juego.terminarTurno();
     }
+     */
 }

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class RondaDeColocacionConTresJugadoresTest {
-
+    /*
         @Test
         public void rondaConTresJugadoresConJugadorDosConAsiaConquistado() throws FileNotFoundException {
             ColorJugador rojo = new ColorJugador("rojo","001");
@@ -77,11 +77,11 @@ public class RondaDeColocacionConTresJugadoresTest {
             india.agregarColor(negro);
             kamtchatka.agregarColor(negro);
 
-          juego.iniciarTurno();
+            juego.iniciarTurno();
 
-        /*Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
-          paises y continentes conquistados
-          */
+            //Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
+            //paises y continentes conquistados
+
 
             assertEquals(juego.getTope(), 3);
             assertEquals(Argentina.cantidadEjercitos(), 1);
@@ -107,5 +107,7 @@ public class RondaDeColocacionConTresJugadoresTest {
             juego.terminarTurno();
 
         }
+
+     */
 
 }

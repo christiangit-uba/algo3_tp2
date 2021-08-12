@@ -1,12 +1,13 @@
 package edu.fiuba.algo3.controlador;
 
-import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
-public class BotonSalirControlador implements EventHandler {
+public class BotonPasarTurnoEnAtaqueControlador implements EventHandler {
+
     @Override
     public void handle(Event event) {
-        Platform.exit();
+        PantallaDeJuegoControlador.pasarTurno(false);
     }
 }

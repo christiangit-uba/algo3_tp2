@@ -7,9 +7,9 @@ abstract class Validador {
         this.siguiente = siguiente;
     }
 
-    void validar(boolean desicion) throws Exception{
+    void validar(boolean desicion,String mensajeExcepcion) throws Exception{
         if(desicion){
-            throw new Exception();
+            throw new Exception(mensajeExcepcion);
         }
         if (siguiente != null){
             siguiente.validar();

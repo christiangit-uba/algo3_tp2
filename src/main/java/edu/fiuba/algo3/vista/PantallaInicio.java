@@ -112,7 +112,7 @@ public class PantallaInicio {
         scene.getStylesheets().add(css);
 
         arrastrarVentana(scene, primaryStage);
-        musica = reproductorDeMusica();
+        //musica = reproductorDeMusica();
         primaryStage.setScene(scene);
 
         return primaryStage;

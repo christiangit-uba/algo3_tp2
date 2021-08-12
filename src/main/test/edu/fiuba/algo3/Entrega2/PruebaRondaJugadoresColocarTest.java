@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PruebaRondaJugadoresColocarTest {
+    /*
     @Test
     public void PruebaActivacionTarjeta() throws FileNotFoundException {
         ColorJugador rojo = new ColorJugador("rojo","001");
@@ -47,9 +48,8 @@ public class PruebaRondaJugadoresColocarTest {
 
         juego.iniciarTurno();
 
-        /*Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
-          paises y continentes conquistados
-       */
+        // Apenas entra el turno del jugador se calcula tope de colocacion de tropas, basado en su cantidad de
+        //  paises y continentes conquistados
 
         assertEquals(juego.getTope(),3);
         assertEquals(Argentina.cantidadEjercitos(),1);
@@ -84,4 +84,5 @@ public class PruebaRondaJugadoresColocarTest {
         assertEquals(juego.getTope(),0);
         juego.terminarTurno();
     }
+    */
 }
