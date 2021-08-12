@@ -60,7 +60,6 @@ public class PantallaTablero implements Observer {
         panelPrincipal.setId("panel");
 
         //botones
-
         Button siguienteFase = new Button("PASAR TURNO");
         siguienteFase.setLayoutX(643);
         siguienteFase.setLayoutY(588);
@@ -102,7 +101,6 @@ public class PantallaTablero implements Observer {
         desactivarPais.setLayoutY(588);
         desactivarPais.setOnAction(new BotonDesactivarControlador());
         desactivarPais.toFront();
-
 
         panelDeColocacion = new PanelDeColocacion(modelo);
         modelo.addObserver(panelDeColocacion);

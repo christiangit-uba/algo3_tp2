@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonColocarControlador;
+import edu.fiuba.algo3.controlador.BotonDesactivarControlador;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -51,7 +52,7 @@ public class PanelDeColocacion extends Panel implements Observer {
         colocar.setPrefHeight(42);
         colocar.setPrefWidth(280);
         colocar.setId("paisDestino");
-
+        
         pane = new Pane();
         pane.getChildren().addAll(cabezera, ejercitos, paisOrigen,
         cantidadIngresada,colocar,cantidadEjercitos);

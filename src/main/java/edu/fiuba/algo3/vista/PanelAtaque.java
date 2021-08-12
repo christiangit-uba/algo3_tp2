@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonAtacarControlador;
+import edu.fiuba.algo3.controlador.BotonCartasControlador;
+import edu.fiuba.algo3.controlador.BotonDesactivarControlador;
 import edu.fiuba.algo3.controlador.BotonPasarTurnoEnAtaqueControlador;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.control.Button;
@@ -51,13 +53,27 @@ public class PanelAtaque extends Panel{
         siguienteFase.setOnAction(new BotonPasarTurnoEnAtaqueControlador());
         siguienteFase.toFront();
 
+        Button botonCartas = new Button("VER CARTAS");
+        botonCartas.setLayoutX(7);
+        botonCartas.setLayoutY(588);
+        botonCartas.setPrefHeight(94);
+        botonCartas.setPrefWidth(320);
+        botonCartas.setOnAction(new BotonCartasControlador(modelo));
+
+        Button desactivarPais = new Button("DESACTIVAR PAIS");
+        desactivarPais.setLayoutX(900);
+        desactivarPais.setLayoutY(588);
+        desactivarPais.setOnAction(new BotonDesactivarControlador());
+        desactivarPais.toFront();
+
         Label pais2 = new Label("País 2:");
         pais2.setLayoutX(928);
         pais2.setLayoutY(340);
         pais2.setId("pais2");
 
         pane = new Pane();
-        pane.getChildren().addAll(cabezera,cantidadIngresada, siguienteFase, paisOrigen, paisDestino, botonAtacar , pais2, cantidadEjercitos);
+        pane.getChildren().addAll(cabezera,cantidadIngresada, siguienteFase, paisOrigen, paisDestino,
+                botonAtacar, botonCartas, desactivarPais , pais2, cantidadEjercitos);
     }
 
     @Override
