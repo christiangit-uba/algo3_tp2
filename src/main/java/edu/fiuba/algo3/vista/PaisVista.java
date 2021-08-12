@@ -26,7 +26,10 @@ public class PaisVista extends Component implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        if(modelo.obtenerColorPais(circulo.getId()) == "000000") etiqueta.setFill(Color.web("FFFFFF"));
+        if(modelo.obtenerColorPais(circulo.getId()) == "000000")
+            etiqueta.setFill(Color.web("FFFFFF"));
+        else
+            etiqueta.setFill(Color.web("000000"));
         etiqueta.setText(String.valueOf(modelo.cantidadDeEjercito(circulo.getId())));
         circulo.setFill(Color.web(modelo.obtenerColorPais(circulo.getId())));
         repaint();

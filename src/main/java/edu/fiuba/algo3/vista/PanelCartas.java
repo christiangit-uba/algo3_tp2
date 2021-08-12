@@ -130,4 +130,7 @@ public class PanelCartas implements Observer {
         listaCheckBox.removeAll(listaCheckBox);
         setearTarjetasSeleccion();
     }
+
+
+
 }

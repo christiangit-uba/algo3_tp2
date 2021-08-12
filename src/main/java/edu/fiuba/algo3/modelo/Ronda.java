@@ -33,7 +33,6 @@ public class Ronda {
         inicializarColores();
         inicializarObjetivos();
         inicializarJugadores(cantidadJUgadores);
-
     }
 
     private void inicializarObjetivos(){

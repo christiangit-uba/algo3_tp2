@@ -28,6 +28,8 @@ public class PantallaTablero implements Observer {
 
     private static Circle colorJugador = new Circle();
     private Label jugador;
+    private Label paisesConquistados;
+    private Label numeroPaisesConquistados;
     private final Juego modelo;
 
     private String[] lineaProcesada;
@@ -80,6 +82,19 @@ public class PantallaTablero implements Observer {
         colorJugador.setLayoutY(635);
         colorJugador.setRadius(25);
 
+        paisesConquistados = new Label("PAISES CONQUISTADOS");
+        paisesConquistados.setFont(new Font(10.0));
+        paisesConquistados.setStyle("-fx-text-fill: black");
+        paisesConquistados.setLayoutX(915);
+        paisesConquistados.setLayoutY(585);
+        paisesConquistados.toBack();
+
+        numeroPaisesConquistados = new Label();
+        numeroPaisesConquistados.setFont(new Font(10.0));
+        numeroPaisesConquistados.setStyle("-fx-text-fill: black");
+        numeroPaisesConquistados.setLayoutX(1050);
+        numeroPaisesConquistados.setLayoutY(610);
+        numeroPaisesConquistados.toBack();
 
         Button botonCartas = new Button("VER CARTAS");
         botonCartas.setLayoutX(7);
@@ -103,7 +118,7 @@ public class PantallaTablero implements Observer {
         panelReagrupacion.setContactos(panelAtaque);
         panelReagrupacion.setContactos(panelDeColocacion);
 
-        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas, jugador,panelDeColocacion.getPane(),panelAtaque.getPane(),panelReagrupacion.getPane(), colorJugador);
+        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas, jugador,panelDeColocacion.getPane(),panelAtaque.getPane(),panelReagrupacion.getPane(), colorJugador,paisesConquistados,numeroPaisesConquistados);
         panelAtaque.ocultar();
         panelReagrupacion.ocultar();
         panelDeColocacion.ocultar();
@@ -221,6 +236,7 @@ public class PantallaTablero implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        numeroPaisesConquistados.setText(String.valueOf(modelo.cantidadPaisesConquistados()));
         jugador.setText(modelo.nombreJugadorEnTurno());
         colorJugador.setFill(Color.web(modelo.colorCodigoJugadorEnTurno()));
     }

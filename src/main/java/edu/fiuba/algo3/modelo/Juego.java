@@ -28,6 +28,7 @@ public class Juego extends Observable {
         ronda = new Ronda(jugadores);
         ronda.iniciarPrimeraRonda(cantidadJugadores);
         asignarPaises();
+        tarjetero.mezclarMazo();
         iniciarTurno();
         this.setChanged();
     }
