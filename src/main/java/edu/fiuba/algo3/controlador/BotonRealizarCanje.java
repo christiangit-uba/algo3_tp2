@@ -20,7 +20,7 @@ public class BotonRealizarCanje implements EventHandler {
 
     @Override
     public void handle(Event event) {
-        if(PantallaDeJuegoControlador.realizarCanje(listaCheckBox))
-            stage.close();
+        PantallaDeJuegoControlador.realizarCanje(listaCheckBox);
+            //stage.close();
     }
 }

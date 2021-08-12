@@ -19,6 +19,10 @@ public class Tarjeta{
         activada = false;
     }
 
+    public void activar(){
+        activada = false;
+    }
+
     public boolean activarTarjeta(ColorJugador unColorJugador){
 
         if(!activada){
@@ -45,4 +49,7 @@ public class Tarjeta{
     }
 
 
+    public boolean tarjetaActivada() {
+        return activada;
+    }
 }

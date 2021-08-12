@@ -36,8 +36,8 @@ public abstract class Ejercito{
 
     public  boolean activarTarjeta(ColorJugador color){
         if(colorJugador.mismoColor(color)){
-            agregarEjercito();
-            agregarEjercito();
+            this.agregarEjercito();
+            this.agregarEjercito();
             return true;
         }
         return false;

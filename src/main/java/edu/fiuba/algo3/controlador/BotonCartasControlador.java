@@ -24,6 +24,7 @@ public class BotonCartasControlador implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         stage = new Stage();
         panelCartas = new PanelCartas(juego,stage);
+        juego.addObserver(panelCartas);
         Scene scene = new Scene(panelCartas.getPane());
         stage.setScene(scene);
         stage.showAndWait();

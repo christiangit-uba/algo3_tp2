@@ -19,8 +19,8 @@ public class BotonActivarTarjeta implements EventHandler {
 
     @Override
     public void handle(Event event) {
-        if(PantallaDeJuegoControlador.activarTarjeta(listaCheckBox))
-            stage.close();
+        PantallaDeJuegoControlador.activarTarjeta(listaCheckBox);
+
 
     }
 }

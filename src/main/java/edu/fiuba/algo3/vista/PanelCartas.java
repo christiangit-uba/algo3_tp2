@@ -14,8 +14,10 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class PanelCartas{
+public class PanelCartas implements Observer {
     private Juego juego;
     private Stage stage;
     private Pane panelCartas;
@@ -104,6 +106,17 @@ public class PanelCartas{
             nombreSimbolo.setFont(Font.font(15.0));
             panelCartas.getChildren().add(nombreSimbolo);
 
+            Label estadoTarjeta = new Label("NO ACTIVADA");
+            estadoTarjeta.setStyle("-fx-text-fill: red");
+            estadoTarjeta.setLayoutX(258.0);
+            estadoTarjeta.setLayoutY(91.0 + (i * 28.0));
+            estadoTarjeta.setFont(Font.font(15.0));
+            if(tarjetasJugador.get(i).tarjetaActivada()) {
+                estadoTarjeta.setText("ACTIVADA");
+                estadoTarjeta.setStyle("-fx-text-fill: green");
+            }
+            panelCartas.getChildren().add(estadoTarjeta);
+
 
 
             CheckBox checkBox = new CheckBox();
@@ -120,5 +133,12 @@ public class PanelCartas{
 
     public Parent getPane() {
         return panelCartas;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        panelCartas.getChildren().setAll();
+        listaCheckBox.removeAll(listaCheckBox);
+        setearTarjetasSeleccion();
     }
 }
