@@ -16,29 +16,29 @@ public class PanelReagrupacion extends Panel{
         super();
         Label cabezera = crearLabelCabezera("TURNO DE REAGRUPACION");
 
-        Button botonMover = new Button("MOVER");
-        botonMover.setOnAction(new BotonMoverTropasControlador());
-        botonMover.setLayoutX(928);  //915
-        botonMover.setLayoutY(460); //380
-        botonMover.setPrefHeight(94);
-        botonMover.setPrefWidth(259);
-
         Label cantidadEjercitos = new Label("CANTIDAD A MOVER:");
         cantidadEjercitos.setLayoutX(928);
         cantidadEjercitos.setLayoutY(140);
 
         TextField cantidadIngresada = new TextField();
-        cantidadIngresada.setLayoutX(928); //915
+        cantidadIngresada.setLayoutX(928);
         cantidadIngresada.setLayoutY(180);
         cantidadIngresada.setPrefHeight(94);
         cantidadIngresada.setPrefWidth(259);
         cantidadIngresada.setId("atacantes");
-        cantidadIngresada.addEventFilter(KeyEvent.ANY, filtarNumeros);
+        cantidadIngresada.addEventFilter(KeyEvent.ANY, permitirNumeros);
 
         Label pais2 = new Label("País 2:");
         pais2.setLayoutX(928);
         pais2.setLayoutY(340);
         pais2.setId("pais2");
+
+        Button botonMover = new Button("MOVER");
+        botonMover.setOnAction(new BotonMoverTropasControlador(cantidadIngresada));
+        botonMover.setLayoutX(928);
+        botonMover.setLayoutY(460);
+        botonMover.setPrefHeight(94);
+        botonMover.setPrefWidth(259);
 
         pane = new Pane();
         pane.getChildren().addAll(cabezera, paisOrigen, paisDestino, botonMover,

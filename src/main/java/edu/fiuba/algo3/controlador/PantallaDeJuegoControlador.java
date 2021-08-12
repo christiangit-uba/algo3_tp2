@@ -108,9 +108,9 @@ public class PantallaDeJuegoControlador {
         a.showAndWait();
     }
 
-    public static void moverTropas() {
+    public static void moverTropas(int cantidadEjercitos) {
         try {
-            juego.moverEjercito(pais1,pais2,1);
+            juego.moverEjercito(pais1,pais2,cantidadEjercitos);
         } catch (Exception e) {
             crearAlerta(e.getMessage());
         }

@@ -21,30 +21,19 @@ public class PanelAtaque extends Panel{
         cantidadEjercitos.setLayoutY(140);
 
         TextField cantidadIngresada = new TextField();
-        cantidadIngresada.setLayoutX(928); //915
+        cantidadIngresada.setLayoutX(928);
         cantidadIngresada.setLayoutY(180);
         cantidadIngresada.setPrefHeight(94);
         cantidadIngresada.setPrefWidth(259);
         cantidadIngresada.setId("atacantes");
-        cantidadIngresada.addEventFilter(KeyEvent.ANY, filtarNumeros);
+        cantidadIngresada.addEventFilter(KeyEvent.ANY, permitirNumeros);
 
         Button botonAtacar = new Button("ATACAR");
         botonAtacar.setOnAction(new BotonAtacarControlador(cantidadIngresada));
-        botonAtacar.setLayoutX(928); //915
-        botonAtacar.setLayoutY(400); //380
+        botonAtacar.setLayoutX(928);
+        botonAtacar.setLayoutY(400);
         botonAtacar.setPrefHeight(94);
         botonAtacar.setPrefWidth(259);
-
-        /*
-        Button siguienteFase = new Button("PASAR TURNO");
-        siguienteFase.setLayoutX(643);
-        siguienteFase.setLayoutY(588);
-        siguienteFase.setPrefHeight(94);
-        siguienteFase.setPrefWidth(234);
-        siguienteFase.setId("pasaTurno");
-        siguienteFase.setOnAction(new BotonPasarTurnoEnAtaqueControlador());
-        siguienteFase.toFront();
-         */
 
         Label pais2 = new Label("País 2:");
         pais2.setLayoutX(928);

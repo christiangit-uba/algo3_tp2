@@ -87,15 +87,6 @@ public class PantallaTablero implements Observer {
         botonCartas.setPrefWidth(320);
         botonCartas.setOnAction(new BotonCartasContorlador(this));
 
-        /*
-        Label infoJugador = new Label("JUGADOR");
-        infoJugador.setLayoutX(350);
-        infoJugador.setLayoutY(588);
-        infoJugador.setPrefHeight(94);
-        infoJugador.setPrefWidth(349);
-        infoJugador.setId("jugador");
-         */
-
         colorJugador.setLayoutX(594);
         colorJugador.setLayoutY(635);
         colorJugador.setRadius(25);
@@ -170,7 +161,7 @@ public class PantallaTablero implements Observer {
         scene.getStylesheets().add(css);
 
         //paro la musica
-        //PantallaInicio.pararMusica();
+        PantallaInicio.pararMusica();
 
         //centro la escena
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
@@ -227,7 +218,10 @@ public class PantallaTablero implements Observer {
         panelAtaque.ocultar();
     }
 
+    /*
     public void cambiarColorJugador(String color){
         colorJugador.setFill(Color.web(color));
     }
+
+     */
 }

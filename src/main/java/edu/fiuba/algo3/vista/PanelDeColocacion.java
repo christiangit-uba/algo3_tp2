@@ -35,26 +35,18 @@ public class PanelDeColocacion extends Panel implements Observer {
         cantidadEjercitos.setLayoutX(928);
         cantidadEjercitos.setLayoutY(140);
 
-        /*
         TextField cantidadIngresada = new TextField();
-        cantidadIngresada.setLayoutX(915);
-        cantidadIngresada.setLayoutY(180);
-        cantidadIngresada.setPrefHeight(94);
-        cantidadIngresada.setPrefWidth(259);
-         */
-
-        TextField cantidadIngresada = new TextField();
-        cantidadIngresada.setLayoutX(928); //915
+        cantidadIngresada.setLayoutX(928);
         cantidadIngresada.setLayoutY(180);
         cantidadIngresada.setPrefHeight(94);
         cantidadIngresada.setPrefWidth(259);
         cantidadIngresada.setId("colocador");
-        cantidadIngresada.addEventFilter(KeyEvent.ANY, filtarNumeros);
+        cantidadIngresada.addEventFilter(KeyEvent.ANY, permitirNumeros);
 
         Button colocar = new Button("COLOCAR");
         colocar.setOnAction(new BotonColocarControlador(cantidadIngresada));
         colocar.setLayoutX(920);
-        colocar.setLayoutY(400); //310
+        colocar.setLayoutY(400);
         colocar.setPrefHeight(42);
         colocar.setPrefWidth(280);
         colocar.setId("paisDestino");
