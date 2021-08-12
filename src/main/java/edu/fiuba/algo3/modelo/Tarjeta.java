@@ -21,9 +21,10 @@ public class Tarjeta{
 
     public boolean activarTarjeta(ColorJugador unColorJugador){
 
-        if(!activada){
+        if(!activada && pais.mismoColor(unColorJugador)){
             activada = true;
-            return pais.activarTarjeta(unColorJugador);
+            pais.activarTarjeta();
+            return true;
         }
         return false;
     }
@@ -36,5 +37,16 @@ public class Tarjeta{
         return otraTarjeta.mismoSimbolo(simbolo);
     }
 
+    public String obtenerID(){
+        return pais.nombre();
+    }
 
+    public String obtenerSimbolo(){
+        return simbolo.nombreSimbolo();
+    }
+
+
+    public boolean tarjetaActivada() {
+        return activada;
+    }
 }

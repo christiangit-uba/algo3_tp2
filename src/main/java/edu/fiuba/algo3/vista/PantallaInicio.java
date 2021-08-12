@@ -2,7 +2,6 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonEmpezarControlador;
 import edu.fiuba.algo3.controlador.BotonSalirControlador;
-import edu.fiuba.algo3.controlador.EleccionDeJugadoresControlador;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -21,7 +20,6 @@ import java.net.URI;
 
 
 public class PantallaInicio {
-
 
     double xOffset;
     double yOffset;

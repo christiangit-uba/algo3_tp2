@@ -31,7 +31,7 @@ public class Pais {
     }
 
     public void teAtaca(Pais atacante,Dado dadoAtacante, ArrayList<Integer> valoresDadoDefensor){
-        Dado dadoDefensor = new Dado(ejercito.getCantidadDeEjercitos(),valoresDadoDefensor);
+        Dado dadoDefensor = new Dado(ejercito.ejercitosDefensa(),valoresDadoDefensor);
         dadoAtacante.comparar(dadoDefensor,atacante,this);
     }
 
@@ -100,11 +100,16 @@ public class Pais {
         return 0;
     }
 
-    public boolean activarTarjeta(ColorJugador unColorJugador) {
-        return ejercito.activarTarjeta(unColorJugador);
+    public void activarTarjeta() {
+        ejercito = ejercito.agregarEjercito();
+        ejercito = ejercito.agregarEjercito();
     }
 
     public String getColor() {
         return ejercito.getColor();
+    }
+
+    public String nombre(){
+        return nombre;
     }
 }

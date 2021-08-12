@@ -1,32 +1,48 @@
 
-.button{
-    -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 35;
-}
-
-#ejercitos{
-     -fx-font-family: "Comic Sans MS";
-     -fx-font-size: 35;
-}
-
-.label{
-    /*-fx-visibility: hidden;*/
+#numeros{
+    -fx-text-font: 37 "Bookshelf Symbol 7";
     -fx-text-fill: #f2efef;
-    -fx-font-size: 27;
-}
-
-.label:hover {
     -fx-visibility: visible;
 }
 
-#pasaTurno{
-    -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 26;
+#panel{
+    -fx-background-color: #ede095;  /*#ffe478, #ebe0a4*/
 }
 
-#ejercitos{
-    -fx-text-fill: #01121c;
-    -fx-font-size: 25;
+#cabecera{
+     -fx-font: 30 Algerian; /* 32 */
+}
+
+.label{
+    -fx-font: 25 Algerian;
+}
+
+.button{
+    -fx-background-color: #f26861;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 20,0,0,0 );
+     -fx-font: 35 Verdana;
+
+    -fx-background-radius: 30px;
+    -fx-border-radius: 50px;
+}
+
+#pais1, #pais2{
+    -fx-font: 30 "Comic Sans MS";
+}
+
+#atacantes, #colocador{
+    -fx-font: 45 "Bookshelf Symbol 7";
+}
+
+/*
+.label:hover {
+    -fx-visibility: visible;
+}
+*/
+
+#pasaTurno{
+    -fx-font-family: "Verdana";
+    -fx-font-size: 26;
 }
 
 #jugador{
@@ -35,19 +51,44 @@
     -fx-text-fill: #01121c;
 }
 
-#panel{
-    -fx-background-color: #ebe0a4;
-}
-
 #terminaTurno{
     -fx-font-size: 21;
-}
-
-.button:hover, #textoEjercitos:hover{
-    -fx-base: #395bae;
-    -fx-cursor: hand;
 }
 
 #textoEjercitos:presed{
     -fx-base: #ffffff;
 }
+
+.button:hover, #textoEjercitos:hover{
+    -fx-background-color: #395bae;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+/* Comportamiento Paises */
+#Argentina, #Brazil, #Chile, #Uruguay, #Peru, #Colombia:hover{
+    -fx-cursor: hand;
+}
+
+#Mexico, #California, #Oregon, #Alaska, #Yukon, #Canada, #Terranova, #Labrador, #Groenlandia:hover{
+    -fx-cursor: hand;
+}
+
+#Islandia, #Espana, #Francia, #Italia, #Alemania, #Polonia, #Rusia, #Suecia:hover{
+    -fx-cursor: hand;
+}
+
+#Sahara, #Zaire, #Sudafrica, #Etiopia, #Egipto, #Madagascar:hover{
+    -fx-cursor: hand;
+}
+
+#Sumatra, #Australia, #Borneo, #Java:hover{
+    -fx-cursor: hand;
+}
+
+#Aral, #Iran, #Turquia, #Israel, #India, #Arabia, #Malasia, #China, #Gobi, #Mongolia,
+#Siberia, #Tartaria, #Taymir, #Kamtchatka, #Japon:hover{
+    -fx-cursor: hand;
+}
+
+/* Errores:     Nueva York, Gran Bretaña*/

@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.tableroObservable;
-import java.awt.Component;
 
+import java.awt.*;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -16,12 +15,14 @@ public class PaisVista extends Component implements Observer{
 
     private final Circle circulo;
     private final Juego modelo;
-    private final Text etiqueta;
+    private final Label etiqueta;
 
-    public PaisVista(Circle circulo, Juego modelo, Text etiqueta) {
+    public PaisVista(Circle circulo, Juego modelo, Label numeros) {
         this.circulo = circulo;
         this.modelo = modelo;
-        this.etiqueta = etiqueta;
+        this.etiqueta = numeros;
+
+        this.etiqueta.setId("numeros");
     }
 
     @Override

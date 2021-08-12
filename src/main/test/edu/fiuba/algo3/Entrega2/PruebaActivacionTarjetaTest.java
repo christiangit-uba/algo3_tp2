@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PruebaActivacionTarjetaTest {
     @Test
-    public void PruebaActivacionTarjeta() throws FileNotFoundException {
+    public void PruebaActivacionTarjeta() throws Exception {
         ColorJugador rojo = new ColorJugador("rojo","0001");
         ColorJugador verde = new ColorJugador("verde","002");
         ColorJugador negro = new ColorJugador("negro","003");
@@ -27,10 +27,12 @@ public class PruebaActivacionTarjetaTest {
         juego.agregarJugadores(jugadores);
 
         juego.asignarPaises();
+
         jugadores.remove(jugadorAuxiliar);
 
         jugadores.add(jugador1);
         jugadores.add(jugador2);
+
 
         juego.agregarJugadores(jugadores);
 
@@ -81,13 +83,11 @@ public class PruebaActivacionTarjetaTest {
 
         //tope equivale 4 ejercitos por el primer canjes mas 3 ejercitos por la cantidad de paises
         assertEquals(juego.getTope(),7);
-        juego.colocarEjercito(Argentina,7);
+        juego.colocarEjercito("Argentina",7);
 
         assertEquals(Argentina.cantidadEjercitos(),10);
 
-        juego.terminarTurno();
-        juego.iniciarTurno();
-
+        juego.terminarTurno(true);
 
         assertEquals(Turquia.cantidadEjercitos(),1);
         assertEquals(Francia.cantidadEjercitos(),1);
@@ -98,6 +98,6 @@ public class PruebaActivacionTarjetaTest {
         assertEquals(Francia.cantidadEjercitos(),3);
         assertEquals(Turquia.cantidadEjercitos(),3);
 
-        juego.terminarTurno();
+        juego.terminarTurno(false);
     }
 }

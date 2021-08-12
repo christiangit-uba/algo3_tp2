@@ -13,8 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextBoundsType;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -38,6 +36,10 @@ public class PantallaTablero implements Observer {
     private PanelDeColocacion panelDeColocacion;
     private Panel panelEnUso;
     private int iterador = 0;
+    private Label etiqueta;
+
+    private int alturaVentana = 700;
+    private int baseVentana = 1240;
 
     public PantallaTablero(Juego modelo) {
         this.modelo = modelo;
@@ -54,7 +56,7 @@ public class PantallaTablero implements Observer {
         tablero.setFitWidth(898);
 
         AnchorPane panelPrincipal = new AnchorPane(tablero);
-        panelPrincipal.setPrefSize(1200, 700);
+        panelPrincipal.setPrefSize(baseVentana, alturaVentana); //1230
         panelPrincipal.setId("panel");
 
         //botones
@@ -73,6 +75,7 @@ public class PantallaTablero implements Observer {
         jugador.setLayoutY(588);
         jugador.setPrefHeight(94);
         jugador.setPrefWidth(349);
+        jugador.setId("jugador");
 
         colorJugador.setLayoutX(594);
         colorJugador.setLayoutY(635);
@@ -83,12 +86,21 @@ public class PantallaTablero implements Observer {
         botonCartas.setLayoutY(588);
         botonCartas.setPrefHeight(94);
         botonCartas.setPrefWidth(320);
-        botonCartas.setOnAction(new BotonCartasContorlador(this));
+        botonCartas.setOnAction(new BotonCartasControlador(modelo));
+
+        colorJugador.setLayoutX(594);
+        colorJugador.setLayoutY(635);
+        colorJugador.setRadius(25);
+
+        Label paisOrigen = new Label("País 1:");
+        paisOrigen.setLayoutX(928);
+        paisOrigen.setLayoutY(290);
+        paisOrigen.setId("pais1");
 
         panelDeColocacion = new PanelDeColocacion(modelo);
         modelo.addObserver(panelDeColocacion);
 
-        panelAtaque = new PanelAtaque();
+        panelAtaque = new PanelAtaque(modelo);
         panelReagrupacion = new PanelReagrupacion();
 
         panelDeColocacion.setContactos(panelAtaque);
@@ -96,18 +108,19 @@ public class PantallaTablero implements Observer {
         panelReagrupacion.setContactos(panelAtaque);
         panelReagrupacion.setContactos(panelDeColocacion);
 
-        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas, jugador,panelDeColocacion.getPane(),panelAtaque.getPane(),panelReagrupacion.getPane(), colorJugador);
+        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas, jugador,
+                panelDeColocacion.getPane(),panelAtaque.getPane(),panelReagrupacion.getPane(),
+                colorJugador, paisOrigen);
+
         panelAtaque.ocultar();
         panelReagrupacion.ocultar();
         panelDeColocacion.ocultar();
-        //panelEnUso = panelReagrupacion;
 
         //se añaden los circulos de los paises.
         try {
             Scanner input = new Scanner(new File("src/main/resources/archivos/circulos.txt"));
 
             paises = new ArrayList<>();
-            Text etiqueta;
 
             while (input.hasNextLine()) {
 
@@ -116,7 +129,7 @@ public class PantallaTablero implements Observer {
 
                 //manejo de los paises.
                 Circle circulo = new Circle();
-                //paises.add(circulo);
+                etiqueta = new Label();
 
                 //0-nombre, 1-posx, 2-posy.
                 circulo.setId(lineaProcesada[0]);
@@ -124,18 +137,10 @@ public class PantallaTablero implements Observer {
                 circulo.setLayoutY( Integer.parseInt(lineaProcesada[2]));
                 circulo.setRadius(14);
 
-                etiqueta = new Text();
-
-                //etiqueta.setPrefHeight(10);
-                //etiqueta.setPrefWidth(3);
                 etiqueta.setFont(new Font(30));
-                etiqueta.setBoundsType(TextBoundsType.VISUAL);
-                etiqueta.setLayoutX( Integer.parseInt(lineaProcesada[1]) -8); //10
-                etiqueta.setLayoutY( Integer.parseInt(lineaProcesada[2]) +9); //22
+                etiqueta.setLayoutX( Integer.parseInt(lineaProcesada[1]) -10); // -8 (text)
+                etiqueta.setLayoutY( Integer.parseInt(lineaProcesada[2]) -15); // +9 (text)
                 etiqueta.toFront();
-
-                //etiqueta.setVisible(true);
-
 
                 circulo.setOnMouseClicked(new BotonPaisControlador());
 
@@ -151,7 +156,8 @@ public class PantallaTablero implements Observer {
             System.out.println("no se pudo abrir el archivo: '/resources/archivos/circulos.txt'");
         }
 
-        Scene scene = new Scene(vista);
+        //tamaño de la ventana.
+        Scene scene = new Scene(vista, baseVentana, alturaVentana);
         String css = (EleccionDeJugadoresControlador.class.getResource("/estilos/paises.css")).toExternalForm();
         scene.getStylesheets().add(css);
 
@@ -197,10 +203,18 @@ public class PantallaTablero implements Observer {
         panelDeColocacion.mostrar();
     }
 
-    public void terminarTurno(boolean sigueRonda) {
-        panelEnUso.ocultar();
-        panelEnUso = panelEnUso.siguientePanel(sigueRonda);
-        panelEnUso.mostrar();
+    public void terminarTurno(boolean sigueRonda, boolean juegoTerminado) {
+
+        if(juegoTerminado) {
+            stage.close();
+            stage.setScene(new Scene(new panelMostrarGanador(modelo).getPane()));
+            stage.show();
+        }
+        else {
+            panelEnUso.ocultar();
+            panelEnUso = panelEnUso.siguientePanel(sigueRonda);
+            panelEnUso.mostrar();
+        }
     }
 
     @Override
@@ -212,4 +226,5 @@ public class PantallaTablero implements Observer {
     public void ocultarAtaque() {
         panelAtaque.ocultar();
     }
+
 }

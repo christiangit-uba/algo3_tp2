@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class RondaDeColocacionConTresJugadoresTest {
 
         @Test
-        public void rondaConTresJugadoresConJugadorDosConAsiaConquistado() throws FileNotFoundException {
+        public void rondaConTresJugadoresConJugadorDosConAsiaConquistado() throws Exception {
             ColorJugador rojo = new ColorJugador("rojo","001");
             ColorJugador negro = new ColorJugador("negro","002");
             ColorJugador verde = new ColorJugador("verde","003");
@@ -86,25 +86,25 @@ public class RondaDeColocacionConTresJugadoresTest {
             assertEquals(juego.getTope(), 3);
             assertEquals(Argentina.cantidadEjercitos(), 1);
 
-            juego.colocarEjercito(Argentina, 3);
+            juego.colocarEjercito("Argentina", 3);
             assertEquals(Argentina.cantidadEjercitos(), 4);
             assertEquals(juego.getTope(), 0);
 
-            juego.terminarTurno();
+            juego.terminarTurno(true);
             juego.iniciarTurno();
 
             //15 paises /2 + 7 ejercitos por continente en asia son 14 a colocar
             assertEquals(juego.getTope(),14);
-            juego.colocarEjercito(kamtchatka,14);
+            juego.colocarEjercito("Kamtchatka",14);
             assertEquals(kamtchatka.cantidadEjercitos(),15);
 
-           juego.terminarTurno();
+           juego.terminarTurno(true);
            juego.iniciarTurno();
 
-            juego.colocarEjercito(Francia,2);
+            juego.colocarEjercito("Francia",2);
             assertEquals(Francia.cantidadEjercitos(),3);
 
-            juego.terminarTurno();
+            juego.terminarTurno(false);
 
         }
 
