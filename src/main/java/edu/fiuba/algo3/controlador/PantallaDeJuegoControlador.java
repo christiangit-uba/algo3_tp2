@@ -14,6 +14,8 @@ public class PantallaDeJuegoControlador {
     private static int jugadores = 0;
     private static PantallaTablero vista;
     private static Juego juego;
+    private static boolean colocacionDe5Terminada = false;
+    private static boolean colocacionDe3Terminada = false;
     private boolean turno;
 
     public PantallaDeJuegoControlador(int cantidadJugadores) {
@@ -30,17 +32,31 @@ public class PantallaDeJuegoControlador {
 
         Stage stage = vista.initialize();
         turno = true;
-        colocacion5y3(5);
+        rondaDeColocacionFija(5);
         stage.show();
 
     }
 
     public static void pasarTurno(Boolean avanzaJugador) {
-        vista.terminarTurno(juego.terminarTurno(avanzaJugador));
+        boolean sigueRonda = juego.terminarTurno(avanzaJugador);
+        vista.terminarTurno(sigueRonda);
+
+        if (!sigueRonda & !colocacionDe5Terminada) {
+            colocacionDe5Terminada = true;
+            rondaDeColocacionFija(3);
+            vista.ocultarAtaque();
+            return;
+        }
+
+        if (sigueRonda & colocacionDe3Terminada){
+            juego.iniciarTurno();
+        }
+
+        if (!sigueRonda & colocacionDe5Terminada) colocacionDe3Terminada = true;
         juego.notifyObservers();
     }
 
-    private void colocacion5y3(int i) {
+    private static void rondaDeColocacionFija(int i) {
         juego.topeDeRonda(i);
         vista.mostrarColocacion();
         juego.notifyObservers();

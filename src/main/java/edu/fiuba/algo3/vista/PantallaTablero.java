@@ -208,4 +208,8 @@ public class PantallaTablero implements Observer {
         jugador.setText(modelo.nombreJugadorEnTurno());
         colorJugador.setFill(Color.web(modelo.colorCodigoJugadorEnTurno()));
     }
+
+    public void ocultarAtaque() {
+        panelAtaque.ocultar();
+    }
 }
