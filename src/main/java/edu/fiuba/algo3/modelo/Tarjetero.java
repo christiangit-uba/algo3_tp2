@@ -7,7 +7,6 @@ import java.util.Collections;
 public class Tarjetero {
     private ArrayList<Tarjeta> tarjetas;
 
-
     public Tarjetero() throws FileNotFoundException {
         tarjetas = new ArrayList<>();
     }

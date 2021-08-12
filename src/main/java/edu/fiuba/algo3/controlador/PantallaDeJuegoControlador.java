@@ -1,8 +1,12 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Tarjeta;
+import edu.fiuba.algo3.vista.PanelDados;
 import edu.fiuba.algo3.vista.PantallaTablero;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -17,6 +21,9 @@ public class PantallaDeJuegoControlador {
     private static boolean colocacionDe5Terminada = false;
     private static boolean colocacionDe3Terminada = false;
     private boolean turno;
+    private static ArrayList<Integer> dadosAtacante;
+    private static ArrayList<Integer> dadosDefensor;
+    private static ArrayList<CheckBox> tarjetasSeleccionadas;
 
     public PantallaDeJuegoControlador(int cantidadJugadores) {
         jugadores = cantidadJugadores;
@@ -39,7 +46,7 @@ public class PantallaDeJuegoControlador {
 
     public static void pasarTurno(Boolean avanzaJugador) {
         boolean sigueRonda = juego.terminarTurno(avanzaJugador);
-        vista.terminarTurno(sigueRonda);
+        vista.terminarTurno(sigueRonda,juego.juegoTerminado());
 
         if (!sigueRonda & !colocacionDe5Terminada) {
             colocacionDe5Terminada = true;
@@ -92,7 +99,10 @@ public class PantallaDeJuegoControlador {
 
     public static void Atacar(int cantidad) {
         try {
-            juego.atacar(pais1,pais2, cantidad,new ArrayList<>(),new ArrayList<>());
+            dadosAtacante = new ArrayList<>();
+            dadosDefensor = new ArrayList<>();
+            juego.atacar(pais1,pais2, cantidad,dadosAtacante,dadosDefensor);
+            PanelDados panelDados = new PanelDados(dadosAtacante,dadosDefensor);
         } catch (Exception e) {
             crearAlerta(e.getMessage());
         }
@@ -116,5 +126,67 @@ public class PantallaDeJuegoControlador {
         }
         borrarDatosPaises();
         juego.notifyObservers();
+    }
+
+
+
+
+    public static void guardarTarjeta(ArrayList<CheckBox> checkBoxs, Button botonCanje, Button botonActivacion){
+        int contador = 0;
+        int i = 0;
+        ArrayList<CheckBox> checkBoxSeleccionados = new ArrayList<>();
+        while (contador <= 3 && i < checkBoxs.size()) {
+            if (checkBoxs.get(i).isSelected()) {
+                contador++;
+                checkBoxSeleccionados.add(checkBoxs.get(i));
+            }
+            i++;
+        }
+
+        if(contador > 3) {
+            for (CheckBox j : checkBoxSeleccionados)
+                j.setSelected(false);
+            botonCanje.setVisible(false);
+            botonActivacion.setVisible(false);
+        }
+        else if(contador == 3) {
+            tarjetasSeleccionadas = checkBoxSeleccionados;
+            botonCanje.setVisible(true);
+            botonActivacion.setVisible(false);
+        }
+        else if(contador == 1){
+            tarjetasSeleccionadas = checkBoxSeleccionados;
+            botonActivacion.setVisible(true);
+            botonCanje.setVisible(false);
+        }
+        else {
+            botonActivacion.setVisible(false);
+            botonCanje.setVisible(false);
+        }
+
+    }
+
+    public static boolean realizarCanje(ArrayList<CheckBox> listaCheckBox){
+
+        ArrayList<Tarjeta> tarjetasJugador = new ArrayList<>();
+        for(CheckBox i: tarjetasSeleccionadas){
+            String nombreTarjeta = i.getId();
+            tarjetasJugador.add(juego.buscarTarjetaJugador(juego.obtenerPais(nombreTarjeta)));
+        }
+        boolean cond = juego.canjearTarjetas(tarjetasJugador);
+        if(!cond) crearAlerta("Canje solo valido si los simbolos son diferentes/iguales");
+        juego.notifyObservers();
+        return cond;
+    }
+
+    public static boolean activarTarjeta(ArrayList<CheckBox> listaCheckBox) {
+        String nombreTarjeta = tarjetasSeleccionadas.get(0).getId();
+        Tarjeta tarjeta = juego.buscarTarjetaJugador(juego.obtenerPais(nombreTarjeta));
+        tarjetasSeleccionadas.removeAll(tarjetasSeleccionadas);
+
+        boolean cond = juego.activarTarjeta(tarjeta);
+        if(!cond)crearAlerta("Usted no posee ese pais o la tarjeta ya fue activada");
+        juego.notifyObservers();
+        return cond;
     }
 }

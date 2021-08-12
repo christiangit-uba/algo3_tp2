@@ -8,13 +8,14 @@ public class Jugador {
     private Canje canjes;
     private ArrayList<Tarjeta> tarjetas;
     private int tope;
+    private Objetivo objetivo;
 
     public Jugador(String nombre, ColorJugador colorJugador) {
         this.nombre = nombre;
         tarjetas = new ArrayList<>();
         this.colorJugador = colorJugador;
         canjes = new Canje();
-        tope = 0;
+        int tope = 0;
     }
 
     public void asignarPais(Pais unPais) {
@@ -128,5 +129,31 @@ public class Jugador {
 
     public ColorJugador getColor() {
         return colorJugador;
+    }
+
+
+
+    public ArrayList<Tarjeta> obtenerTarjetas(){
+        return tarjetas;
+    }
+
+    public Tarjeta buscarTarjeta(Pais unPais){
+        for(Tarjeta tarjeta: tarjetas){
+            if(tarjeta.mismaTarjeta(unPais))
+                return tarjeta;
+        }
+        return null;
+    }
+
+    public void agregarObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public String mostrarObjetivo(){
+        return objetivo.mostrarObjetivo();
+    }
+
+    public boolean cumplioObjetivo(Tablero tablero){
+        return objetivo.validarObjetivo(tablero,colorJugador);
     }
 }

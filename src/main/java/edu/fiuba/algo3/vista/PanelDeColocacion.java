@@ -31,20 +31,25 @@ public class PanelDeColocacion extends Panel implements Observer {
 
         TextField cantidadIngresada = new TextField();
         cantidadIngresada.setLayoutX(915);
-        cantidadIngresada.setLayoutY(180);
+        cantidadIngresada.setLayoutY(150);
         cantidadIngresada.setPrefHeight(94);
         cantidadIngresada.setPrefWidth(259);
 
         Button colocar = new Button("COLOCAR");
         colocar.setOnAction(new BotonColocarControlador(cantidadIngresada));
-        colocar.setLayoutX(920);
-        colocar.setLayoutY(310);
+        colocar.setLayoutX(915);
+        colocar.setLayoutY(500);
         colocar.setPrefHeight(42);
         colocar.setPrefWidth(280);
         colocar.setId("paisDestino");
 
+        Label destino = new Label("DESTINO");
+        destino.setStyle("-fx-text-fill: black");
+        destino.setLayoutX(915);
+        destino.setLayoutY(270);
+
         pane = new Pane();
-        pane.getChildren().addAll(cabezera, ejercitos, paisOrigen,cantidadIngresada,colocar);
+        pane.getChildren().addAll(cabezera, ejercitos, paisOrigen,cantidadIngresada,colocar,destino);
     }
 
     public Pane getPane() {

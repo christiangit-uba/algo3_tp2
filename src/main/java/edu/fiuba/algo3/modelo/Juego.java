@@ -14,6 +14,7 @@ public class Juego extends Observable {
     private boolean conquistoUnPaisAlmenos = false;
     private Ronda ronda;
     private tableroObservable modelo;
+    private String jugadorGanador;
 
     public Juego(int cantidad)  throws FileNotFoundException {
 
@@ -58,12 +59,14 @@ public class Juego extends Observable {
     }
 
     public boolean activarTarjeta(Tarjeta tarjeta){
+        this.setChanged();
         return jugadorEnTurno.activarTarjetaPais(tarjeta);
     }
 
     public boolean canjearTarjetas(ArrayList<Tarjeta> tarjetas){
         if(jugadorEnTurno.validarCanjes(tarjetas, tarjetero)){
             jugadorEnTurno.canjear();
+            this.setChanged();
             return true;
         }
         return false;
@@ -82,6 +85,7 @@ public class Juego extends Observable {
         this.setChanged();
         if(conquistoUnPaisAlmenos){
             tarjetero.asignarTarjeta(jugadorEnTurno);
+            conquistoUnPaisAlmenos = false;
         }
         
         if (avanzaJugador){
@@ -123,11 +127,15 @@ public class Juego extends Observable {
         return tarjetero.buscarTarjeta(unPais);
     }
 
+    public Tarjeta buscarTarjetaJugador(Pais unPais){
+        return jugadorEnTurno.buscarTarjeta(unPais);
+    }
+
     public void randomizarJugadores() {
         ArrayList<Jugador> nuevoOrden = new ArrayList<>();
         Random random = new Random();
 
-        int primeroEnJugar = random.nextInt(jugadores.size()-1);
+        int primeroEnJugar = random.nextInt(jugadores.size());
 
         for (int i = primeroEnJugar; i< jugadores.size(); i++){
             nuevoOrden.add(jugadores.get(i));
@@ -151,5 +159,39 @@ public class Juego extends Observable {
         for(Jugador jugador : jugadores){
             jugador.setTope(i);
         }
+    }
+
+
+
+
+
+
+    public ArrayList<Tarjeta> tarjetasJugador(){
+        return ronda.jugadorEnRonda().obtenerTarjetas();
+    }
+
+    public Jugador jugadorEnTurno(){
+        return ronda.jugadorEnRonda();
+    }
+
+
+    public boolean juegoTerminado() {
+        if(jugadorEnTurno.cumplioObjetivo(tablero)){
+            jugadorGanador = this.nombreJugadorEnTurno();
+            return true;
+        }
+        return false;
+    }
+
+    public String jugadorGanador() {
+        return jugadorGanador;
+    }
+
+    public int cantidadPaisesConquistados() {
+        return tablero.cantidadDePaises(jugadorEnTurno.getColor());
+    }
+
+    public String objetivoJugador() {
+        return jugadorEnTurno.mostrarObjetivo();
     }
 }

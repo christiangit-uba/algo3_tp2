@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 
 import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
 public abstract class Panel extends Component {
 
@@ -14,13 +12,15 @@ public abstract class Panel extends Component {
     protected Label paisDestino = new Label("");
 
     Panel(){
+        paisOrigen.setStyle("-fx-text-fill: black");
         paisOrigen.setLayoutX(915);
-        paisOrigen.setLayoutY(180);
+        paisOrigen.setLayoutY(300);
         paisOrigen.setPrefHeight(25);
         paisOrigen.setPrefWidth(250);
 
+        paisDestino.setStyle("-fx-text-fill: black");
         paisDestino.setLayoutX(915);
-        paisDestino.setLayoutY(300);
+        paisDestino.setLayoutY(400);
         paisDestino.setPrefHeight(25);
         paisDestino.setPrefWidth(250);
 
@@ -29,6 +29,10 @@ public abstract class Panel extends Component {
         ejercitos.setLayoutY(60);
         ejercitos.setPrefHeight(90);
         ejercitos.setPrefWidth(200);
+
+
+
+
     }
 
     public Label crearLabelCabezera(String texto){

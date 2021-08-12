@@ -69,7 +69,9 @@ public class PantallaTablero implements Observer {
         siguienteFase.toBack();
 
         jugador = new Label("JUGADOR");
-        jugador.setLayoutX(350);
+        jugador.setStyle("-fx-text-fill: black");
+        jugador.setFont(Font.font(25.0));
+        jugador.setLayoutX(400);
         jugador.setLayoutY(588);
         jugador.setPrefHeight(94);
         jugador.setPrefWidth(349);
@@ -78,18 +80,23 @@ public class PantallaTablero implements Observer {
         colorJugador.setLayoutY(635);
         colorJugador.setRadius(25);
 
+
         Button botonCartas = new Button("VER CARTAS");
         botonCartas.setLayoutX(7);
         botonCartas.setLayoutY(588);
         botonCartas.setPrefHeight(94);
         botonCartas.setPrefWidth(320);
-        botonCartas.setOnAction(new BotonCartasContorlador(this));
+        botonCartas.setOnAction(new BotonCartasControlador(modelo));
+
+
+
 
         panelDeColocacion = new PanelDeColocacion(modelo);
         modelo.addObserver(panelDeColocacion);
 
-        panelAtaque = new PanelAtaque();
-        panelReagrupacion = new PanelReagrupacion();
+        panelAtaque = new PanelAtaque(modelo);
+
+        panelReagrupacion = new PanelReagrupacion(modelo);
 
         panelDeColocacion.setContactos(panelAtaque);
         panelAtaque.setContactos(panelReagrupacion);
@@ -100,6 +107,7 @@ public class PantallaTablero implements Observer {
         panelAtaque.ocultar();
         panelReagrupacion.ocultar();
         panelDeColocacion.ocultar();
+        botonCartas.toFront();
         //panelEnUso = panelReagrupacion;
 
         //se añaden los circulos de los paises.
@@ -122,15 +130,15 @@ public class PantallaTablero implements Observer {
                 circulo.setId(lineaProcesada[0]);
                 circulo.setLayoutX( Integer.parseInt(lineaProcesada[1]));
                 circulo.setLayoutY( Integer.parseInt(lineaProcesada[2]));
-                circulo.setRadius(14);
+                circulo.setRadius(16); //14
 
                 etiqueta = new Text();
 
                 //etiqueta.setPrefHeight(10);
                 //etiqueta.setPrefWidth(3);
-                etiqueta.setFont(new Font(30));
+                etiqueta.setFont(new Font(25)); //30
                 etiqueta.setBoundsType(TextBoundsType.VISUAL);
-                etiqueta.setLayoutX( Integer.parseInt(lineaProcesada[1]) -8); //10
+                etiqueta.setLayoutX( Integer.parseInt(lineaProcesada[1]) -10); //10 -8
                 etiqueta.setLayoutY( Integer.parseInt(lineaProcesada[2]) +9); //22
                 etiqueta.toFront();
 
@@ -197,10 +205,18 @@ public class PantallaTablero implements Observer {
         panelDeColocacion.mostrar();
     }
 
-    public void terminarTurno(boolean sigueRonda) {
-        panelEnUso.ocultar();
-        panelEnUso = panelEnUso.siguientePanel(sigueRonda);
-        panelEnUso.mostrar();
+    public void terminarTurno(boolean sigueRonda, boolean juegoTerminado) {
+
+        if(juegoTerminado) {
+            stage.close();
+            stage.setScene(new Scene(new panelMostrarGanador(modelo).getPane()));
+            stage.show();
+        }
+        else {
+            panelEnUso.ocultar();
+            panelEnUso = panelEnUso.siguientePanel(sigueRonda);
+            panelEnUso.mostrar();
+        }
     }
 
     @Override
@@ -212,4 +228,5 @@ public class PantallaTablero implements Observer {
     public void ocultarAtaque() {
         panelAtaque.ocultar();
     }
+
 }
