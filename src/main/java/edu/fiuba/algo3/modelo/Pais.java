@@ -12,6 +12,7 @@ public class Pais {
         ejercito = new UnoOMenosEjercito(0);
         limitrofes = new Limitrofes();
     }
+
     public void agregarLimitrofe(Pais paisLimitrofes){
         paisLimitrofes.mismoNombre(nombre);
         this.limitrofes.agregarLimitrofe(paisLimitrofes);
@@ -111,5 +112,9 @@ public class Pais {
 
     public String nombre(){
         return nombre;
+    }
+
+    public void desactivarPais() {
+        ejercito = limitrofes.darEjercitos(ejercito);
     }
 }

@@ -97,6 +97,13 @@ public class PantallaTablero implements Observer {
         paisOrigen.setLayoutY(290);
         paisOrigen.setId("pais1");
 
+        Button desactivarPais = new Button("DESACTIVAR PAIS");
+        desactivarPais.setLayoutX(900);
+        desactivarPais.setLayoutY(588);
+        desactivarPais.setOnAction(new BotonDesactivarControlador());
+        desactivarPais.toFront();
+
+
         panelDeColocacion = new PanelDeColocacion(modelo);
         modelo.addObserver(panelDeColocacion);
 
@@ -108,7 +115,7 @@ public class PantallaTablero implements Observer {
         panelReagrupacion.setContactos(panelAtaque);
         panelReagrupacion.setContactos(panelDeColocacion);
 
-        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas, jugador,
+        Group vista = new Group(panelPrincipal, siguienteFase, botonCartas, jugador,desactivarPais,
                 panelDeColocacion.getPane(),panelAtaque.getPane(),panelReagrupacion.getPane(),
                 colorJugador, paisOrigen);
 

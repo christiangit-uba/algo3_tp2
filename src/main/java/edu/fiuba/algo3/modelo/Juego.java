@@ -195,4 +195,9 @@ public class Juego extends Observable {
     public String objetivoJugador() {
         return jugadorEnTurno.mostrarObjetivo();
     }
+
+    public void desactivarPais(String pais) {
+        tablero.obtenerPais(pais).desactivarPais();
+        this.setChanged();
+    }
 }

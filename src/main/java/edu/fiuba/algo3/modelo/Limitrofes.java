@@ -12,4 +12,15 @@ public class Limitrofes {
     public void agregarLimitrofe(Pais paisLimitrofeNuevo) {
         paisesLimitrofes.add(paisLimitrofeNuevo);
     }
+
+    public Ejercito darEjercitos(Ejercito ejercito) {
+        for (Pais pais : paisesLimitrofes){
+
+            if (!ejercito.ejercitoVacio() & ejercito.mismoColor(pais)){
+                pais.agregarEjercito();
+                ejercito = ejercito.sacarEjercito();
+            }
+        }
+        return ejercito;
+    }
 }

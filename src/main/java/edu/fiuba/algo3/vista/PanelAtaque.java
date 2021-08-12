@@ -57,7 +57,7 @@ public class PanelAtaque extends Panel{
         pais2.setId("pais2");
 
         pane = new Pane();
-        pane.getChildren().addAll(cabezera,cantidadIngresada, paisOrigen, paisDestino, botonAtacar , pais2, cantidadEjercitos);
+        pane.getChildren().addAll(cabezera,cantidadIngresada, siguienteFase, paisOrigen, paisDestino, botonAtacar , pais2, cantidadEjercitos);
     }
 
     @Override

@@ -194,4 +194,9 @@ public class PantallaDeJuegoControlador {
         juego.notifyObservers();
         return cond;
     }
+
+    public static void desactivarPais() {
+        juego.desactivarPais(pais1);
+        juego.notifyObservers();
+    }
 }
