@@ -27,10 +27,12 @@ public class PruebaActivacionTarjetaTest {
         juego.agregarJugadores(jugadores);
 
         juego.asignarPaises();
+
         jugadores.remove(jugadorAuxiliar);
 
         jugadores.add(jugador1);
         jugadores.add(jugador2);
+
 
         juego.agregarJugadores(jugadores);
 
@@ -85,9 +87,7 @@ public class PruebaActivacionTarjetaTest {
 
         assertEquals(Argentina.cantidadEjercitos(),10);
 
-        juego.terminarTurno(false);
-        juego.iniciarTurno();
-
+        juego.terminarTurno(true);
 
         assertEquals(Turquia.cantidadEjercitos(),1);
         assertEquals(Francia.cantidadEjercitos(),1);

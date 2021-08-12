@@ -67,7 +67,7 @@ public class PruebaRondaJugadoresColocarTest {
         juego.colocarEjercito("Argentina",1);
         assertEquals(Argentina.cantidadEjercitos(),3);
 
-        juego.terminarTurno(false);
+        juego.terminarTurno(true);
         juego.iniciarTurno();
 
 

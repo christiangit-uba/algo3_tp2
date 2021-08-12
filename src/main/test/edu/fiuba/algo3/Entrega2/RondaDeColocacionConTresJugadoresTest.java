@@ -90,15 +90,15 @@ public class RondaDeColocacionConTresJugadoresTest {
             assertEquals(Argentina.cantidadEjercitos(), 4);
             assertEquals(juego.getTope(), 0);
 
-            juego.terminarTurno(false);
+            juego.terminarTurno(true);
             juego.iniciarTurno();
 
             //15 paises /2 + 7 ejercitos por continente en asia son 14 a colocar
             assertEquals(juego.getTope(),14);
-            juego.colocarEjercito("kamtchatka",14);
+            juego.colocarEjercito("Kamtchatka",14);
             assertEquals(kamtchatka.cantidadEjercitos(),15);
 
-           juego.terminarTurno(false);
+           juego.terminarTurno(true);
            juego.iniciarTurno();
 
             juego.colocarEjercito("Francia",2);
