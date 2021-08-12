@@ -58,14 +58,14 @@ public class Juego extends Observable {
     }
 
     public boolean activarTarjeta(Tarjeta tarjeta){
-        this.notifyObservers();
+        this.setChanged();
         return jugadorEnTurno.activarTarjetaPais(tarjeta);
     }
 
     public boolean canjearTarjetas(ArrayList<Tarjeta> tarjetas){
         if(jugadorEnTurno.validarCanjes(tarjetas, tarjetero)){
             jugadorEnTurno.canjear();
-            this.notifyObservers();
+            this.setChanged();
             return true;
         }
         return false;

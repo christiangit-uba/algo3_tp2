@@ -157,13 +157,19 @@ public class PantallaDeJuegoControlador {
             String nombreTarjeta = i.getId();
             tarjetasJugador.add(juego.buscarTarjetaJugador(juego.obtenerPais(nombreTarjeta)));
         }
-
-        return juego.canjearTarjetas(tarjetasJugador);
+        boolean cond = juego.canjearTarjetas(tarjetasJugador);
+        if (!cond)crearAlerta("Canje invalido");
+        juego.notifyObservers();
+        return cond;
     }
 
     public static boolean activarTarjeta(ArrayList<CheckBox> listaCheckBox) {
         String nombreTarjeta = tarjetasSeleccionadas.get(0).getId();
         Tarjeta tarjeta = juego.buscarTarjetaJugador(juego.obtenerPais(nombreTarjeta));
-        return juego.activarTarjeta(tarjeta);
+        boolean cond = juego.activarTarjeta(tarjeta);
+        if (!cond)crearAlerta("Activacion invalida "+nombreTarjeta);
+        juego.notifyObservers();
+        return cond;
     }
+
 }
